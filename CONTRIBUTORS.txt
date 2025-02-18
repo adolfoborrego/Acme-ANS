@@ -8,7 +8,6 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-- Rafael Corchuelo (corchu@us.es)
 - Adolfo Borrego (adoborgon@alum.us.es)
 - Germán Sánchez (germansancar@alum.us.es)
 - Ignacio Martínez (ignmardia1@alum.us.es)
