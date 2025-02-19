@@ -22,7 +22,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link1" action="https://wuolah.com/home"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link2" action="http://www.example.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link3" action="http://www.example.com/"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link4" action="http://www.example.com/"/>
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link4" action="https://github.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link5" action="http://www.example.com/"/>
 		</acme:menu-option>
 
