@@ -10,10 +10,11 @@
 
 master.license.title = Licencia
 master.license.text = \
-	Puede usar este sistema de forma completamente gratuita respetando las leyes \
-	que sean aplicables.  No compartimos ninguna información sobre Ud. con ninguna \
-	otra empresa.  Almacenamos los siguientes datos en su browser: \
-	"JSESSIONID" para identificar su sesión de trabajo, "remember" para mantener \
-	su información de autentificación, "language" para almacenar sus preferencias de \
-	lenguage, "XSRF-TOKEN" para tratar ataques CSRF, y "returnStack" para saber dónde \
-	volver al pulsar algunos botones.
+    Puede utilizar este sistema de manera totalmente gratuita siempre que cumpla con \
+    las leyes aplicables. No compartimos ninguna información sobre usted con ninguna \
+    otra empresa. Almacenamos los siguientes datos en su navegador: \
+    "JSESSIONID" para reconocer su sesión de trabajo, "remember" para mantener \
+    su información de autenticación, "language" para guardar sus preferencias de \
+    idioma, "XSRF-TOKEN" para proteger contra ataques CSRF, y "returnStack" para \
+    recordar a dónde regresar cuando presiona ciertos botones. :)
+

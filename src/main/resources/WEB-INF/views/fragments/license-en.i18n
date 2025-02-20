@@ -10,10 +10,11 @@
 
 master.license.title = License
 master.license.text = \
-	You may use this system free of charge, as long as you carefully observe the \
-	existing applicable laws.  Please, note that we do not share any information \
-	about you with any other company.  We store the following items in your computer: \
-	"JSESSIONID" to identify your work session, "remember" to let you authenticate \
-	automatically, "language" to store your language preferences, "XSRF-TOKEN" to \
-	deal with CSRF attacks, and "returnStack" to know where to return when your press \
-	some buttons.
+    You are allowed to use this system at no cost, provided that you strictly comply with \
+    all applicable laws. Please note that we do not share any of your information \
+    with any other company. We store the following data on your computer: \
+    "JSESSIONID" to recognize your work session, "remember" to enable automatic \
+    authentication, "language" to save your language settings, "XSRF-TOKEN" to \
+    protect against CSRF attacks, and "returnStack" to track navigation when you press \
+    certain buttons. :)
+
