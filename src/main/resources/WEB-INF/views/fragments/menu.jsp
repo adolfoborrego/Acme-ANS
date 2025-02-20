@@ -20,7 +20,7 @@
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link1" action="https://wuolah.com/home"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link2" action="http://www.example.com/"/>
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link2" action="http://futbol11.netlify.app/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link3" action="https://es.wikipedia.org/wiki/Barquisimeto"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link4" action="https://github.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link5" action="http://www.example.com/"/>
