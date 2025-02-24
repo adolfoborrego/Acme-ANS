@@ -9,4 +9,3 @@
 # they accept any liabilities with respect to them.
 
 25.1.0 This is the first Version of Acme-ANS
-25.2.0 This is the second Version of Acme-ANS
