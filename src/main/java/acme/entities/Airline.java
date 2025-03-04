@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.validation.Mandatory;
@@ -40,7 +42,8 @@ public class Airline extends AbstractEntity {
 
 	@Mandatory
 	@ValidMoment(past = true)
-	private Date				FoundationTime;
+	@Temporal(TemporalType.DATE)
+	private Date				foundationTime;
 
 	@Optional
 	@ValidEmail
