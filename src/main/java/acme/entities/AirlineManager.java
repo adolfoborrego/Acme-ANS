@@ -33,7 +33,7 @@ public class AirlineManager extends AbstractRole {
 
 	@Mandatory
 	@ValidNumber
-	private Integer				yearsExperience;
+	private Integer				yearsOfExperience;
 
 	@Mandatory
 	@ValidMoment(past = true)
