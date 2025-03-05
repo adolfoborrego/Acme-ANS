@@ -17,6 +17,12 @@ import lombok.Setter;
 @Setter
 public class Task extends AbstractEntity {
 
+	// Serialisation version -------------------------------------------------------------------------------------
+
+	private static final long	serialVersionUID	= 1L;
+
+	// Attributes ------------------------------------------------------------------------------------------------
+
 	@Mandatory
 	@ValidString(pattern = "^(MAINTENANCE|INSPECTION|REPAIR|SYSTEM CHECK)$")
 	private String				type;
