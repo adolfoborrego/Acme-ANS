@@ -50,4 +50,8 @@ public class Leg extends AbstractEntity {
 	@ManyToOne
 	private Aircraft			aircraft;
 
+	@Mandatory
+	@ManyToOne
+	private Flight				flight;
+
 }

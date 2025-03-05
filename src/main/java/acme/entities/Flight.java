@@ -2,6 +2,7 @@
 package acme.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
@@ -36,5 +37,9 @@ public class Flight extends AbstractEntity {
 
 	@Mandatory
 	private Boolean				published;
+
+	@Mandatory
+	@ManyToOne
+	private AirlineManager		airlineManager;
 
 }
