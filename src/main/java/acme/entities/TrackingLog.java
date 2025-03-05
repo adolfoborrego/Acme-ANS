@@ -7,11 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.validation.Mandatory;
-import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,39 +21,37 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Claim extends AbstractEntity {
+public class TrackingLog extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.DATE)
-	private Date				registrationMoment;
+	private Date				lastUpdateMoment;
 
 	@Mandatory
-	@ValidEmail
-	private String				passengerEmail;
+	@ValidString(max = 50)
+	private String				step;
 
 	@Mandatory
-	@ValidString(max = 255)
-	private String				description;
-
-	@Mandatory
-	@ValidString(pattern = "^(FLIGHT-ISSUES|LUGGAGE-ISSUES|SECURITY-INCIDENT|OTHER-ISSUES)$")
-	private String				type;
+	@ValidNumber
+	@Min(0)
+	@Max(100)
+	private Integer				resolutionPercentage;
 
 	@Mandatory
 	private Boolean				indicator;
+
+	@Mandatory
+	@ValidString(max = 255)
+	private String				resolution;
 
 	@Mandatory
 	private Boolean				published;
 
 	@Mandatory
 	@ManyToOne
-	private AssistanceAgent		assistanceAgent;
-
-	@Mandatory
-	@ManyToOne
-	private Leg					leg;
+	private Claim				claim;
 
 }
