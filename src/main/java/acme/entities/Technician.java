@@ -4,7 +4,7 @@ package acme.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-import acme.client.components.basis.AbstractEntity;
+import acme.client.components.basis.AbstractRole;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
@@ -15,7 +15,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Technician extends AbstractEntity {
+public class Technician extends AbstractRole {
 
 	// Serialisation version -------------------------------------------------------------------------------------
 
@@ -25,22 +25,22 @@ public class Technician extends AbstractEntity {
 	@Mandatory
 	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
 	@Column(unique = true)
-	private String				license;
+	private String				licenseNumber;
 
 	@Mandatory
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	private String				phoneNumber;
 
 	@Mandatory
-	@ValidString(min = 1, max = 50)
+	@ValidString(max = 50)
 	private String				specialisation;
 
 	@Mandatory
-	private Boolean				annualHealthTestPassed;
+	private Boolean				annualHealthTest;
 
 	@Mandatory
 	@ValidNumber(min = 0, max = 80, fraction = 0)
-	private Integer				yearsExperience;
+	private Integer				yearsOfExperience;
 
 	@Optional
 	@ValidString(min = 0, max = 255)
