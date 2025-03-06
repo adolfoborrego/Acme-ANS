@@ -54,4 +54,9 @@ public class Booking extends AbstractEntity {
 	@Valid
 	private Customers			customers;
 
+	@Mandatory
+	@ManyToOne
+	@Valid
+	private Flight				flight;
+
 }
