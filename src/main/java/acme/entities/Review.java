@@ -9,9 +9,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
-import org.springframework.security.core.userdetails.User;
-
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.principals.UserAccount;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
@@ -57,6 +56,6 @@ public class Review extends AbstractEntity {
 	@Mandatory
 	@ManyToOne
 	@Valid
-	private User				user;
+	private UserAccount			user;
 
 }
