@@ -11,42 +11,39 @@ import javax.validation.constraints.NotNull;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.validation.Mandatory;
-import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 
-public class FlightAssignment extends AbstractEntity {
+public class ActivityLog extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	@Mandatory
-	@ValidString(pattern = "^(PILOT|COPILOT|LEAD ATTENDANT|CABIN ATTENDANT)$")
-	@NotNull
-	String						duty;
+	@Valid
+	FlightAssignment			associatedTo;
 
 	@Mandatory
-	@Temporal(TemporalType.DATE)
 	@ValidMoment(past = true)
-	@NotNull
-	Date						momentOfLastUpdate;
+	@Temporal(TemporalType.DATE)
+	Date						registrationMoment;
 
 	@Mandatory
-	@ValidString(pattern = "^(CONFIRMED||PENDING|CANCELLED)$")
-	@NotNull
-	String						currentStatus;
+	@ValidString(max = 50)
+	String						typeOfIncident;
 
-	@Optional
-	@ValidString(max = 255)
-	@NotNull
-	String						remarks;
-
-	@ManyToOne
-	@Valid
 	@Mandatory
-	FlightCrewMember			assignTo;
+	@ValidString(max = 250)
+	String						description;
 
-	@ManyToOne
-	@Valid
 	@Mandatory
-	Leg							associatedTo;
+	@ValidNumber(min = 0, max = 10, fraction = 0)
+	@NotNull
+	Integer						severityLevel;
+
+	@Mandatory
+	@NotNull
+	Boolean						isPublished;
+
 }
