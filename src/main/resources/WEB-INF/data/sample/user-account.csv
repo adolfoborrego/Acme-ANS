@@ -11,3 +11,6 @@ user-account-manager-03,true,"UserIdentity{name: ""Manager"", surname: ""Three""
 user-account-agent-01,true,"UserIdentity{name: ""Agent"", surname: ""One"", email: ""agent1@email.com""}",agent1,agent1
 user-account-agent-02,true,"UserIdentity{name: ""Agent"", surname: ""Two"", email: ""agent2@email.com""}",agent2,agent2
 user-account-agent-03,true,"UserIdentity{name: ""Agent"", surname: ""Three"", email: ""agent3@email.com""}",agent3,agent3
+user-account-technician-01,true,"UserIdentity{name: ""Technician"", surname: ""One"", email: ""technician1@email.com""}",technician1,technician1
+user-account-technician-02,true,"UserIdentity{name: ""Technician"", surname: ""Two"", email: ""technician2@email.com""}",technician2,technician2
+user-account-technician-03,true,"UserIdentity{name: ""Technician"", surname: ""Three"", email: ""technician3@email.com""}",technician3,technician3
