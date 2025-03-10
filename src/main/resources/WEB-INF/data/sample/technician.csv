@@ -1,0 +1,4 @@
+key,licenseNumber,phoneNumber,specialisation,annualHealthTest,yearsOfExperience,certifications
+technician1,AB123456,+1234567890,Aeronautical Maintenance,true,10,Certified Aircraft Mechanic
+technician2,CD987654,+9876543210,Avionics,false,5,Electronics and Instrumentation Diploma
+technician3,null,null,null,null,null,null
