@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.validation.Mandatory;
@@ -46,10 +47,12 @@ public class Claim extends AbstractEntity {
 	@Mandatory
 	private Boolean				published;
 
+	@Valid
 	@Mandatory
 	@ManyToOne
 	private AssistanceAgent		assistanceAgent;
 
+	@Valid
 	@Mandatory
 	@ManyToOne
 	private Leg					leg;
