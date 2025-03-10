@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.validation.Mandatory;
@@ -46,12 +47,13 @@ public class AssistanceAgent extends AbstractRole {
 
 	@Optional
 	@ValidNumber
-	private int					salary;
+	private Integer				salary;
 
 	@Optional
 	@ValidUrl
 	private String				photoLink;
 
+	@Valid
 	@Mandatory
 	@ManyToOne
 	private Airline				airline;

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
@@ -50,6 +51,7 @@ public class TrackingLog extends AbstractEntity {
 	@Mandatory
 	private Boolean				published;
 
+	@Valid
 	@Mandatory
 	@ManyToOne
 	private Claim				claim;
