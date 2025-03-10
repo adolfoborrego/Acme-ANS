@@ -1,0 +1,4 @@
+key,name,iataCode,website,type,foundationTime,email,phoneNumber
+airline-01,Airline One,AON,http://airline1.com,STANDARD,2005/06/15 00:00,contact@airline1.com,+111111111
+airline-02,Airline Two,ATW,http://airline2.com,LOW-COST,2008/09/10 00:00,contact@airline2.com,+222222222
+airline-03,No Airline,NAA,http://no-airline.com,STANDARD,2000/01/01 00:00,info@no-airline.com,+000000000
