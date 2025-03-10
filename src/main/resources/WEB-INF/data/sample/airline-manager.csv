@@ -1,0 +1,4 @@
+key,key:userAccount,identifierNumber,yearsOfExperience,dateOfBirth,pictureURL,key:airline
+manager-01,user-account-manager1,MG123456,10,2001/05/15 00:00,http://example.com/manager1.jpg,airline-01
+manager-02,user-account-manager2,MG234567,8,2005/09/20 00:00,http://example.com/manager2.jpg,airline-02
+manager-03,user-account-manager3,null,null,null,null,null
