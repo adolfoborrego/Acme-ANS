@@ -18,7 +18,11 @@ import lombok.Setter;
 @Setter
 public class Airport extends AbstractEntity {
 
+	// Serialisation version --------------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
+
+	// Attributes -------------------------------------------------------------
 
 	@Mandatory
 	@ValidString(max = 50)
@@ -56,5 +60,9 @@ public class Airport extends AbstractEntity {
 	@Optional
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	private String				contactPhoneNumber;
+
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
 
 }
