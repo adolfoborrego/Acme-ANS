@@ -6,7 +6,9 @@ import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import lombok.Getter;
@@ -25,29 +27,37 @@ public class Task extends AbstractEntity {
 
 	@Mandatory
 	@ValidString(pattern = "^(MAINTENANCE|INSPECTION|REPAIR|SYSTEM CHECK)$")
+	@Automapped
 	private String				type;
+
 	@Mandatory
 	@ValidString(max = 255)
+	@Automapped
 	private String				description;
 
 	@Mandatory
 	@ValidNumber(min = 0, max = 10)
+	@Automapped
 	private Integer				priority;
 
 	@Mandatory
 	@ValidNumber
+	@Automapped
 	private Integer				estimatedDuration;
 
 	@Mandatory
+	@Automapped
 	private Boolean				published;
 
-	@Mandatory
+	@Optional
 	@Valid
+	@Automapped
 	@ManyToOne
 	private Technician			technician;
 
-	@Mandatory
+	@Optional
 	@Valid
+	@Automapped
 	@ManyToOne
 	private MaintenanceRecord	maintenanceRecord;
 }
