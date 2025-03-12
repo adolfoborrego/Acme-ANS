@@ -20,7 +20,11 @@ import lombok.Setter;
 @Setter
 public class Aircraft extends AbstractEntity {
 
+	// Serialisation version --------------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
+
+	// Attributes -------------------------------------------------------------
 
 	@Mandatory
 	@ValidString(max = 50)
@@ -50,5 +54,9 @@ public class Aircraft extends AbstractEntity {
 	@Mandatory
 	@ManyToOne
 	private Airline				airline;
+
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
 
 }

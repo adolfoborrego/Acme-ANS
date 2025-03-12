@@ -55,7 +55,7 @@ public class AssistanceAgent extends AbstractRole {
 	private String				photoLink;
 
 	@Valid
-	@Mandatory
+	@Optional
 	@ManyToOne
 	private Airline				airline;
 
