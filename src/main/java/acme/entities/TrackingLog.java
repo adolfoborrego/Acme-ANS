@@ -8,11 +8,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
@@ -24,7 +23,11 @@ import lombok.Setter;
 @Setter
 public class TrackingLog extends AbstractEntity {
 
+	// Serialisation version --------------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
+
+	// Attributes -------------------------------------------------------------
 
 	@Mandatory
 	@ValidMoment(past = true)
@@ -36,9 +39,7 @@ public class TrackingLog extends AbstractEntity {
 	private String				step;
 
 	@Mandatory
-	@ValidNumber
-	@Min(0)
-	@Max(100)
+	@ValidNumber(min = 0, max = 100)
 	private Integer				resolutionPercentage;
 
 	@Mandatory
@@ -51,8 +52,12 @@ public class TrackingLog extends AbstractEntity {
 	@Mandatory
 	private Boolean				published;
 
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
+
 	@Valid
-	@Mandatory
+	@Optional
 	@ManyToOne
 	private Claim				claim;
 

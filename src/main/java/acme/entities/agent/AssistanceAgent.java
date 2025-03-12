@@ -27,7 +27,11 @@ import lombok.Setter;
 @Setter
 public class AssistanceAgent extends AbstractRole {
 
+	// Serialisation version --------------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
+
+	// Attributes -------------------------------------------------------------
 
 	@Mandatory
 	@Column(unique = true)
@@ -55,6 +59,10 @@ public class AssistanceAgent extends AbstractRole {
 	@Optional
 	@ValidUrl
 	private String				photoLink;
+
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
 
 	@Valid
 	@Optional
