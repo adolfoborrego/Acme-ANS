@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
@@ -23,7 +24,11 @@ import lombok.Setter;
 @Setter
 public class Claim extends AbstractEntity {
 
+	// Serialisation version --------------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
+
+	// Attributes -------------------------------------------------------------
 
 	@Mandatory
 	@ValidMoment(past = true)
@@ -48,13 +53,17 @@ public class Claim extends AbstractEntity {
 	@Mandatory
 	private Boolean				published;
 
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
+
 	@Valid
-	@Mandatory
+	@Optional
 	@ManyToOne
 	private AssistanceAgent		assistanceAgent;
 
 	@Valid
-	@Mandatory
+	@Optional
 	@ManyToOne
 	private Leg					leg;
 
