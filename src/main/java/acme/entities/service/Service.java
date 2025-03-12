@@ -11,6 +11,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.client.components.validation.ValidUrl;
 import acme.constraints.ValidPromotionCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,7 +29,7 @@ public class Service extends AbstractEntity {
 	private String				name;
 
 	@Mandatory
-	@ValidString
+	@ValidUrl
 	@Automapped
 	private String				linkToPicture;
 

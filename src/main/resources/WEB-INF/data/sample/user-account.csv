@@ -1,4 +1,9 @@
 key,enabled,identity,password,username
+user-account-flightCrewMember-01,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""One"", email: ""flightCrewMember1@email.com""}",flightCrewMember1,flightCrewMember1
+user-account-flightCrewMember-02,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Two"", email: ""flightCrewMember2@email.com""}",flightCrewMember2,flightCrewMember2
+user-account-flightCrewMember-03,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Three"", email: ""flightCrewMember3@email.com""}",flightCrewMember3,flightCrewMember3
+user-account-flightCrewMember-04,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Four"", email: ""flightCrewMember4@email.com""}",flightCrewMember4,flightCrewMember4
+user-account-flightCrewMember-00,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Zero"", email: ""flightCrewMember0@email.com""}",flightCrewMember,flightCrewMember
 user-account-consumer-01,true,"UserIdentity{name: 'Peter', surname: 'Consumer', email: 'peter@acme.com'}",consumer1,consumer1
 user-account-consumer-02,true,"UserIdentity{name: 'Mary', surname: '貸んい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'mary@acme.com'}",consumer2,consumer2
 user-account-consumer-03,true,"UserIdentity{name: 'Manolo', surname: '之乎路可良 ᏥᏲᏎᎭ', email: 'manolo@acme.com'}",consumer3,consumer3

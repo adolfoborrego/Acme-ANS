@@ -1,0 +1,6 @@
+key,key:userAccount,employeeCode,phoneNumber,languageSkills,availabilityStatus,salary,yearsOfExperience,key:airline
+flightCrewMember-01,user-account-flightCrewMember-01,FO123456,1234567890,"English",AVAILABLE,USD 50000,5,airline-01
+flightCrewMember-02,user-account-flightCrewMember-02,FT654321,0987654321,"English",AVAILABLE,USD 48000,4,airline-01
+flightCrewMember-03,user-account-flightCrewMember-03,FT987654,1122334455,"English",AVAILABLE,USD 47000,3,airline-02
+flightCrewMember-04,user-account-flightCrewMember-04,FF567890,5566778899,"English,French",AVAILABLE,USD 46000,6,airline-02
+flightCrewMember-00,user-account-flightCrewMember-00,FZ112233,6677889900,"English",AVAILABLE,USD 45000,1,airline-03

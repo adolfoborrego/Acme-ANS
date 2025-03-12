@@ -1,0 +1,5 @@
+key,key:flightCrewMember,key:leg,duty,momentOfLastUpdate,currentStatus,remarks
+flight-assignment-01,flightCrewMember-01,leg-101,PILOT,2021/03/10 10:00,CONFIRMED,Assigned to long-haul flight
+flight-assignment-02,flightCrewMember-02,leg-101,COPILOT,2021/03/10 10:00,PENDING,Awaiting final confirmation
+flight-assignment-03,flightCrewMember-03,leg-101,LEAD ATTENDANT,2021/03/09 10:00,CONFIRMED,Checked in for duty
+flight-assignment-04,flightCrewMember-04,leg-101,CABIN ATTENDANT,2021/03/08 10:00,CANCELLED,Reassigned to another flight

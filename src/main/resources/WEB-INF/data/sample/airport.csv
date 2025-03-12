@@ -1,0 +1,4 @@
+key,name,iataCode,operationalScope,city,country,website,email,address,contactPhoneNumber
+airport-01,Los Angeles INTERNATIONAL,LAX,INTERNATIONAL, Los Angeles, USA,http://lax.com,lax@airport.com,1 LAX Blvd,+11234567890
+airport-02,John F. Kennedy INTERNATIONAL,JFK,INTERNATIONAL, New York, USA,http://jfk.com,jfk@airport.com,1 JFK Blvd,+10987654321
+
