@@ -1,0 +1,3 @@
+key,model,registrationNumber,capacity,cargoWeight,status,details,key:airline
+aircraft-01,Boeing 737,ABC123,180,30000,ACTIVE,No details,airline-01
+

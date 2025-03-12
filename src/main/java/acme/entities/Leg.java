@@ -31,12 +31,12 @@ public class Leg extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Automapped
 	private Date				scheduledDeparture;
 
 	@Mandatory
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Automapped
 	private Date				scheduledArrival;
 
