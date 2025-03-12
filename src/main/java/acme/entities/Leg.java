@@ -12,6 +12,7 @@ import javax.validation.constraints.DecimalMin;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidString;
+import acme.entities.airport.Airport;
 import lombok.Getter;
 import lombok.Setter;
 
