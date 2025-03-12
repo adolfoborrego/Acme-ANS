@@ -50,13 +50,13 @@ public class Flight extends AbstractEntity {
 	@Automapped
 	private Boolean				published;
 
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
+
 	@Optional
 	@ManyToOne
 	@Valid
 	private AirlineManager		airlineManager;
-
-	// Derived attributes -----------------------------------------------------
-
-	// Relationships ----------------------------------------------------------
 
 }
