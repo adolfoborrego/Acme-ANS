@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.entities.agent.AssistanceAgentRepository;
+import acme.entities.flightCrewMember.FlightCrewMemberRepository;
 import acme.entities.manager.AirlineManagerRepository;
-import acme.entities.member.FlightCrewMemberRepository;
 
 @Validator
 public class EmployeeCodeValidator extends AbstractValidator<ValidEmployeeCode, String> {

@@ -20,8 +20,6 @@ import lombok.Setter;
 @Setter
 public class Service extends AbstractEntity {
 
-	//TODO promoCode Validator
-
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
@@ -35,14 +33,14 @@ public class Service extends AbstractEntity {
 	private String				linkToPicture;
 
 	@Mandatory
-	@Automapped
 	@ValidNumber(min = 0, fraction = 1)
+	@Automapped
 	private Double				averageDwellTime;
 
 	@Optional
-	@Automapped
 	@ValidString(pattern = " ^[A-Z]{4}-[0-9]{2}$")
 	@ValidPromotionCode
+	@Automapped
 	private String				promotionCode;
 
 	@Optional
