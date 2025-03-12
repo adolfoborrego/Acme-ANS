@@ -1,7 +1,8 @@
 
-package acme.entities;
+package acme.entities.member;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -13,8 +14,14 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidEmployeeCode;
 import acme.entities.airline.Airline;
+import lombok.Getter;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
 public class FlightCrewMember extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
@@ -23,6 +30,7 @@ public class FlightCrewMember extends AbstractRole {
 	@Column(unique = true)
 	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
 	@NotNull
+	@ValidEmployeeCode
 	private String				employeeCode;
 
 	@Mandatory
