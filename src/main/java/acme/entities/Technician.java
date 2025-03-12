@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import acme.client.components.basis.AbstractRole;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
@@ -29,21 +30,26 @@ public class Technician extends AbstractRole {
 
 	@Mandatory
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@Automapped
 	private String				phoneNumber;
 
 	@Mandatory
 	@ValidString(max = 50)
+	@Automapped
 	private String				specialisation;
 
 	@Mandatory
+	@Automapped
 	private Boolean				annualHealthTest;
 
 	@Mandatory
-	@ValidNumber(min = 0, max = 80, fraction = 0)
+	@ValidNumber(min = 0, max = 80)
+	@Automapped
 	private Integer				yearsOfExperience;
 
 	@Optional
 	@ValidString(min = 0, max = 255)
+	@Automapped
 	private String				certifications;
 
 }

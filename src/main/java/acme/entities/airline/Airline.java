@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.airline;
 
 import java.util.Date;
 
@@ -14,6 +14,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidIataCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,7 +23,11 @@ import lombok.Setter;
 @Setter
 public class Airline extends AbstractEntity {
 
+	// Serialisation version --------------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
+
+	// Attributes -------------------------------------------------------------
 
 	@Mandatory
 	@ValidString(max = 50)
@@ -31,6 +36,7 @@ public class Airline extends AbstractEntity {
 	@Mandatory
 	@ValidString(pattern = "^[A-Z]{3}$")
 	@Column(unique = true)
+	@ValidIataCode
 	private String				iataCode;
 
 	@Mandatory
@@ -52,5 +58,9 @@ public class Airline extends AbstractEntity {
 	@Mandatory
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	private String				phoneNumber;
+
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
 
 }
