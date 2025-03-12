@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import acme.client.components.basis.AbstractRole;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
@@ -25,19 +26,23 @@ public class Customers extends AbstractRole {
 	private String				identifier;
 
 	@Mandatory
+	@Automapped
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	private String				phoneNumber;
 
-	@ValidString(max = 255)
 	@Mandatory
+	@Automapped
+	@ValidString(max = 255)
 	private String				address;
 
-	@ValidString(max = 50)
 	@Mandatory
+	@Automapped
+	@ValidString(max = 50)
 	private String				city;
 
-	@ValidNumber(min = 0, max = 500000)
 	@Optional
+	@Automapped
+	@ValidNumber(min = 0, max = 500000)
 	private Integer				earnedPoints;
 
 }

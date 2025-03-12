@@ -12,6 +12,7 @@ import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
@@ -33,28 +34,34 @@ public class Booking extends AbstractEntity {
 	private String				locatorCode;
 
 	@Mandatory
+	@Automapped
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.DATE)
 	private Date				purchaseMoment;
 
 	@Mandatory
+	@Automapped
 	@ValidString(pattern = "^(ECONOMY|BUSINESS)$")
 	private String				travelClass;
 
 	@Mandatory
-	@ValidMoney
+	@Automapped
+	@ValidMoney(min = 0.00)
 	private Money				price;
 
 	@Optional
+	@Automapped
 	@ValidString(pattern = "^\\d{4}$")
 	private String				lastNibble;
 
-	@Mandatory
-	@ManyToOne(optional = false)
+	@Optional
+	@Automapped
+	@ManyToOne
 	@Valid
 	private Customers			customers;
 
-	@Mandatory
+	@Optional
+	@Automapped
 	@ManyToOne
 	@Valid
 	private Flight				flight;
