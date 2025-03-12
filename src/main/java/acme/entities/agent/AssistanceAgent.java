@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.agent;
 
 import java.util.Date;
 
@@ -11,13 +11,13 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractRole;
-import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidEmployeeCode;
 import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,42 +25,40 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class AirlineManager extends AbstractRole {
-
-	// Serialisation version --------------------------------------------------
+public class AssistanceAgent extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
-	// Attributes -------------------------------------------------------------
-
+	@Mandatory
 	@Column(unique = true)
-	@Mandatory
 	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
-	private String				identifierNumber;
+	@ValidEmployeeCode
+	private String				employeeCode;
 
 	@Mandatory
-	@ValidNumber
-	@Automapped
-	private Integer				yearsOfExperience;
+	@ValidString(max = 255)
+	private String				spokenLanguages;
 
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.DATE)
-	@Automapped
-	private Date				dateOfBirth;
+	private Date				moment;
+
+	@Optional
+	@ValidString(max = 255)
+	private String				bio;
+
+	@Optional
+	@ValidNumber
+	private Integer				salary;
 
 	@Optional
 	@ValidUrl
-	@Automapped
-	private String				pictureURL;
+	private String				photoLink;
 
-	@ManyToOne
-	@Optional
 	@Valid
+	@Optional
+	@ManyToOne
 	private Airline				airline;
-
-	// Derived attributes -----------------------------------------------------
-
-	// Relationships ----------------------------------------------------------
 
 }
