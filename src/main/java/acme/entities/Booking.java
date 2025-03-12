@@ -58,7 +58,7 @@ public class Booking extends AbstractEntity {
 	@Automapped
 	@ManyToOne
 	@Valid
-	private Customers			customers;
+	private Customer			customer;
 
 	@Optional
 	@Automapped
