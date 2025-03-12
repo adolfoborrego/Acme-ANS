@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.service;
 
 import javax.persistence.Entity;
 
@@ -11,6 +11,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidPromotionCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,13 +35,14 @@ public class Service extends AbstractEntity {
 	private String				linkToPicture;
 
 	@Mandatory
-	@ValidNumber(min = 0, fraction = 1)
 	@Automapped
+	@ValidNumber(min = 0, fraction = 1)
 	private Double				averageDwellTime;
 
 	@Optional
-	@ValidString(pattern = " ^[A-Z]{4}-[0-9]{2}$")
 	@Automapped
+	@ValidString(pattern = " ^[A-Z]{4}-[0-9]{2}$")
+	@ValidPromotionCode
 	private String				promotionCode;
 
 	@Optional
