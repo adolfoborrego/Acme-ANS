@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.DecimalMin;
 
@@ -16,7 +15,6 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidString;
-import acme.client.helpers.SpringHelper;
 import acme.entities.Aircraft;
 import acme.entities.Flight;
 import acme.entities.airport.Airport;
@@ -56,81 +54,26 @@ public class Leg extends AbstractEntity {
 
 	// Derived attributes -----------------------------------------------------
 
-
-	@Transient
-	public Date getSheduledDeparture() {
-		Date result;
-		Leg leg;
-		LegRepository legRepository;
-		legRepository = SpringHelper.getBean(LegRepository.class);
-		leg = legRepository.findFirstLegByFlight(this.getId());
-		result = leg.getScheduledDeparture();
-		return result;
-	}
-
-	@Transient
-	public Date getSheduledArrival() {
-		Date result;
-		Leg leg;
-		LegRepository legRepository;
-		legRepository = SpringHelper.getBean(LegRepository.class);
-		leg = legRepository.findLastLegByFlight(this.getId());
-		result = leg.getScheduledArrival();
-		return result;
-	}
-
-	@Transient
-	public String getOriginCity() {
-		String result;
-		Leg leg;
-		LegRepository legRepository;
-		legRepository = SpringHelper.getBean(LegRepository.class);
-		leg = legRepository.findFirstLegByFlight(this.getId());
-		result = leg.getDepartureAirport().getCity();
-		return result;
-	}
-
-	@Transient
-	public String getDestinationCity() {
-		String result;
-		Leg leg;
-		LegRepository legRepository;
-		legRepository = SpringHelper.getBean(LegRepository.class);
-		leg = legRepository.findLastLegByFlight(this.getId());
-		result = leg.getArrivalAirport().getCity();
-		return result;
-	}
-
-	@Transient
-	public Integer getNumberOfLayovers() {
-		Integer result;
-		LegRepository legRepository;
-		legRepository = SpringHelper.getBean(LegRepository.class);
-		result = legRepository.countNumberOfLegsOfFlight(this.getId());
-		return result;
-	}
-
 	// Relationships ----------------------------------------------------------
-
 
 	@Mandatory
 	@ManyToOne
 	@Valid
-	private Airport		departureAirport;
+	private Airport				departureAirport;
 
 	@Optional
 	@ManyToOne
 	@Valid
-	private Airport		arrivalAirport;
+	private Airport				arrivalAirport;
 
 	@Optional
 	@ManyToOne
 	@Valid
-	private Aircraft	aircraft;
+	private Aircraft			aircraft;
 
 	@Optional
 	@ManyToOne
 	@Valid
-	private Flight		flight;
+	private Flight				flight;
 
 }
