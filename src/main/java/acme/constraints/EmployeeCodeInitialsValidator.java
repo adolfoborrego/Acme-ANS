@@ -7,6 +7,8 @@ import acme.client.components.basis.AbstractRole;
 import acme.client.components.principals.UserAccount;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.entities.Customer;
+import acme.entities.Technician;
 import acme.entities.agent.AssistanceAgent;
 import acme.entities.flightCrewMember.FlightCrewMember;
 import acme.entities.manager.AirlineManager;
@@ -71,6 +73,10 @@ public class EmployeeCodeInitialsValidator extends AbstractValidator<ValidEmploy
 			return ((AssistanceAgent) role).getEmployeeCode();
 		else if (role instanceof FlightCrewMember)
 			return ((FlightCrewMember) role).getEmployeeCode();
+		else if (role instanceof Customer)
+			return ((Customer) role).getIdentifier();
+		else if (role instanceof Technician)
+			return ((Technician) role).getLicenseNumber();
 		return null;
 	}
 
