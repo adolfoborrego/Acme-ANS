@@ -14,6 +14,7 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
+import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,34 +27,34 @@ public class Passenger extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Automapped
 	@ValidString(max = 256)
+	@Automapped
 	private String				fullName;
 
 	@Mandatory
-	@Automapped
 	@ValidEmail
+	@Automapped
 	private String				email;
 
 	@Mandatory
-	@Automapped
 	@ValidString(pattern = "^[A-Z0-9]{6,9}$")
+	@Automapped
 	private String				passportNumber;
 
 	@Mandatory
-	@Automapped
+	@ValidMoment(past = true)
 	@Temporal(TemporalType.DATE)
 	private Date				dateOfBirth;
 
 	@Optional
-	@Automapped
 	@ValidString(max = 51)
+	@Automapped
 	private String				specialNeeds;
 
 	@Optional
+	@Valid
 	@Automapped
 	@ManyToOne(optional = false)
-	@Valid
 	private Customer			customer;
 
 }

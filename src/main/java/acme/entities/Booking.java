@@ -29,41 +29,40 @@ public class Booking extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Column(unique = true)
 	@ValidString(pattern = "^[A-Z0-9]{6,8}$")
+	@Column(unique = true)
 	private String				locatorCode;
 
 	@Mandatory
-	@Automapped
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.DATE)
 	private Date				purchaseMoment;
 
 	@Mandatory
-	@Automapped
 	@ValidString(pattern = "^(ECONOMY|BUSINESS)$")
+	@Automapped
 	private String				travelClass;
 
 	@Mandatory
-	@Automapped
 	@ValidMoney(min = 0.00)
+	@Automapped
 	private Money				price;
 
 	@Optional
-	@Automapped
 	@ValidString(pattern = "^\\d{4}$")
+	@Automapped
 	private String				lastNibble;
 
 	@Optional
-	@Automapped
-	@ManyToOne
 	@Valid
+	@Automapped
+	@ManyToOne(optional = false)
 	private Customer			customer;
 
 	@Optional
-	@Automapped
-	@ManyToOne
 	@Valid
+	@Automapped
+	@ManyToOne(optional = false)
 	private Flight				flight;
 
 }
