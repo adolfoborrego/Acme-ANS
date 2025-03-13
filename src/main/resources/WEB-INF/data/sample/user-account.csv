@@ -1,4 +1,9 @@
 key,enabled,identity,password,username
+user-account-flightCrewMember-01,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""One"", email: ""flightCrewMember1@email.com""}",flightCrewMember1,flightCrewMember1
+user-account-flightCrewMember-02,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Two"", email: ""flightCrewMember2@email.com""}",flightCrewMember2,flightCrewMember2
+user-account-flightCrewMember-03,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Three"", email: ""flightCrewMember3@email.com""}",flightCrewMember3,flightCrewMember3
+user-account-flightCrewMember-04,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Four"", email: ""flightCrewMember4@email.com""}",flightCrewMember4,flightCrewMember4
+user-account-flightCrewMember-00,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Zero"", email: ""flightCrewMember0@email.com""}",flightCrewMember,flightCrewMember
 user-account-consumer-01,true,"UserIdentity{name: 'Peter', surname: 'Consumer', email: 'peter@acme.com'}",consumer1,consumer1
 user-account-consumer-02,true,"UserIdentity{name: 'Mary', surname: '貸んい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'mary@acme.com'}",consumer2,consumer2
 user-account-consumer-03,true,"UserIdentity{name: 'Manolo', surname: '之乎路可良 ᏥᏲᏎᎭ', email: 'manolo@acme.com'}",consumer3,consumer3
@@ -14,5 +19,8 @@ user-account-agent-03,true,"UserIdentity{name: ""Agent"", surname: ""Three"", em
 user-account-technician-01,true,"UserIdentity{name: ""Technician"", surname: ""One"", email: ""technician1@email.com""}",technician1,technician1
 user-account-technician-02,true,"UserIdentity{name: ""Technician"", surname: ""Two"", email: ""technician2@email.com""}",technician2,technician2
 user-account-technician-03,true,"UserIdentity{name: ""Technician"", surname: ""Three"", email: ""technician3@email.com""}",technician3,technician3
+user-account-customer-01,true,"UserIdentity{name: ""Customer"", surname: ""One"", email: ""customer1@email.com""}",customer1,customer1
+user-account-customer-02,true,"UserIdentity{name: ""Customer"", surname: ""Two"", email: ""customer2@email.com""}",customer2,customer2
+user-account-customer-03,true,"UserIdentity{name: ""Customer"", surname: ""Three"", email: ""customer3@email.com""}",customer3,customer3
 user-account-administrator-1,true,"UserIdentity{name: ""Administrator"", surname: ""One"", email: ""administrator1@email.com""}",administrator1,administrator1
 user-account-administrator-2,true,"UserIdentity{name: ""Administrator"", surname: ""Two"", email: ""administrator2@email.com""}",administrator2,administrator2

@@ -1,0 +1,3 @@
+key,key:departureAirport,key:arrivalAirport,key:aircraft,key:flight,scheduledDeparture,scheduledArrival,hours,status
+leg-101,airport-01,airport-02,aircraft-01,flight-01,2025/03/10 10:00,2025/03/10 22:30,12.5,ON-TIME
+

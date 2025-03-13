@@ -1,0 +1,4 @@
+key,key:userAccount,identifier,phoneNumber,address,city,earnedPoints
+customer1,user-account-customer-01,CO345278,601252039,C/Ejemplo 1,Sevilla,2000
+customer2,user-account-customer-02,CT973428,601034021,C/Ejemplo 2,Guadalajara,200000
+customer3,user-account-customer-03,CT674537,954673987,C/Ejemplo 3,Granada,null

@@ -1,14 +1,14 @@
 
-package acme.entities.member;
+package acme.entities.flightCrewMember;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.datatypes.Money;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
@@ -27,39 +27,39 @@ public class FlightCrewMember extends AbstractRole {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Column(unique = true)
-	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
-	@NotNull
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	@ValidEmployeeCode
+	@Column(unique = true)
 	private String				employeeCode;
 
 	@Mandatory
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
-	@NotNull
+	@Automapped
 	private String				phoneNumber;
 
 	@Mandatory
 	@ValidString(max = 255)
-	@NotNull
+	@Automapped
 	String						languageSkills;
 
 	@Mandatory
 	@ValidString(pattern = "^(AVAILABLE|ON VACATION|ON LEAVE)$")
-	@NotNull
+	@Automapped
 	String						availabilityStatus;
 
 	@Mandatory
-	@ManyToOne
-	@Valid
-	Airline						airline;
-
-	@Mandatory
-	@ValidMoney
-	@NotNull
+	@ValidMoney(min = 0)
+	@Automapped
 	Money						salary;
 
 	@Optional
-	@ValidNumber(min = 0, max = 90, fraction = 0)
+	@ValidNumber(min = 0, max = 90)
+	@Automapped
 	Integer						yearsOfExperience;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	Airline						airline;
 
 }

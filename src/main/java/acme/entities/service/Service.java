@@ -11,6 +11,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.client.components.validation.ValidUrl;
 import acme.constraints.ValidPromotionCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,8 +21,6 @@ import lombok.Setter;
 @Setter
 public class Service extends AbstractEntity {
 
-	//TODO promoCode Validator
-
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
@@ -30,19 +29,19 @@ public class Service extends AbstractEntity {
 	private String				name;
 
 	@Mandatory
-	@ValidString
+	@ValidUrl
 	@Automapped
 	private String				linkToPicture;
 
 	@Mandatory
-	@Automapped
 	@ValidNumber(min = 0, fraction = 1)
+	@Automapped
 	private Double				averageDwellTime;
 
 	@Optional
-	@Automapped
 	@ValidString(pattern = " ^[A-Z]{4}-[0-9]{2}$")
 	@ValidPromotionCode
+	@Automapped
 	private String				promotionCode;
 
 	@Optional

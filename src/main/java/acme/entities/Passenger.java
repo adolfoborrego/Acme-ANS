@@ -54,6 +54,6 @@ public class Passenger extends AbstractEntity {
 	@Automapped
 	@ManyToOne(optional = false)
 	@Valid
-	private Customers			customers;
+	private Customer			customer;
 
 }

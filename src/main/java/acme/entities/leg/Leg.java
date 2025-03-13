@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.leg;
 
 import java.util.Date;
 
@@ -15,6 +15,8 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidString;
+import acme.entities.Aircraft;
+import acme.entities.Flight;
 import acme.entities.airport.Airport;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,12 +33,12 @@ public class Leg extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Automapped
 	private Date				scheduledDeparture;
 
 	@Mandatory
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Automapped
 	private Date				scheduledArrival;
 
@@ -49,6 +51,10 @@ public class Leg extends AbstractEntity {
 	@ValidString(pattern = "^(ON-TIME|DELAYED|CANCELLED|LANDED)$")
 	@Automapped
 	private String				status;
+
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
 
 	@Mandatory
 	@ManyToOne
@@ -69,9 +75,5 @@ public class Leg extends AbstractEntity {
 	@ManyToOne
 	@Valid
 	private Flight				flight;
-
-	// Derived attributes -----------------------------------------------------
-
-	// Relationships ----------------------------------------------------------
 
 }

@@ -16,9 +16,9 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
-import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
 import acme.constraints.ValidEmployeeCode;
+import acme.constraints.ValidEmployeeCodeInitials;
 import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +26,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidEmployeeCodeInitials
 public class AirlineManager extends AbstractRole {
 
 	// Serialisation version --------------------------------------------------
@@ -36,12 +37,11 @@ public class AirlineManager extends AbstractRole {
 
 	@Column(unique = true)
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	@ValidEmployeeCode
 	private String				identifierNumber;
 
 	@Mandatory
-	@ValidNumber
+	@ValidNumber(min = 0)
 	@Automapped
 	private Integer				yearsOfExperience;
 
@@ -56,13 +56,13 @@ public class AirlineManager extends AbstractRole {
 	@Automapped
 	private String				pictureURL;
 
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
+
 	@ManyToOne
 	@Optional
 	@Valid
 	private Airline				airline;
-
-	// Derived attributes -----------------------------------------------------
-
-	// Relationships ----------------------------------------------------------
 
 }
