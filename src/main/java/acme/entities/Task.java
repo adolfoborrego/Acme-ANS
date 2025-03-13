@@ -52,12 +52,12 @@ public class Task extends AbstractEntity {
 	@Optional
 	@Valid
 	@Automapped
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Technician			technician;
 
 	@Optional
 	@Valid
 	@Automapped
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private MaintenanceRecord	maintenanceRecord;
 }

@@ -31,7 +31,6 @@ public class MaintenanceRecord extends AbstractEntity {
 	// Attributes ------------------------------------------------------------------------------------------------
 	@Mandatory
 	@ValidMoment
-	@Automapped
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				moment;
 
@@ -42,7 +41,6 @@ public class MaintenanceRecord extends AbstractEntity {
 
 	@Mandatory
 	@ValidMoment
-	@Automapped
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				inspectionDueDate;
 
@@ -63,6 +61,6 @@ public class MaintenanceRecord extends AbstractEntity {
 	@Optional
 	@Automapped
 	@Valid
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Aircraft			aircraft;
 }
