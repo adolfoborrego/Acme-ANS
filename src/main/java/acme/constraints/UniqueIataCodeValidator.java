@@ -11,7 +11,7 @@ import acme.entities.airline.AirlineRepository;
 import acme.entities.airport.AirportRepository;
 
 @Validator
-public class IataCodeValidator extends AbstractValidator<ValidIataCode, String> {
+public class UniqueIataCodeValidator extends AbstractValidator<ValidUniqueIataCode, String> {
 
 	@Autowired
 	AirlineRepository	airlineRepository;

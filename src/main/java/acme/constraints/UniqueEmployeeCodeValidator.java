@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
-import acme.entities.agent.AssistanceAgentRepository;
 import acme.entities.flightCrewMember.FlightCrewMemberRepository;
-import acme.entities.manager.AirlineManagerRepository;
+import acme.realms.airlineManager.AirlineManagerRepository;
+import acme.realms.assistanceAgent.AssistanceAgentRepository;
 
 @Validator
-public class EmployeeCodeValidator extends AbstractValidator<ValidEmployeeCode, String> {
+public class UniqueEmployeeCodeValidator extends AbstractValidator<ValidUniqueEmployeeCode, String> {
 
 	@Autowired
 	AirlineManagerRepository	airlineManagerRepository;

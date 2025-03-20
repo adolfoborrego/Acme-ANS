@@ -13,8 +13,8 @@ import javax.validation.Payload;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Constraint(validatedBy = IataCodeValidator.class)
-public @interface ValidIataCode {
+@Constraint(validatedBy = UniqueIataCodeValidator.class)
+public @interface ValidUniqueIataCode {
 
 	String message() default "El IataCode debe ser único para Aeropuertos y Aerolíneas.";
 	Class<?>[] groups() default {};

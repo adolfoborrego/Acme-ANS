@@ -9,12 +9,12 @@ import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.entities.Customer;
 import acme.entities.Technician;
-import acme.entities.agent.AssistanceAgent;
 import acme.entities.flightCrewMember.FlightCrewMember;
-import acme.entities.manager.AirlineManager;
+import acme.realms.airlineManager.AirlineManager;
+import acme.realms.assistanceAgent.AssistanceAgent;
 
 @Validator
-public class EmployeeCodeInitialsValidator extends AbstractValidator<ValidEmployeeCodeInitials, AbstractRole> {
+public class CodeInitialsValidator extends AbstractValidator<ValidCodeInitials, AbstractRole> {
 
 	private static final String EMPLOYEE_ID_PATTERN = "^[A-Z]{2,3}\\d{6}$";
 
@@ -37,7 +37,7 @@ public class EmployeeCodeInitialsValidator extends AbstractValidator<ValidEmploy
 			return false;
 		}
 
-		if (!identifierNumber.matches(EmployeeCodeInitialsValidator.EMPLOYEE_ID_PATTERN)) {
+		if (!identifierNumber.matches(CodeInitialsValidator.EMPLOYEE_ID_PATTERN)) {
 			super.state(context, false, attributeName, "Invalid identifier format.");
 			return false;
 		}

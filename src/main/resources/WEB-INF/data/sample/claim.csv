@@ -1,0 +1,37 @@
+key,registrationMoment,passengerEmail,description,type,indicator,published,key:assistanceAgent
+# base
+claim-00,2010/01/01 00:00,passenger@example.es,test description,FLIGHT-ISSUES,false,false,agent-01
+# registrationMoment - standard variations
+claim-01,2000/01/01 00:00,passenger@example.es,test description,FLIGHT-ISSUES,false,false,agent-01
+claim-02,2000/01/01 00:01,passenger@example.es,test description,FLIGHT-ISSUES,false,false,agent-01
+claim-03,2022/07/29 23:59,passenger@example.es,test description,FLIGHT-ISSUES,false,false,agent-01
+claim-04,2022/07/30 00:00,passenger@example.es,test description,FLIGHT-ISSUES,false,false,agent-01
+# passengerEmail variations
+claim-05,2010/01/01 00:00,user-test@lorem-ipsum.net,test description,FLIGHT-ISSUES,false,false,agent-01
+claim-06,2010/01/01 00:00,x@y.z,test description,FLIGHT-ISSUES,false,false,agent-01
+claim-07,2010/01/01 00:00,abc@xyz.fr,test description,FLIGHT-ISSUES,false,false,agent-01
+claim-08,2010/01/01 00:00,name@domain.co.uk,test description,FLIGHT-ISSUES,false,false,agent-01
+claim-09,2010/01/01 00:00,long-email-address@verylongdomain-example.com,test description,FLIGHT-ISSUES,false,false,agent-01
+claim-10,2010/01/01 00:00,support@mailserver.info,test description,FLIGHT-ISSUES,false,false,agent-01
+# description variations
+claim-11,2010/01/01 00:00,passenger@example.es,A,FLIGHT-ISSUES,false,false,agent-01
+claim-12,2010/01/01 00:00,passenger@example.es,Ab,FLIGHT-ISSUES,false,false,agent-01
+claim-13,2010/01/01 00:00,passenger@example.es,"Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 ca",FLIGHT-ISSUES,false,false,agent-01
+claim-14,2010/01/01 00:00,passenger@example.es,"Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 car",FLIGHT-ISSUES,false,false,agent-01
+claim-15,2010/01/01 00:00,passenger@example.es,लोरम इप्सम,FLIGHT-ISSUES,false,false,agent-01
+claim-16,2010/01/01 00:00,passenger@example.es,ローレム・イプサム,FLIGHT-ISSUES,false,false,agent-01
+claim-17,2010/01/01 00:00,passenger@example.es,לורם איפסום,FLIGHT-ISSUES,false,false,agent-01
+claim-18,2010/01/01 00:00,passenger@example.es,<b>Bold Text</b>,FLIGHT-ISSUES,false,false,agent-01
+claim-19,2010/01/01 00:00,passenger@example.es,<img src='x' onerror='alert("XSS")'>,FLIGHT-ISSUES,false,false,agent-01
+claim-20,2010/01/01 00:00,passenger@example.es,' OR 1=1 --,FLIGHT-ISSUES,false,false,agent-01
+
+# type variations
+claim-21,2010/01/01 00:00,passenger@example.es,test description,LUGGAGE-ISSUES,false,false,agent-01
+claim-22,2010/01/01 00:00,passenger@example.es,test description,SECURITY-INCIDENT,false,false,agent-01
+claim-23,2010/01/01 00:00,passenger@example.es,test description,OTHER-ISSUES,false,false,agent-01
+# indicator variations
+claim-24,2010/01/01 00:00,passenger@example.es,test description,FLIGHT-ISSUES,true,false,agent-01
+claim-25,2010/01/01 00:00,passenger@example.es,test description,FLIGHT-ISSUES,false,false,agent-01
+# published variations
+claim-26,2010/01/01 00:00,passenger@example.es,test description,FLIGHT-ISSUES,false,false,agent-01
+claim-27,2010/01/01 00:00,passenger@example.es,test description,FLIGHT-ISSUES,false,true,agent-01

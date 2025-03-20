@@ -14,8 +14,8 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.constraints.ValidEmployeeCode;
-import acme.constraints.ValidEmployeeCodeInitials;
+import acme.constraints.ValidUniqueEmployeeCode;
+import acme.constraints.ValidCodeInitials;
 import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,14 +23,14 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@ValidEmployeeCodeInitials
+@ValidCodeInitials
 public class FlightCrewMember extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
 	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
-	@ValidEmployeeCode
+	@ValidUniqueEmployeeCode
 	@Column(unique = true)
 	private String				employeeCode;
 
