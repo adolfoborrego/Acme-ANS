@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.flight;
 
 import java.util.Date;
 
@@ -18,7 +18,7 @@ import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
 import acme.entities.leg.Leg;
 import acme.entities.leg.LegRepository;
-import acme.entities.manager.AirlineManager;
+import acme.realms.airlineManager.AirlineManager;
 import lombok.Getter;
 import lombok.Setter;
 

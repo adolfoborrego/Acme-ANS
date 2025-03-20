@@ -1,27 +1,30 @@
 
-package acme.entities.airline;
+package acme.entities.claim;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
-import acme.constraints.ValidUniqueIataCode;
+import acme.entities.leg.Leg;
+import acme.realms.assistanceAgent.AssistanceAgent;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Airline extends AbstractEntity {
+public class Claim extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
 
@@ -30,37 +33,45 @@ public class Airline extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(max = 50)
-	private String				name;
+	@ValidMoment(past = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				registrationMoment;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{3}$")
-	@Column(unique = true)
-	@ValidUniqueIataCode
-	private String				iataCode;
+	@ValidEmail
+	@Automapped
+	private String				passengerEmail;
 
 	@Mandatory
-	private String				website;
+	@ValidString(min = 1, max = 255)
+	@Automapped
+	private String				description;
 
 	@Mandatory
-	@ValidString(pattern = "^(LUXURY|STANDARD|LOW-COST)$")
+	@ValidString(pattern = "^(FLIGHT-ISSUES|LUGGAGE-ISSUES|SECURITY-INCIDENT|OTHER-ISSUES)$")
+	@Automapped
 	private String				type;
 
 	@Mandatory
-	@ValidMoment(past = true)
-	@Temporal(TemporalType.DATE)
-	private Date				foundationTime;
-
-	@Optional
-	@ValidEmail
-	private String				email;
+	@Automapped
+	private Boolean				indicator;
 
 	@Mandatory
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
-	private String				phoneNumber;
+	@Automapped
+	private Boolean				published;
 
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
+
+	@Valid
+	@Optional
+	@ManyToOne
+	private AssistanceAgent		assistanceAgent;
+
+	@Valid
+	@Optional
+	@ManyToOne
+	private Leg					leg;
 
 }

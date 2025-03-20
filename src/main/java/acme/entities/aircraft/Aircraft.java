@@ -1,28 +1,24 @@
 
-package acme.entities;
+package acme.entities.aircraft;
 
-import java.util.Date;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import acme.client.components.basis.AbstractEntity;
-import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class TrackingLog extends AbstractEntity {
+public class Aircraft extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
 
@@ -31,40 +27,36 @@ public class TrackingLog extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidMoment(past = true)
-	@Temporal(TemporalType.DATE)
-	private Date				lastUpdateMoment;
+	@ValidString(max = 50)
+	private String				model;
 
 	@Mandatory
 	@ValidString(max = 50)
-	@Automapped
-	private String				step;
+	@Column(unique = true)
+	private String				registrationNumber;
 
 	@Mandatory
-	@ValidNumber(min = 0, max = 100)
-	@Automapped
-	private Integer				resolutionPercentage;
+	private int					capacity;
 
 	@Mandatory
-	@Automapped
-	private Boolean				indicator;
+	@Min(2000)
+	@Max(50000)
+	private int					cargoWeight;
 
 	@Mandatory
+	@ValidString(pattern = "^(ACTIVE|MAINTENANCE)$")
+	private String				status;
+
+	@Optional
 	@ValidString(max = 255)
-	@Automapped
-	private String				resolution;
+	private String				details;
 
 	@Mandatory
-	@Automapped
-	private Boolean				published;
+	@ManyToOne
+	private Airline				airline;
 
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
-
-	@Valid
-	@Optional
-	@ManyToOne
-	private Claim				claim;
 
 }

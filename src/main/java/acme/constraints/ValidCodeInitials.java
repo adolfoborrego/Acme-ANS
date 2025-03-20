@@ -24,8 +24,8 @@ import javax.validation.Payload;
 @Documented
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = EmployeeCodeInitialsValidator.class)
-public @interface ValidEmployeeCodeInitials {
+@Constraint(validatedBy = CodeInitialsValidator.class)
+public @interface ValidCodeInitials {
 
 	String message() default "{identifier}";
 

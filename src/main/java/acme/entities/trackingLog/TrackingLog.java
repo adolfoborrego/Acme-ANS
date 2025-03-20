@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.trackingLog;
 
 import java.util.Date;
 
@@ -13,18 +13,17 @@ import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.entities.agent.AssistanceAgent;
-import acme.entities.leg.Leg;
+import acme.entities.claim.Claim;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Claim extends AbstractEntity {
+public class TrackingLog extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
 
@@ -34,27 +33,28 @@ public class Claim extends AbstractEntity {
 
 	@Mandatory
 	@ValidMoment(past = true)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				registrationMoment;
+	@Temporal(TemporalType.DATE)
+	private Date				lastUpdateMoment;
 
 	@Mandatory
-	@ValidEmail
+	@ValidString(min = 1, max = 50)
 	@Automapped
-	private String				passengerEmail;
+	private String				step;
 
 	@Mandatory
-	@ValidString(max = 255)
+	@ValidNumber(min = 0, max = 100)
 	@Automapped
-	private String				description;
+	private Integer				resolutionPercentage;
 
 	@Mandatory
-	@ValidString(pattern = "^(FLIGHT-ISSUES|LUGGAGE-ISSUES|SECURITY-INCIDENT|OTHER-ISSUES)$")
+	@ValidString(pattern = "^(PENDING|ACCEPTED|REJECTED)$")
 	@Automapped
-	private String				type;
+	private String				indicator;
 
 	@Mandatory
+	@ValidString(min = 1, max = 255)
 	@Automapped
-	private Boolean				indicator;
+	private String				resolution;
 
 	@Mandatory
 	@Automapped
@@ -67,11 +67,6 @@ public class Claim extends AbstractEntity {
 	@Valid
 	@Optional
 	@ManyToOne
-	private AssistanceAgent		assistanceAgent;
-
-	@Valid
-	@Optional
-	@ManyToOne
-	private Leg					leg;
+	private Claim				claim;
 
 }

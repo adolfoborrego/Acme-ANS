@@ -13,8 +13,8 @@ import javax.validation.Payload;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Constraint(validatedBy = EmployeeCodeValidator.class)
-public @interface ValidEmployeeCode {
+@Constraint(validatedBy = UniqueEmployeeCodeValidator.class)
+public @interface ValidUniqueEmployeeCode {
 
 	String message() default "El EmployeeCode debe ser único para Managers, Agents y Members.";
 	Class<?>[] groups() default {};
