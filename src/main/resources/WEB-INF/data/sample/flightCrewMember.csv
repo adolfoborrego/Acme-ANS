@@ -1,6 +1,15 @@
 key,key:userAccount,employeeCode,phoneNumber,languageSkills,availabilityStatus,salary,yearsOfExperience,key:airline
-flightCrewMember-01,user-account-flightCrewMember-01,FO123456,1234567890,"English",AVAILABLE,USD 50000,5,airline-01
-flightCrewMember-02,user-account-flightCrewMember-02,FT654321,0987654321,"English",AVAILABLE,USD 48000,4,airline-01
-flightCrewMember-03,user-account-flightCrewMember-03,FT987654,1122334455,"English",AVAILABLE,USD 47000,3,airline-02
-flightCrewMember-04,user-account-flightCrewMember-04,FF567890,5566778899,"English,French",AVAILABLE,USD 46000,6,airline-02
-flightCrewMember-00,user-account-flightCrewMember-00,FZ112233,6677889900,"English",AVAILABLE,USD 45000,1,airline-03
+flightCrewMember-01,user-account-flightCrewMember-01,AA000000,000000,"English",AVAILABLE,USD 0,0,airline-01
+flightCrewMember-02,user-account-flightCrewMember-02,AB000001,000001,"Spanish",ON VACATION,USD 1,1,airline-01
+flightCrewMember-03,user-account-flightCrewMember-03,ZZ999998,999998999998999,"French,German",ON LEAVE,USD 99999,89,airline-02
+flightCrewMember-04,user-account-flightCrewMember-04,ZZ999999,999999999999999,"English,French,Italian",AVAILABLE,USD 100000,90,airline-02
+flightCrewMember-05,user-account-flightCrewMember-05,AAA123456,123456,"English,French,Spanish",AVAILABLE,USD 50000,5,airline-03
+flightCrewMember-06,user-account-flightCrewMember-06,AAB123457,123457,"German",ON VACATION,USD 25000,2,airline-03
+flightCrewMember-07,user-account-flightCrewMember-07,CCC654321,654321,"Russian",AVAILABLE,USD 75000,15,airline-04
+flightCrewMember-08,user-account-flightCrewMember-08,DDD777777,777777,"Chinese",ON LEAVE,USD 30000,10,airline-05
+flightCrewMember-09,user-account-flightCrewMember-09,EEE888888,888888888888888,"Japanese",ON VACATION,USD 42000,35,airline-06
+flightCrewMember-10,user-account-flightCrewMember-10,FFF121212,121212,"Portuguese",AVAILABLE,USD 68000,88,airline-07
+flightCrewMember-11,user-account-flightCrewMember-11,GGG989898,989898989898989,"English,French,German,Spanish,Chinese",ON LEAVE,USD 99998,87,airline-08
+flightCrewMember-12,user-account-flightCrewMember-12,HHH787878,787878,"English",AVAILABLE,USD 46000,44,airline-09
+flightCrewMember-13,user-account-flightCrewMember-13,III343434,343434,"French",ON VACATION,USD 39000,3,airline-10
+flightCrewMember-14,user-account-flightCrewMember-14,JJJ565656,565656,"German,Spanish",AVAILABLE,USD 50001,91,airline-11
