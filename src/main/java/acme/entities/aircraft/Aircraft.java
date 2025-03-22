@@ -4,12 +4,13 @@ package acme.entities.aircraft;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.entities.airline.Airline;
 import lombok.Getter;
@@ -27,36 +28,42 @@ public class Aircraft extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
+	@Automapped
 	private String				model;
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(pattern = "^[A-Z0-9]{1,50}$")
 	@Column(unique = true)
 	private String				registrationNumber;
 
 	@Mandatory
-	private int					capacity;
+	@ValidNumber(min = 1, max = 600)
+	@Automapped
+	private Integer				capacity;
 
 	@Mandatory
-	@Min(2000)
-	@Max(50000)
-	private int					cargoWeight;
+	@ValidNumber(min = 2000, max = 50000)
+	@Automapped
+	private Integer				cargoWeight;
 
 	@Mandatory
 	@ValidString(pattern = "^(ACTIVE|MAINTENANCE)$")
+	@Automapped
 	private String				status;
 
 	@Optional
-	@ValidString(max = 255)
+	@ValidString(min = 1, max = 255)
+	@Automapped
 	private String				details;
-
-	@Mandatory
-	@ManyToOne
-	private Airline				airline;
 
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
+
+	@Optional
+	@Valid
+	@ManyToOne
+	private Airline				airline;
 
 }

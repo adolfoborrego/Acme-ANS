@@ -9,11 +9,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
+import acme.client.components.validation.ValidUrl;
 import acme.constraints.ValidUniqueIataCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,7 +32,8 @@ public class Airline extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
+	@Automapped
 	private String				name;
 
 	@Mandatory
@@ -40,10 +43,13 @@ public class Airline extends AbstractEntity {
 	private String				iataCode;
 
 	@Mandatory
+	@ValidUrl
+	@Automapped
 	private String				website;
 
 	@Mandatory
 	@ValidString(pattern = "^(LUXURY|STANDARD|LOW-COST)$")
+	@Automapped
 	private String				type;
 
 	@Mandatory
@@ -53,10 +59,12 @@ public class Airline extends AbstractEntity {
 
 	@Optional
 	@ValidEmail
+	@Automapped
 	private String				email;
 
 	@Mandatory
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@Automapped
 	private String				phoneNumber;
 
 	// Derived attributes -----------------------------------------------------
