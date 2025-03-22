@@ -1,4 +1,72 @@
-key,name,iataCode,operationalScope,city,country,website,email,address,contactPhoneNumber
-airport-01,Los Angeles INTERNATIONAL,LAX,INTERNATIONAL, Los Angeles, USA,http://lax.com,lax@airport.com,1 LAX Blvd,+11234567890
-airport-02,John F. Kennedy INTERNATIONAL,JFK,INTERNATIONAL, New York, USA,http://jfk.com,jfk@airport.com,1 JFK Blvd,+10987654321
-
+key,name,iataCode,operationalScope,city,country,website,emailAddress,contactPhoneNumber
+# base
+airport-00,Los Angeles INTERNATIONAL,LAX,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+# name variations
+airport-01,L,AAA,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+airport-02,Lo,AAB,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+airport-03,Este texto tiene 50 caracteres. Este texto tiene 5,AAC,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+airport-04,Este texto tiene 49 caracteres. Este texto tiene,AAD,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+airport-05,लोरम इप्सम,AAE,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+airport-06,ローレム・イプサム,AAF,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+airport-07,<b>Bold Text</b>,AAG,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+airport-08,"<img src='x' onerror='alert(""XSS"")'>",AAH,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+airport-09,' OR 1=1 --,AAI,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+# iataCode variations
+airport-10,Los Angeles INTERNATIONAL,XXX,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+airport-11,Los Angeles INTERNATIONAL,YYY,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+airport-12,Los Angeles INTERNATIONAL,ZZZ,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+# operationalScope variations
+airport-13,Los Angeles INTERNATIONAL,AAJ,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+airport-14,Los Angeles INTERNATIONAL,AAK,DOMESTIC,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+airport-15,Los Angeles INTERNATIONAL,AAL,REGIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+# city variations
+airport-16,Los Angeles INTERNATIONAL,AAM,INTERNATIONAL,L,USA,http://lax.com,lax@airport.com,+11234567890
+airport-17,Los Angeles INTERNATIONAL,AAN,INTERNATIONAL,Lo,USA,http://lax.com,lax@airport.com,+11234567890
+airport-18,Los Angeles INTERNATIONAL,AAO,INTERNATIONAL,Este texto tiene 50 caracteres. Este texto tiene 5,USA,http://lax.com,lax@airport.com,+11234567890
+airport-19,Los Angeles INTERNATIONAL,AAP,INTERNATIONAL,Este texto tiene 49 caracteres. Este texto tiene,USA,http://lax.com,lax@airport.com,+11234567890
+airport-20,Los Angeles INTERNATIONAL,AAQ,INTERNATIONAL,लोरम इप्सम,USA,http://lax.com,lax@airport.com,+11234567890
+airport-21,Los Angeles INTERNATIONAL,AAR,INTERNATIONAL,ローレム・イプサム,USA,http://lax.com,lax@airport.com,+11234567890
+airport-22,Los Angeles INTERNATIONAL,AAS,INTERNATIONAL,<b>Bold Text</b>,USA,http://lax.com,lax@airport.com,+11234567890
+airport-23,Los Angeles INTERNATIONAL,AAT,INTERNATIONAL,"<img src='x' onerror='alert(""XSS"")'>",USA,http://lax.com,lax@airport.com,+11234567890
+airport-24,Los Angeles INTERNATIONAL,AAU,INTERNATIONAL,' OR 1=1 --,USA,http://lax.com,lax@airport.com,+11234567890
+# country variations
+airport-25,Los Angeles INTERNATIONAL,AAV,INTERNATIONAL,Los Angeles,U,http://lax.com,lax@airport.com,+11234567890
+airport-26,Los Angeles INTERNATIONAL,AAW,INTERNATIONAL,Los Angeles,US,http://lax.com,lax@airport.com,+11234567890
+airport-27,Los Angeles INTERNATIONAL,AAX,INTERNATIONAL,Los Angeles,Este texto tiene 50 caracteres. Este texto tiene 5,http://lax.com,lax@airport.com,+11234567890
+airport-28,Los Angeles INTERNATIONAL,AAY,INTERNATIONAL,Los Angeles,Este texto tiene 49 caracteres. Este texto tiene,http://lax.com,lax@airport.com,+11234567890
+airport-29,Los Angeles INTERNATIONAL,AAZ,INTERNATIONAL,Los Angeles,लोरम इप्सम,http://lax.com,lax@airport.com,+11234567890
+airport-30,Los Angeles INTERNATIONAL,ABA,INTERNATIONAL,Los Angeles,ローレム・イプサム,http://lax.com,lax@airport.com,+11234567890
+airport-31,Los Angeles INTERNATIONAL,ABB,INTERNATIONAL,Los Angeles,<b>Bold Text</b>,http://lax.com,lax@airport.com,+11234567890
+airport-32,Los Angeles INTERNATIONAL,ABC,INTERNATIONAL,Los Angeles,"<img src='x' onerror='alert(""XSS"")'>",http://lax.com,lax@airport.com,+11234567890
+airport-33,Los Angeles INTERNATIONAL,ABD,INTERNATIONAL,Los Angeles,' OR 1=1 --,http://lax.com,lax@airport.com,+11234567890
+# website variations (válidas)
+airport-34,Los Angeles INTERNATIONAL,ABE,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+airport-35,Los Angeles INTERNATIONAL,ABF,INTERNATIONAL,Los Angeles,USA,https://www.example.org,lax@airport.com,+11234567890
+airport-36,Los Angeles INTERNATIONAL,ABG,INTERNATIONAL,Los Angeles,USA,ftp://ftp.example.com/resource.txt,lax@airport.com,+11234567890
+airport-37,Los Angeles INTERNATIONAL,ABH,INTERNATIONAL,Los Angeles,USA,file:///home/user/data.json,lax@airport.com,+11234567890
+airport-38,Los Angeles INTERNATIONAL,ABI,INTERNATIONAL,Los Angeles,USA,jar:http://example.com/app.jar!/lib/Util.class,lax@airport.com,+11234567890
+airport-39,Los Angeles INTERNATIONAL,ABJ,INTERNATIONAL,Los Angeles,USA,http://example.com:8080/path/to/resource?param=value,lax@airport.com,+11234567890
+airport-40,Los Angeles INTERNATIONAL,ABK,INTERNATIONAL,Los Angeles,USA,https://subdomain.example.com,lax@airport.com,+11234567890
+airport-41,Los Angeles INTERNATIONAL,ABL,INTERNATIONAL,Los Angeles,USA,http://example.com/index.html,lax@airport.com,+11234567890
+airport-42,Los Angeles INTERNATIONAL,ABM,INTERNATIONAL,Los Angeles,USA,https://example.com/path/resource.html#section2,lax@airport.com,+11234567890
+airport-43,Los Angeles INTERNATIONAL,ABN,INTERNATIONAL,Los Angeles,USA,https://example.com?search=test+query,lax@airport.com,+11234567890
+airport-44,Los Angeles INTERNATIONAL,ABO,INTERNATIONAL,Los Angeles,USA,https://example.com:443,lax@airport.com,+11234567890
+airport-45,Los Angeles INTERNATIONAL,ABP,INTERNATIONAL,Los Angeles,USA,https://example.com/page.html?x=1&y=2,lax@airport.com,+11234567890
+airport-46,Los Angeles INTERNATIONAL,ABQ,INTERNATIONAL,Los Angeles,USA,http://localhost:3000,lax@airport.com,+11234567890
+airport-47,Los Angeles INTERNATIONAL,ABR,INTERNATIONAL,Los Angeles,USA,http://127.0.0.1:8080/app,lax@airport.com,+11234567890
+# emailAddress variations
+airport-48,Los Angeles INTERNATIONAL,ABS,INTERNATIONAL,Los Angeles,USA,http://lax.com,user-test@lorem-ipsum.net,+11234567890
+airport-49,Los Angeles INTERNATIONAL,ABT,INTERNATIONAL,Los Angeles,USA,http://lax.com,x@y.z,+11234567890
+airport-50,Los Angeles INTERNATIONAL,ABU,INTERNATIONAL,Los Angeles,USA,http://lax.com,abc@xyz.fr,+11234567890
+airport-51,Los Angeles INTERNATIONAL,ABV,INTERNATIONAL,Los Angeles,USA,http://lax.com,name@domain.co.uk,+11234567890
+airport-52,Los Angeles INTERNATIONAL,ABW,INTERNATIONAL,Los Angeles,USA,http://lax.com,long-email-address@verylongdomain-example.com,+11234567890
+airport-53,Los Angeles INTERNATIONAL,ABX,INTERNATIONAL,Los Angeles,USA,http://lax.com,support@mailserver.info,+11234567890
+# contactPhoneNumber variations
+airport-54,Los Angeles INTERNATIONAL,ABY,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,123456
+airport-55,Los Angeles INTERNATIONAL,ABZ,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+123456
+airport-56,Los Angeles INTERNATIONAL,ACA,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,1234567
+airport-57,Los Angeles INTERNATIONAL,ACB,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+1234567
+airport-58,Los Angeles INTERNATIONAL,ACC,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,12345678901234
+airport-59,Los Angeles INTERNATIONAL,ACD,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+12345678901234
+airport-60,Los Angeles INTERNATIONAL,ACE,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,112233445566778
+airport-61,Los Angeles INTERNATIONAL,ACF,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+112233445566778

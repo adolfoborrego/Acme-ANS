@@ -1,0 +1,40 @@
+key,name,moment,subject,text,score,recommended
+# base
+review-00,Example Reviewer,2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",10.0,true
+# name variations
+review-01,E,2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",10.0,true
+review-02,Ex,2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",10.0,true
+review-03,Este texto tiene 50 caracteres. Este texto tiene 5,2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",10.0,true
+review-04,Este texto tiene 49 caracteres. Este texto tiene ,2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",10.0,true
+review-05,लोरम इप्सम,2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",10.0,true
+review-06,ローレム・イプサム,2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",10.0,true
+review-07,<b>Bold Text</b>,2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",10.0,true
+review-08,"<img src='x' onerror='alert(\"XSS\")'>",2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",10.0,true
+review-09,' OR 1=1 --,2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",10.0,true
+# moment variations
+review-10,Example Reviewer,2000/01/01 00:00,Excellent service,"Everything was perfect, thank you!",10.0,true
+review-11,Example Reviewer,2000/01/01 00:01,Excellent service,"Everything was perfect, thank you!",10.0,true
+review-12,Example Reviewer,2022/07/29 23:59,Excellent service,"Everything was perfect, thank you!",10.0,true
+review-13,Example Reviewer,2022/07/30 00:00,Excellent service,"Everything was perfect, thank you!",10.0,true
+# subject variations
+review-14,Example Reviewer,2010/01/01 00:00,S,"Everything was perfect, thank you!",10.0,true
+review-15,Example Reviewer,2010/01/01 00:00,Su,"Everything was perfect, thank you!",10.0,true
+review-16,Example Reviewer,2010/01/01 00:00,Este texto tiene 50 caracteres. Este texto tiene 5,"Everything was perfect, thank you!",10.0,true
+review-17,Example Reviewer,2010/01/01 00:00,Este texto tiene 49 caracteres. Este texto tiene ,"Everything was perfect, thank you!",10.0,true
+review-18,Example Reviewer,2010/01/01 00:00,<b>Bold Subject</b>,"Everything was perfect, thank you!",10.0,true
+review-19,Example Reviewer,2010/01/01 00:00,"<script>alert('x')</script>","Everything was perfect, thank you!",10.0,true
+# text variations
+review-20,Example Reviewer,2010/01/01 00:00,Excellent service,T,10.0,true
+review-21,Example Reviewer,2010/01/01 00:00,Excellent service,Te,10.0,true
+review-22,Example Reviewer,2010/01/01 00:00,Excellent service,"Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 ca",10.0,true
+review-23,Example Reviewer,2010/01/01 00:00,Excellent service,"Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 car",10.0,true
+review-24,Example Reviewer,2010/01/01 00:00,Excellent service,"<img src='x' onerror='alert(\"XSS\")'>",10.0,true
+review-25,Example Reviewer,2010/01/01 00:00,Excellent service,' OR 1=1 --,10.0,true
+# score variations
+review-26,Example Reviewer,2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",0.0,true
+review-27,Example Reviewer,2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",0.1,true
+review-28,Example Reviewer,2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",9.9,true
+review-29,Example Reviewer,2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",10.0,true
+# recommended variations
+review-30,Example Reviewer,2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",10.0,false
+review-31,Example Reviewer,2010/01/01 00:00,Excellent service,"Everything was perfect, thank you!",10.0,true
