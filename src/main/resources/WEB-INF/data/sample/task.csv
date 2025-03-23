@@ -1,0 +1,35 @@
+key,key:technician,key:maintenanceRecord,published,estimatedDuration,priority,description,type
+task-01,technician-01,maintenanceRecord-01,true,18,5,Una larga descripción para la primera entidad de task-01,INSPECTION
+#Probando distintas descripciones
+task-02,technician-02,maintenanceRecord-01,true,7,2,"A",REPAIR
+task-03,technician-02,maintenanceRecord-01,true,7,2,"AB",REPAIR
+task-04,technician-02,maintenanceRecord-01,true,7,2,"Short description test.",REPAIR
+task-05,technician-02,maintenanceRecord-01,true,7,2,"This is a twenty-five char text.",REPAIR
+task-06,technician-02,maintenanceRecord-01,true,7,2,"This is a much longer text designed to test 254 characters. It contains words, spaces, punctuation, and should not match previous descriptions. This ensures that our dataset is robust and does not have repeated phrases across tests.",REPAIR
+task-07,technician-02,maintenanceRecord-01,true,7,2,"This is exactly 255 characters long to test the system’s ability to handle maximum lengths without truncation or error. If this description fails, then there might be an issue with the character limit constraints imposed on the description field during insertion.",REPAIR
+task-08,technician-02,maintenanceRecord-01,true,7,2,"你好，这是一个测试描述",REPAIR
+task-09,technician-02,maintenanceRecord-01,true,7,2,"مرحبا، هذا نص تجريبي",REPAIR
+task-10,technician-02,maintenanceRecord-01,true,7,2,"ทดสอบคำอธิบายที่นี่",REPAIR
+task-11,technician-02,maintenanceRecord-01,true,7,2,"<marquee>Unauthorized content</marquee>",REPAIR
+task-12,technician-02,maintenanceRecord-01,true,7,2,"<script>alert('Security Breach!');</script>",REPAIR
+task-13,technician-02,maintenanceRecord-01,true,7,2,"' OR '1'='1' --",REPAIR
+# Probando los distintos types
+task-14,technician-01,maintenanceRecord-01,false,10,6,"Short description test.",MAINTENANCE
+task-15,technician-01,maintenanceRecord-01,false,10,6,"Short description test.",REPAIR
+task-16,technician-01,maintenanceRecord-01,false,10,6,"Short description test.",INSPECTION
+task-17,technician-01,maintenanceRecord-01,false,10,6,"Short description test.",SYSTEM CHECK
+#Probando los posibles estados de published
+task-18,technician-01,maintenanceRecord-01,true,20,3,"Short description test.",REPAIR
+task-19,technician-01,maintenanceRecord-01,false,20,3,"Short description test.",REPAIR
+#Probando los posibles priority
+task-20,technician-03,maintenanceRecord-01,true,45,0,"Short description test.",MAINTENANCE
+task-21,technician-03,maintenanceRecord-01,true,45,1,"Short description test.",MAINTENANCE
+task-22,technician-03,maintenanceRecord-01,true,45,4,"Short description test.",MAINTENANCE
+task-23,technician-03,maintenanceRecord-01,true,45,9,"Short description test.",MAINTENANCE
+task-24,technician-03,maintenanceRecord-01,true,45,10,"Short description test.",MAINTENANCE
+#Probando los posibles estimatedDuration
+task-25,technician-01,maintenanceRecord-01,true,0,5,"Short description test.",MAINTENANCE
+task-26,technician-01,maintenanceRecord-01,true,1,5,"Short description test.",MAINTENANCE
+task-27,technician-01,maintenanceRecord-01,true,400,5,"Short description test.",MAINTENANCE
+task-28,technician-01,maintenanceRecord-01,true,1999,5,"Short description test.",MAINTENANCE
+task-29,technician-01,maintenanceRecord-01,true,2000,5,"Short description test.",MAINTENANCE
