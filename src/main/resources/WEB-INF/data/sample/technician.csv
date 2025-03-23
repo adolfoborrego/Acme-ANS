@@ -1,4 +1,4 @@
 key,key:userAccount,licenseNumber,phoneNumber,specialisation,annualHealthTest,yearsOfExperience,certifications
-technician1,user-account-technician-01,TO123456,+1234567890,Aeronautical Maintenance,true,10,Certified Aircraft Mechanic
-technician2,user-account-technician-02,TT987654,+9876543210,Avionics,false,5,Electronics and Instrumentation Diploma
-technician3,user-account-technician-03,TT124365,+1326541210,Aircrafts,true,7,Electronics and Certified Aircraft Mechanic
+technician-01,user-account-technician-01,TO123456,+1234567890,Aeronautical Maintenance,true,10,Certified Aircraft Mechanic
+technician-02,user-account-technician-02,TT987654,+9876543210,Avionics,false,5,Electronics and Instrumentation Diploma
+technician-03,user-account-technician-03,TT124365,+1326541210,Aircrafts,true,7,Electronics and Certified Aircraft Mechanic

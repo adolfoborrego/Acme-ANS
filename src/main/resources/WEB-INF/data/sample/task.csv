@@ -1,5 +1,5 @@
 key,key:technician,key:maintenanceRecord,published,estimatedDuration,priority,description,type
-task-01,technician-01,maintenanceRecord-01,true,18,5,Una larga descripción para la primera entidad de task-01,INSPECTION
+task-01,technician-01,maintenanceRecord-01,true,18,5,"Una larga descripción para la primera entidad de task-01",INSPECTION
 #Probando distintas descripciones
 task-02,technician-02,maintenanceRecord-01,true,7,2,"A",REPAIR
 task-03,technician-02,maintenanceRecord-01,true,7,2,"AB",REPAIR
@@ -33,3 +33,7 @@ task-26,technician-01,maintenanceRecord-01,true,1,5,"Short description test.",MA
 task-27,technician-01,maintenanceRecord-01,true,400,5,"Short description test.",MAINTENANCE
 task-28,technician-01,maintenanceRecord-01,true,1999,5,"Short description test.",MAINTENANCE
 task-29,technician-01,maintenanceRecord-01,true,2000,5,"Short description test.",MAINTENANCE
+#Probando distintos maintenanceRecord
+task-30,technician-01,maintenanceRecord-02,true,18,5,"Una larga descripción para la primera entidad de task-01",INSPECTION
+task-31,technician-01,maintenanceRecord-03,true,18,5,"Una larga descripción para la primera entidad de task-01",INSPECTION
+task-32,technician-01,maintenanceRecord-04,true,18,5,"Una larga descripción para la primera entidad de task-01",INSPECTION
