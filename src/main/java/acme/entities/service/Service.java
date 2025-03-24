@@ -1,6 +1,7 @@
 
 package acme.entities.service;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import acme.client.components.basis.AbstractEntity;
@@ -24,7 +25,7 @@ public class Service extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				name;
 
@@ -34,18 +35,18 @@ public class Service extends AbstractEntity {
 	private String				linkToPicture;
 
 	@Mandatory
-	@ValidNumber(min = 0, fraction = 1)
+	@ValidNumber(min = 0., max = 5.)
 	@Automapped
 	private Double				averageDwellTime;
 
 	@Optional
-	@ValidString(pattern = " ^[A-Z]{4}-[0-9]{2}$")
+	@ValidString(pattern = "^[A-Z]{4}-[0-9]{2}$")
 	@ValidPromotionCode
-	@Automapped
+	@Column(unique = true)
 	private String				promotionCode;
 
 	@Optional
-	@ValidMoney(min = 0)
+	@ValidMoney(min = 0, max = 1000)
 	@Automapped
 	private Money				discount;
 }

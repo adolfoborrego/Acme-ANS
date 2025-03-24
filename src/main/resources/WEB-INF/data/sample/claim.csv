@@ -24,7 +24,6 @@ claim-17,2010/01/01 00:00,passenger@example.es,לורם איפסום,FLIGHT-ISSU
 claim-18,2010/01/01 00:00,passenger@example.es,<b>Bold Text</b>,FLIGHT-ISSUES,false,false,agent-01
 claim-19,2010/01/01 00:00,passenger@example.es,<img src='x' onerror='alert("XSS")'>,FLIGHT-ISSUES,false,false,agent-01
 claim-20,2010/01/01 00:00,passenger@example.es,' OR 1=1 --,FLIGHT-ISSUES,false,false,agent-01
-
 # type variations
 claim-21,2010/01/01 00:00,passenger@example.es,test description,LUGGAGE-ISSUES,false,false,agent-01
 claim-22,2010/01/01 00:00,passenger@example.es,test description,SECURITY-INCIDENT,false,false,agent-01

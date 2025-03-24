@@ -1,4 +1,57 @@
 key,name,iataCode,website,type,foundationTime,email,phoneNumber
-airline-01,Airline One,AAA,http://airline1.com,STANDARD,2005/06/15 00:00,contact@airline1.com,+111111111
-airline-02,Airline Two,BBB,http://airline2.com,LOW-COST,2008/09/10 00:00,contact@airline2.com,+222222222
-airline-03,No Airline,CCC,http://no-airline.com,STANDARD,2000/01/01 00:00,info@no-airline.com,+000000000
+# base
+airline-00,Emirates,EKX,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+# name variations
+airline-01,E,BBA,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-02,Em,BBB,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-03,Este texto tiene 50 caracteres. Este texto tiene 5,BBC,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-04,Este texto tiene 49 caracteres. Este texto tiene ,BBD,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-05,लोरम इप्सम,BBE,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-06,ローレム・イプサム,BBF,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-07,<b>Bold Text</b>,BBG,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-08,"<img src='x' onerror='alert(""XSS"")'>",BBH,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-09,' OR 1=1 --,BBI,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+# iataCode variations
+airline-10,Emirates,UUU,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-11,Emirates,VVV,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-12,Emirates,WWW,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+# website variations
+airline-13,Emirates,BBJ,http://lax.com,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-14,Emirates,BBK,https://www.example.org,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-15,Emirates,BBL,ftp://ftp.example.com/resource.txt,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-16,Emirates,BBM,file:///home/user/data.json,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-17,Emirates,BBN,jar:http://example.com/app.jar!/lib/Util.class,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-18,Emirates,BBO,http://example.com:8080/path/to/resource?param=value,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-19,Emirates,BBP,https://subdomain.example.com,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-20,Emirates,BBQ,http://example.com/index.html,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-21,Emirates,BBR,https://example.com/path/resource.html#section2,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-22,Emirates,BBS,https://example.com?search=test+query,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-23,Emirates,BBT,https://example.com:443,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-24,Emirates,BBU,https://example.com/page.html?x=1&y=2,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-25,Emirates,BBV,http://localhost:3000,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-26,Emirates,BBW,http://127.0.0.1:8080/app,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+# type variations
+airline-27,Emirates,BBX,https://www.emirates.com/,LOW-COST,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-28,Emirates,BBY,https://www.emirates.com/,STANDARD,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-29,Emirates,BBZ,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
+# foundationTime variations
+airline-30,Emirates,BCA,https://www.emirates.com/,LUXURY,2000/01/01 00:00,contact@emirates.com,+34912757792
+airline-31,Emirates,BCB,https://www.emirates.com/,LUXURY,2000/01/01 00:01,contact@emirates.com,+34912757792
+airline-32,Emirates,BCC,https://www.emirates.com/,LUXURY,2022/07/29 23:59,contact@emirates.com,+34912757792
+airline-33,Emirates,BCD,https://www.emirates.com/,LUXURY,2022/07/30 00:00,contact@emirates.com,+34912757792
+# email variations
+airline-34,Emirates,BCE,https://www.emirates.com/,LUXURY,2010/01/01 00:00,user-test@lorem-ipsum.net,+34912757792
+airline-35,Emirates,BCF,https://www.emirates.com/,LUXURY,2010/01/01 00:00,x@y.z,+34912757792
+airline-36,Emirates,BCG,https://www.emirates.com/,LUXURY,2010/01/01 00:00,abc@xyz.fr,+34912757792
+airline-37,Emirates,BCH,https://www.emirates.com/,LUXURY,2010/01/01 00:00,name@domain.co.uk,+34912757792
+airline-38,Emirates,BCI,https://www.emirates.com/,LUXURY,2010/01/01 00:00,long-email-address@verylongdomain-example.com,+34912757792
+airline-39,Emirates,BCJ,https://www.emirates.com/,LUXURY,2010/01/01 00:00,support@mailserver.info,+34912757792
+# phoneNumber variations
+airline-40,Emirates,BCK,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,123456
+airline-41,Emirates,BCL,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+123456
+airline-42,Emirates,BCM,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,1234567
+airline-43,Emirates,BCN,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+1234567
+airline-44,Emirates,BCO,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,12345678901234
+airline-45,Emirates,BCP,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+12345678901234
+airline-46,Emirates,BCQ,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,112233445566778
+airline-47,Emirates,BCR,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+112233445566778

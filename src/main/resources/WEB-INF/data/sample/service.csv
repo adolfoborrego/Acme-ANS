@@ -1,0 +1,42 @@
+key,name,linkToPicture,averageDwellTime,promotionCode,discount
+# base
+service-00,example service,https://www.picture.com,2.2,PROM-25,USD 22
+# name variations
+service-01,e,https://www.picture.com,2.2,AAAA-25,USD 22
+service-02,ex,https://www.picture.com,2.2,AAAB-25,USD 22
+service-03,Este texto tiene 50 caracteres. Este texto tiene 5,https://www.picture.com,2.2,AAAC-25,USD 22
+service-04,Este texto tiene 49 caracteres. Este texto tiene ,https://www.picture.com,2.2,AAAD-25,USD 22
+service-05,लोरम इप्सम,https://www.picture.com,2.2,AAAE-25,USD 22
+service-06,ローレム・イプサム,https://www.picture.com,2.2,AAAF-25,USD 22
+service-07,<b>Bold Text</b>,https://www.picture.com,2.2,AAAG-25,USD 22
+service-08,"<img src='x' onerror='alert(""XSS"")'>",https://www.picture.com,2.2,AAAH-25,USD 22
+service-09,' OR 1=1 --,https://www.picture.com,2.2,AAAI-25,USD 22
+# linkToPicture variations
+service-10,example service,http://example.com,2.2,AAAJ-25,USD 22
+service-11,example service,https://www.example.org,2.2,AAAK-25,USD 22
+service-12,example service,ftp://ftp.example.com/resource.txt,2.2,AAAL-25,USD 22
+service-13,example service,file:///home/user/data.json,2.2,AAAM-25,USD 22
+service-14,example service,jar:http://example.com/app.jar!/lib/Util.class,2.2,AAAN-25,USD 22
+service-15,example service,http://example.com:8080/path/to/resource?param=value,2.2,AAAO-25,USD 22
+service-16,example service,https://subdomain.example.com,2.2,AAAP-25,USD 22
+service-17,example service,http://example.com/index.html,2.2,AAAQ-25,USD 22
+service-18,example service,https://example.com/path/resource.html#section2,2.2,AAAR-25,USD 22
+service-19,example service,https://example.com?search=test+query,2.2,AAAS-25,USD 22
+service-20,example service,https://example.com:443,2.2,AAAT-25,USD 22
+service-21,example service,https://example.com/page.html?x=1&y=2,2.2,AAAU-25,USD 22
+service-22,example service,http://localhost:3000,2.2,AAAV-25,USD 22
+service-23,example service,http://127.0.0.1:8080/app,2.2,AAAW-25,USD 22
+# averageDwellTime variations
+service-24,example service,https://www.picture.com,0.0,AAAX-25,USD 22
+service-25,example service,https://www.picture.com,0.01,AABY-25,USD 22
+service-26,example service,https://www.picture.com,4.99,AABZ-25,USD 22
+service-27,example service,https://www.picture.com,5.0,AABA-25,USD 22
+# promotionCode variations
+service-28,example service,https://www.picture.com,2.2,XXXX-25,USD 22
+service-29,example service,https://www.picture.com,2.2,YYYY-25,USD 22
+service-30,example service,https://www.picture.com,2.2,ZZZZ-25,USD 22
+# discount variations
+service-31,example service,https://www.picture.com,2.2,AABB-25,USD 0
+service-32,example service,https://www.picture.com,2.2,AABC-25,USD 1
+service-33,example service,https://www.picture.com,2.2,AABD-25,USD 999
+service-34,example service,https://www.picture.com,2.2,AABE-25,USD 1000
