@@ -1,26 +1,60 @@
 key,enabled,identity,password,username
-user-account-flightCrewMember-01,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""One"", email: ""flightCrewMember1@email.com""}",flightCrewMember1,flightCrewMember1
-user-account-flightCrewMember-02,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Two"", email: ""flightCrewMember2@email.com""}",flightCrewMember2,flightCrewMember2
-user-account-flightCrewMember-03,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Three"", email: ""flightCrewMember3@email.com""}",flightCrewMember3,flightCrewMember3
-user-account-flightCrewMember-04,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Four"", email: ""flightCrewMember4@email.com""}",flightCrewMember4,flightCrewMember4
-user-account-flightCrewMember-00,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Zero"", email: ""flightCrewMember0@email.com""}",flightCrewMember,flightCrewMember
+# FLIGHT_CREW_MEMBERS:
+# Cuenta para FlightCrewMember - Pilot (member1/member1)
+user-account-flightCrewMember-01,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Pilot"", email: ""member1@acme.com""}",member1,member1
+# Cuenta para FlightCrewMember - Copilot (member2/member2)
+user-account-flightCrewMember-02,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Copilot"", email: ""member2@acme.com""}",member2,member2
+# Cuenta para FlightCrewMember - Lead Attendant (member3/member3)
+user-account-flightCrewMember-03,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Lead Attendant"", email: ""member3@acme.com""}",member3,member3
+# Cuenta para FlightCrewMember - Cabin Attendant (member4/member4)
+user-account-flightCrewMember-04,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""Cabin Attendant"", email: ""member4@acme.com""}",member4,member4
+# Cuenta para FlightCrewMember - New Member (sin asignación, member/member)
+user-account-flightCrewMember-00,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""New"", email: ""member@acme.com""}",member,member
+
+user-account-flightCrewMember-05,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""PILOT"", email: ""member5@acme.com""}",member5,member5
+user-account-flightCrewMember-06,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""PILOT"", email: ""member6@acme.com""}",member6,member6
+user-account-flightCrewMember-07,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""PILOT"", email: ""member7@acme.com""}",member7,member7
+user-account-flightCrewMember-08,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""PILOT"", email: ""member8@acme.com""}",member8,member8
+user-account-flightCrewMember-09,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""PILOT"", email: ""member9@acme.com""}",member9,member9
+user-account-flightCrewMember-10,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""PILOT"", email: ""member10@acme.com""}",member10,member10
+user-account-flightCrewMember-11,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""PILOT"", email: ""member11@acme.com""}",member11,member11
+user-account-flightCrewMember-12,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""PILOT"", email: ""member12@acme.com""}",member12,member12
+user-account-flightCrewMember-13,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""PILOT"", email: ""member13@acme.com""}",member13,member13
+user-account-flightCrewMember-14,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""PILOT"", email: ""member14@acme.com""}",member14,member14
+user-account-flightCrewMember-15,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""PILOT"", email: ""member15@acme.com""}",member15,member15
+user-account-flightCrewMember-16,true,"UserIdentity{name: ""FlightCrewMember"", surname: ""PILOT"", email: ""member16@acme.com""}",member16,member16
+
+
+# CONSUMERS:
 user-account-consumer-01,true,"UserIdentity{name: 'Peter', surname: 'Consumer', email: 'peter@acme.com'}",consumer1,consumer1
 user-account-consumer-02,true,"UserIdentity{name: 'Mary', surname: '貸んい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'mary@acme.com'}",consumer2,consumer2
 user-account-consumer-03,true,"UserIdentity{name: 'Manolo', surname: '之乎路可良 ᏥᏲᏎᎭ', email: 'manolo@acme.com'}",consumer3,consumer3
+
+# PROVIDERS:
 user-account-provider-01,true,"UserIdentity{name: 'Laurel', surname: 'Provider', email: 'laurel@acme.com'}",provider1,provider1
-user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза თხა', email: 'martina@acme.com'}",provider2,provider2
+user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'კოზა თხა', email: 'martina@acme.com'}",provider2,provider2
 user-account-provider-03,true,"UserIdentity{name: 'Antonia', surname: 'אבטיח Æløzå', email: 'antonia@acme.com'}",provider3,provider3
+
+# MANAGERS:
 user-account-manager-01,true,"UserIdentity{name: ""Manager"", surname: ""One"", email: ""manager1@email.com""}",manager1,manager1
 user-account-manager-02,true,"UserIdentity{name: ""Manager"", surname: ""Two"", email: ""manager2@email.com""}",manager2,manager2
 user-account-manager-03,true,"UserIdentity{name: ""Manager"", surname: ""Three"", email: ""manager3@email.com""}",manager3,manager3
+
+# AGENTS:
 user-account-agent-01,true,"UserIdentity{name: ""Agent"", surname: ""One"", email: ""agent1@email.com""}",agent1,agent1
 user-account-agent-02,true,"UserIdentity{name: ""Agent"", surname: ""Two"", email: ""agent2@email.com""}",agent2,agent2
 user-account-agent-03,true,"UserIdentity{name: ""Agent"", surname: ""Three"", email: ""agent3@email.com""}",agent3,agent3
+
+# TECHNICIANS:
 user-account-technician-01,true,"UserIdentity{name: ""Technician"", surname: ""One"", email: ""technician1@email.com""}",technician1,technician1
 user-account-technician-02,true,"UserIdentity{name: ""Technician"", surname: ""Two"", email: ""technician2@email.com""}",technician2,technician2
 user-account-technician-03,true,"UserIdentity{name: ""Technician"", surname: ""Three"", email: ""technician3@email.com""}",technician3,technician3
+
+# CUSTOMERS:
 user-account-customer-01,true,"UserIdentity{name: ""Customer"", surname: ""One"", email: ""customer1@email.com""}",customer1,customer1
 user-account-customer-02,true,"UserIdentity{name: ""Customer"", surname: ""Two"", email: ""customer2@email.com""}",customer2,customer2
 user-account-customer-03,true,"UserIdentity{name: ""Customer"", surname: ""Three"", email: ""customer3@email.com""}",customer3,customer3
+
+# ADMINISTRATORS:
 user-account-administrator-1,true,"UserIdentity{name: ""Administrator"", surname: ""One"", email: ""administrator1@email.com""}",administrator1,administrator1
 user-account-administrator-2,true,"UserIdentity{name: ""Administrator"", surname: ""Two"", email: ""administrator2@email.com""}",administrator2,administrator2

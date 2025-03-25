@@ -43,7 +43,7 @@ public class FlightAssignment extends AbstractEntity {
 	String						currentStatus;
 
 	@Optional
-	@ValidString(max = 255)
+	@ValidString(max = 255, min = 1)
 	@Automapped
 	String						remarks;
 

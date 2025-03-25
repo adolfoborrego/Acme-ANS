@@ -1,6 +1,35 @@
 key,key:userAccount,employeeCode,phoneNumber,languageSkills,availabilityStatus,salary,yearsOfExperience,key:airline
-flightCrewMember-01,user-account-flightCrewMember-01,FO123456,1234567890,"English",AVAILABLE,USD 50000,5,airline-01
-flightCrewMember-02,user-account-flightCrewMember-02,FT654321,0987654321,"English",AVAILABLE,USD 48000,4,airline-01
-flightCrewMember-03,user-account-flightCrewMember-03,FT987654,1122334455,"English",AVAILABLE,USD 47000,3,airline-02
-flightCrewMember-04,user-account-flightCrewMember-04,FF567890,5566778899,"English,French",AVAILABLE,USD 46000,6,airline-02
-flightCrewMember-00,user-account-flightCrewMember-00,FZ112233,6677889900,"English",AVAILABLE,USD 45000,1,airline-03
+# Caso base: Registro mínimo (Pilot) – base: employeeCode "FP000000", phoneNumber "000000", languageSkills "English", status AVAILABLE, salary EUR 0.00, experience 0, airline-01.
+flightCrewMember-01,user-account-flightCrewMember-01,FP000000,000000,"English",AVAILABLE,EUR 0.00,0,airline-01
+# 1. EmployeeCode inmediato: incremento en el número (únicamente employeeCode)
+flightCrewMember-02,user-account-flightCrewMember-02,FC000001,000000,"English",AVAILABLE,EUR 0.00,0,airline-01
+# 2. EmployeeCode extremo máximo: usando 3 letras y dígitos máximos 
+flightCrewMember-03,user-account-flightCrewMember-03,FLA999999,000000,"English",AVAILABLE,EUR 0.00,0,airline-01
+# 3. PhoneNumber inmediato: incremento en 1 dígito (de "000000" a "000001")
+flightCrewMember-04,user-account-flightCrewMember-04,FCA000000,000001,"English",AVAILABLE,EUR 0.00,0,airline-01
+# 4. PhoneNumber inmediato: numero intermedio
+flightCrewMember-00,user-account-flightCrewMember-00,FN000000,696282537,"English",AVAILABLE,EUR 0.00,0,airline-01
+# 5. PhoneNumber extremo máximo: 15 dígitos
+flightCrewMember-05,user-account-flightCrewMember-05,FP000003,999999999999999,"English",AVAILABLE,EUR 0.00,0,airline-01
+# 6. LanguageSkills intermedio: se añade un idioma (de "English" a "English,French")
+flightCrewMember-06,user-account-flightCrewMember-06,FP000004,000000,"English,French",AVAILABLE,EUR 0.00,0,airline-01
+# 7. AvailabilityStatus: se cambia a ON VACATION
+flightCrewMember-07,user-account-flightCrewMember-07,FP000005,000000,"English",ON VACATION,EUR 0.00,0,airline-01
+# 8. AvailabilityStatus: se cambia a ON LEAVE
+flightCrewMember-08,user-account-flightCrewMember-08,FP000006,000000,"English",ON LEAVE,EUR 0.00,0,airline-01
+# 9. Salary inmediato: primer valor superior (de EUR 0.00 a EUR 1.00)
+flightCrewMember-09,user-account-flightCrewMember-09,FP000007,000000,"English",AVAILABLE,EUR 1.00,0,airline-01
+# 10. Salary: valor normal
+flightCrewMember-10,user-account-flightCrewMember-10,FP000200,000000,"English",AVAILABLE,EUR 1000.00,0,airline-01
+# 11. Salary extremo máximo: valor maximo (EUR 100000.00)
+flightCrewMember-11,user-account-flightCrewMember-11,FP000300,000000,"English",AVAILABLE,EUR 100000.00,0,airline-01
+# 12. YearsOfExperience inmediato: de 0 a 1 año
+flightCrewMember-12,user-account-flightCrewMember-12,FP000500,000000,"English",AVAILABLE,EUR 0.00,1,airline-01
+# 13. YearsOfExperience extremo máximo: 90 años
+flightCrewMember-13,user-account-flightCrewMember-13,FP000900,000000,"English",AVAILABLE,EUR 0.00,90,airline-01
+# 14. YearsOfExperience penúltimo: 89 años
+flightCrewMember-14,user-account-flightCrewMember-14,FP100000,000000,"English",AVAILABLE,EUR 0.00,89,airline-01
+# 15. YearsOfExperience: valor intermedio
+flightCrewMember-15,user-account-flightCrewMember-15,FP200000,000000,"English",AVAILABLE,EUR 0.00,45,airline-01
+# 16. key:airline modificado: cambio de aerolínea (de airline-01 a airline-02)
+flightCrewMember-16,user-account-flightCrewMember-16,FP300000,000000,"English",AVAILABLE,EUR 0.00,0,airline-02
