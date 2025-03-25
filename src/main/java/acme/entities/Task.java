@@ -31,7 +31,7 @@ public class Task extends AbstractEntity {
 	private String				type;
 
 	@Mandatory
-	@ValidString(max = 255)
+	@ValidString(min = 1, max = 255)
 	@Automapped
 	private String				description;
 
