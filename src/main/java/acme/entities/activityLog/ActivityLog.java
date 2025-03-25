@@ -32,17 +32,17 @@ public class ActivityLog extends AbstractEntity {
 	Date						registrationMoment;
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(max = 50, min = 1)
 	@Automapped
 	String						typeOfIncident;
 
 	@Mandatory
-	@ValidString(max = 250)
+	@ValidString(max = 255, min = 1)
 	@Automapped
 	String						description;
 
 	@Mandatory
-	@ValidNumber(min = 0, max = 10, fraction = 0)
+	@ValidNumber(min = 0, max = 10)
 	@Automapped
 	Integer						severityLevel;
 

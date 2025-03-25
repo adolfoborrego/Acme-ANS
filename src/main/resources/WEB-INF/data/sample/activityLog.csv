@@ -1,0 +1,31 @@
+key,registrationMoment,typeOfIncident,description,severityLevel,isPublished,key:flightAssignment
+# Caso base: Registro mínimo – valores base
+activityLog-01,2022/07/29 23:59,A,X,1,false,flight-assignment-01
+# 1. registrationMoment inmediato: 1 minuto antes ("2022/07/29 23:58")
+activityLog-02,2022/07/29 23:58,A,X,1,false,flight-assignment-01
+# 2. registrationMoment extremo: fecha antigua ("2022/07/01 10:00")
+activityLog-03,2022/07/01 10:00,A,X,1,false,flight-assignment-01
+# 3. typeOfIncident inmediato: de "A" a "B"
+activityLog-04,2022/07/29 23:59,B,X,1,false,flight-assignment-01
+# 4. typeOfIncident extremo máximo: 50 caracteres (por ejemplo, 50 “T”)
+activityLog-05,2022/07/29 23:59,TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT, X,1,false,flight-assignment-01
+# 5. typeOfIncident penúltimo: 49 caracteres (49 “T”)
+activityLog-06,2022/07/29 23:59,TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT,X,1,false,flight-assignment-01
+# 6. description inmediato: de "X" a "XY"
+activityLog-07,2022/07/29 23:59,A,XY,1,false,flight-assignment-01
+# 7. description intermedio: descripción estándar
+activityLog-08,2022/07/29 23:59,A,Standard incident description.,1,false,flight-assignment-01
+# 8. description extremo máximo: 255 caracteres (por ejemplo, 255 “D”)
+activityLog-09,2022/07/29 23:59,A,DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD,1,false,flight-assignment-01
+# 9. description penúltimo: 254 caracteres (254 “E”)
+activityLog-10,2022/07/29 23:59,A,EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE,1,false,flight-assignment-01
+# 10. severityLevel inmediato: de 1 a 2
+activityLog-11,2022/07/29 23:59,A,X,2,false,flight-assignment-01
+# 11. severityLevel extremo máximo: 10
+activityLog-12,2022/07/29 23:59,A,X,10,false,flight-assignment-01
+# 12. severityLevel penúltimo: 9
+activityLog-13,2022/07/29 23:59,A,X,9,false,flight-assignment-01
+# 13. isPublished: cambiar a true
+activityLog-14,2022/07/29 23:59,A,X,1,true,flight-assignment-01
+# 14. flightAssignment modificado: cambiar de flight-assignment-01 a flight-assignment-02
+activityLog-15,2022/07/29 23:59,A,X,1,false,flight-assignment-02
