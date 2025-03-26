@@ -52,7 +52,7 @@ public class MaintenanceRecord extends AbstractEntity {
 
 	@Optional
 	@Automapped
-	@ValidString(max = 255)
+	@ValidString(min = 0, max = 255)
 	private String				notes;
 
 	@Mandatory
