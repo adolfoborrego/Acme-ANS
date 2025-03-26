@@ -18,4 +18,7 @@
     <acme:input-textbox code="airline-manager.flight.list.label.departureCity" path="departureCity"/>
     <acme:input-textbox code="airline-manager.flight.list.label.arrivalCity" path="arrivalCity"/>
     <acme:input-double code="airline-manager.flight.list.label.numberOfLayovers" path="numberOfLayovers"/>
+    
+    <!-- Botón para ver los legs de este vuelo -->
+    <acme:button code="airline-manager.leg.list" action="/airline-manager/leg/list?flightId=${id}" />
 </acme:form>

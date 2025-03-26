@@ -53,14 +53,14 @@ public class Leg extends AbstractEntity {
 
 
 	@Transient
-	private Double getDuration() {
+	public Double getDuration() {
 		Duration duration = MomentHelper.computeDuration(this.getScheduledDeparture(), this.getScheduledArrival());
 
 		return duration.getSeconds() / 60.;
 	}
 
 	@Transient
-	private String getFlightNumber() {
+	public String getFlightNumber() {
 		String iataCode = this.aircraft.getAirline().getIataCode();
 
 		String suffix = String.format("%04d", this.getId() % 10000);
