@@ -1,5 +1,7 @@
-<%@page contentType="text/html;charset=UTF-8" %>
-<%@taglib prefix="acme" uri="http://acme-framework.org/" %>
+<%@page%>
+
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
     <acme:input-moment path="scheduledDeparture" code="leg.scheduledDeparture" readonly="true" />

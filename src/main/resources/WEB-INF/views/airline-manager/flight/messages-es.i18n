@@ -33,5 +33,12 @@ airline-manager.flight.list.label.departureCity=Ciudad de salida
 airline-manager.flight.list.label.arrivalCity=Ciudad de llegada
 airline-manager.flight.list.label.numberOfLayovers=Número de escalas
 
+manager.flight.create = Crear vuelo
+manager.flight.create.submit = Crear vuelo
 
+manager.flight.update = Actualizar vuelo
+manager.flight.update.submit = Actualizar vuelo
+
+manager.flight.delete = Eliminar vuelo
+manager.flight.delete.submit = Eliminar vuelo
 

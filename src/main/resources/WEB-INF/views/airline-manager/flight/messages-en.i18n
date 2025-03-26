@@ -34,5 +34,15 @@ airline-manager.flight.list.label.departureCity=Departure city
 airline-manager.flight.list.label.arrivalCity=Arrival city
 airline-manager.flight.list.label.numberOfLayovers=Number of layovers
 
+manager.flight.create = Create flight
+manager.flight.create.submit = Create flight
+
+manager.flight.update = Update flight
+manager.flight.update.submit = Update flight
+
+manager.flight.delete = Delete flight
+manager.flight.delete.submit = Delete flight
+
+
 
 
