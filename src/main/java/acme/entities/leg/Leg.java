@@ -5,6 +5,8 @@ import java.time.Duration;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,7 +17,6 @@ import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidString;
 import acme.client.helpers.MomentHelper;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
@@ -45,9 +46,14 @@ public class Leg extends AbstractEntity {
 	private Date				scheduledArrival;
 
 	@Mandatory
-	@ValidString(pattern = "^(ON-TIME|DELAYED|CANCELLED|LANDED)$")
+	@Valid
 	@Automapped
-	private String				status;
+	@Enumerated(EnumType.STRING)
+	private LegStatus			status;
+
+	@Mandatory
+	@Automapped
+	private Boolean				published;
 
 	// Derived attributes -----------------------------------------------------
 

@@ -44,12 +44,17 @@ public class ManagerLegListService extends AbstractGuiService<AirlineManager, Le
 
 		Dataset dataset = super.unbindObject(leg, "scheduledDeparture", "scheduledArrival", "status");
 
+		int flightId = super.getRequest().getData("flightId", int.class);
+		dataset.put("flightId", flightId);
+
 		dataset.put("arrivalAirport", leg.getArrivalAirport().getName());
 		dataset.put("departureAirport", leg.getDepartureAirport().getName());
-		// Atributos derivados que son útiles a primera vista
 		dataset.put("duration", leg.getDuration());
 		dataset.put("flightNumber", leg.getFlightNumber());
 
+		boolean showCreate = super.getRequest().getPrincipal().hasRealm(leg.getFlight().getAirlineManager());
+		super.getResponse().addGlobal("showCreate", showCreate);
+		super.getResponse().addGlobal("flightId", flightId);
 		super.getResponse().addData(dataset);
 	}
 

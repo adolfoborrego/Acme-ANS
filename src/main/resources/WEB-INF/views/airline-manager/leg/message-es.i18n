@@ -12,3 +12,9 @@ airline-manager.leg.list = Ver escalas
 airline-manager.leg.list.title = Lista de escalas
 
 airline-manager.leg.form.title = Detalles de escala
+
+manager.leg.update.submit = Actualizar escala
+manager.leg.create.submit = Crear escala
+manager.leg.delete.submit = Borrar escala
+
+leg.published = Publicado
