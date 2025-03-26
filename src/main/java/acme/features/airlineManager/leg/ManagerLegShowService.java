@@ -4,9 +4,11 @@ package acme.features.airlineManager.leg;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.leg.Leg;
+import acme.entities.leg.LegStatus;
 import acme.realms.airlineManager.AirlineManager;
 
 @GuiService
@@ -55,7 +57,11 @@ public class ManagerLegShowService extends AbstractGuiService<AirlineManager, Le
 	public void unbind(final Leg leg) {
 		assert leg != null;
 
-		Dataset dataset = super.unbindObject(leg, "scheduledDeparture", "scheduledArrival", "status");
+		SelectChoices choices;
+
+		choices = SelectChoices.from(LegStatus.class, leg.getStatus());
+
+		Dataset dataset = super.unbindObject(leg, "scheduledDeparture", "scheduledArrival", "status", "published");
 
 		// Atributos derivados
 		dataset.put("departureAirport", leg.getDepartureAirport().getName());
@@ -63,6 +69,7 @@ public class ManagerLegShowService extends AbstractGuiService<AirlineManager, Le
 		dataset.put("aircraft", leg.getAircraft().getRegistrationNumber());
 		dataset.put("duration", leg.getDuration());
 		dataset.put("flightNumber", leg.getFlightNumber());
+		dataset.put("statuses", choices);
 
 		super.getResponse().addData(dataset);
 	}
