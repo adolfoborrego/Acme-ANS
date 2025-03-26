@@ -1,0 +1,14 @@
+leg.scheduledDeparture = Departure
+leg.scheduledArrival = Arrival
+leg.status = Status
+leg.departureAirport = Departure Airport
+leg.arrivalAirport = Arrival Airport
+
+leg.duration = Duration (min)
+leg.flightNumber = Flight Number
+leg.aircraft = Aircraft
+
+airline-manager.leg.list = See legs
+airline-manager.leg.list.title = List of legs
+
+airline-manager.leg.form.title = Leg details

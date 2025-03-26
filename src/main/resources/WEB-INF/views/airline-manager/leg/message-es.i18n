@@ -1,0 +1,14 @@
+leg.scheduledDeparture = Salida
+leg.scheduledArrival = Llegada
+leg.status = Estado
+leg.departureAirport = Aeropuerto de salida
+leg.arrivalAirport = Aeropuerto de llegada
+
+leg.duration = Duración (min)
+leg.flightNumber = Nº de vuelo
+leg.aircraft = Aeronave
+
+airline-manager.leg.list = Ver escalas
+airline-manager.leg.list.title = Lista de escalas
+
+airline-manager.leg.form.title = Detalles de escala
