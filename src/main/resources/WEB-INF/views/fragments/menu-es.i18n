@@ -53,3 +53,8 @@ master.menu.manager.list-flights = Ver vuelos
 master.menu.technician = Técnico
 master.menu.technician.list-maintenanceRecords = Registros de mantenimiento
 master.menu.technician.list-tasks = Tareas
+
+# master.menu.customer ####################################################
+
+master.menu.customer = Cliente
+master.menu.customer.list-bookings = Reservas
