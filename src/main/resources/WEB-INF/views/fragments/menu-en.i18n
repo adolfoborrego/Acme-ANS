@@ -53,4 +53,5 @@ master.menu.manager.list-flights = List flights
 
 master.menu.technician = Technician
 master.menu.technician.list-maintenanceRecords = Maintenance records
+master.menu.technician.list-tasks = Tasks
 
