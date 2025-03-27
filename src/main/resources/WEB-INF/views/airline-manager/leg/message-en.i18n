@@ -18,3 +18,8 @@ manager.leg.create.submit = Create leg
 manager.leg.delete.submit = Delete leg
 
 leg.published = Published
+
+manager.flight.publish = Publish flight
+manager.leg.publish = Publish leg
+manager.flight.publish.error.no-legs = The flight has no legs.
+manager.flight.publish.error.unpublished-legs = All legs must be published before publishing the flight.

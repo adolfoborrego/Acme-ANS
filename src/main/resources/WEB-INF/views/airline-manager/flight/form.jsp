@@ -14,7 +14,7 @@
 	    <acme:input-checkbox code="airline-manager.flight.list.label.indicator" path="indicator" />
 
     <!-- Atributos derivados (solo aparecen en el show) -->
-        <jstl:if test="${acme:anyOf(_command, 'show|update|delete')}">
+        <jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')}">
 	        <acme:input-checkbox code="airline-manager.flight.list.label.published" path="published" readonly="true"/>
 		    <acme:input-moment code="airline-manager.flight.list.label.sheduledDeparture" path="sheduledDeparture" readonly="true"/>
 		    <acme:input-moment code="airline-manager.flight.list.label.sheduledArrival" path="sheduledArrival" readonly="true"/>
@@ -27,10 +27,14 @@
     <jstl:if test="${_command == 'show' && numberOfLayovers != 0}">
    		 <acme:button code="airline-manager.leg.list" action="/airline-manager/leg/list?flightId=${id}" />
    	</jstl:if>
+   	<jstl:if test="${_command == 'show' && numberOfLayovers == 0}">
+   		 <acme:button code="manager.leg.create.submit" action="/airline-manager/leg/create?flightId=${id}" />
+   	</jstl:if>
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && !published}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && !published}">
 			<acme:submit code="manager.flight.update.submit" action="/airline-manager/flight/update"/>
 			<acme:submit code="manager.flight.delete.submit" action="/airline-manager/flight/delete"/>
+			<acme:submit code="manager.flight.publish" action="/airline-manager/flight/publish" />
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="manager.flight.create.submit" action="/airline-manager/flight/create"/>
