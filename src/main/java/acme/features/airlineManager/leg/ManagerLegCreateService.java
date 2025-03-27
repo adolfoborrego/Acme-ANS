@@ -55,12 +55,19 @@ public class ManagerLegCreateService extends AbstractGuiService<AirlineManager, 
 
 	@Override
 	public void unbind(final Leg leg) {
-		SelectChoices choices;
+		assert leg != null;
 
-		choices = SelectChoices.from(LegStatus.class, leg.getStatus());
+		SelectChoices statuses = SelectChoices.from(LegStatus.class, leg.getStatus());
+		SelectChoices departureAirports = SelectChoices.from(this.repository.findAllAirports(), "name", leg.getDepartureAirport());
+		SelectChoices arrivalAirports = SelectChoices.from(this.repository.findAllAirports(), "name", leg.getArrivalAirport());
+		SelectChoices aircrafts = SelectChoices.from(this.repository.findAllAircraft(), "registrationNumber", leg.getAircraft());
+
 		Dataset dataset = super.unbindObject(leg, "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft", "published");
 		dataset.put("flightId", leg.getFlight().getId());
-		dataset.put("statuses", choices);
+		dataset.put("statuses", statuses);
+		dataset.put("departureAirports", departureAirports);
+		dataset.put("arrivalAirports", arrivalAirports);
+		dataset.put("aircrafts", aircrafts);
 
 		super.getResponse().addData(dataset);
 	}

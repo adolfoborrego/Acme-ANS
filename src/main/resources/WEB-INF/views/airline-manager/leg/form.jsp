@@ -8,10 +8,10 @@
     <acme:input-moment path="scheduledArrival" code="leg.scheduledArrival" />
     <acme:input-select path="status" code="leg.status" choices="${statuses}" />
     
-    <acme:input-textbox path="departureAirport" code="leg.departureAirport"  />
-    <acme:input-textbox path="arrivalAirport" code="leg.arrivalAirport" />
-    
-    <acme:input-textbox path="aircraft" code="leg.aircraft" />
+    <acme:input-select code="leg.departureAirport" path="departureAirport" choices="${departureAirports}"/>
+	<acme:input-select code="leg.arrivalAirport" path="arrivalAirport" choices="${arrivalAirports}"/>
+	<acme:input-select code="leg.aircraft" path="aircraft" choices="${aircrafts}"/>
+
     
 
     <!-- Atributos derivados (solo aparecen en el show) -->
@@ -22,9 +22,10 @@
     </jstl:if>
     
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && !published}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && !published}">
 			<acme:submit code="manager.leg.update.submit" action="/airline-manager/leg/update"/>
 			<acme:submit code="manager.leg.delete.submit" action="/airline-manager/leg/delete"/>
+			<acme:submit code="manager.leg.publish" action="/airline-manager/leg/publish" />
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="manager.leg.create.submit" action="/airline-manager/leg/create?flightId=${flightId}"/>

@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.aircraft.Aircraft;
+import acme.entities.airport.Airport;
 import acme.entities.flight.Flight;
 import acme.entities.leg.Leg;
 
@@ -33,4 +35,11 @@ public interface ManagerLegRepository extends AbstractRepository {
 
 	@Query("SELECT f FROM Flight f WHERE f.id = :id")
 	Flight findFlightById(int id);
+
+	@Query("SELECT a FROM Airport a")
+	Collection<Airport> findAllAirports();
+
+	@Query("SELECT a FROM Aircraft a")
+	Collection<Aircraft> findAllAircraft();
+
 }
