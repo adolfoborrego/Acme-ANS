@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.MaintenanceRecord;
+import acme.entities.maintenanceRecord.MaintenanceRecord;
 import acme.realms.Technician;
 
 @GuiService

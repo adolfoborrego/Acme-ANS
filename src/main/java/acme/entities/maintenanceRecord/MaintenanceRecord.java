@@ -1,6 +1,7 @@
 
-package acme.entities;
+package acme.entities.maintenanceRecord;
 
+import java.beans.Transient;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -17,7 +18,9 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
+import acme.client.helpers.SpringHelper;
 import acme.entities.aircraft.Aircraft;
+import acme.realms.Technician;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -64,4 +67,17 @@ public class MaintenanceRecord extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private Aircraft			aircraft;
+
+	// Derivated Attributes -------------------
+
+
+	@Transient
+	public Technician getTechnician() {
+		Technician technician;
+		MaintenanceRecordRepository repository;
+		repository = SpringHelper.getBean(MaintenanceRecordRepository.class);
+
+		technician = repository.findTechnicianByMaintenanceRecordId(this.getId());
+		return technician;
+	}
 }

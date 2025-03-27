@@ -17,4 +17,6 @@ technician.maintenance-record.list.label.estimatedCost=Coste Aproximado
 technician.maintenance-record.list.label.inspectionDueDate=Siguiente Revisión
 technician.maintenance-record.list.label.notes=Notas
 
+technician.maintenance-record.list.label.published = Publicado
+technician.maintenance-record.list.label.moment = Momento
 
