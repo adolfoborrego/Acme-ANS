@@ -8,8 +8,8 @@ import acme.client.components.principals.UserAccount;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.entities.Customer;
-import acme.entities.Technician;
 import acme.entities.flightCrewMember.FlightCrewMember;
+import acme.realms.Technician;
 import acme.realms.airlineManager.AirlineManager;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
