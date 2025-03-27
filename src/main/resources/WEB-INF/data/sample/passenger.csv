@@ -1,0 +1,32 @@
+key,fullName,email,passportNumber,dateOfBirth,specialNeeds,key:customer
+
+# Base entity
+passenger-00,John Doe,john.doe@example.com,AB123456,2000/01/01 0:00,Wheelchair assistance,customer-01
+
+# Passport number variations
+passenger-01,Alice Smith,alice.smith@example.com,XZ98765,2000/05/15 0:00,null,customer-02
+passenger-02,Liam Green,liam.green@example.com,BNM543210,2000/06/25 0:00,Deaf assistance,customer-03
+passenger-03,John Doe,john.doe@example.com,AB123456,2000/01/01 0:00,Wheelchair assistance,customer-01
+
+# Date of birth variations
+passenger-04,Alice Smith,alice.smith@example.com,XZ98765,2000/05/15 4:00,null,customer-02
+passenger-05,Becca Green,beca.green@example.com,BNM543679,2000/06/25 0:30,Deaf assistance,customer-03
+passenger-06,Melissa One,melissa.one@example.com,LMS345234,2000/06/25 0:00,null,customer-01
+passenger-07,Pablo Smith,psmith@example.com,JKO268374,2000/09/23 0:01,null,customer-02
+
+# Special needs variations
+passenger-08,John Doe,john.doe@example.com,AB123456,2000/01/01 0:00,Este tiene 50 caracteres para probar special needs.,customer-01
+passenger-09,Alice Smith,alice.smith@example.com,XZ98765,2000/05/15 0:00,null,customer-02
+passenger-10,Liam Green,liam.green@example.com,BNM543210,2000/06/25 0:00,Esto es una prueba.,customer-03
+passenger-11,John Doe,john.doe@example.com,AB123456,2000/01/01 0:00,O,customer-01
+
+# Email variations
+passenger-12,Sky Blue,s@example.com,XZ98765,2000/05/15 0:00,null,customer-02
+passenger-13,Timoty Chalamet,this.is.a.big.email@example.com,BNM543210,2000/06/25 0:00,Deaf assistance,customer-03
+passenger-14,Green Doe,t@example.com,BNM543210,2000/06/25 0:00,Deaf assistance,customer-03
+
+
+# Customer variations
+passenger-15,John Doe,john.doe@example.com,AB123456,2000/01/01 0:00,Wheelchair assistance,customer-01
+passenger-16,Alice Smith,alice.smith@example.com,XZ98765,2000/05/15 0:00,null,customer-02
+passenger-17,Liam Green,liam.green@example.com,BNM543210,2000/06/25 0:00,Deaf assistance,customer-03
