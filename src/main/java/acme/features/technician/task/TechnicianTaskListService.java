@@ -1,5 +1,5 @@
 
-package acme.features.technician.maintenanceRecord;
+package acme.features.technician.task;
 
 import java.util.Collection;
 
@@ -8,16 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.MaintenanceRecord;
+import acme.entities.Task;
 import acme.realms.Technician;
 
 @GuiService
-public class TechnicianMaintRecordListService extends AbstractGuiService<Technician, MaintenanceRecord> {
+public class TechnicianTaskListService extends AbstractGuiService<Technician, Task> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private TechnicianMaintRecordRepository repository;
+	private TechnicianTaskRepository repository;
 
 	// AbstractGuiService interface -------------------------------------------
 
@@ -31,24 +31,24 @@ public class TechnicianMaintRecordListService extends AbstractGuiService<Technic
 
 	@Override
 	public void load() {
-		Collection<MaintenanceRecord> data;
-		int userId;
+		Collection<Task> data;
 		int technicianId;
+		int userId;
 
 		userId = super.getRequest().getPrincipal().getAccountId();
 		technicianId = this.repository.findTechnicianIdByUserId(userId);
-		data = this.repository.findAllByTechnician(technicianId);
+		data = this.repository.findTasksByTechnicianId(technicianId);
 
 		super.getBuffer().addData(data);
 	}
 
 	@Override
-	public void unbind(final MaintenanceRecord maintenanceRecord) {
+	public void unbind(final Task task) {
 
-		assert maintenanceRecord != null;
+		assert task != null;
 
 		Dataset dataset;
-		dataset = super.unbindObject(maintenanceRecord, "currentStatus", "estimatedCost", "inspectionDueDate", "notes", "aircraft");
+		dataset = super.unbindObject(task, "id", "type", "description", "priority", "estimatedDuration");
 
 		super.getResponse().addData(dataset);
 	}
