@@ -3,6 +3,9 @@ package acme.entities.airport;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -22,50 +25,51 @@ public class Airport extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
 	@ValidString(min = 1, max = 50)
 	@Automapped
-	private String				name;
+	private String					name;
 
 	@Mandatory
 	@Column(unique = true)
 	@ValidString(pattern = "^[A-Z]{3}$")
 	@ValidUniqueIataCode
-	private String				iataCode;
+	private String					iataCode;
 
 	@Mandatory
-	@ValidString(pattern = "^(INTERNATIONAL|DOMESTIC|REGIONAL)$")
+	@Valid
 	@Automapped
-	private String				operationalScope;
-
-	@Mandatory
-	@ValidString(min = 1, max = 50)
-	@Automapped
-	private String				city;
+	@Enumerated(EnumType.STRING)
+	private AirportOperationalScope	operationalScope;
 
 	@Mandatory
 	@ValidString(min = 1, max = 50)
 	@Automapped
-	private String				country;
+	private String					city;
+
+	@Mandatory
+	@ValidString(min = 1, max = 50)
+	@Automapped
+	private String					country;
 
 	@Optional
 	@ValidUrl
 	@Automapped
-	private String				website;
+	private String					website;
 
 	@Optional
 	@ValidEmail
 	@Automapped
-	private String				emailAddress;
+	private String					emailAddress;
 
 	@Optional
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	@Automapped
-	private String				contactPhoneNumber;
+	private String					contactPhoneNumber;
 
 	// Derived attributes -----------------------------------------------------
 
