@@ -31,7 +31,7 @@ airline-24,Emirates,BBU,https://example.com/page.html?x=1&y=2,LUXURY,2010/01/01 
 airline-25,Emirates,BBV,http://localhost:3000,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
 airline-26,Emirates,BBW,http://127.0.0.1:8080/app,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
 # type variations
-airline-27,Emirates,BBX,https://www.emirates.com/,LOW-COST,2010/01/01 00:00,contact@emirates.com,+34912757792
+airline-27,Emirates,BBX,https://www.emirates.com/,LOW_COST,2010/01/01 00:00,contact@emirates.com,+34912757792
 airline-28,Emirates,BBY,https://www.emirates.com/,STANDARD,2010/01/01 00:00,contact@emirates.com,+34912757792
 airline-29,Emirates,BBZ,https://www.emirates.com/,LUXURY,2010/01/01 00:00,contact@emirates.com,+34912757792
 # foundationTime variations

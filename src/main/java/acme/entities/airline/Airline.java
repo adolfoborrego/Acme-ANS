@@ -5,8 +5,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -48,9 +51,10 @@ public class Airline extends AbstractEntity {
 	private String				website;
 
 	@Mandatory
-	@ValidString(pattern = "^(LUXURY|STANDARD|LOW-COST)$")
+	@Valid
 	@Automapped
-	private String				type;
+	@Enumerated(EnumType.STRING)
+	private AirlineType			type;
 
 	@Mandatory
 	@ValidMoment(past = true)
