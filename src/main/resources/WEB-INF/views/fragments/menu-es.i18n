@@ -55,4 +55,5 @@ master.menu.technician.list-maintenanceRecords = Registros de mantenimiento
 master.menu.technician.list-tasks = Tareas
 
 master.menu.administrator.list-airports = Listar aeropuertos
+master.menu.administrator.list-airlines = Listar aerolineas
 
