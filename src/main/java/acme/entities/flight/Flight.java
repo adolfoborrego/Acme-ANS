@@ -65,8 +65,8 @@ public class Flight extends AbstractEntity {
 		Leg leg;
 		LegRepository legRepository;
 		legRepository = SpringHelper.getBean(LegRepository.class);
-		leg = legRepository.findFirstLegByFlight(this.getId());
-		result = leg.getScheduledDeparture();
+		leg = legRepository.findLegsOrderByAscendent(this.getId()).stream().findFirst().orElse(null);
+		result = leg != null ? leg.getScheduledDeparture() : null;
 		return result;
 	}
 
@@ -76,8 +76,8 @@ public class Flight extends AbstractEntity {
 		Leg leg;
 		LegRepository legRepository;
 		legRepository = SpringHelper.getBean(LegRepository.class);
-		leg = legRepository.findLastLegByFlight(this.getId());
-		result = leg.getScheduledArrival();
+		leg = legRepository.findLegsOrderByDescendent(this.getId()).stream().findFirst().orElse(null);
+		result = leg != null ? leg.getScheduledArrival() : null;
 		return result;
 	}
 
@@ -87,8 +87,8 @@ public class Flight extends AbstractEntity {
 		Leg leg;
 		LegRepository legRepository;
 		legRepository = SpringHelper.getBean(LegRepository.class);
-		leg = legRepository.findFirstLegByFlight(this.getId());
-		result = leg.getDepartureAirport().getCity();
+		leg = legRepository.findLegsOrderByAscendent(this.getId()).stream().findFirst().orElse(null);
+		result = leg != null ? leg.getDepartureAirport().getCity() : null;
 		return result;
 	}
 
@@ -98,8 +98,8 @@ public class Flight extends AbstractEntity {
 		Leg leg;
 		LegRepository legRepository;
 		legRepository = SpringHelper.getBean(LegRepository.class);
-		leg = legRepository.findLastLegByFlight(this.getId());
-		result = leg.getArrivalAirport().getCity();
+		leg = legRepository.findLegsOrderByDescendent(this.getId()).stream().findFirst().orElse(null);
+		result = leg != null ? leg.getArrivalAirport().getCity() : null;
 		return result;
 	}
 

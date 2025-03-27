@@ -14,8 +14,8 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.constraints.ValidUniqueEmployeeCode;
 import acme.constraints.ValidCodeInitials;
+import acme.constraints.ValidUniqueEmployeeCode;
 import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
@@ -40,7 +40,7 @@ public class FlightCrewMember extends AbstractRole {
 	private String				phoneNumber;
 
 	@Mandatory
-	@ValidString(max = 255)
+	@ValidString(max = 255, min = 1)
 	@Automapped
 	String						languageSkills;
 
@@ -50,7 +50,7 @@ public class FlightCrewMember extends AbstractRole {
 	String						availabilityStatus;
 
 	@Mandatory
-	@ValidMoney(min = 0)
+	@ValidMoney(min = 0, max = 100000)
 	@Automapped
 	Money						salary;
 

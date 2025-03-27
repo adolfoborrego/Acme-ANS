@@ -3,6 +3,8 @@ package acme.entities.aircraft;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
@@ -48,9 +50,10 @@ public class Aircraft extends AbstractEntity {
 	private Integer				cargoWeight;
 
 	@Mandatory
-	@ValidString(pattern = "^(ACTIVE|MAINTENANCE)$")
+	@Valid
 	@Automapped
-	private String				status;
+	@Enumerated(EnumType.STRING)
+	private AircraftStatus		status;
 
 	@Optional
 	@ValidString(min = 1, max = 255)

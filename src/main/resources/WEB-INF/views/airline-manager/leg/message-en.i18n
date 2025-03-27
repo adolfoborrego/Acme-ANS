@@ -1,0 +1,25 @@
+leg.scheduledDeparture = Departure
+leg.scheduledArrival = Arrival
+leg.status = Status
+leg.departureAirport = Departure Airport
+leg.arrivalAirport = Arrival Airport
+
+leg.duration = Duration (min)
+leg.flightNumber = Flight Number
+leg.aircraft = Aircraft
+
+airline-manager.leg.list = See legs
+airline-manager.leg.list.title = List of legs
+
+airline-manager.leg.form.title = Leg details
+
+manager.leg.update.submit = Update leg
+manager.leg.create.submit = Create leg
+manager.leg.delete.submit = Delete leg
+
+leg.published = Published
+
+manager.flight.publish = Publish flight
+manager.leg.publish = Publish leg
+manager.flight.publish.error.no-legs = The flight has no legs.
+manager.flight.publish.error.unpublished-legs = All legs must be published before publishing the flight.
