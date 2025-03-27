@@ -1,36 +1,31 @@
-key,registrationMoment,passengerEmail,description,type,indicator,published,key:assistanceAgent
-# base
-claim-00,2010/01/01 00:00,passenger@example.es,test description,FLIGHT-ISSUES,false,false,agent-01
-# registrationMoment - standard variations
-claim-01,2000/01/01 00:00,passenger@example.es,test description,FLIGHT-ISSUES,false,false,agent-01
-claim-02,2000/01/01 00:01,passenger@example.es,test description,FLIGHT-ISSUES,false,false,agent-01
-claim-03,2022/07/29 23:59,passenger@example.es,test description,FLIGHT-ISSUES,false,false,agent-01
-claim-04,2022/07/30 00:00,passenger@example.es,test description,FLIGHT-ISSUES,false,false,agent-01
+key,registrationMoment,passengerEmail,description,type,published,key:assistanceAgent,key:leg
+# base entity
+claim-00,2011/04/16 00:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,agent-01,leg-00
+# registrationMoment variations
+claim-01,2000/01/01 00:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,agent-01,leg-00
+claim-02,2000/01/01 00:01,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,agent-01,leg-00
+claim-03,2022/07/29 23:59,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,agent-01,leg-00
+claim-04,2022/07/30 00:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,agent-01,leg-00
 # passengerEmail variations
-claim-05,2010/01/01 00:00,user-test@lorem-ipsum.net,test description,FLIGHT-ISSUES,false,false,agent-01
-claim-06,2010/01/01 00:00,x@y.z,test description,FLIGHT-ISSUES,false,false,agent-01
-claim-07,2010/01/01 00:00,abc@xyz.fr,test description,FLIGHT-ISSUES,false,false,agent-01
-claim-08,2010/01/01 00:00,name@domain.co.uk,test description,FLIGHT-ISSUES,false,false,agent-01
-claim-09,2010/01/01 00:00,long-email-address@verylongdomain-example.com,test description,FLIGHT-ISSUES,false,false,agent-01
-claim-10,2010/01/01 00:00,support@mailserver.info,test description,FLIGHT-ISSUES,false,false,agent-01
+claim-05,2011/04/16 00:00,a@b.e,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,agent-01,leg-00
+claim-06,2011/04/16 00:00,a@b.es,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,agent-01,leg-00
+claim-07,2011/04/16 00:00,a@b.ex,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,agent-01,leg-00
+claim-08,2011/04/16 00:00,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,agent-01,leg-00
+claim-09,2011/04/16 00:00,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,true,agent-01,leg-00
 # description variations
-claim-11,2010/01/01 00:00,passenger@example.es,A,FLIGHT-ISSUES,false,false,agent-01
-claim-12,2010/01/01 00:00,passenger@example.es,Ab,FLIGHT-ISSUES,false,false,agent-01
-claim-13,2010/01/01 00:00,passenger@example.es,"Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 ca",FLIGHT-ISSUES,false,false,agent-01
-claim-14,2010/01/01 00:00,passenger@example.es,"Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 car",FLIGHT-ISSUES,false,false,agent-01
-claim-15,2010/01/01 00:00,passenger@example.es,लोरम इप्सम,FLIGHT-ISSUES,false,false,agent-01
-claim-16,2010/01/01 00:00,passenger@example.es,ローレム・イプサム,FLIGHT-ISSUES,false,false,agent-01
-claim-17,2010/01/01 00:00,passenger@example.es,לורם איפסום,FLIGHT-ISSUES,false,false,agent-01
-claim-18,2010/01/01 00:00,passenger@example.es,<b>Bold Text</b>,FLIGHT-ISSUES,false,false,agent-01
-claim-19,2010/01/01 00:00,passenger@example.es,<img src='x' onerror='alert("XSS")'>,FLIGHT-ISSUES,false,false,agent-01
-claim-20,2010/01/01 00:00,passenger@example.es,' OR 1=1 --,FLIGHT-ISSUES,false,false,agent-01
+claim-10,2011/04/16 00:00,acme@lorem-ipsum.org,L,FLIGHT_ISSUES,true,agent-01,leg-00
+claim-11,2011/04/16 00:00,acme@lorem-ipsum.org,Lo,FLIGHT_ISSUES,true,agent-01,leg-00
+claim-12,2011/04/16 00:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",FLIGHT_ISSUES,true,agent-01,leg-00
+claim-13,2011/04/16 00:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",FLIGHT_ISSUES,true,agent-01,leg-00
+claim-14,2011/04/16 00:00,acme@lorem-ipsum.org,โลเร็ม อิปซัม,FLIGHT_ISSUES,true,agent-01,leg-00
+claim-15,2011/04/16 00:00,acme@lorem-ipsum.org,لوريم إيبسوم,FLIGHT_ISSUES,true,agent-01,leg-00
+claim-16,2011/04/16 00:00,acme@lorem-ipsum.org,洛伦·伊普森,FLIGHT_ISSUES,true,agent-01,leg-00
+claim-17,2011/04/16 00:00,acme@lorem-ipsum.org,<marquee>Hacked</marquee>,FLIGHT_ISSUES,true,agent-01,leg-00
+claim-18,2011/04/16 00:00,acme@lorem-ipsum.org,<script>alert(‘Hacked!’);</script>,FLIGHT_ISSUES,true,agent-01,leg-00
+claim-19,2011/04/16 00:00,acme@lorem-ipsum.org,' or 'A' = 'A ,FLIGHT_ISSUES,true,agent-01,leg-00
 # type variations
-claim-21,2010/01/01 00:00,passenger@example.es,test description,LUGGAGE-ISSUES,false,false,agent-01
-claim-22,2010/01/01 00:00,passenger@example.es,test description,SECURITY-INCIDENT,false,false,agent-01
-claim-23,2010/01/01 00:00,passenger@example.es,test description,OTHER-ISSUES,false,false,agent-01
-# indicator variations
-claim-24,2010/01/01 00:00,passenger@example.es,test description,FLIGHT-ISSUES,true,false,agent-01
-claim-25,2010/01/01 00:00,passenger@example.es,test description,FLIGHT-ISSUES,false,false,agent-01
+claim-20,2011/04/16 00:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",LUGGAGE_ISSUES,true,agent-01,leg-00
+claim-21,2011/04/16 00:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",SECURITY_INCIDENT,true,agent-01,leg-00
+claim-22,2011/04/16 00:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",OTHER_ISSUES,true,agent-01,leg-00
 # published variations
-claim-26,2010/01/01 00:00,passenger@example.es,test description,FLIGHT-ISSUES,false,false,agent-01
-claim-27,2010/01/01 00:00,passenger@example.es,test description,FLIGHT-ISSUES,false,true,agent-01
+claim-23,2011/04/16 00:00,acme@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FLIGHT_ISSUES,false,agent-01,leg-00
