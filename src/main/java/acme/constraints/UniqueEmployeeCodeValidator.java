@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
-import acme.entities.flightCrewMember.FlightCrewMemberRepository;
 import acme.realms.airlineManager.AirlineManagerRepository;
 import acme.realms.assistanceAgent.AssistanceAgentRepository;
+import acme.realms.flightCrewMember.FlightCrewMemberRepository;
 
 @Validator
 public class UniqueEmployeeCodeValidator extends AbstractValidator<ValidUniqueEmployeeCode, String> {
