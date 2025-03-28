@@ -15,8 +15,8 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
-import acme.entities.flightCrewMember.FlightCrewMember;
 import acme.entities.leg.Leg;
+import acme.realms.flightCrewMember.FlightCrewMember;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,7 +38,7 @@ public class FlightAssignment extends AbstractEntity {
 	Date						momentOfLastUpdate;
 
 	@Mandatory
-	@ValidString(pattern = "^(CONFIRMED||PENDING|CANCELLED)$")
+	@ValidString(pattern = "^(CONFIRMED|PENDING|CANCELLED)$")
 	@Automapped
 	String						currentStatus;
 

@@ -9,9 +9,9 @@ import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.entities.Customer;
 import acme.entities.Technician;
-import acme.entities.flightCrewMember.FlightCrewMember;
 import acme.realms.airlineManager.AirlineManager;
 import acme.realms.assistanceAgent.AssistanceAgent;
+import acme.realms.flightCrewMember.FlightCrewMember;
 
 @Validator
 public class CodeInitialsValidator extends AbstractValidator<ValidCodeInitials, AbstractRole> {
