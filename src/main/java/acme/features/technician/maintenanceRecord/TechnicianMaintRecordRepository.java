@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
-import acme.entities.MaintenanceRecord;
+import acme.entities.maintenanceRecord.MaintenanceRecord;
 
 @Repository
 public interface TechnicianMaintRecordRepository extends AbstractRepository {
@@ -20,4 +20,7 @@ public interface TechnicianMaintRecordRepository extends AbstractRepository {
 
 	@Query("SELECT t.id FROM Technician t WHERE t.userAccount.id = :userId")
 	int findTechnicianIdByUserId(int userId);
+
+	@Query("SELECT mr FROM MaintenanceRecord mr WHERE mr.id = :maintenanceRecordId")
+	MaintenanceRecord findById(int maintenanceRecordId);
 }

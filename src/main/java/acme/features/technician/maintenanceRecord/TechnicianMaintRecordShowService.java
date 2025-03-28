@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.MaintenanceRecord;
+import acme.entities.maintenanceRecord.MaintenanceRecord;
 import acme.realms.Technician;
 
 @GuiService
@@ -23,14 +23,30 @@ public class TechnicianMaintRecordShowService extends AbstractGuiService<Technic
 	@Override
 	public void authorise() {
 		boolean status;
-		// TO IMPLEMENT DETERMINA SI LA REQUEST ES BUENA O NO
+		int maintenanceRecordId;
+		int userId;
+		int technicianId;
+		MaintenanceRecord maintenanceRecord;
+
+		userId = super.getRequest().getPrincipal().getAccountId();
+		technicianId = this.repository.findTechnicianIdByUserId(userId);
+		maintenanceRecordId = super.getRequest().getData("id", int.class);
+		maintenanceRecord = this.repository.findById(maintenanceRecordId);
+
+		status = maintenanceRecord != null && technicianId == maintenanceRecord.getTechnician().getId();
+		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
 	public void load() {
-		//TO DO PROCESA LOS DATOS NECESARIOS PARA CUMPLIR CON LA REQUEST Y LOS ALMACENA EN EL BUFFER
+		int maintenanceRecordId;
+		MaintenanceRecord maintenanceRecord;
 
-		super.getBuffer().addData(null);
+		maintenanceRecordId = super.getRequest().getData("id", int.class);
+		maintenanceRecord = this.repository.findById(maintenanceRecordId);
+
+		super.getBuffer().addData(maintenanceRecord);
 	}
 
 	@Override
@@ -40,8 +56,8 @@ public class TechnicianMaintRecordShowService extends AbstractGuiService<Technic
 		assert maintenanceRecord != null;
 
 		Dataset dataset;
-		dataset = super.unbindObject(null); // flight, "tag", "indicator", "cost", "description" el bjeto con los campos que quiero mandar
-
+		dataset = super.unbindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "published");
+		dataset.put("aircraft", maintenanceRecord.getAircraft().getRegistrationNumber());
 		super.getResponse().addData(dataset);
 	}
 }
