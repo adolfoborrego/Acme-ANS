@@ -48,7 +48,8 @@ public class TechnicianMaintRecordListService extends AbstractGuiService<Technic
 		assert maintenanceRecord != null;
 
 		Dataset dataset;
-		dataset = super.unbindObject(maintenanceRecord, "currentStatus", "estimatedCost", "inspectionDueDate", "notes", "aircraft");
+		dataset = super.unbindObject(maintenanceRecord, "currentStatus", "estimatedCost", "inspectionDueDate", "notes");
+		dataset.put("aircraft", maintenanceRecord.getAircraft().getRegistrationNumber());
 
 		super.getResponse().addData(dataset);
 	}
