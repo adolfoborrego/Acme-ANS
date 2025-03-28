@@ -60,5 +60,7 @@ master.menu.technician = Técnico
 master.menu.technician.list-maintenanceRecords = Registros de mantenimiento
 master.menu.technician.list-tasks = Tareas
 
+# master.menu.administrator/ Entidades grupales ############################################
 master.menu.administrator.list-airports = Listar aeropuertos
 master.menu.administrator.list-airlines = Listar aerolineas
+master.menu.administrator.list-aircrafts = Listar aeronaves

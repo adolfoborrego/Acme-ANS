@@ -1,0 +1,9 @@
+administrator.aircraft.list.title = Listado de Aeronaves
+administrator.aircraft.form.title = Detalles de Aeronave
+
+
+administrator.aircraft.list.label.model = Modelo
+administrator.aircraft.list.label.registrationNumber = Número de Registro
+administrator.aircraft.list.label.capacity = Capacidad
+administrator.aircraft.list.label.status = Estado
+administrator.aircraft.list.label.airline.iata =IATA Code Aerolínea
