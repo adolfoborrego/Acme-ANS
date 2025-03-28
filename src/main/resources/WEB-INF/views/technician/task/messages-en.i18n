@@ -1,0 +1,19 @@
+# defaults-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+technician.task.form.title = Details of Tasks
+technician.task.list.title = Listing of Tasks
+
+technician.task.list.label.id = Identifier
+technician.task.list.label.description = Description
+technician.task.list.label.type = Type
+technician.task.list.label.estimatedDuration = Estimated Duration
+technician.task.list.label.priority = Priority
+

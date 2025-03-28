@@ -23,3 +23,8 @@
 	<acme:list-column code="airline-manager.flight.list.label.description" path="description" />
     <acme:list-payload path="payload"/>	
 </acme:list>
+<jstl:if test="${showCreate}">
+	<acme:button code="manager.flight.create" action="/airline-manager/flight/create" />
+</jstl:if>
+
+

@@ -49,10 +49,11 @@ public class ManagerFlightListService extends AbstractGuiService<AirlineManager,
 	@Override
 	public void unbind(final Flight flight) {
 		assert flight != null;
-
+		boolean showCreate;
 		Dataset dataset;
 		dataset = super.unbindObject(flight, "tag", "indicator", "cost", "description");
-		
+		showCreate = super.getRequest().getPrincipal().hasRealm(flight.getAirlineManager());
+		super.getResponse().addGlobal("showCreate", showCreate);
 		super.getResponse().addData(dataset);
 	}
 }

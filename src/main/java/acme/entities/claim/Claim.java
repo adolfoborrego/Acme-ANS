@@ -2,11 +2,15 @@
 package acme.entities.claim;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -16,7 +20,11 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
+import acme.client.helpers.SpringHelper;
 import acme.entities.leg.Leg;
+import acme.entities.trackingLog.TrackingLog;
+import acme.entities.trackingLog.TrackingLogIndicator;
+import acme.entities.trackingLog.TrackingLogRepository;
 import acme.realms.assistanceAgent.AssistanceAgent;
 import lombok.Getter;
 import lombok.Setter;
@@ -48,13 +56,10 @@ public class Claim extends AbstractEntity {
 	private String				description;
 
 	@Mandatory
-	@ValidString(pattern = "^(FLIGHT-ISSUES|LUGGAGE-ISSUES|SECURITY-INCIDENT|OTHER-ISSUES)$")
+	@Valid
 	@Automapped
-	private String				type;
-
-	@Mandatory
-	@Automapped
-	private Boolean				indicator;
+	@Enumerated(EnumType.STRING)
+	private ClaimType			type;
 
 	@Mandatory
 	@Automapped
@@ -62,16 +67,31 @@ public class Claim extends AbstractEntity {
 
 	// Derived attributes -----------------------------------------------------
 
+
+	@Transient
+	public TrackingLogIndicator getIndicator() {
+		TrackingLogRepository trackingLogRepository;
+		List<TrackingLog> trackingLogs;
+		TrackingLogIndicator indicator;
+		Integer numberOfTrackingLogs;
+		trackingLogRepository = SpringHelper.getBean(TrackingLogRepository.class);
+		trackingLogs = trackingLogRepository.findPublishedTrackingLogsByClaimId(this.getId());
+		numberOfTrackingLogs = trackingLogs.size();
+		indicator = numberOfTrackingLogs == 0 ? TrackingLogIndicator.PENDING : trackingLogs.get(numberOfTrackingLogs - 1).getIndicator();
+		return indicator;
+	}
+
 	// Relationships ----------------------------------------------------------
 
-	@Valid
-	@Optional
-	@ManyToOne
-	private AssistanceAgent		assistanceAgent;
 
 	@Valid
 	@Optional
 	@ManyToOne
-	private Leg					leg;
+	private AssistanceAgent	assistanceAgent;
+
+	@Valid
+	@Optional
+	@ManyToOne
+	private Leg				leg;
 
 }

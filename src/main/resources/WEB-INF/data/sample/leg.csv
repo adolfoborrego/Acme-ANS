@@ -1,34 +1,34 @@
-key,scheduled-departure,scheduled-arrival,status,key:flight,key:departureAirport,key:arrivalAirport,key:aircraft
+key,scheduled-departure,scheduled-arrival,status,published,key:flight,key:departureAirport,key:arrivalAirport,key:aircraft
 
 
 # base entity
-leg-00,2000/02/01 09:00,2000/02/01 10:00,ON-TIME,flight-01,airport-00,airport-01,aircraft-01
+leg-00,2000/02/01 09:00,2000/02/01 10:00,ON_TIME,true,flight-01,airport-00,airport-01,aircraft-01
 
 # schedule departure variations
-leg-01,2000/01/01 0:00,2000/01/01 0:01,ON-TIME,flight-01,airport-00,airport-01,aircraft-01
-leg-02,2000/01/01 0:01,2000/01/01 0:02,ON-TIME,flight-02,airport-00,airport-01,aircraft-01
-leg-03,2200/12/31 23:57,2200/12/31 23:58,ON-TIME,flight-03,airport-00,airport-01,aircraft-01
-leg-04,2200/12/31 23:58,2200/12/31 23:59,ON-TIME,flight-04,airport-00,airport-01,aircraft-01
+leg-01,2000/01/01 0:00,2000/01/01 0:01,ON_TIME,true,flight-01,airport-00,airport-01,aircraft-01
+leg-02,2000/01/01 0:01,2000/01/01 0:02,ON_TIME,true,flight-02,airport-00,airport-01,aircraft-01
+leg-03,2200/12/31 23:57,2200/12/31 23:58,ON_TIME,true,flight-03,airport-00,airport-01,aircraft-01
+leg-04,2200/12/31 23:58,2200/12/31 23:59,ON_TIME,true,flight-04,airport-00,airport-01,aircraft-01
 
 # schedule arrival variations
-leg-05,2000/01/01 0:00,2000/01/01 0:01,ON-TIME,flight-05,airport-00,airport-01,aircraft-01
-leg-06,2000/01/01 0:02,2000/02/01 0:03,ON-TIME,flight-06,airport-00,airport-01,aircraft-01
-leg-07,2000/02/01 10:00,2200/12/31 23:58,ON-TIME,flight-07,airport-00,airport-01,aircraft-01
-leg-08,2000/02/01 10:00,2200/12/31 23:59,ON-TIME,flight-08,airport-00,airport-01,aircraft-01
+leg-05,2000/01/01 0:00,2000/01/01 0:01,ON_TIME,false,flight-05,airport-00,airport-01,aircraft-01
+leg-06,2000/01/01 0:02,2000/02/01 0:03,ON_TIME,true,flight-06,airport-00,airport-01,aircraft-01
+leg-07,2000/02/01 10:00,2200/12/31 23:58,ON_TIME,true,flight-07,airport-00,airport-01,aircraft-01
+leg-08,2000/02/01 10:00,2200/12/31 23:59,ON_TIME,false,flight-08,airport-00,airport-01,aircraft-01
 
 # status variations
-leg-09,2000/02/01 16:01,2000/02/01 17:00,DELAYED,flight-04,airport-00,airport-01,aircraft-01
-leg-10,2000/02/01 17:01,2000/02/01 18:00,CANCELLED,flight-05,airport-00,airport-01,aircraft-01
-leg-11,2000/02/01 18:01,2000/02/01 19:00,LANDED,flight-06,airport-00,airport-01,aircraft-01
+leg-09,2000/02/01 16:01,2000/02/01 17:00,DELAYED,true,flight-04,airport-00,airport-01,aircraft-01
+leg-10,2000/02/01 17:01,2000/02/01 18:00,CANCELLED,true,flight-05,airport-00,airport-01,aircraft-01
+leg-11,2000/02/01 18:01,2000/02/01 19:00,LANDED,true,flight-06,airport-00,airport-01,aircraft-01
 
 # flight variations
-leg-12,2000/02/01 10:00,2000/02/01 11:00,ON-TIME,flight-22,airport-00,airport-01,aircraft-01
+leg-12,2000/02/01 10:00,2000/02/01 11:00,ON_TIME,true,flight-22,airport-00,airport-01,aircraft-01
 
 # departure airport variations
-leg-13,2000/02/01 21:01,2000/02/01 22:00,ON-TIME,flight-11,airport-10,airport-00,aircraft-01
+leg-13,2000/02/01 21:01,2000/02/01 22:00,ON_TIME,false,flight-11,airport-10,airport-00,aircraft-01
 
 # arrival airport variations
-leg-14,2000/02/01 22:01,2000/02/01 23:00,ON-TIME,flight-12,airport-00,airport-11,aircraft-01
+leg-14,2000/02/01 22:01,2000/02/01 23:00,ON_TIME,true,flight-12,airport-00,airport-11,aircraft-01
 
 # aircraft variations
-leg-15,2000/02/01 10:00,2000/02/01 11:00,ON-TIME,flight-29,airport-00,airport-01,aircraft-11
+leg-15,2000/02/01 10:00,2000/02/01 11:00,ON_TIME,true,flight-29,airport-00,airport-01,aircraft-11

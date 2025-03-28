@@ -12,3 +12,14 @@ airline-manager.leg.list = Ver escalas
 airline-manager.leg.list.title = Lista de escalas
 
 airline-manager.leg.form.title = Detalles de escala
+
+manager.leg.update.submit = Actualizar escala
+manager.leg.create.submit = Crear escala
+manager.leg.delete.submit = Borrar escala
+
+leg.published = Publicado
+
+manager.flight.publish = Publicar vuelo
+manager.leg.publish = Publicar escala
+manager.flight.publish.error.no-legs = El vuelo no tiene escalas.
+manager.flight.publish.error.unpublished-legs = Todas las escalas deben estar publicadas para poder publicar el vuelo.
