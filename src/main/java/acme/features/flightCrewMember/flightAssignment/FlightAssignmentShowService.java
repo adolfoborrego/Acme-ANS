@@ -47,8 +47,16 @@ public class FlightAssignmentShowService extends AbstractGuiService<FlightCrewMe
 		dataset = super.unbindObject(flightAssignment, "duty", "momentOfLastUpdate", "currentStatus", "leg", "remarks");
 
 		dataset.put("flightCrewMembers", flightCrewMembers);
+		Boolean readOnly;
+		if (flightAssignment.getDuty().equals("LEAD ATTENDANT")){
+			readOnly = false;
+		}else{
+			readOnly = true;
+		}
+		dataset.put(readOnly, "readOnly");
 
 		super.getResponse().addData(dataset);
+
 
 	}
 }

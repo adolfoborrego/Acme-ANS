@@ -2,7 +2,7 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 
-<acme:form readonly="true">
+<acme:form readonly=${readOnly}>
     <acme:input-textbox code="flight-crew-member.flight-assignment.list.label.role" path="duty"/>
     <acme:input-textbox code="flight-crew-member.flight-assignment.list.label.lastUpdate" path="momentOfLastUpdate"/>
     <acme:input-money code="flight-crew-member.flight-assignment.list.label.status" path="currentStatus"/>
