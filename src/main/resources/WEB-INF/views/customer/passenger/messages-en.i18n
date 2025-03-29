@@ -15,7 +15,8 @@ customer.passenger.list.label.fullName=Full Name
 customer.passenger.list.label.passportNumber=Passport
 customer.passenger.list.label.specialNeeds=Special Needs
 customer.passenger.list.label.email=Email
-customer.passenger.list.label.booking=Booking
+
+customer.passenger.list.label.dateOfBirth=Date of Birth
 
 customer.passenger.list = See Passengers
 customer.passenger.list.title = List of Passengers
