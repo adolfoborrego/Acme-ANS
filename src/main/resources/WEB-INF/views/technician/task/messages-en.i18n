@@ -16,4 +16,5 @@ technician.task.list.label.description = Description
 technician.task.list.label.type = Type
 technician.task.list.label.estimatedDuration = Estimated Duration
 technician.task.list.label.priority = Priority
+technician.task.form.label.published = Published
 

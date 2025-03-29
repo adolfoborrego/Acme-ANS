@@ -58,7 +58,6 @@ master.menu.assistance-agent.list-pending-claims = Listar reclamaciones pendient
 # master.menu.technician ####################################################
 master.menu.technician = Técnico
 master.menu.technician.list-maintenanceRecords = Registros de mantenimiento
-master.menu.technician.list-tasks = Tareas
 
 # master.menu.administrator/ Entidades grupales ############################################
 master.menu.administrator.list-airports = Listar aeropuertos

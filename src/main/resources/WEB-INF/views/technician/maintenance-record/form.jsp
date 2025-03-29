@@ -12,10 +12,6 @@
 	    <acme:input-moment code="technician.maintenance-record.list.label.inspectionDueDate" path="inspectionDueDate"/>
 	    <acme:input-textbox code="technician.maintenance-record.list.label.aircraft" path="aircraft" />
 	    <acme:input-checkbox code="technician.maintenance-record.list.label.published" path="published" />
-	    
-
-		
-
-
-
-</acme:form>>
+	   
+	   <acme:button code="technician.maintenance-record.list-tasks" action="/technician/task/list?maintenanceRecordId=${id}"/>
+</acme:form>
