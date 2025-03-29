@@ -39,6 +39,10 @@ public class Service extends AbstractEntity {
 	@Automapped
 	private Double				averageDwellTime;
 
+	@Mandatory
+	@Automapped
+	private Boolean				promoted;
+
 	@Optional
 	@ValidString(pattern = "^[A-Z]{4}-[0-9]{2}$")
 	@ValidPromotionCode
