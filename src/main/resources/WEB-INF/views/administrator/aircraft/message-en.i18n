@@ -1,0 +1,11 @@
+administrator.aircraft.list.title = Aircraft list
+administrator.aircraft.form.title = Aircraft details
+
+
+administrator.aircraft.list.label.model = Model
+administrator.aircraft.list.label.registrationNumber = Registration Number
+administrator.aircraft.list.label.capacity = Capacity
+administrator.aircraft.list.label.status = Status
+administrator.aircraft.list.label.airlane.iata = Airlane IATA Code
+administrator.aircraft.form.label.details = Details
+administrator.aircraft.form.label.cargoWeight = Cargo Weight

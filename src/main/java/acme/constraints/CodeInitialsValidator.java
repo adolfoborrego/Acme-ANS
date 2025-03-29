@@ -12,6 +12,7 @@ import acme.realms.Customer;
 import acme.realms.Technician;
 import acme.realms.airlineManager.AirlineManager;
 import acme.realms.assistanceAgent.AssistanceAgent;
+import acme.realms.flightCrewMember.FlightCrewMember;
 
 @Validator
 public class CodeInitialsValidator extends AbstractValidator<ValidCodeInitials, AbstractRole> {

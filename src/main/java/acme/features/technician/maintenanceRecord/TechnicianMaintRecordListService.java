@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.MaintenanceRecord;
+import acme.entities.maintenanceRecord.MaintenanceRecord;
 import acme.realms.Technician;
 
 @GuiService
@@ -48,7 +48,8 @@ public class TechnicianMaintRecordListService extends AbstractGuiService<Technic
 		assert maintenanceRecord != null;
 
 		Dataset dataset;
-		dataset = super.unbindObject(maintenanceRecord, "currentStatus", "estimatedCost", "inspectionDueDate", "notes", "aircraft");
+		dataset = super.unbindObject(maintenanceRecord, "currentStatus", "estimatedCost", "inspectionDueDate", "notes");
+		dataset.put("aircraft", maintenanceRecord.getAircraft().getRegistrationNumber());
 
 		super.getResponse().addData(dataset);
 	}

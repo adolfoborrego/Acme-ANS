@@ -1,40 +1,33 @@
 key,lastUpdateMoment,step,resolutionPercentage,indicator,resolution,published,key:claim
-# base
-trackingLog-00,2010/01/01 00:00,test step,50,PENDING,test resolution,false,claim-01
-# lastUpdateMoment variations
-trackingLog-01,2000/01/01 00:00,test step,50,PENDING,test resolution,false,claim-01
-trackingLog-02,2000/01/01 00:01,test step,50,PENDING,test resolution,false,claim-01
-trackingLog-03,2022/07/29 23:59,test step,50,PENDING,test resolution,false,claim-01
-trackingLog-04,2022/07/30 00:00,test step,50,PENDING,test resolution,false,claim-01
+# base entity
+tracking-log-00,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
+# lastUpdateMoment variations (igual que registrationMoment)
+tracking-log-01,2000/01/01 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
+tracking-log-02,2000/01/01 00:01,Lorem ipsum dolor sit ame,50.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
+tracking-log-03,2022/07/29 23:59,Lorem ipsum dolor sit ame,50.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
+tracking-log-04,2022/07/30 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
 # step variations
-trackingLog-05,2010/01/01 00:00,E,50,PENDING,test resolution,false,claim-01
-trackingLog-06,2010/01/01 00:00,Es,50,PENDING,test resolution,false,claim-01
-trackingLog-07,2010/01/01 00:00,"Este texto tiene 50 caracteres. Este texto tiene 5",50,PENDING,test resolution,false,claim-01
-trackingLog-08,2010/01/01 00:00,"Este texto tiene 49 caracteres. Este texto tiene ",50,PENDING,test resolution,false,claim-01
-trackingLog-09,2010/01/01 00:00,लोरम इप्सम,50,PENDING,test resolution,false,claim-01
-trackingLog-10,2010/01/01 00:00,ローレム・イプサム,50,PENDING,test resolution,false,claim-01
-trackingLog-11,2010/01/01 00:00,<b>Bold Text</b>,50,PENDING,test resolution,false,claim-01
-trackingLog-12,2010/01/01 00:00,<img src='x' onerror='alert("XSS")'>,50,PENDING,test resolution,false,claim-01
-trackingLog-13,2010/01/01 00:00,' OR 1=1 --,50,PENDING,test resolution,false,claim-01
+tracking-log-05,2011/04/16 00:00,"Lorem ipsum dolor sit amet, consectetur adipiscin",50.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
+tracking-log-06,2011/04/16 00:00,"Lorem ipsum dolor sit amet, consectetur adipiscing",50.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
 # resolutionPercentage variations
-trackingLog-14,2010/01/01 00:00,test step,0,PENDING,test resolution,false,claim-01
-trackingLog-15,2010/01/01 00:00,test step,1,PENDING,test resolution,false,claim-01
-trackingLog-16,2010/01/01 00:00,test step,99,ACCEPTED,test resolution,false,claim-01
-trackingLog-17,2010/01/01 00:00,test step,100,PENDING,test resolution,false,claim-01
+tracking-log-07,2011/04/16 00:00,Lorem ipsum dolor sit ame,0.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
+tracking-log-08,2011/04/16 00:00,Lorem ipsum dolor sit ame,0.01,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
+tracking-log-09,2011/04/16 00:00,Lorem ipsum dolor sit ame,99.99,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
+tracking-log-10,2011/04/16 00:00,Lorem ipsum dolor sit ame,100.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
 # indicator variations
-trackingLog-18,2010/01/01 00:00,test step,50,PENDING,test resolution,false,claim-01
-trackingLog-19,2010/01/01 00:00,test step,50,ACCEPTED,test resolution,false,claim-01
-trackingLog-20,2010/01/01 00:00,test step,50,REJECTED,test resolution,false,claim-01
+tracking-log-11,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
+tracking-log-12,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,REJECTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
+tracking-log-13,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,IN_REVIEW,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
 # resolution variations
-trackingLog-21,2010/01/01 00:00,test step,50,PENDING,E,false,claim-01
-trackingLog-22,2010/01/01 00:00,test step,50,PENDING,Es,false,claim-01
-trackingLog-23,2010/01/01 00:00,test step,50,PENDING,"Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 caracteres. Este texto tiene 254 ca",false,claim-01
-trackingLog-24,2010/01/01 00:00,test step,50,PENDING,"Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 caracteres. Este texto tiene 255 car",false,claim-01
-trackingLog-25,2010/01/01 00:00,test step,50,PENDING,लोरम इप्सम,false,claim-01
-trackingLog-26,2010/01/01 00:00,test step,50,PENDING,ローレム・イプサム,false,claim-01
-trackingLog-27,2010/01/01 00:00,test step,50,PENDING,<b>Bold Text</b>,false,claim-01
-trackingLog-28,2010/01/01 00:00,test step,50,PENDING,<img src='x' onerror='alert("XSS")'>,false,claim-01
-trackingLog-29,2010/01/01 00:00,test step,50,PENDING,' OR 1=1 --,false,claim-01
-# published variations
-trackingLog-30,2010/01/01 00:00,test step,50,PENDING,test resolution,false,claim-01
-trackingLog-31,2010/01/01 00:00,test step,50,PENDING,test resolution,true,claim-01
+tracking-log-14,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,L,false,claim-00
+tracking-log-15,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,Lo,false,claim-00
+tracking-log-16,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",false,claim-00
+tracking-log-17,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",false,claim-00
+tracking-log-18,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,โลเร็ม อิปซัม,false,claim-00
+tracking-log-19,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,لوريم إيبسوم,false,claim-00
+tracking-log-20,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,洛伦·伊普森,false,claim-00
+tracking-log-21,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,<marquee>Hacked</marquee>,false,claim-00
+tracking-log-22,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,<script>alert(‘Hacked!’);</script>,false,claim-00
+tracking-log-23,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,' or 'A' = 'A ,false,claim-00
+# published variation: true
+tracking-log-24,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",true,claim-00
