@@ -44,7 +44,7 @@ manager.flight.delete.submit = Eliminar vuelo
 
 manager.flight.publish = Publicar vuelo
 manager.leg.publish = Publicar escala
-manager.flight.publish.error.no-legs = El vuelo no tiene escalas.
+manager.flight.publish.error.no-legs = El vuelo no tiene escalas
 manager.flight.publish.error.unpublished-legs = Todas las escalas deben estar publicadas para poder publicar el vuelo.
 
 manager.leg.create.submit = Crear escala

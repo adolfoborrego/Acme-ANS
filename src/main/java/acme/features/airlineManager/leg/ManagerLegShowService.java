@@ -57,19 +57,17 @@ public class ManagerLegShowService extends AbstractGuiService<AirlineManager, Le
 	public void unbind(final Leg leg) {
 		assert leg != null;
 
-		SelectChoices choices;
+		SelectChoices statuses = SelectChoices.from(LegStatus.class, leg.getStatus());
+		SelectChoices departureAirports = SelectChoices.from(this.repository.findAllAirports(), "name", leg.getDepartureAirport());
+		SelectChoices arrivalAirports = SelectChoices.from(this.repository.findAllAirports(), "name", leg.getArrivalAirport());
+		SelectChoices aircrafts = SelectChoices.from(this.repository.findAllAircraft(), "registrationNumber", leg.getAircraft());
 
-		choices = SelectChoices.from(LegStatus.class, leg.getStatus());
-
-		Dataset dataset = super.unbindObject(leg, "scheduledDeparture", "scheduledArrival", "status", "published");
-
-		// Atributos derivados
-		dataset.put("departureAirport", leg.getDepartureAirport().getName());
-		dataset.put("arrivalAirport", leg.getArrivalAirport().getName());
-		dataset.put("aircraft", leg.getAircraft().getRegistrationNumber());
-		dataset.put("duration", leg.getDuration());
-		dataset.put("flightNumber", leg.getFlightNumber());
-		dataset.put("statuses", choices);
+		Dataset dataset = super.unbindObject(leg, "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft", "published");
+		dataset.put("flightId", leg.getFlight().getId());
+		dataset.put("statuses", statuses);
+		dataset.put("departureAirports", departureAirports);
+		dataset.put("arrivalAirports", arrivalAirports);
+		dataset.put("aircrafts", aircrafts);
 
 		super.getResponse().addData(dataset);
 	}

@@ -15,3 +15,11 @@ administrator.airport.form.label.contactPhoneNumber = Teléfono de contacto
 
 administrator.airport.list.title = Lista aeropuertos
 administrator.airport.form.title = Detalles aeropuerto
+
+administrator.airport.form.label.confirmation = Confirmo que los datos son correctos
+administrator.airport.form.error.confirmation = Debe confirmar los datos para continuar
+administrator.airport.form.button.update = Actualizar aeropuerto
+administrator.airport.list.button.create = Crear aeropuerto
+administrator.airport.form.button.create = Crear aeropuerto
+
+administrator.airport.form.label.iataCode.placeholder = 3 iniciales en mayúscula; Ej: "AWT"
