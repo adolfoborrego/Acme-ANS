@@ -24,7 +24,7 @@
        	</jstl:if>
     
     <!-- Botón para ver los legs de este vuelo -->
-    <jstl:if test="${acme:anyOf(_command, 'show|publish') && numberOfLayovers != 0 && !published}">
+    <jstl:if test="${acme:anyOf(_command, 'show|publish') && numberOfLayovers != 0}">
     	<acme:button code="airline-manager.leg.list" action="/airline-manager/leg/list?flightId=${id}" />
 	</jstl:if>
 	<jstl:choose>
