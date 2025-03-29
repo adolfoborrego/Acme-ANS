@@ -5,11 +5,11 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-    <acme:input-textbox code="administrator.airline.form.label.name" path="name" readonly="true"/>
-    <acme:input-textbox code="administrator.airline.form.label.iataCode" path="iataCode" readonly="true"/>
-    <acme:input-url code="administrator.airline.form.label.website" path="website" readonly="true"/>
-    <acme:input-textbox code="administrator.airline.form.label.type" path="type" readonly="true"/>
-    <acme:input-moment code="administrator.airline.form.label.foundationTime" path="foundationTime" readonly="true"/>
-    <acme:input-email code="administrator.airline.form.label.email" path="email" readonly="true"/>
-    <acme:input-textbox code="administrator.airline.form.label.phoneNumber" path="phoneNumber" readonly="true"/>
+    <acme:input-textbox code="administrator.aircraft.list.label.model" path="model" readonly="true"/>
+    <acme:input-textbox code="administrator.aircraft.list.label.registrationNumber" path="registrationNumber" readonly="true"/>
+    <acme:input-textbox code="administrator.aircraft.list.label.capacity" path="capacity" readonly="true"/>
+    <acme:input-textbox code="administrator.aircraft.form.label.cargoWeight" path="cargoWeight" readonly="true"/>
+    <acme:input-textbox code="administrator.aircraft.list.label.status" path="status" readonly="true"/>
+    <acme:input-textbox code="administrator.aircraft.form.label.details" path="details" readonly="true"/>
+    <acme:input-textbox code="administrator.aircraft.list.label.airlane.iata" path="airlane.iata" readonly="true"/>
 </acme:form>

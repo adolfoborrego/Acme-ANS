@@ -7,6 +7,6 @@
 	<acme:list-column code="administrator.aircraft.list.label.registrationNumber" path="registrationNumber"/>
     <acme:list-column code="administrator.aircraft.list.label.model" path="model"/>
     <acme:list-column code="administrator.aircraft.list.label.capacity" path="capacity"/>
-    <acme:list-column code="administrator.aircraft.list.label.airline.iata" path="airline.iata"/>
+    <acme:list-column code="administrator.aircraft.list.label.airlane.iata" path="airlane.iata"/>
     <acme:list-column code="administrator.aircraft.list.label.status" path="status"/>
 </acme:list>
