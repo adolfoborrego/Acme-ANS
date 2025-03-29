@@ -1,5 +1,5 @@
 
-package acme.entities.flightCrewMember;
+package acme.realms.flightCrewMember;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
