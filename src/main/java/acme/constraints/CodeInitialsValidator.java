@@ -7,7 +7,6 @@ import acme.client.components.basis.AbstractRole;
 import acme.client.components.principals.UserAccount;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
-import acme.entities.flightCrewMember.FlightCrewMember;
 import acme.realms.Customer;
 import acme.realms.Technician;
 import acme.realms.airlineManager.AirlineManager;
