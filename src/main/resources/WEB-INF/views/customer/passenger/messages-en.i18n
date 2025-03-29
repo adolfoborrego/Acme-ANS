@@ -8,14 +8,14 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-customer.booking.form.title = Details of Bookings
-customer.booking.list.title = Listing of Bookings
+customer.passenger.form.title = Details of Passengers
+customer.passenger.list.title = Listing of Passengers
 
-customer.booking.list.label.travelClass=Travel Class
-customer.booking.list.label.locatorCode=Locator Code
-customer.booking.list.label.price=Price
-customer.booking.list.label.flight=Flight
+customer.passenger.list.label.fullName=Full Name
+customer.passenger.list.label.passportNumber=Passport
+customer.passenger.list.label.specialNeeds=Special Needs
+customer.passenger.list.label.email=Email
+customer.passenger.list.label.booking=Booking
 
-customer.booking.list.label.purchaseMoment=Purchase Moment
-customer.booking.list.label.lastNibble=Credir Card Last Nibble
-
+customer.passenger.list = See Passengers
+customer.passenger.list.title = List of Passengers
