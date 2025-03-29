@@ -1,0 +1,37 @@
+key,fullName,email,passportNumber,dateOfBirth,specialNeeds,key:customer
+
+# Base entity
+passenger-00,John Doe,john.doe@example.com,AB123456,2000/01/01 0:00,Wheelchair assistance,customer-01
+
+# Passport number variations
+passenger-01,Alice Smith,alice.smith@example.com,XZ98765,2000/05/15 0:00,null,customer-01
+passenger-02,Liam Green,liam.green@example.com,BNM543210,2000/06/25 0:00,Deaf assistance,customer-01
+passenger-03,John Doe,john.doe@example.com,AB123456,2000/01/01 0:00,Wheelchair assistance,customer-02
+
+# Date of birth variations
+passenger-04,Alice Smith,alice.smith@example.com,XZ98765,2000/01/01 00:00,null,customer-02
+passenger-05,Becca Green,beca.green@example.com,BNM543679,2000/01/01 00:01,Deaf assistance,customer-03
+passenger-06,Melissa One,melissa.one@example.com,LMS345234,2022/07/29 23:59,null,customer-03
+passenger-07,Pablo Smith,psmith@example.com,JKO268374,2022/07/30 00:00,null,customer-01
+passenger-08,Pablo Smith,psmith@example.com,JKO268374,2022/07/30 00:00,null,customer-02
+
+# Special needs variations
+passenger-09,John Doe,john.doe@example.com,AB123456,2000/01/01 0:00,Lorem ipsum dolor sit amet  consectetur adipiscing ,customer-03
+passenger-10,Alice Smith,alice.smith@example.com,XZ98765,2000/05/15 0:00,Lorem ipsum dolor sit amet  consectetur adipiscing,customer-03
+passenger-11,Liam Green,liam.green@example.com,BNM543210,2000/06/25 0:00,L,customer-03
+passenger-12,John Doe,john.doe@example.com,AB123456,2000/01/01 0:00,Lo,customer-03
+passenger-13,John Doe,john.doe@example.com,AB123456,2000/01/01 0:00,Lorem ipsum dolor sit amet,customer-03
+
+# Email and Name variations
+passenger-14,Sky Blue,acme@lorem-ipsum.org,XZ98765,2000/05/15 0:00,null,customer-03
+passenger-15,Timoty Chalamet,a@b.e,BNM543210,2000/06/25 0:00,Deaf assistance,customer-03
+passenger-16,Green Doe,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,BNM543210,2000/06/25 0:00,Deaf assistance,customer-02
+passenger-17,โลเร็ม อิปซัม,a@b.es,BNM543210,2000/06/25 0:00,Deaf assistance,customer-01
+passenger-18,لوريم إيبسوم,a@b.esx,BNM543210,2000/06/25 0:00,Deaf assistance,customer-01
+passenger-19,洛伦·伊普森,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,BNM543210,2000/06/25 0:00,Deaf assistance,customer-01
+
+
+# Customer variations
+passenger-20,John Doe,john.doe@example.com,AB123456,2000/01/01 0:00,Wheelchair assistance,customer-03
+passenger-21,Alice Smith,alice.smith@example.com,XZ98765,2000/05/15 0:00,null,customer-01
+passenger-22,Liam Green,liam.green@example.com,BNM543210,2000/06/25 0:00,Deaf assistance,customer-01

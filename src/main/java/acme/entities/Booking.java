@@ -19,6 +19,7 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.entities.flight.Flight;
+import acme.realms.Customer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -45,7 +46,7 @@ public class Booking extends AbstractEntity {
 	private String				travelClass;
 
 	@Mandatory
-	@ValidMoney(min = 0.00)
+	@ValidMoney(min = 0.00, max = 70000.00)
 	@Automapped
 	private Money				price;
 
