@@ -73,11 +73,22 @@ public class Claim extends AbstractEntity {
 		TrackingLogRepository trackingLogRepository;
 		List<TrackingLog> trackingLogs;
 		TrackingLogIndicator indicator;
-		Integer numberOfTrackingLogs;
+		//		Integer numberOfTrackingLogs;
 		trackingLogRepository = SpringHelper.getBean(TrackingLogRepository.class);
 		trackingLogs = trackingLogRepository.findPublishedTrackingLogsByClaimId(this.getId());
-		numberOfTrackingLogs = trackingLogs.size();
-		indicator = numberOfTrackingLogs == 0 ? TrackingLogIndicator.PENDING : trackingLogs.get(numberOfTrackingLogs - 1).getIndicator();
+		//		Esta sería la implementación correcta en caso de conseguir que funcione el validador de TrackingLog
+		//		numberOfTrackingLogs = trackingLogs.size();
+		//		indicator = numberOfTrackingLogs == 0 ? TrackingLogIndicator.PENDING : trackingLogs.get(numberOfTrackingLogs - 1).getIndicator();
+		if (trackingLogs.isEmpty() || trackingLogs.stream().allMatch(log -> log.getIndicator() == TrackingLogIndicator.PENDING))
+			indicator = TrackingLogIndicator.PENDING;
+		else if (trackingLogs.stream().anyMatch(log -> log.getIndicator() == TrackingLogIndicator.IN_REVIEW))
+			indicator = TrackingLogIndicator.IN_REVIEW;
+		else if (trackingLogs.stream().anyMatch(log -> log.getIndicator() == TrackingLogIndicator.ACCEPTED))
+			indicator = TrackingLogIndicator.ACCEPTED;
+		else if (trackingLogs.stream().anyMatch(log -> log.getIndicator() == TrackingLogIndicator.REJECTED))
+			indicator = TrackingLogIndicator.REJECTED;
+		else
+			indicator = TrackingLogIndicator.PENDING;
 		return indicator;
 	}
 

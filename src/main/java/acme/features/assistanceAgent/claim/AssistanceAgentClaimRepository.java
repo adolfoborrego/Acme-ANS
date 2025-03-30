@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.claim.Claim;
+import acme.entities.leg.Leg;
 
 @Repository
 public interface AssistanceAgentClaimRepository extends AbstractRepository {
@@ -49,5 +50,11 @@ public interface AssistanceAgentClaimRepository extends AbstractRepository {
 		      )
 		""")
 	Collection<Claim> findPendingClaimsByAssistanceAgentId(int assistanceAgentId);
+
+	@Query("SELECT l FROM Leg l WHERE l.id = :legId")
+	Leg findLegById(int legId);
+
+	@Query("SELECT l from Leg l")
+	Collection<Leg> findAllLegs();
 
 }
