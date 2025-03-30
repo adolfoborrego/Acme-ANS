@@ -2,6 +2,7 @@
 package acme.features.airlineManager.leg;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -56,6 +57,15 @@ public class ManagerLegUpdateService extends AbstractGuiService<AirlineManager, 
 		boolean noSolapamiento = existingLegs.stream()
 			.allMatch(existingLeg -> existingLeg.getId() == leg.getId() || leg.getScheduledArrival().before(existingLeg.getScheduledDeparture()) || leg.getScheduledDeparture().after(existingLeg.getScheduledArrival()));
 		super.state(noSolapamiento, "scheduledDeparture", "manager.leg.error.overlapping-legs");
+
+		if (super.getRequest().getCommand().equals("update")) {
+			Leg original = this.repository.findLegById(leg.getId());
+
+			boolean isModified = !Objects.equals(leg.getScheduledDeparture(), original.getScheduledDeparture()) || !Objects.equals(leg.getScheduledArrival(), original.getScheduledArrival())
+				|| !Objects.equals(leg.getDepartureAirport(), original.getDepartureAirport()) || !Objects.equals(leg.getArrivalAirport(), original.getArrivalAirport()) || !Objects.equals(leg.getStatus(), original.getStatus());
+
+			super.state(isModified, "*", "manager.leg.error.no-changes");
+		}
 	}
 
 	@Override
@@ -78,6 +88,9 @@ public class ManagerLegUpdateService extends AbstractGuiService<AirlineManager, 
 		dataset.put("departureAirports", departureAirports);
 		dataset.put("arrivalAirports", arrivalAirports);
 		dataset.put("aircrafts", aircrafts);
+
+		dataset.put("duration", leg.getDuration());
+		dataset.put("flightNumber", leg.getFlightNumber());
 
 		super.getResponse().addData(dataset);
 	}

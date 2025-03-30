@@ -1,12 +1,15 @@
 
 package acme.features.airlineManager.flight;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flight.Flight;
+import acme.entities.leg.Leg;
 import acme.realms.airlineManager.AirlineManager;
 
 @GuiService
@@ -61,6 +64,13 @@ public class ManagerFlightShowService extends AbstractGuiService<AirlineManager,
 		dataset.put("departureCity", flight.getDepartureCity());
 		dataset.put("arrivalCity", flight.getArrivalCity());
 		dataset.put("numberOfLayovers", flight.getNumberOfLayovers());
+
+		Collection<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
+		boolean hasLegs = !legs.isEmpty();
+		boolean allPublished = hasLegs && legs.stream().allMatch(Leg::getPublished);
+		boolean canPublish = !flight.getPublished() && allPublished;
+
+		dataset.put("canPublish", canPublish);
 
 		super.getResponse().addData(dataset);
 	}
