@@ -25,11 +25,21 @@ public class ManagerLegListService extends AbstractGuiService<AirlineManager, Le
 
 	@Override
 	public void authorise() {
-		boolean status;
+		int flightId = super.getRequest().getData("flightId", int.class);
+		Flight flight = this.repository.findFlightById(flightId);
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(AirlineManager.class);
+		boolean isOwner = false;
+		boolean isPublished = false;
 
-		super.getResponse().setAuthorised(status);
+		if (flight != null) {
+			int userAccountId = super.getRequest().getPrincipal().getAccountId();
+			int managerId = this.repository.findManagerByUsserAccountId(userAccountId);
+
+			isOwner = flight.getAirlineManager().getId() == managerId;
+			isPublished = flight.getPublished();
+		}
+
+		super.getResponse().setAuthorised(isOwner || isPublished);
 	}
 
 	@Override
@@ -54,9 +64,10 @@ public class ManagerLegListService extends AbstractGuiService<AirlineManager, Le
 		dataset.put("departureAirport", leg.getDepartureAirport().getName());
 		dataset.put("duration", leg.getDuration());
 		dataset.put("flightNumber", leg.getFlightNumber());
+		boolean showCreate = super.getRequest().getPrincipal().hasRealm(flight.getAirlineManager()) && !flight.getPublished();
 
-		boolean showCreate = super.getRequest().getPrincipal().hasRealm(leg.getFlight().getAirlineManager()) && !flight.getPublished();
 		super.getResponse().addGlobal("showCreate", showCreate);
+
 		super.getResponse().addGlobal("flightId", flightId);
 		super.getResponse().addData(dataset);
 	}

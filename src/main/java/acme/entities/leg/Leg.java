@@ -60,17 +60,20 @@ public class Leg extends AbstractEntity {
 
 	@Transient
 	public Double getDuration() {
-		Duration duration = MomentHelper.computeDuration(this.getScheduledDeparture(), this.getScheduledArrival());
+		if (this.getScheduledDeparture() == null || this.getScheduledArrival() == null)
+			return null;
 
+		Duration duration = MomentHelper.computeDuration(this.getScheduledDeparture(), this.getScheduledArrival());
 		return duration.getSeconds() / 60.;
 	}
 
 	@Transient
 	public String getFlightNumber() {
+		if (this.aircraft == null || this.aircraft.getAirline() == null)
+			return null;
+
 		String iataCode = this.aircraft.getAirline().getIataCode();
-
 		String suffix = String.format("%04d", this.getId() % 10000);
-
 		return iataCode + suffix;
 	}
 

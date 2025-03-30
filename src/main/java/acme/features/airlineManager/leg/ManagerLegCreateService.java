@@ -23,8 +23,21 @@ public class ManagerLegCreateService extends AbstractGuiService<AirlineManager, 
 
 	@Override
 	public void authorise() {
-		boolean authorised = super.getRequest().getPrincipal().hasRealmOfType(AirlineManager.class);
-		super.getResponse().setAuthorised(authorised);
+		int flightId = super.getRequest().getData("flightId", int.class);
+		Flight flight = this.repository.findFlightById(flightId);
+
+		boolean isOwner = false;
+		boolean isNotPublished = false;
+
+		if (flight != null) {
+			int userAccountId = super.getRequest().getPrincipal().getAccountId();
+			int managerId = this.repository.findManagerByUsserAccountId(userAccountId);
+
+			isOwner = flight.getAirlineManager().getId() == managerId;
+			isNotPublished = !flight.getPublished();
+		}
+
+		super.getResponse().setAuthorised(isOwner && isNotPublished);
 	}
 
 	@Override
@@ -81,6 +94,9 @@ public class ManagerLegCreateService extends AbstractGuiService<AirlineManager, 
 		dataset.put("departureAirports", departureAirports);
 		dataset.put("arrivalAirports", arrivalAirports);
 		dataset.put("aircrafts", aircrafts);
+
+		dataset.put("duration", leg.getDuration());
+		dataset.put("flightNumber", leg.getFlightNumber());
 
 		super.getResponse().addData(dataset);
 	}
