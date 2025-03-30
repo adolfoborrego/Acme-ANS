@@ -13,5 +13,19 @@
 	    <acme:input-textbox code="technician.maintenance-record.list.label.aircraft" path="aircraft" />
 	    <acme:input-checkbox code="technician.maintenance-record.list.label.published" path="published" />
 	   
-	   <acme:button code="technician.maintenance-record.list-tasks" action="/technician/task/list?maintenanceRecordId=${id}"/>
+	   
+	   <jstl:if test="${acme:anyOf(_command, 'show|publish')&& numberOfTasks != 0}">
+			<acme:button code="technician.maintenance-record.list-tasks" action="/technician/task/list?maintenanceRecordId=${id}"/>
+		</jstl:if>
+	   
+	   
+	   <jstl:choose>
+	   		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && !published}">
+				<acme:submit code="technician.maintenanceRecord.update.submit" action="/airline-manager/flight/update"/>
+				<acme:submit code="technician.maintenanceRecord.publish" action="/airline-manager/flight/publish" />
+		</jstl:when>
+	   		<jstl:when test="${_command == 'create'}">
+				<acme:submit code="technician.maintenanceRecord.create.submit" action="/technician/maintenance-record/create"/>
+			</jstl:when>
+		</jstl:choose>
 </acme:form>

@@ -9,7 +9,7 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
-import acme.realms.Technician;
+import acme.realms.technician.Technician;
 
 @GuiService
 public class TechnicianMaintRecordListService extends AbstractGuiService<Technician, MaintenanceRecord> {
@@ -33,11 +33,11 @@ public class TechnicianMaintRecordListService extends AbstractGuiService<Technic
 	public void load() {
 		Collection<MaintenanceRecord> data;
 		int userId;
-		int technicianId;
+		Technician technician;
 
 		userId = super.getRequest().getPrincipal().getAccountId();
-		technicianId = this.repository.findTechnicianIdByUserId(userId);
-		data = this.repository.findAllByTechnician(technicianId);
+		technician = this.repository.findTechnicianByUserId(userId);
+		data = technician.getMaintenanceRecords();
 
 		super.getBuffer().addData(data);
 	}

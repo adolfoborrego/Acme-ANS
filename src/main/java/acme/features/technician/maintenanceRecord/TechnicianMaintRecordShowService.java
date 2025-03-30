@@ -7,7 +7,7 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
-import acme.realms.Technician;
+import acme.realms.technician.Technician;
 
 @GuiService
 public class TechnicianMaintRecordShowService extends AbstractGuiService<Technician, MaintenanceRecord> {
@@ -54,10 +54,11 @@ public class TechnicianMaintRecordShowService extends AbstractGuiService<Technic
 
 		// TRANSFORMA LOS DATOS EN LA RESPONSE
 		assert maintenanceRecord != null;
-
+		int numberOfTasks = this.repository.cuentaNumeroTasks(maintenanceRecord.getId());
 		Dataset dataset;
 		dataset = super.unbindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "published");
 		dataset.put("aircraft", maintenanceRecord.getAircraft().getRegistrationNumber());
+		super.getResponse().addGlobal("numberOfTasks", numberOfTasks);
 		super.getResponse().addData(dataset);
 	}
 }

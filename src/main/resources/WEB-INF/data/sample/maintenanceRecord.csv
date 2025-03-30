@@ -1,58 +1,58 @@
-key,key:aircraft,notes,published,estimatedCost,inspectionDueDate,currentStatus,moment
-maintenanceRecord-01,aircraft-00,Some notes,true,EUR 4000.00,2024/12/28 09:00,PENDING,2020/01/01 00:01
+key,key:technician,key:aircraft,notes,published,estimatedCost,inspectionDueDate,currentStatus,moment
+maintenanceRecord-01,technician1,aircraft-00,Some notes,true,EUR 4000.00,2024/12/28 09:00,PENDING,2020/01/01 00:01
 # Variaciones en el inspectionDueDate en funcion del moment
 ## moment: 2000/01/01 00:00
-maintenanceRecord-02,aircraft-01,Some notes,true,EUR 4000.00,2000/01/01 01:00,PENDING,2000/01/01 00:00
-maintenanceRecord-03,aircraft-02,Some notes,true,EUR 4000.00,2000/01/01 01:01,PENDING,2000/01/01 00:00
-maintenanceRecord-04,aircraft-03,Some notes,true,EUR 4000.00,2200/12/31 23:58,PENDING,2000/01/01 00:00
-maintenanceRecord-05,aircraft-02,Some notes,true,EUR 4000.00,2200/12/31 23:59,PENDING,2000/01/01 00:00
+maintenanceRecord-02,technician2,aircraft-01,Some notes,true,EUR 4000.00,2000/01/01 01:00,PENDING,2000/01/01 00:00
+maintenanceRecord-03,technician2,aircraft-02,Some notes,true,EUR 4000.00,2000/01/01 01:01,PENDING,2000/01/01 00:00
+maintenanceRecord-04,technician1,aircraft-03,Some notes,false,EUR 4000.00,2200/12/31 23:58,PENDING,2000/01/01 00:00
+maintenanceRecord-05,technician1,aircraft-02,Some notes,false,EUR 4000.00,2200/12/31 23:59,PENDING,2000/01/01 00:00
 ## moment: 2000/01/01 00:01
-maintenanceRecord-06,aircraft-04,Some notes,true,EUR 4000.00,2000/01/01 01:01,PENDING,2000/01/01 00:01
-maintenanceRecord-07,aircraft-05,Some notes,true,EUR 4000.00,2000/01/01 01:02,PENDING,2000/01/01 00:01
-maintenanceRecord-08,aircraft-04,Some notes,true,EUR 4000.00,2200/12/31 23:58,PENDING,2000/01/01 00:01
-maintenanceRecord-09,aircraft-06,Some notes,true,EUR 4000.00,2200/12/31 23:59,PENDING,2000/01/01 00:01
+maintenanceRecord-06,technician3,aircraft-04,Some notes,true,EUR 4000.00,2000/01/01 01:01,PENDING,2000/01/01 00:01
+maintenanceRecord-07,technician3,aircraft-05,Some notes,true,EUR 4000.00,2000/01/01 01:02,PENDING,2000/01/01 00:01
+maintenanceRecord-08,technician3,aircraft-04,Some notes,true,EUR 4000.00,2200/12/31 23:58,PENDING,2000/01/01 00:01
+maintenanceRecord-09,technician1,aircraft-06,Some notes,true,EUR 4000.00,2200/12/31 23:59,PENDING,2000/01/01 00:01
 ## moment: 2022/06/03 09:00
-maintenanceRecord-10,aircraft-06,Some notes,true,EUR 4000.00,2022/06/03 10:00,PENDING,2022/06/03 09:00
-maintenanceRecord-11,aircraft-07,Some notes,true,EUR 4000.00,2022/06/03 10:01,PENDING,2022/06/03 09:00
-maintenanceRecord-12,aircraft-07,Some notes,true,EUR 4000.00,2200/12/31 23:58,PENDING,2022/06/03 09:00
-maintenanceRecord-13,aircraft-10,Some notes,true,EUR 4000.00,2200/12/31 23:59,PENDING,2022/06/03 09:00
+maintenanceRecord-10,technician1,aircraft-06,Some notes,true,EUR 4000.00,2022/06/03 10:00,PENDING,2022/06/03 09:00
+maintenanceRecord-11,technician2,aircraft-07,Some notes,true,EUR 4000.00,2022/06/03 10:01,PENDING,2022/06/03 09:00
+maintenanceRecord-12,technician3,aircraft-07,Some notes,false,EUR 4000.00,2200/12/31 23:58,PENDING,2022/06/03 09:00
+maintenanceRecord-13,technician1,aircraft-10,Some notes,false,EUR 4000.00,2200/12/31 23:59,PENDING,2022/06/03 09:00
 ## moment: 2022/07/29 23:59
-maintenanceRecord-14,aircraft-08,Some notes,true,EUR 4000.00,2025/01/01 13:00,PENDING,2022/07/29 23:59
-maintenanceRecord-15,aircraft-08,Some notes,true,EUR 4000.00,2025/01/01 13:01,PENDING,2022/07/29 23:59
-maintenanceRecord-16,aircraft-09,Some notes,true,EUR 4000.00,2200/12/31 23:58,PENDING,2022/07/29 23:59
-maintenanceRecord-17,aircraft-09,Some notes,true,EUR 4000.00,2200/12/31 23:59,PENDING,2022/07/29 23:59
+maintenanceRecord-14,technician2,aircraft-08,Some notes,false,EUR 4000.00,2025/01/01 13:00,PENDING,2022/07/29 23:59
+maintenanceRecord-15,technician3,aircraft-08,Some notes,false,EUR 4000.00,2025/01/01 13:01,PENDING,2022/07/29 23:59
+maintenanceRecord-16,technician1,aircraft-09,Some notes,false,EUR 4000.00,2200/12/31 23:58,PENDING,2022/07/29 23:59
+maintenanceRecord-17,technician2,aircraft-09,Some notes,false,EUR 4000.00,2200/12/31 23:59,PENDING,2022/07/29 23:59
 ## moment: 2020/06/15 18:30
-maintenanceRecord-18,aircraft-02,Some notes,true,EUR 4000.00,2030/06/15 19:30,PENDING,2020/06/15 18:30
-maintenanceRecord-19,aircraft-11,Some notes,true,EUR 4000.00,2030/06/15 19:31,PENDING,2020/06/15 18:30
-maintenanceRecord-20,aircraft-12,Some notes,true,EUR 4000.00,2200/12/31 23:58,PENDING,2020/06/15 18:30
-maintenanceRecord-21,aircraft-13,Some notes,true,EUR 4000.00,2200/12/31 23:59,PENDING,2020/06/15 18:30
+maintenanceRecord-18,technician3,aircraft-02,Some notes,false,EUR 4000.00,2030/06/15 19:30,PENDING,2020/06/15 18:30
+maintenanceRecord-19,technician1,aircraft-11,Some notes,false,EUR 4000.00,2030/06/15 19:31,PENDING,2020/06/15 18:30
+maintenanceRecord-20,technician2,aircraft-12,Some notes,false,EUR 4000.00,2200/12/31 23:58,PENDING,2020/06/15 18:30
+maintenanceRecord-21,technician3,aircraft-13,Some notes,false,EUR 4000.00,2200/12/31 23:59,PENDING,2020/06/15 18:30
 # Variaciones en el coste
-maintenanceRecord-22,aircraft-14,Some notes,true,EUR 0.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-23,aircraft-15,Some notes,true,EUR 0.01,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-24,aircraft-15,Some notes,true,EUR 999999999.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-25,aircraft-16,Some notes,true,EUR 999999998.99,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-26,aircraft-17,Some notes,true,EUR 54321.45,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-22,technician1,aircraft-14,Some notes,false,EUR 0.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-23,technician2,aircraft-15,Some notes,false,EUR 0.01,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-24,technician3,aircraft-15,Some notes,false,EUR 999999999.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-25,technician1,aircraft-16,Some notes,false,EUR 999999998.99,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-26,technician2,aircraft-17,Some notes,false,EUR 54321.45,2040/08/05 09:00,PENDING,2022/06/03 09:00
 #Variaciones en published(probarlo en false)
-maintenanceRecord-27,aircraft-18,Some notes,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-27,technician3,aircraft-18,Some notes,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
 #Variaciones en el currentStatus
-maintenanceRecord-28,aircraft-19,Some notes,true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-29,aircraft-19,Some notes,true,EUR 4000.00,2040/08/05 09:00,IN PROGRESS,2022/06/03 09:00
-maintenanceRecord-30,aircraft-20,Some notes,true,EUR 4000.00,2040/08/05 09:00,COMPLETED,2022/06/03 09:00
+maintenanceRecord-28,technician1,aircraft-19,Some notes,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-29,technician2,aircraft-19,Some notes,false,EUR 4000.00,2040/08/05 09:00,IN PROGRESS,2022/06/03 09:00
+maintenanceRecord-30,technician3,aircraft-20,Some notes,false,EUR 4000.00,2040/08/05 09:00,COMPLETED,2022/06/03 09:00
 #Variaciones en las notes
-maintenanceRecord-31,aircraft-21,,true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-32,aircraft-22,A,true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-33,aircraft-22,AB,true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-34,aircraft-23,Short description test.,true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-35,aircraft-24,This is a twenty-five char text.,true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-36,aircraft-25,"This is a much longer text designed to test 254 characters. It contains words, spaces, punctuation, and should not match previous descriptions. This ensures that our dataset is robust and does not have repeated phrases across tests and to ensure is 254L.",true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-37,aircraft-26,"This is exactly 255 characters long testing system’s ability to one maximum length without truncation or error. If this description fails, then there might be an issue with the character limit constraints imposed on the description field during insertion.",true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-38,aircraft-27,你好，这是一个测试描述,true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-39,aircraft-28,مرحبا، هذا نص تجريبي,true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-40,aircraft-28,ทดสอบคำอธิบายที่นี่,true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-41,aircraft-30,<marquee>Unauthorized content</marquee>,true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-42,aircraft-29,<script>alert('Security Breach!');</script>,true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-43,aircraft-31,' OR '1'='1' --,true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-31,technician1,aircraft-21,,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-32,technician2,aircraft-22,A,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-33,technician3,aircraft-22,AB,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-34,technician1,aircraft-23,Short description test.,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-35,technician2,aircraft-24,This is a twenty-five char text.,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-36,technician3,aircraft-25,"This is a much longer text designed to test 254 characters. It contains words, spaces, punctuation, and should not match previous descriptions. This ensures that our dataset is robust and does not have repeated phrases across tests and to ensure is 254L.",false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-37,technician1,aircraft-26,"This is exactly 255 characters long testing system’s ability to one maximum length without truncation or error. If this description fails, then there might be an issue with the character limit constraints imposed on the description field during insertion.",false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-38,technician2,aircraft-27,你好，这是一个测试描述,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-39,technician3,aircraft-28,مرحبا، هذا نص تجريبي,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-40,technician1,aircraft-28,ทดสอบคำอธิบายที่นี่,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-41,technician2,aircraft-30,<marquee>Unauthorized content</marquee>,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-42,technician3,aircraft-29,<script>alert('Security Breach!');</script>,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-43,technician1,aircraft-31,' OR '1'='1' --,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
 #Variaciones de aircrafts
-maintenanceRecord-44,aircraft-33,Some notes,true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-45,aircraft-34,Some notes,true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-46,aircraft-35,Some notes,true,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-44,technician2,aircraft-33,Some notes,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-45,technician3,aircraft-34,Some notes,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
+maintenanceRecord-46,technician1,aircraft-35,Some notes,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
