@@ -45,10 +45,13 @@ public class CustomerBookingListService extends AbstractGuiService<Customer, Boo
 	public void unbind(final Booking booking) {
 
 		assert booking != null;
+		boolean showCreate;
 
 		Dataset dataset;
 		dataset = super.unbindObject(booking, "travelClass", "price", "locatorCode", "flight");
+		showCreate = super.getRequest().getPrincipal().hasRealm(booking.getCustomer());
 
+		super.getResponse().addGlobal("showCreate", showCreate);
 		super.getResponse().addData(dataset);
 	}
 }

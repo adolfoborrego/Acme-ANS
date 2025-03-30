@@ -70,6 +70,10 @@ public class Booking extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Flight				flight;
 
+	@Mandatory
+	@Automapped
+	private Boolean				published;
+
 	// Derived attributes -----------------------------------------------------
 
 
