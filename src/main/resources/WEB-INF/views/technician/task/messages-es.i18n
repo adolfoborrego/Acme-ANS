@@ -26,3 +26,6 @@ technician.task.placeholder.priority= Introduce un entero entre 0 y 10
 technician.task.delete.submit = Eliminar Tarea
 technician.task.publish = Publicar Tarea
 technician.task.update.submit = Actualizar Tarea
+
+
+technician.task.update.no-changes = No se puede actualizar la tarea si no se han efectuado cambios

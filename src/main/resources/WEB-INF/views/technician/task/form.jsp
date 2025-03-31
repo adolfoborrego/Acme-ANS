@@ -14,13 +14,11 @@
 	    		<acme:input-checkbox code="technician.task.form.label.published" path="published" readonly="true"/>
 			</jstl:when>
 			<jstl:when test="${_command != 'create' && published}">	
-				<acme:input-textbox code="technician.maintenance-record.list.label.aircraft" path="aircraft" readonly="true"/>
-	    		<acme:input-money code="technician.maintenance-record.list.label.estimatedCost" path="estimatedCost" readonly="true"/>
-	    		<acme:input-textarea code="technician.maintenance-record.list.label.notes" path="notes" readonly="true"/> 
-	    		<acme:input-moment code="technician.maintenance-record.list.label.moment" path="moment" readonly="true"/>
-	    		<acme:input-moment code="technician.maintenance-record.list.label.inspectionDueDate" path="inspectionDueDate" readonly="true"/>
-	    		<acme:input-textbox code="technician.maintenance-record.list.label.currentStatus" path="currentStatus" readonly="true"/>
-	    		<acme:input-checkbox code="technician.maintenance-record.list.label.published" path="published" readonly="true"/>
+				<acme:input-textbox code="technician.task.list.label.priority" path="priority" readonly="true"/>
+	    		<acme:input-textbox code="technician.task.list.label.estimatedDuration" path="estimatedDuration" readonly="true"/>
+	    		<acme:input-select code="technician.task.list.label.type" path="type" choices = "${types}" readonly="true"/>  
+	    		<acme:input-textarea code="technician.task.list.label.description" path="description" readonly="true"/>
+	    		<acme:input-checkbox code="technician.task.form.label.published" path="published" readonly="true"/>
 			</jstl:when>
 		</jstl:choose>
 	   <jstl:choose>

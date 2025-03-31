@@ -25,3 +25,6 @@ technician.task.placeholder.priority= Add a integer between 0 and 10
 technician.task.delete.submit = Delete Task
 technician.task.publish = Publish Task
 technician.task.update.submit = Update Task
+
+
+technician.task.update.no-changes = A task without changes couldn't be updated
