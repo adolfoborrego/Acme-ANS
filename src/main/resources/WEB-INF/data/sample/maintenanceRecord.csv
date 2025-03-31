@@ -1,8 +1,8 @@
 key,key:technician,key:aircraft,notes,published,estimatedCost,inspectionDueDate,currentStatus,moment
 maintenanceRecord-01,technician1,aircraft-00,Some notes,true,EUR 4000.00,2024/12/28 09:00,PENDING,2020/01/01 00:01
-# Variaciones en el inspectionDueDate en funcion del moment
+# Variaciones en el inspectionDueDate en funcion del moment,"","","",""
 ## moment: 2000/01/01 00:00
-maintenanceRecord-02,technician2,aircraft-01,Some notes,true,EUR 4000.00,2000/01/01 01:00,PENDING,2000/01/01 00:00
+maintenanceRecord-02,technician2,aircraft-01,Tengo todas mis tasks publicadas,false,EUR 4000.00,2000/01/01 01:00,PENDING,2000/01/01 00:00
 maintenanceRecord-03,technician2,aircraft-02,Some notes,true,EUR 4000.00,2000/01/01 01:01,PENDING,2000/01/01 00:00
 maintenanceRecord-04,technician1,aircraft-03,Some notes,false,EUR 4000.00,2200/12/31 23:58,PENDING,2000/01/01 00:00
 maintenanceRecord-05,technician1,aircraft-02,Some notes,false,EUR 4000.00,2200/12/31 23:59,PENDING,2000/01/01 00:00
