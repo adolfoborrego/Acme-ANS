@@ -7,8 +7,8 @@ import acme.client.components.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.aircraft.Aircraft;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
-import acme.realms.airlineManager.AirlineManager;
 import acme.realms.technician.Technician;
 
 @GuiService
@@ -26,47 +26,56 @@ public class TechnicianMaintRecordCreateService extends AbstractGuiService<Techn
 	public void authorise() {
 		boolean status;
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(AirlineManager.class);
+		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		MaintenanceRecord object = new MaintenanceRecord();
-		object.setPublished(false);
-		super.getBuffer().addData(object);
+		MaintenanceRecord mr = new MaintenanceRecord();
+		mr.setPublished(false);
+		super.getBuffer().addData(mr);
 	}
 
 	@Override
-	public void bind(final MaintenanceRecord object) {
-		assert object != null;
-		super.bindObject(object, "tag", "indicator", "cost", "description");
+	public void bind(final MaintenanceRecord maintenanceRecord) {
+		assert maintenanceRecord != null;
+		super.bindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "published");
+		super.getResponse().addGlobal("aircraft", String.class);
 	}
 
 	@Override
-	public void validate(final MaintenanceRecord object) {
-		assert object != null;
-		// Puedes dejarlo vacío por ahora
+	public void validate(final MaintenanceRecord maintenanceRecord) {
+		String registrationNumber = super.getRequest().getData("aircraft", String.class);
+		Aircraft aircraft = this.repository.findAircraftByRegistrationNumber(registrationNumber);
+
+		if (maintenanceRecord == null)
+			throw new IllegalArgumentException();
+		if (!this.isValid(maintenanceRecord))
+			throw new IllegalArgumentException("No es válida");
+		if (aircraft == null)
+			throw new IllegalArgumentException("Es necesario un aircraft válido"); // Haciendolo asi muestra un alert no queremos eso queremos que en le form lo corrija preguntar como
 	}
 
 	@Override
-	public void perform(final MaintenanceRecord object) {
-		assert object != null;
-		// Hay que enlazarlo altecnico pq esque sino no puedo crear una nueva maintenanceRecord sin tasks ya 
-		//que el tecnico lo indica la propia task y eso no puede ser el tecnico tiene q ir ligado a la MR y las tasks igual
+	public void perform(final MaintenanceRecord maintenanceRecord) {
+		assert maintenanceRecord != null;
 		int userAccountId = super.getRequest().getPrincipal().getAccountId();
-		//int managerId = this.repository.findTechnicianIdByUserId(userAccountId);
+		Technician technician = this.repository.findTechnicianByUserId(userAccountId);
+		String registrationNumber = super.getRequest().getData("aircraft", String.class);
+		Aircraft aircraft = this.repository.findAircraftByRegistrationNumber(registrationNumber);
 
-		// Chequear el moment
+		maintenanceRecord.setTechnician(technician);
+		maintenanceRecord.setCurrentStatus("PENDING");
+		maintenanceRecord.setAircraft(aircraft);
 
-		//object.setTecnician(tecnician);
-		this.repository.save(object);
+		this.repository.save(maintenanceRecord);
 	}
 
 	@Override
-	public void unbind(final MaintenanceRecord object) {
-		Dataset dataset = super.unbindObject(object, "tag", "indicator", "cost", "description");
+	public void unbind(final MaintenanceRecord maintenanceRecord) {
+		Dataset dataset = super.unbindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "published", "aircraft");
 		super.getResponse().addData(dataset);
 	}
 
@@ -74,5 +83,10 @@ public class TechnicianMaintRecordCreateService extends AbstractGuiService<Techn
 	public void onSuccess() {
 		if (super.getRequest().getMethod().equalsIgnoreCase("POST"))
 			PrincipalHelper.handleUpdate();
+	}
+
+	private boolean isValid(final MaintenanceRecord maintenanceRecord) {
+		return maintenanceRecord.getMoment().before(maintenanceRecord.getInspectionDueDate());
+
 	}
 }

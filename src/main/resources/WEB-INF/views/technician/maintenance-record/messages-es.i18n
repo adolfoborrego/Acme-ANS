@@ -21,4 +21,6 @@ technician.maintenance-record.list.label.published = Publicado
 technician.maintenance-record.list.label.moment = Momento
 
 technician.maintenance-record.list-tasks = Listado de tareas
-
+technician.maintenanceRecord.publish = Publicar Registro de Mantenimiento
+technician.maintenanceRecord.update.submit = Actualizar Registro de Mantenimiento
+technician.maintenanceRecord.create.submit = Crear
