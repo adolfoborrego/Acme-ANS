@@ -18,7 +18,7 @@ customer.booking.list.label.flight=Flight
 customer.booking.list.label.published = Published
 
 customer.booking.list.label.purchaseMoment=Purchase Moment
-customer.booking.list.label.lastNibble=Credir Card Last Nibble
+customer.booking.list.label.lastNibble=Credit Card Last Nibble
 
 customer.booking.form.button.update = Update
 customer.booking.form.button.return = Return

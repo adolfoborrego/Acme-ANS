@@ -4,9 +4,11 @@ package acme.features.customer.booking;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.Booking;
+import acme.entities.booking.Booking;
+import acme.entities.booking.TravelClass;
 import acme.realms.Customer;
 
 @GuiService
@@ -37,7 +39,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 	public void validate(final Booking booking) {
 		String lastNibble = booking.getLastNibble();
 
-		boolean lastNibbleNotNull = !lastNibble.equals(null);
+		boolean lastNibbleNotNull = !lastNibble.isBlank();
 
 		super.state(lastNibbleNotNull, "published", "customer.booking.publish.error.no-lastNibble");
 	}
@@ -55,7 +57,12 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void unbind(final Booking booking) {
-		Dataset dataset = super.unbindObject(booking, "travelClass", "price", "locatorCode", "flight", "published");
+		SelectChoices flights = SelectChoices.from(this.repository.findAllFlights(), "id", booking.getFlight());
+		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
+
+		Dataset dataset = super.unbindObject(booking, "travelClass", "price", "locatorCode", "flight", "published", "purchaseMoment");
+		dataset.put("flights", flights);
+		dataset.put("travelClasses", travelClasses);
 		super.getResponse().addData(dataset);
 	}
 }

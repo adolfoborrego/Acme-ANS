@@ -10,7 +10,8 @@ import acme.client.components.views.SelectChoices;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.Booking;
+import acme.entities.booking.Booking;
+import acme.entities.booking.TravelClass;
 import acme.realms.Customer;
 
 @GuiService
@@ -64,11 +65,15 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void unbind(final Booking object) {
+
 		SelectChoices flights = SelectChoices.from(this.repository.findAllFlights(), "id", object.getFlight());
+		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, object.getTravelClass());
+
 		Date purchaseMoment = new Date();
 
 		Dataset dataset = super.unbindObject(object, "travelClass", "price", "locatorCode", "lastNibble");
 		dataset.put("flights", flights);
+		dataset.put("travelClasses", travelClasses);
 		dataset.put("purchaseMoment", purchaseMoment);
 		super.getResponse().addData(dataset);
 	}
