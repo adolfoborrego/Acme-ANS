@@ -1,7 +1,9 @@
 
-package acme.entities;
+package acme.entities.task;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
@@ -27,9 +29,10 @@ public class Task extends AbstractEntity {
 	// Attributes ------------------------------------------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(pattern = "^(MAINTENANCE|INSPECTION|REPAIR|SYSTEM CHECK)$")
+	@Valid
 	@Automapped
-	private String				type;
+	@Enumerated(EnumType.STRING)
+	private TaskType			type;
 
 	@Mandatory
 	@ValidString(min = 1, max = 255)

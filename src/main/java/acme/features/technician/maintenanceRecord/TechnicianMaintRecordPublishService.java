@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.Task;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
+import acme.entities.task.Task;
 import acme.realms.technician.Technician;
 
 @GuiService
@@ -53,7 +53,7 @@ public class TechnicianMaintRecordPublishService extends AbstractGuiService<Tech
 		boolean noTasks = tasks.isEmpty();
 
 		if (noTasks)
-			super.state(noTasks, "*", "technician.maintenanceRecord.publish.no-tasks"); // pensar como hacer para que cdo muestre esto desps se vaya a la pantalla show normal
+			super.state(noTasks, "*", "technician.maintenanceRecord.publish.no-tasks"); // pensar como hacer para que cdo muestre esto desps se vaya a la pantalla show normal añadir una variable que muestre un boton en lugar del return que te mande donde sea
 		else
 			super.state(allPublished, "*", "technician.maintenanceRecord.publish.task-unpublished");
 	}
