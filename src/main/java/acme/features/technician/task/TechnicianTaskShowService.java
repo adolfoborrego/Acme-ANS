@@ -7,7 +7,7 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.Task;
-import acme.realms.Technician;
+import acme.realms.technician.Technician;
 
 @GuiService
 public class TechnicianTaskShowService extends AbstractGuiService<Technician, Task> {
@@ -33,7 +33,7 @@ public class TechnicianTaskShowService extends AbstractGuiService<Technician, Ta
 		taskId = super.getRequest().getData("id", int.class);
 		task = this.repository.findById(taskId);
 
-		status = task != null && technicianId == task.getTechnician().getId();
+		status = task != null && technicianId == task.getMaintenanceRecord().getTechnician().getId();
 		super.getResponse().setAuthorised(status);
 	}
 

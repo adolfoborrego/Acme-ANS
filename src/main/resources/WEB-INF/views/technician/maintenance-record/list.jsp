@@ -9,5 +9,7 @@
 	<acme:list-column code="technician.maintenance-record.list.label.estimatedCost" path="estimatedCost" />
 	<acme:list-column code="technician.maintenance-record.list.label.inspectionDueDate" path="inspectionDueDate" />
 	<acme:list-column code="technician.maintenance-record.list.label.notes" path="notes" />
-    <acme:list-payload path="payload"/>	
+    <acme:list-payload path="payload"/>
+ 
 </acme:list>
+<acme:button code="technician.maintenanceRecord.create" action="/technician/maintenance-record/create" />
