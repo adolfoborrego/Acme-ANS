@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.Task;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
 import acme.realms.technician.Technician;
@@ -34,4 +35,7 @@ public interface TechnicianMaintRecordRepository extends AbstractRepository {
 
 	@Query("SELECT DISTINCT a FROM Aircraft a")
 	Collection<Aircraft> findAllAircraft();
+
+	@Query("SELECT t FROM Task t WHERE t.maintenanceRecord.id = :maintenanceRecordId")
+	Collection<Task> findAllTaskByMaintenanceRecordId(int maintenanceRecordId);
 }

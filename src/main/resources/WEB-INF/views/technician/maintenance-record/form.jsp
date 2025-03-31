@@ -8,7 +8,7 @@
 		
 		<jstl:choose>
 		
-			<jstl:when test="${_command == 'create' || !published}">
+			<jstl:when test="${acme:anyOf(_command, 'create|publish') || !published}">
 				<acme:input-select code="technician.maintenance-record.list.label.aircraft" path="aircraft" choices ="${aircrafts}"/>
 	    		<acme:input-money code="technician.maintenance-record.list.label.estimatedCost" path="estimatedCost" />
 	    		<acme:input-textarea code="technician.maintenance-record.list.label.notes" path="notes" /> 
