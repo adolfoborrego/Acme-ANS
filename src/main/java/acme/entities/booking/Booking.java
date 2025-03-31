@@ -1,10 +1,12 @@
 
-package acme.entities;
+package acme.entities.booking;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -44,9 +46,9 @@ public class Booking extends AbstractEntity {
 	private Date				purchaseMoment;
 
 	@Mandatory
-	@ValidString(pattern = "^(ECONOMY|BUSINESS)$")
+	@Enumerated(EnumType.STRING)
 	@Automapped
-	private String				travelClass;
+	private TravelClass			travelClass;
 
 	@Mandatory
 	@ValidMoney(min = 0.00, max = 70000.00)
@@ -69,6 +71,10 @@ public class Booking extends AbstractEntity {
 	@Automapped
 	@ManyToOne(optional = false)
 	private Flight				flight;
+
+	@Mandatory
+	@Automapped
+	private Boolean				published;
 
 	// Derived attributes -----------------------------------------------------
 

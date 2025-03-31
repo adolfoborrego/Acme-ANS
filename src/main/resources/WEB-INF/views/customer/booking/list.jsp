@@ -10,3 +10,7 @@
 	<acme:list-column code="customer.booking.list.label.flight" path="flight" />
     <acme:list-payload path="payload"/>	
 </acme:list>
+
+<jstl:if test="${showCreate}">
+	<acme:button code="customer.booking.create" action="/customer/booking/create" />
+</jstl:if>

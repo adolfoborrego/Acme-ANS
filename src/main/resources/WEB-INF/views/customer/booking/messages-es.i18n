@@ -15,6 +15,20 @@ customer.booking.list.label.travelClass=Clase de Viaje
 customer.booking.list.label.locatorCode=Localizador
 customer.booking.list.label.price=Precio
 customer.booking.list.label.flight=Vuelo
+customer.booking.list.label.published = Publicado
 
 customer.booking.list.label.purchaseMoment=Momento de Compra
 customer.booking.list.label.lastNibble=Últimos Digitos de la Tarjeta de Crédito
+
+customer.booking.form.button.update = Actualizar
+customer.booking.form.button.return = Volver
+
+customer.booking.create = Crear Reserva
+customer.booking.create.submit = Crear Reserva
+
+customer.booking.update = Actualizar Reserva
+customer.booking.update.submit = Actualizar Reserva
+
+customer.booking.publish = Publicar Reserva
+
+customer.booking.publish.error.no-lastNibble = No hay Últimos Digitos de la Tarjeta de Crédito
