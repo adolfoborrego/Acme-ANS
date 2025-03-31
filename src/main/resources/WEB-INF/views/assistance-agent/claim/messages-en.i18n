@@ -1,13 +1,13 @@
 assistance-agent.claim.list.title = List claims
+assistance-agent.claim.form.title=Show claim
+
 assistance-agent.claim.list.label.registration-moment=Registration moment
 assistance-agent.claim.list.label.passenger-email=Passenger email
 assistance-agent.claim.list.label.description=Description
 assistance-agent.claim.list.label.type=Type
+assistance-agent.claim.list.label.leg=Leg
+assistance-agent.claim.list.label.indicator=Indicator
 assistance-agent.claim.list.label.published=Published
-assistance-agent.claim.form.title=Show claim
-assistance-agent.form.label.registration-moment=Registration moment
-assistance-agent.form.label.passenger-email=Passenger email
-assistance-agent.form.label.description=Description
-assistance-agent.form.label.type=Type
-assistance-agent.form.label.indicator=Indicator
-assistance-agent.form.label.published=Published
+
+assistance-agent.claim.create=Create claim
+assistance-agent.claim.create.submit=Create claim

@@ -69,6 +69,9 @@ public class ManagerLegShowService extends AbstractGuiService<AirlineManager, Le
 		dataset.put("arrivalAirports", arrivalAirports);
 		dataset.put("aircrafts", aircrafts);
 
+		dataset.put("duration", leg.getDuration());
+		dataset.put("flightNumber", leg.getFlightNumber());
+
 		super.getResponse().addData(dataset);
 	}
 

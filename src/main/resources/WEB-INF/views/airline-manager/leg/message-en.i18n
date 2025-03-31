@@ -27,3 +27,6 @@ manager.flight.publish.error.unpublished-legs = All legs must be published befor
 manager.leg.error.same-airports = Arrival airport must be different from departure airport.
 manager.leg.error.arrival-before-departure = Arrival time must be after departure time.
 manager.leg.error.overlapping-legs = Legs cannot overlap with others of the same flight.
+
+manager.leg.error.no-changes = No changes have been made.
+

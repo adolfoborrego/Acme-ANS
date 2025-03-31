@@ -40,8 +40,13 @@ public class AssistanceAgentPendingClaimListService extends AbstractGuiService<A
 	public void unbind(final Claim claim) {
 		assert claim != null;
 		Dataset dataset;
+		boolean showCreate;
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "published");
+		dataset.put("indicator", claim.getIndicator());
+		dataset.put("leg", claim.getLeg() == null ? "----" : claim.getLeg().getId());
+		showCreate = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 		super.getResponse().addData(dataset);
+		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 
 }
