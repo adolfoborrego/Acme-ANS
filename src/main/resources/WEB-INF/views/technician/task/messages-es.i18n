@@ -22,3 +22,7 @@ technician.task.form.label.published = Publicado
 technician.task.create = Crear
 technician.task.placeholder.estimatedDuration = Introduce un entero entre 0 y 2000
 technician.task.placeholder.priority= Introduce un entero entre 0 y 10
+
+technician.task.delete.submit = Eliminar Tarea
+technician.task.publish = Publicar Tarea
+technician.task.update.submit = Actualizar Tarea
