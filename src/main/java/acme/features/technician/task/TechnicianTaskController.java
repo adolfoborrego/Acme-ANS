@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.controllers.AbstractGuiController;
 import acme.client.controllers.GuiController;
-import acme.entities.Task;
+import acme.entities.task.Task;
 import acme.realms.technician.Technician;
 
 @GuiController
@@ -21,6 +21,8 @@ public class TechnicianTaskController extends AbstractGuiController<Technician, 
 	@Autowired
 	private TechnicianTaskShowService	showService;
 
+	@Autowired
+	private TechnicianTaskCreateService	createService;
 	// Constructors -----------------------------------------------------------
 
 
@@ -28,6 +30,7 @@ public class TechnicianTaskController extends AbstractGuiController<Technician, 
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
 	}
 
 }

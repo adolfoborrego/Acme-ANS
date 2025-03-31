@@ -27,6 +27,9 @@
 	    		<acme:input-checkbox code="technician.maintenance-record.list.label.published" path="published" readonly="true"/>
 			</jstl:when>
 		</jstl:choose>
+		<jstl:if test="${acme:anyOf(_command, 'show|publish')&& numberOfTasks == 0}">
+			<acme:button code="technician.maintenance-record.create-first-task" action="/technician/task/create"/>
+		</jstl:if>
 	   <jstl:if test="${acme:anyOf(_command, 'show|publish')&& numberOfTasks != 0}">
 			<acme:button code="technician.maintenance-record.list-tasks" action="/technician/task/list?maintenanceRecordId=${id}"/>
 		</jstl:if>

@@ -19,3 +19,6 @@ technician.task.list.label.priority = Prioridad
 technician.task.form.label.published = Publicado
 
 
+technician.task.create = Crear
+technician.task.placeholder.estimatedDuration = Introduce un entero entre 0 y 2000
+technician.task.placeholder.priority= Introduce un entero entre 0 y 10

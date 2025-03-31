@@ -35,3 +35,5 @@ technician.maintenanceRecord.publish.task-unpublished = You can't publish a main
 technician.maintenanceRecord.publish.no-tasks = You can't publish a maintenance record if there's no task associated
 
 technician.maintenanceRecord.noChanges = A maintenance record without changes couldn't be updated
+
+technician.maintenance-record.create-first-task = Create First Task

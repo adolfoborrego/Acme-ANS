@@ -18,7 +18,7 @@ task-13,maintenanceRecord-03,true,7,2,' OR '1'='1' --,REPAIR
 task-14,maintenanceRecord-05,false,10,6,Short description test.,MAINTENANCE
 task-15,maintenanceRecord-05,false,10,6,Short description test.,REPAIR
 task-16,maintenanceRecord-05,false,10,6,Short description test.,INSPECTION
-task-17,maintenanceRecord-05,false,10,6,Short description test.,SYSTEM CHECK
+task-17,maintenanceRecord-05,false,10,6,Short description test.,SYSTEM_CHECK
 #Probando los posibles estados de published
 task-18,maintenanceRecord-06,true,20,3,Short description test.,REPAIR
 task-19,maintenanceRecord-06,false,20,3,Short description test.,REPAIR
