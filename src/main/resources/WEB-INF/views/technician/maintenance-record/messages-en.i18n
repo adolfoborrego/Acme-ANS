@@ -26,3 +26,6 @@ technician.maintenanceRecord.create = Create Maintenance Record
 technician.maintenanceRecord.publish = Publish Maintenance Record
 technician.maintenanceRecord.update.submit = Update Maintenance Record
 technician.maintenanceRecord.create.submit = Create
+
+technician.maintenanceRecord.moment-before-inspection.moment = The moment must be before the next inspection
+technician.maintenanceRecord.moment-before-inspection.inspectionDueDate = The next inspection must be after the moment

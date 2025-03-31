@@ -4,11 +4,12 @@ package acme.features.technician.maintenanceRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.aircraft.Aircraft;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
+import acme.entities.maintenanceRecord.MaintenanceRecordStatus;
 import acme.realms.technician.Technician;
 
 @GuiService
@@ -41,21 +42,16 @@ public class TechnicianMaintRecordCreateService extends AbstractGuiService<Techn
 	@Override
 	public void bind(final MaintenanceRecord maintenanceRecord) {
 		assert maintenanceRecord != null;
-		super.bindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "published");
-		super.getResponse().addGlobal("aircraft", String.class);
+		super.bindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "published", "aircraft");
 	}
 
 	@Override
 	public void validate(final MaintenanceRecord maintenanceRecord) {
-		String registrationNumber = super.getRequest().getData("aircraft", String.class);
-		Aircraft aircraft = this.repository.findAircraftByRegistrationNumber(registrationNumber);
+		assert maintenanceRecord != null;
 
-		if (maintenanceRecord == null)
-			throw new IllegalArgumentException();
-		if (!this.isValid(maintenanceRecord))
-			throw new IllegalArgumentException("No es válida");
-		if (aircraft == null)
-			throw new IllegalArgumentException("Es necesario un aircraft válido"); // Haciendolo asi muestra un alert no queremos eso queremos que en le form lo corrija preguntar como
+		boolean primeroMoment = maintenanceRecord.getMoment().before(maintenanceRecord.getInspectionDueDate());
+		super.state(primeroMoment, "moment", "technician.maintenanceRecord.moment-before-inspection.moment");
+		super.state(primeroMoment, "inspectionDueDate", "technician.maintenanceRecord.moment-before-inspection.inspectionDueDate");
 	}
 
 	@Override
@@ -63,19 +59,19 @@ public class TechnicianMaintRecordCreateService extends AbstractGuiService<Techn
 		assert maintenanceRecord != null;
 		int userAccountId = super.getRequest().getPrincipal().getAccountId();
 		Technician technician = this.repository.findTechnicianByUserId(userAccountId);
-		String registrationNumber = super.getRequest().getData("aircraft", String.class);
-		Aircraft aircraft = this.repository.findAircraftByRegistrationNumber(registrationNumber);
 
 		maintenanceRecord.setTechnician(technician);
-		maintenanceRecord.setCurrentStatus("PENDING");
-		maintenanceRecord.setAircraft(aircraft);
-
 		this.repository.save(maintenanceRecord);
 	}
 
 	@Override
 	public void unbind(final MaintenanceRecord maintenanceRecord) {
+		SelectChoices aircrafts = SelectChoices.from(this.repository.findAllAircraft(), "registrationNumber", maintenanceRecord.getAircraft());
+		SelectChoices statuses = SelectChoices.from(MaintenanceRecordStatus.class, maintenanceRecord.getCurrentStatus());
+
 		Dataset dataset = super.unbindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "published", "aircraft");
+		dataset.put("aircrafts", aircrafts);
+		dataset.put("statusChoices", statuses);
 		super.getResponse().addData(dataset);
 	}
 
@@ -85,8 +81,4 @@ public class TechnicianMaintRecordCreateService extends AbstractGuiService<Techn
 			PrincipalHelper.handleUpdate();
 	}
 
-	private boolean isValid(final MaintenanceRecord maintenanceRecord) {
-		return maintenanceRecord.getMoment().before(maintenanceRecord.getInspectionDueDate());
-
-	}
 }

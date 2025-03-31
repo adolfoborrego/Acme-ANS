@@ -36,7 +36,7 @@ maintenanceRecord-26,technician2,aircraft-17,Some notes,false,EUR 54321.45,2040/
 maintenanceRecord-27,technician3,aircraft-18,Some notes,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
 #Variaciones en el currentStatus
 maintenanceRecord-28,technician1,aircraft-19,Some notes,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
-maintenanceRecord-29,technician2,aircraft-19,Some notes,false,EUR 4000.00,2040/08/05 09:00,IN PROGRESS,2022/06/03 09:00
+maintenanceRecord-29,technician2,aircraft-19,Some notes,false,EUR 4000.00,2040/08/05 09:00,IN_PROGRESS,2022/06/03 09:00
 maintenanceRecord-30,technician3,aircraft-20,Some notes,false,EUR 4000.00,2040/08/05 09:00,COMPLETED,2022/06/03 09:00
 #Variaciones en las notes
 maintenanceRecord-31,technician1,aircraft-21,,false,EUR 4000.00,2040/08/05 09:00,PENDING,2022/06/03 09:00
