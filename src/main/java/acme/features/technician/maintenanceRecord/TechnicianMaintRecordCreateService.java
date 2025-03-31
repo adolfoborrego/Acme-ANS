@@ -66,6 +66,7 @@ public class TechnicianMaintRecordCreateService extends AbstractGuiService<Techn
 
 	@Override
 	public void unbind(final MaintenanceRecord maintenanceRecord) {
+		assert maintenanceRecord != null;
 		SelectChoices aircrafts = SelectChoices.from(this.repository.findAllAircraft(), "registrationNumber", maintenanceRecord.getAircraft());
 		SelectChoices statuses = SelectChoices.from(MaintenanceRecordStatus.class, maintenanceRecord.getCurrentStatus());
 

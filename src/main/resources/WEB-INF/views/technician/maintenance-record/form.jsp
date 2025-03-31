@@ -32,8 +32,8 @@
 		</jstl:if>
 	   <jstl:choose>
 	   		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && !published}">
-				<acme:submit code="technician.maintenanceRecord.update.submit" action="/airline-manager/flight/update"/>
-				<acme:submit code="technician.maintenanceRecord.publish" action="/airline-manager/flight/publish" />
+				<acme:submit code="technician.maintenanceRecord.update.submit" action="/technician/maintenance-record/update"/>
+				<acme:submit code="technician.maintenanceRecord.publish" action="/technician/maintenance-record/publish" />
 		</jstl:when>
 	   		<jstl:when test="${_command == 'create'}">
 				<acme:submit code="technician.maintenanceRecord.create.submit" action="/technician/maintenance-record/create"/>
