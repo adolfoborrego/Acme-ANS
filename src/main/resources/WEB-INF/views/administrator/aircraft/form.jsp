@@ -20,7 +20,7 @@
 	   			<acme:input-checkbox code="administrator.aircraft.form.label.confirmation" path="confirmation"/>
 				<acme:submit code="administrator.aircraft.create.submit" action="/administrator/aircraft/create"/>
 			</jstl:when>
-			<jstl:when test="${_command == 'show'}">
+			<jstl:when test="${_command != 'create'}">
 	   			<acme:input-checkbox code="administrator.aircraft.form.label.confirmation.update" path="confirmation"/>
 	   			<acme:submit code="administrator.aircraft.update.submit" action="/administrator/aircraft/update"/>
 			</jstl:when>

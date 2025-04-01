@@ -16,6 +16,7 @@ administrator.aircraft.update.submit = Actualizar Aeronave
 
 administrator.aircraft.form.label.confirmation = Confirmo que los datos son correctos
 administrator.aircraft.form.error.confirmation = Debe confirmar los datos para continuar
+administrator.aircraft.no-changes =  No se puede actualizar la aeronave si no se han efectuado cambios
 
 administrator.aircraft.form.label.confirmation = Confirmo que los datos son correctos antes de actualizarlos
 
