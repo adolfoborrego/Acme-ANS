@@ -19,6 +19,9 @@
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && !published}">
 			<acme:submit code="assistance-agent.claim.update.submit" action="/assistance-agent/claim/update"/>
 			<acme:submit code="assistance-agent.claim.delete.submit" action="/assistance-agent/claim/delete"/>
+			<jstl:if test="${!published}">
+				<acme:submit code="assistance-agent.claim.publish.submit" action="/assistance-agent/claim/publish"/>
+			</jstl:if>
 		</jstl:when>		
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="assistance-agent.claim.create.submit" action="/assistance-agent/claim/create"/>

@@ -1,13 +1,18 @@
 assistance-agent.claim.list.title = Listar reclamaciones
-assistance-agent.claim.list.label.registration-moment=Momento de registro
-assistance-agent.claim.list.label.passenger-email=Correo del pasajero
-assistance-agent.claim.list.label.description=Descripción
-assistance-agent.claim.list.label.type=Tipo
-assistance-agent.claim.list.label.published=Publicado
-assistance-agent.claim.form.title=Mostrar reclamación
-assistance-agent.form.label.registration-moment=Momento de registro
-assistance-agent.form.label.passenger-email=Correo del pasajero
-assistance-agent.form.label.description=Descripción
-assistance-agent.form.label.type=Tipo
-assistance-agent.form.label.indicator=Indicador
-assistance-agent.form.label.published=Publicado
+assistance-agent.claim.form.title = Mostrar reclamación
+
+assistance-agent.claim.list.label.registration-moment = Momento de registro
+assistance-agent.claim.list.label.passenger-email = Correo del pasajero
+assistance-agent.claim.list.label.description = Descripción
+assistance-agent.claim.list.label.type = Tipo
+assistance-agent.claim.list.label.leg = Trayecto
+assistance-agent.claim.list.label.indicator = Indicador
+assistance-agent.claim.list.label.published = Publicado
+
+assistance-agent.claim.update.submit = Actualizar reclamación
+assistance-agent.claim.delete.submit = Eliminar reclamación
+assistance-agent.claim.publish.submit = Publicar reclamación
+assistance-agent.claim.create = Crear reclamación
+assistance-agent.claim.create.submit = Crear reclamación
+
+assistance-agent.claim.error.no-changes = Debe realizar al menos un cambio para actualizar la reclamación
