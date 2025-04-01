@@ -1,6 +1,8 @@
 
 package acme.features.assistanceAgent.claim;
 
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -12,10 +14,10 @@ import acme.entities.claim.ClaimType;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
-public class AssistanceAgentClaimShowService extends AbstractGuiService<AssistanceAgent, Claim> {
+public class AssistanceAgentClaimUpdateService extends AbstractGuiService<AssistanceAgent, Claim> {
 
 	@Autowired
-	private AssistanceAgentClaimRepository repository;
+	protected AssistanceAgentClaimRepository repository;
 
 
 	@Override
@@ -28,6 +30,7 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		Claim claim;
 		boolean isAssistanceAgent;
 		boolean isClaimOwner;
+		boolean isPublished;
 
 		claimId = super.getRequest().getData("id", int.class);
 
@@ -39,8 +42,9 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		isClaimOwner = assistanceAgentId == ownerId;
 
 		claim = this.repository.findClaimById(claimId);
+		isPublished = claim.getPublished();
 
-		authorise = claim != null && isAssistanceAgent && isClaimOwner;
+		authorise = claim != null && isAssistanceAgent && isClaimOwner && !isPublished;
 		super.getResponse().setAuthorised(authorise);
 	}
 
@@ -51,6 +55,29 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		claimId = super.getRequest().getData("id", int.class);
 		claim = this.repository.findClaimById(claimId);
 		super.getBuffer().addData(claim);
+	}
+
+	@Override
+	public void bind(final Claim claim) {
+		assert claim != null;
+		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "leg");
+	}
+
+	@Override
+	public void validate(final Claim claim) {
+		assert claim != null;
+		if (super.getRequest().getCommand().equalsIgnoreCase("update")) {
+			Claim originalClaim = this.repository.findClaimById(claim.getId());
+			boolean isModified = !Objects.equals(claim.getRegistrationMoment(), originalClaim.getRegistrationMoment()) || !Objects.equals(claim.getPassengerEmail(), originalClaim.getPassengerEmail())
+				|| !Objects.equals(claim.getDescription(), originalClaim.getDescription()) || !Objects.equals(claim.getType(), originalClaim.getType()) || !Objects.equals(claim.getLeg().getId(), originalClaim.getLeg().getId());
+			super.state(isModified, "*", "assistance-agent.claim.error.no-changes");
+		}
+	}
+
+	@Override
+	public void perform(final Claim claim) {
+		assert claim != null;
+		this.repository.save(claim);
 	}
 
 	@Override

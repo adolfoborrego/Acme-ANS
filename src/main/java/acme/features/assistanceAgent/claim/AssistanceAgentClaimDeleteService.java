@@ -12,10 +12,10 @@ import acme.entities.claim.ClaimType;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
-public class AssistanceAgentClaimShowService extends AbstractGuiService<AssistanceAgent, Claim> {
+public class AssistanceAgentClaimDeleteService extends AbstractGuiService<AssistanceAgent, Claim> {
 
 	@Autowired
-	private AssistanceAgentClaimRepository repository;
+	protected AssistanceAgentClaimRepository repository;
 
 
 	@Override
@@ -28,6 +28,7 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		Claim claim;
 		boolean isAssistanceAgent;
 		boolean isClaimOwner;
+		boolean isPublished;
 
 		claimId = super.getRequest().getData("id", int.class);
 
@@ -39,8 +40,9 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		isClaimOwner = assistanceAgentId == ownerId;
 
 		claim = this.repository.findClaimById(claimId);
+		isPublished = claim.getPublished();
 
-		authorise = claim != null && isAssistanceAgent && isClaimOwner;
+		authorise = claim != null && isAssistanceAgent && isClaimOwner && !isPublished;
 		super.getResponse().setAuthorised(authorise);
 	}
 
@@ -51,6 +53,20 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		claimId = super.getRequest().getData("id", int.class);
 		claim = this.repository.findClaimById(claimId);
 		super.getBuffer().addData(claim);
+	}
+
+	@Override
+	public void bind(final Claim claim) {
+
+	}
+
+	@Override
+	public void validate(final Claim claim) {
+	}
+
+	@Override
+	public void perform(final Claim claim) {
+		this.repository.delete(claim);
 	}
 
 	@Override
