@@ -6,6 +6,24 @@ administrator.aircraft.list.label.model = Modelo
 administrator.aircraft.list.label.registrationNumber = Número de Registro
 administrator.aircraft.list.label.capacity = Capacidad
 administrator.aircraft.list.label.status = Estado
-administrator.aircraft.list.label.airlane.iata = IATA Code Aerolínea
+administrator.aircraft.list.label.airline.iata = IATA Code Aerolínea
 administrator.aircraft.form.label.details = Detalles
 administrator.aircraft.form.label.cargoWeight = Peso de Carga
+
+administrator.aircraft.list.button.create = Crear Aeronave
+administrator.aircraft.create.submit = Crear
+administrator.aircraft.update.submit = Actualizar Aeronave
+
+administrator.aircraft.form.label.confirmation = Confirmo que los datos son correctos
+administrator.aircraft.form.error.confirmation = Debe confirmar los datos para continuar
+
+administrator.aircraft.form.label.confirmation = Confirmo que los datos son correctos antes de actualizarlos
+
+
+
+#### PLACEHOLDERS
+administrator.aircraft.placeholder.model = Introduce el modelo de la aeronave
+administrator.aircraft.placeholder.registrationNumber = Ingresa solo letras mayúsculas y números (1-50 caracteres). Ej: IO98JI
+administrator.aircraft.placeholder.capacity = Ingresa un número entre 1 y 600
+administrator.aircraft.placeholder.cargoWeight = Ingresa un número entre 2000 y 50000
+administrator.aircraft.placeholder.details = Introduce los detalles (máx. 255 caracteres)
