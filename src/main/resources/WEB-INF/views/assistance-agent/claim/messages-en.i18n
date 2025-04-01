@@ -11,6 +11,7 @@ assistance-agent.claim.list.label.published=Published
 
 assistance-agent.claim.update.submit=Update claim
 assistance-agent.claim.delete.submit=Delete claim
+assistance-agent.claim.publish.submit=Publish claim
 assistance-agent.claim.create=Create claim
 assistance-agent.claim.create.submit=Create claim
 
