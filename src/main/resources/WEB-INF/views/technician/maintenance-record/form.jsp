@@ -28,7 +28,7 @@
 			</jstl:when>
 		</jstl:choose>
 		<jstl:if test="${acme:anyOf(_command, 'show|publish')&& numberOfTasks == 0}">
-			<acme:button code="technician.maintenance-record.create-first-task" action="/technician/task/create"/>
+			<acme:button code="technician.maintenance-record.create-first-task" action="/technician/task/create?maintenanceRecordId=${maintenanceRecordId}"/>
 		</jstl:if>
 	   <jstl:if test="${acme:anyOf(_command, 'show|publish')&& numberOfTasks != 0}">
 			<acme:button code="technician.maintenance-record.list-tasks" action="/technician/task/list?maintenanceRecordId=${id}"/>
@@ -36,7 +36,9 @@
 	   <jstl:choose>
 	   		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && !published}">
 				<acme:submit code="technician.maintenanceRecord.update.submit" action="/technician/maintenance-record/update"/>
-				<acme:submit code="technician.maintenanceRecord.publish" action="/technician/maintenance-record/publish" />
+				<jstl:if test="${numberOfTasks != 0 && allTasksPublished}">
+					<acme:submit code="technician.maintenanceRecord.publish" action="/technician/maintenance-record/publish" />
+				</jstl:if>
 		</jstl:when>
 	   		<jstl:when test="${_command == 'create'}">
 				<acme:submit code="technician.maintenanceRecord.create.submit" action="/technician/maintenance-record/create"/>

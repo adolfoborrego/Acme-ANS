@@ -28,8 +28,10 @@ public class TechnicianMaintRecordPublishService extends AbstractGuiService<Tech
 		boolean status;
 		int id = super.getRequest().getData("id", int.class);
 		MaintenanceRecord mr = this.repository.findById(id);
+		Collection<Task> tasks = this.repository.findAllTaskByMaintenanceRecordId(id);
+		boolean allPublished = this.allTasksPublished(tasks);
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && mr != null && !mr.getPublished();
+		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && mr != null && !mr.getPublished() && !tasks.isEmpty() && allPublished;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -47,15 +49,6 @@ public class TechnicianMaintRecordPublishService extends AbstractGuiService<Tech
 
 	@Override
 	public void validate(final MaintenanceRecord maintenanceRecord) {
-		int id = super.getRequest().getData("id", int.class);
-		Collection<Task> tasks = this.repository.findAllTaskByMaintenanceRecordId(id);
-		boolean allPublished = this.allTasksPublished(tasks);
-		boolean noTasks = tasks.isEmpty();
-
-		if (noTasks)
-			super.state(noTasks, "*", "technician.maintenanceRecord.publish.no-tasks"); // pensar como hacer para que cdo muestre esto desps se vaya a la pantalla show normal añadir una variable que muestre un boton en lugar del return que te mande donde sea
-		else
-			super.state(allPublished, "*", "technician.maintenanceRecord.publish.task-unpublished");
 	}
 
 	@Override

@@ -8,6 +8,7 @@
 	<acme:list-column code="technician.task.list.label.type" path="type" />
 	<acme:list-column code="technician.task.list.label.estimatedDuration" path="estimatedDuration" />
 	<acme:list-column code="technician.task.list.label.priority" path="priority" />
+	<acme:list-column code="technician.task.list.label.published" path="published" />
     <acme:list-payload path="payload"/>	
 </acme:list>
 <jstl:if test="${showCreate}">
