@@ -60,7 +60,7 @@ public class TechnicianTaskListService extends AbstractGuiService<Technician, Ta
 		int maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
 		MaintenanceRecord maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
 		boolean showCreate = !maintenanceRecord.getPublished();
-		dataset = super.unbindObject(task, "id", "type", "priority", "estimatedDuration");
+		dataset = super.unbindObject(task, "id", "type", "priority", "estimatedDuration", "published");
 		super.getResponse().addGlobal("showCreate", showCreate);
 		super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecordId);
 
