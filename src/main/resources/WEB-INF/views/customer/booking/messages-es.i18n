@@ -31,4 +31,7 @@ customer.booking.update.submit = Actualizar Reserva
 
 customer.booking.publish = Publicar Reserva
 
+
 customer.booking.publish.error.no-lastNibble = No hay Últimos Digitos de la Tarjeta de Crédito
+customer.booking.error.flight-notPublished = El vuelo no está publicado
+customer.booking.error.dontExist-flight = EL vuelo no existe

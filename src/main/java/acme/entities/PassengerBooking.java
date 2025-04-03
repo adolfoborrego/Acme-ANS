@@ -22,13 +22,13 @@ public class PassengerBooking extends AbstractEntity {
 	@Optional
 	@Automapped
 	@Valid
-	@ManyToOne(optional = false)
+	@ManyToOne
 	private Booking				booking;
 
 	@Optional
 	@Automapped
 	@Valid
-	@ManyToOne(optional = false)
+	@ManyToOne
 	private Passenger			passenger;
 
 }

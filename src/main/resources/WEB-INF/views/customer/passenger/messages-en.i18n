@@ -20,3 +20,6 @@ customer.passenger.list.label.dateOfBirth=Date of Birth
 
 customer.passenger.list = See Passengers
 customer.passenger.list.title = List of Passengers
+
+customer.passenger.create = Create Passenger
+customer.passenger.create.submit = Create Passenger

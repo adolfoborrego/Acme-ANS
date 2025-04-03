@@ -15,17 +15,21 @@
 			<acme:input-moment code="customer.booking.list.label.purchaseMoment" path="purchaseMoment" readonly="true"/>
 		</jstl:if>
 		<jstl:if test="${_command == 'create'}">
-			<acme:input-moment code="customer.booking.list.label.purchaseMoment" path="purchaseMoment"/>
+			<acme:input-moment code="customer.booking.list.label.purchaseMoment" path="purchaseMoment" readonly="true"/>
 		</jstl:if>
 	    <acme:input-select code="customer.booking.list.label.travelClass" path="travelClass" choices= "${travelClasses}"/>
 	    <acme:input-checkbox code="customer.booking.list.label.published" path="published" readonly="true"/>
 	    	    
 
-	<!-- Botón para ver los legs de este vuelo -->
-    <jstl:if test="${_command == 'show' && numberOfLayovers != 0}">
-   		 <acme:button code="customer.passenger.list" action="/customer/passenger/list?bookingId=${id}" />
+    <jstl:if test="${acme:anyOf(_command, 'show|publish|update')}">
+			<jstl:if test="${numberOfLayovers > 0}">
+				<acme:button code="customer.passenger.list" action="/customer/passenger/list?id=${id}" />
+			</jstl:if>
+			<jstl:if test="${!published}">
+				<acme:button code="customer.passenger-booking.create" action="/customer/passenger-booking/create?bookingId=${id}" />
+			</jstl:if>
    	</jstl:if>
-   	<jstl:choose>
+   	<jstl:choose>	
 		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && !published}">
 			<acme:submit code="customer.booking.update.submit" action="/customer/booking/update"/>
 			<acme:submit code="customer.booking.publish" action="/customer/booking/publish" />	

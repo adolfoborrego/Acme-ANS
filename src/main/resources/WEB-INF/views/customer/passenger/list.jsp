@@ -11,3 +11,6 @@
     <acme:list-payload path="payload"/>	
 </acme:list>
 
+<jstl:if test="${showCreate}">
+	<acme:button code="customer.passenger.create" action="/customer/passenger/create" />
+</jstl:if>

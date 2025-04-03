@@ -1,0 +1,26 @@
+# defaults-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+customer.passenger-booking.form.title = Associate Passengers
+
+customer.passenger-booking.list.label.booking = Booking
+customer.passenger-booking.list.label.passenger = Passenger
+
+customer.passenger-booking.create = Associate Passenger
+customer.passenger-booking.create.submit = Associate Passenger
+
+
+customer.passenger-booking.error.different-customer = Passenger Customer is not valid
+customer.passenger-booking.error.dontExist-passenger = Passenger doesn't exist
+
+
+
+
+
