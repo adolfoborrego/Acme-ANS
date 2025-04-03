@@ -12,7 +12,7 @@ import acme.entities.flightAssignment.FlightAssignment;
 import acme.realms.flightCrewMember.FlightCrewMember;
 
 @GuiService
-public class FlightAssignmentListCompletedService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
+public class FlightAssignmentListCrewsService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -31,8 +31,13 @@ public class FlightAssignmentListCompletedService extends AbstractGuiService<Fli
 	public void load() {
 		Collection<FlightAssignment> flightAssignments;
 
-		Integer memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		flightAssignments = this.repository.findAllMyCompletedFlightAssignments(memberId);
+		Integer flightAssignmentId = super.getRequest().getData("Fid", Integer.class);
+		Integer legId = this.repository.findLegOfFlightAssignment(flightAssignmentId);
+		flightAssignments = this.repository.findFlightAssignmentsOfLeg(legId);
+
+		Integer flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+
+		flightAssignments = flightAssignments.stream().filter(x -> x.getFlightCrewMember().getId() != flightCrewMemberId).toList();
 
 		super.getBuffer().addData(flightAssignments);
 	}

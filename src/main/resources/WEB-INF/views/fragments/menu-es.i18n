@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-# master.menu.anonymous #######################################################
+# master.menu.anonymous ####################################################### 
 
 master.menu.anonymous = Anónimo
 master.menu.anonymous.favourite-link1 = 29584665H: Borrego González, Adolfo
@@ -62,10 +62,20 @@ master.menu.technician.list-maintenanceRecords = Registros de mantenimiento
 # master.menu.administrator/ Entidades grupales ############################################
 master.menu.administrator.list-airports = Listar aeropuertos
 master.menu.administrator.list-airlines = Listar aerolineas
+
+
+
+# master.menu.member ################
+
+master.menu.member = Miembro
+master.menu.member.list-completed-flightAssignments = Asignaciones De Vuelos Completados
+master.menu.member.list-planned-flightAssignments = Asignaciones De Vuelos Planificadas
+
 master.menu.administrator.list-aircrafts = Listar aeronaves
 
 # master.menu.customer ####################################################
 
 master.menu.customer = Cliente
 master.menu.customer.list-bookings = Reservas
+
 
