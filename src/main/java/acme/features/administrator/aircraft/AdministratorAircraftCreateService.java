@@ -1,6 +1,8 @@
 
 package acme.features.administrator.aircraft;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -50,6 +52,9 @@ public class AdministratorAircraftCreateService extends AbstractGuiService<Admin
 		assert aircraft != null;
 		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "administrator.aircraft.form.error.confirmation");
+
+		boolean noRepetidoRegistrationNumber = this.noRepetidoRegistrationNumber(aircraft);
+		super.state(noRepetidoRegistrationNumber, "registrationNumber", "administrator.aircraft.repeated-registrationNumber");
 	}
 
 	@Override
@@ -77,4 +82,10 @@ public class AdministratorAircraftCreateService extends AbstractGuiService<Admin
 			PrincipalHelper.handleUpdate();
 	}
 
+	private boolean noRepetidoRegistrationNumber(final Aircraft aircraft) {
+		List<String> registrationNumbers = this.repository.findAllAircrafts().stream().map(Aircraft::getRegistrationNumber).toList();
+		boolean existeRepetido = registrationNumbers.stream().anyMatch(x -> aircraft.getRegistrationNumber().equals(x));
+		return !existeRepetido;
+
+	}
 }

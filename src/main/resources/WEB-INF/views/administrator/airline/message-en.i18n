@@ -13,3 +13,23 @@ administrator.airline.list.label.type = Type
 
 administrator.airline.list.title = Airlines list
 administrator.airline.form.title = Airline details
+
+administrator.airline.update.submit = Update Airline
+administrator.airline.form.label.confirmation.update = I confirm that the data is correct before updating
+
+administrator.airline.list.button.create = Create Airline
+administrator.airline.create.submit = Create
+administrator.airline.form.label.confirmation =  I confirm that the data is correct
+
+### Errors
+administrator.airline.no-changes = An airline without changes couldn't be updated
+administrator.airline.repeated-iataCode = There cannot be two airlines with the same IATA Code
+administrator.airline.form.error.confirmation = You must confirm the data to proceed
+
+#PLACEHOLDERS
+administrator.airline.placeholder.name = Introduce the airline name (max = 50 characters)
+administrator.airline.placeholder.iataCode = Introduce an IATA Code following this pattern: ^[A-Z]{3}$. Ej: ABC
+administrator.airline.placeholder.phoneNumber = Introduce a valid phone number. Ej: +34911223344
+
+
+

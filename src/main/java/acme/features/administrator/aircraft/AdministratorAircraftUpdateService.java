@@ -1,6 +1,7 @@
 
 package acme.features.administrator.aircraft;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,9 @@ public class AdministratorAircraftUpdateService extends AbstractGuiService<Admin
 		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "administrator.aircraft.form.error.confirmation");
 
+		boolean noRepetidoRegistrationNumber = this.noRepetidoRegistrationNumber(original, aircraft);
+		super.state(noRepetidoRegistrationNumber, "registrationNumber", "administrator.aircraft.repeated-registrationNumber");
+
 		boolean hasChanged = this.hasChanged(original, aircraft);
 		super.state(hasChanged, "*", "administrator.aircraft.no-changes");
 	}
@@ -96,4 +100,17 @@ public class AdministratorAircraftUpdateService extends AbstractGuiService<Admin
 		return !mismoModel || !mismoRegistrationNumber || !mismaCapacity || !mismoCargoWeight || !mismoStatus || !mismosDetails || !mismoAirline;
 	}
 
+	private boolean noRepetidoRegistrationNumber(final Aircraft original, final Aircraft nuevo) {
+
+		String registrationNumberOriginal = original.getRegistrationNumber();
+		String registrationNumberNuevo = nuevo.getRegistrationNumber();
+
+		if (registrationNumberOriginal.equals(registrationNumberNuevo))
+			return true;
+		else {
+			List<String> registrationNumbers = this.repository.findAllAircrafts().stream().map(Aircraft::getRegistrationNumber).toList();
+			boolean existeRepetido = registrationNumbers.stream().anyMatch(x -> nuevo.getRegistrationNumber().equals(x));
+			return !existeRepetido;
+		}
+	}
 }

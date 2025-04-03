@@ -17,6 +17,7 @@ administrator.aircraft.update.submit = Update Aircraft
 administrator.aircraft.form.label.confirmation = I confirm that the data is correct
 administrator.aircraft.form.error.confirmation = You must confirm the data to proceed
 administrator.aircraft.no-changes = An aircraft without changes couldn't be updated
+administrator.aircraft.repeated-registrationNumber = There cannot be two aircraft with the same registration number
 
 administrator.aircraft.form.label.confirmation.update = I confirm that the data is correct before updating
 

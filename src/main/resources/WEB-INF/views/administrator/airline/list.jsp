@@ -10,3 +10,5 @@
     <acme:list-column code="administrator.airline.list.label.website" path="website"/>
     <acme:list-column code="administrator.airline.list.label.type" path="type"/>
 </acme:list>
+
+ <acme:button code="administrator.airline.list.button.create" action="/administrator/airline/create"/>
