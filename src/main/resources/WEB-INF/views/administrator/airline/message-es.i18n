@@ -13,3 +13,22 @@ administrator.airline.list.label.type = Tipo
 
 administrator.airline.list.title = Lista aerolineas
 administrator.airline.form.title = Detalle aerolinea
+
+
+administrator.airline.update.submit = Actualizar Aerolínea
+administrator.airline.form.label.confirmation.update = Confirmo que los datos son correctos antes de actualizar
+
+administrator.airline.list.button.create = Crear Aerolínea
+administrator.airline.create.submit = Crear
+administrator.airline.form.label.confirmation = Confirmo que los datos son correctos
+
+### Errores
+administrator.airline.no-changes = Una aerolínea sin cambios no se puede actualizar
+administrator.airline.repeated-iataCode = No puede haber dos aerolíneas con el mismo Código IATA
+administrator.airline.form.error.confirmation = Debe confirmar los datos para continuar
+
+#PLACEHOLDERS
+administrator.airline.placeholder.name = Introduce el nombre de la aerolínea (máx. 50 caracteres)
+administrator.airline.placeholder.iataCode = Introduce un Código IATA siguiendo este patrón: ^[A-Z]{3}$. Ej: ABC
+administrator.airline.placeholder.phoneNumber = Introduce un número de teléfono válido. Ej: +34911223344
+

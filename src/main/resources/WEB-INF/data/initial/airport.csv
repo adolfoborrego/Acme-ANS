@@ -1,3 +1,3 @@
 key,name,iataCode,operationalScope,city,country,website,emailAddress,contactPhoneNumber
-airport-01,Los Angeles INTERNATIONAL,LAX,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
-airport-02,Los Angeles INTERNATIONAL 2,LAB,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+airport-62,Los Angeles INTERNATIONAL,INN,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
+airport-63,Los Angeles INTERNATIONAL 2,INJ,INTERNATIONAL,Los Angeles,USA,http://lax.com,lax@airport.com,+11234567890
