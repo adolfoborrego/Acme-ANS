@@ -1,0 +1,2 @@
+key,registrationMoment,passengerEmail,description,type,published,key:assistanceAgent,key:leg
+claim-01,2011/04/16 00:00,german@email.com,test description,FLIGHT_ISSUES,true,assistance-agent-01,leg-01
