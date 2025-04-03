@@ -11,12 +11,25 @@
 technician.maintenance-record.form.title = Detalles de Registros de Mantenimiento
 technician.maintenance-record.list.title = Listado de Registros de Mantenimiento
 
-technician.maintenance-record.list.label.aircraft=Aeronave
+technician.maintenance-record.list.label.aircraft=Código de la aeronave
 technician.maintenance-record.list.label.currentStatus=Estado
 technician.maintenance-record.list.label.estimatedCost=Coste Aproximado
 technician.maintenance-record.list.label.inspectionDueDate=Siguiente Revisión
 technician.maintenance-record.list.label.notes=Notas
-
 technician.maintenance-record.list.label.published = Publicado
 technician.maintenance-record.list.label.moment = Momento
 
+technician.maintenance-record.list-tasks = Listado de tareas
+technician.maintenanceRecord.publish = Publicar Registro de Mantenimiento
+technician.maintenanceRecord.update.submit = Actualizar Registro de Mantenimiento
+technician.maintenanceRecord.create.submit = Crear
+
+
+technician.maintenanceRecord.moment-before-inspection.moment = El momento debe ser antes que la siguiente revisión
+technician.maintenanceRecord.moment-before-inspection.inspectionDueDate = La siguiente revisión debe ser después que el momento
+
+technician.maintenanceRecord.publish.task-unpublished = No se puede publicar un registro de mantenimiento si no están todas sus tareas publicadas
+technician.maintenanceRecord.publish.no-tasks = No se puede publicar un registro de mantenimiento sin tareas asociadas
+
+technician.maintenanceRecord.noChanges = No se puede actualizar el registro si no se han efectuado cambios
+technician.maintenance-record.create-first-task = Crear primera tarea

@@ -1,0 +1,29 @@
+administrator.aircraft.list.title = Aircraft list
+administrator.aircraft.form.title = Aircraft details
+
+
+administrator.aircraft.list.label.model = Model
+administrator.aircraft.list.label.registrationNumber = Registration Number
+administrator.aircraft.list.label.capacity = Capacity
+administrator.aircraft.list.label.status = Status
+administrator.aircraft.list.label.airline.iata = Airline IATA Code
+administrator.aircraft.form.label.details = Details
+administrator.aircraft.form.label.cargoWeight = Cargo Weight
+
+administrator.aircraft.list.button.create = Create Aircraft
+administrator.aircraft.create.submit = Create
+administrator.aircraft.update.submit = Update Aircraft
+
+administrator.aircraft.form.label.confirmation = I confirm that the data is correct
+administrator.aircraft.form.error.confirmation = You must confirm the data to proceed
+administrator.aircraft.no-changes = An aircraft without changes couldn't be updated
+
+administrator.aircraft.form.label.confirmation.update = I confirm that the data is correct before updating
+
+
+#### PLACEHOLDERS
+administrator.aircraft.placeholder.model = Introduce the model of the aircraft
+administrator.aircraft.placeholder.registrationNumber = Enter uppercase letters and numbers only (1-50 characters). Ej: IO98JI
+administrator.aircraft.placeholder.capacity = Enter a number between 1 and 600
+administrator.aircraft.placeholder.cargoWeight = Enter a number between 2000 and 50000
+administrator.aircraft.placeholder.details = Introduce the details(max 255 characters)

@@ -2,6 +2,7 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 
+
 <jstl:choose>
     <%-- Bloque para el comando "show" --%>
     <jstl:when test="${_command == 'show'}">
@@ -20,7 +21,7 @@
                 path="currentStatus" />
 
 
-            <%-- Campo Remarks, diferenciando según Fid e id --%>
+            <%-- Campo Remarks, diferenciando segï¿½n Fid e id --%>
             <jstl:if test="${Fid != id}">
                 <acme:input-textbox readonly="true"
                     code="flight-crew-member.flight-assignment.list.label.remarks"
@@ -47,7 +48,7 @@
                     path="lead_attendant" />
             </jstl:if>
 
-            <%-- Botones de acción (solo si el vuelo aún no está publicado/aterrizado y Fid coincide) --%>
+            <%-- Botones de acciï¿½n (solo si el vuelo aï¿½n no estï¿½ publicado/aterrizado y Fid coincide) --%>
             <jstl:if test="${currentStatus eq 'PENDING'}">
             	<jstl:if test="${!leg.published and leg.status != 'LANDED'}">
             		<jstl:if test="${Fid == id}">
@@ -79,7 +80,7 @@
                 code="flight-crew-member.flight-assignment.list.label.role"
                 path="duty" choices="${duty}" />
 
-            <%-- Campo de selección de Crews, específico de addFlightAssignment --%>
+            <%-- Campo de selecciï¿½n de Crews, especï¿½fico de addFlightAssignment --%>
             <acme:input-select readonly="false"
                 code="flight-crew-member.flight-assignment.list.label.crews"
                 path="memberId" choices="${possibleCrews}" />
@@ -89,7 +90,7 @@
                 code="flight-crew-member.flight-assignment.list.label.leg"
                 path="leg" choices="${possibleLegs}" />
 
-            <%-- Botón para crear asignación de vuelo en addFlightAssignment --%>
+            <%-- Botï¿½n para crear asignaciï¿½n de vuelo en addFlightAssignment --%>
             <acme:submit code="flight-crew-member.flight-assignment.create"
                 action="/flight-crew-member/flight-assignment/addFlightAssignment?Fid=${param.Fid}"/>
         </acme:form>
@@ -108,19 +109,19 @@
                 code="flight-crew-member.flight-assignment.list.label.leg"
                 path="leg" choices="${possibleLegs}" />
 
-            <%-- Campo Remarks, diferenciando según Fid e id --%>
+            <%-- Campo Remarks, diferenciando segï¿½n Fid e id --%>
             <acme:input-textbox readonly="false"
                 code="flight-crew-member.flight-assignment.list.label.remarks"
                 path="remarks" />
                  
 
-            <%-- Botón para crear asignación --%>
+            <%-- Botï¿½n para crear asignaciï¿½n --%>
             <acme:submit code="flight-crew-member.flight-assignment.create"
                 action="/flight-crew-member/flight-assignment/create" />
         </acme:form>
     </jstl:when>
 
-    <%-- Bloque para los demás comandos (por ejemplo, update) --%>
+    <%-- Bloque para los demï¿½s comandos (por ejemplo, update) --%>
     <jstl:otherwise>
         <acme:form readonly="false">
             <%-- Campo Role (en comandos distintos a addFlightAssignment, se muestra como de solo lectura) --%>
@@ -133,7 +134,7 @@
                 code="flight-crew-member.flight-assignment.list.label.leg"
                 path="leg" choices="${possibleLegs}" />
 
-            <%-- Campo Remarks, diferenciando según Fid e id --%>
+            <%-- Campo Remarks, diferenciando segï¿½n Fid e id --%>
             <jstl:if test="${Fid != id}">
                 <acme:input-textbox readonly="true"
                     code="flight-crew-member.flight-assignment.list.label.remarks"
@@ -152,7 +153,7 @@
                     path="lead_attendant" />
             </jstl:if>
 
-            <%-- Botones de acción si se cumple la condición de vuelo no publicado/aterrizado y Fid coincide --%>
+            <%-- Botones de acciï¿½n si se cumple la condiciï¿½n de vuelo no publicado/aterrizado y Fid coincide --%>
             <jstl:if test="${!leg.published and leg.status != 'LANDED' and Fid == id}">
                 <acme:submit code="flight-crew-member.flight-assignment.update"
                     action="/flight-crew-member/flight-assignment/update"/>
@@ -166,3 +167,4 @@
         </acme:form>
     </jstl:otherwise>
 </jstl:choose>
+

@@ -1,6 +1,8 @@
 
 package acme.features.airlineManager.leg;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -21,8 +23,21 @@ public class ManagerLegCreateService extends AbstractGuiService<AirlineManager, 
 
 	@Override
 	public void authorise() {
-		boolean authorised = super.getRequest().getPrincipal().hasRealmOfType(AirlineManager.class);
-		super.getResponse().setAuthorised(authorised);
+		int flightId = super.getRequest().getData("flightId", int.class);
+		Flight flight = this.repository.findFlightById(flightId);
+
+		boolean isOwner = false;
+		boolean isNotPublished = false;
+
+		if (flight != null) {
+			int userAccountId = super.getRequest().getPrincipal().getAccountId();
+			int managerId = this.repository.findManagerByUsserAccountId(userAccountId);
+
+			isOwner = flight.getAirlineManager().getId() == managerId;
+			isNotPublished = !flight.getPublished();
+		}
+
+		super.getResponse().setAuthorised(isOwner && isNotPublished);
 	}
 
 	@Override
@@ -38,14 +53,25 @@ public class ManagerLegCreateService extends AbstractGuiService<AirlineManager, 
 	}
 
 	@Override
-	public void bind(final Leg leg) {
+	public void validate(final Leg leg) {
 		assert leg != null;
-		super.bindObject(leg, "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft");
+
+		boolean diferentesAeropuertos = !leg.getDepartureAirport().equals(leg.getArrivalAirport());
+		super.state(diferentesAeropuertos, "arrivalAirport", "manager.leg.error.same-airports");
+
+		boolean llegadaDespuesSalida = leg.getScheduledArrival().after(leg.getScheduledDeparture());
+		super.state(llegadaDespuesSalida, "scheduledArrival", "manager.leg.error.arrival-before-departure");
+
+		List<Leg> existingLegs = this.repository.findLegsByFlightId(leg.getFlight().getId());
+		boolean noSolapamiento = existingLegs.stream()
+			.allMatch(existingLeg -> existingLeg.getId() == leg.getId() || leg.getScheduledArrival().before(existingLeg.getScheduledDeparture()) || leg.getScheduledDeparture().after(existingLeg.getScheduledArrival()));
+		super.state(noSolapamiento, "scheduledDeparture", "manager.leg.error.overlapping-legs");
 	}
 
 	@Override
-	public void validate(final Leg leg) {
+	public void bind(final Leg leg) {
 		assert leg != null;
+		super.bindObject(leg, "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft");
 	}
 
 	@Override
@@ -68,6 +94,9 @@ public class ManagerLegCreateService extends AbstractGuiService<AirlineManager, 
 		dataset.put("departureAirports", departureAirports);
 		dataset.put("arrivalAirports", arrivalAirports);
 		dataset.put("aircrafts", aircrafts);
+
+		dataset.put("duration", leg.getDuration());
+		dataset.put("flightNumber", leg.getFlightNumber());
 
 		super.getResponse().addData(dataset);
 	}

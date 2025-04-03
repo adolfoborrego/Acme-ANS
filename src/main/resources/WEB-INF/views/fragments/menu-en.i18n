@@ -68,8 +68,15 @@ master.menu.assistance-agent.list-pending-claims = List pending claims
 
 master.menu.technician = Technician
 master.menu.technician.list-maintenanceRecords = Maintenance records
-master.menu.technician.list-tasks = Tasks
 
+# master.menu.administrator/ Groupal entities ############################################
 master.menu.administrator.list-airports = List airports
 master.menu.administrator.list-airlines = List airlines
+master.menu.administrator.list-aircrafts = List aircrafts
+
+# master.menu.customer ####################################################
+
+master.menu.customer = Customer
+master.menu.customer.list-bookings = Bookings
+
 

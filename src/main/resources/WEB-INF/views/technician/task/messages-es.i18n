@@ -16,5 +16,17 @@ technician.task.list.label.description = Descripción
 technician.task.list.label.type = Tipo
 technician.task.list.label.estimatedDuration = Tiempo estimado
 technician.task.list.label.priority = Prioridad
+technician.task.list.label.published = Publicado
+technician.task.form.label.published = Publicado
 
 
+technician.task.create = Crear
+technician.task.placeholder.estimatedDuration = Introduce un entero entre 0 y 2000
+technician.task.placeholder.priority= Introduce un entero entre 0 y 10
+
+technician.task.delete.submit = Eliminar Tarea
+technician.task.publish = Publicar Tarea
+technician.task.update.submit = Actualizar Tarea
+
+
+technician.task.update.no-changes = No se puede actualizar la tarea si no se han efectuado cambios

@@ -2,6 +2,7 @@
 package acme.features.airlineManager.leg;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -41,5 +42,8 @@ public interface ManagerLegRepository extends AbstractRepository {
 
 	@Query("SELECT a FROM Aircraft a")
 	Collection<Aircraft> findAllAircraft();
+
+	@Query("SELECT l FROM Leg l WHERE l.flight.id = :flightId")
+	List<Leg> findLegsByFlightId(int flightId);
 
 }

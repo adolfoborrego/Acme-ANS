@@ -1,15 +1,15 @@
 
 package acme.features.technician.task;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.Task;
-import acme.realms.Technician;
+import acme.entities.task.Task;
+import acme.entities.task.TaskType;
+import acme.realms.technician.Technician;
 
 @GuiService
 public class TechnicianTaskShowService extends AbstractGuiService<Technician, Task> {
@@ -25,16 +25,29 @@ public class TechnicianTaskShowService extends AbstractGuiService<Technician, Ta
 	@Override
 	public void authorise() {
 		boolean status;
-		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
+		int taskId;
+		int userId;
+		int technicianId;
+		Task task;
+
+		userId = super.getRequest().getPrincipal().getAccountId();
+		technicianId = this.repository.findTechnicianIdByUserId(userId);
+		taskId = super.getRequest().getData("id", int.class);
+		task = this.repository.findById(taskId);
+
+		status = task != null && technicianId == task.getMaintenanceRecord().getTechnician().getId();
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Collection<Task> data;
-		//Logica de adicion
+		Task data;
+		int taskId;
 
-		super.getBuffer().addData(null);
+		taskId = super.getRequest().getData("id", int.class);
+		data = this.repository.findById(taskId);
+
+		super.getBuffer().addData(data);
 	}
 
 	@Override
@@ -43,8 +56,9 @@ public class TechnicianTaskShowService extends AbstractGuiService<Technician, Ta
 		assert task != null;
 
 		Dataset dataset;
-		dataset = super.unbindObject(task, "taskpropertiestoSHow");
-
+		SelectChoices types = SelectChoices.from(TaskType.class, task.getType());
+		dataset = super.unbindObject(task, "type", "description", "priority", "estimatedDuration", "published");
+		dataset.put("types", types);
 		super.getResponse().addData(dataset);
 	}
 }

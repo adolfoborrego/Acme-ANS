@@ -1,13 +1,16 @@
 
-package acme.entities;
+package acme.entities.booking;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -18,7 +21,10 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
+import acme.client.helpers.SpringHelper;
 import acme.entities.flight.Flight;
+import acme.features.customer.passengerBooking.PassengerBookingRepository;
+import acme.realms.Customer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,12 +46,12 @@ public class Booking extends AbstractEntity {
 	private Date				purchaseMoment;
 
 	@Mandatory
-	@ValidString(pattern = "^(ECONOMY|BUSINESS)$")
+	@Enumerated(EnumType.STRING)
 	@Automapped
-	private String				travelClass;
+	private TravelClass			travelClass;
 
 	@Mandatory
-	@ValidMoney(min = 0.00)
+	@ValidMoney(min = 0.00, max = 70000.00)
 	@Automapped
 	private Money				price;
 
@@ -65,5 +71,21 @@ public class Booking extends AbstractEntity {
 	@Automapped
 	@ManyToOne(optional = false)
 	private Flight				flight;
+
+	@Mandatory
+	@Automapped
+	private Boolean				published;
+
+	// Derived attributes -----------------------------------------------------
+
+
+	@Transient
+	public Integer getNumberOfLayovers() {
+		Integer result;
+		PassengerBookingRepository passengerBookingRepository;
+		passengerBookingRepository = SpringHelper.getBean(PassengerBookingRepository.class);
+		result = passengerBookingRepository.countNumberOfPassengersOfBooking(this.getId());
+		return result;
+	}
 
 }

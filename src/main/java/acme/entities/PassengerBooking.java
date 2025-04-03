@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Optional;
+import acme.entities.booking.Booking;
 import lombok.Getter;
 import lombok.Setter;
 

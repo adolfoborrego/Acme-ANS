@@ -70,15 +70,9 @@ public class Claim extends AbstractEntity {
 
 	@Transient
 	public TrackingLogIndicator getIndicator() {
-		TrackingLogRepository trackingLogRepository;
-		List<TrackingLog> trackingLogs;
-		TrackingLogIndicator indicator;
-		Integer numberOfTrackingLogs;
-		trackingLogRepository = SpringHelper.getBean(TrackingLogRepository.class);
-		trackingLogs = trackingLogRepository.findPublishedTrackingLogsByClaimId(this.getId());
-		numberOfTrackingLogs = trackingLogs.size();
-		indicator = numberOfTrackingLogs == 0 ? TrackingLogIndicator.PENDING : trackingLogs.get(numberOfTrackingLogs - 1).getIndicator();
-		return indicator;
+		TrackingLogRepository repository = SpringHelper.getBean(TrackingLogRepository.class);
+		List<TrackingLog> logs = repository.findPublishedTrackingLogsByClaimId(this.getId());
+		return logs.isEmpty() ? TrackingLogIndicator.PENDING : logs.get(logs.size() - 1).getIndicator();
 	}
 
 	// Relationships ----------------------------------------------------------

@@ -1,6 +1,9 @@
 
 package acme.features.airlineManager.leg;
 
+import java.util.List;
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -42,6 +45,27 @@ public class ManagerLegUpdateService extends AbstractGuiService<AirlineManager, 
 
 	@Override
 	public void validate(final Leg leg) {
+		assert leg != null;
+
+		boolean diferentesAeropuertos = !leg.getDepartureAirport().equals(leg.getArrivalAirport());
+		super.state(diferentesAeropuertos, "arrivalAirport", "manager.leg.error.same-airports");
+
+		boolean llegadaDespuesSalida = leg.getScheduledArrival().after(leg.getScheduledDeparture());
+		super.state(llegadaDespuesSalida, "scheduledArrival", "manager.leg.error.arrival-before-departure");
+
+		List<Leg> existingLegs = this.repository.findLegsByFlightId(leg.getFlight().getId());
+		boolean noSolapamiento = existingLegs.stream()
+			.allMatch(existingLeg -> existingLeg.getId() == leg.getId() || leg.getScheduledArrival().before(existingLeg.getScheduledDeparture()) || leg.getScheduledDeparture().after(existingLeg.getScheduledArrival()));
+		super.state(noSolapamiento, "scheduledDeparture", "manager.leg.error.overlapping-legs");
+
+		if (super.getRequest().getCommand().equals("update")) {
+			Leg original = this.repository.findLegById(leg.getId());
+
+			boolean isModified = !Objects.equals(leg.getScheduledDeparture(), original.getScheduledDeparture()) || !Objects.equals(leg.getScheduledArrival(), original.getScheduledArrival())
+				|| !Objects.equals(leg.getDepartureAirport(), original.getDepartureAirport()) || !Objects.equals(leg.getArrivalAirport(), original.getArrivalAirport()) || !Objects.equals(leg.getStatus(), original.getStatus());
+
+			super.state(isModified, "*", "manager.leg.error.no-changes");
+		}
 	}
 
 	@Override
@@ -53,10 +77,20 @@ public class ManagerLegUpdateService extends AbstractGuiService<AirlineManager, 
 	public void unbind(final Leg leg) {
 		SelectChoices choices;
 
+		SelectChoices departureAirports = SelectChoices.from(this.repository.findAllAirports(), "name", leg.getDepartureAirport());
+		SelectChoices arrivalAirports = SelectChoices.from(this.repository.findAllAirports(), "name", leg.getArrivalAirport());
+		SelectChoices aircrafts = SelectChoices.from(this.repository.findAllAircraft(), "registrationNumber", leg.getAircraft());
+
 		choices = SelectChoices.from(LegStatus.class, leg.getStatus());
 		Dataset dataset = super.unbindObject(leg, "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft", "published");
 		dataset.put("id", leg.getId());
 		dataset.put("statuses", choices);
+		dataset.put("departureAirports", departureAirports);
+		dataset.put("arrivalAirports", arrivalAirports);
+		dataset.put("aircrafts", aircrafts);
+
+		dataset.put("duration", leg.getDuration());
+		dataset.put("flightNumber", leg.getFlightNumber());
 
 		super.getResponse().addData(dataset);
 	}

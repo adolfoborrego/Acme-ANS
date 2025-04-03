@@ -58,10 +58,11 @@ master.menu.assistance-agent.list-pending-claims = Listar reclamaciones pendient
 # master.menu.technician ####################################################
 master.menu.technician = Técnico
 master.menu.technician.list-maintenanceRecords = Registros de mantenimiento
-master.menu.technician.list-tasks = Tareas
 
+# master.menu.administrator/ Entidades grupales ############################################
 master.menu.administrator.list-airports = Listar aeropuertos
 master.menu.administrator.list-airlines = Listar aerolineas
+
 
 
 # master.menu.member ################
@@ -69,3 +70,12 @@ master.menu.administrator.list-airlines = Listar aerolineas
 master.menu.member = Miembro
 master.menu.member.list-completed-flightAssignments = Asignaciones De Vuelos Completados
 master.menu.member.list-planned-flightAssignments = Asignaciones De Vuelos Planificadas
+
+master.menu.administrator.list-aircrafts = Listar aeronaves
+
+# master.menu.customer ####################################################
+
+master.menu.customer = Cliente
+master.menu.customer.list-bookings = Reservas
+
+
