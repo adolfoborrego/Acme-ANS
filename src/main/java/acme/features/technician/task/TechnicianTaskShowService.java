@@ -4,10 +4,12 @@ package acme.features.technician.task;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.Task;
-import acme.realms.Technician;
+import acme.entities.task.Task;
+import acme.entities.task.TaskType;
+import acme.realms.technician.Technician;
 
 @GuiService
 public class TechnicianTaskShowService extends AbstractGuiService<Technician, Task> {
@@ -33,7 +35,7 @@ public class TechnicianTaskShowService extends AbstractGuiService<Technician, Ta
 		taskId = super.getRequest().getData("id", int.class);
 		task = this.repository.findById(taskId);
 
-		status = task != null && technicianId == task.getTechnician().getId();
+		status = task != null && technicianId == task.getMaintenanceRecord().getTechnician().getId();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -54,8 +56,9 @@ public class TechnicianTaskShowService extends AbstractGuiService<Technician, Ta
 		assert task != null;
 
 		Dataset dataset;
+		SelectChoices types = SelectChoices.from(TaskType.class, task.getType());
 		dataset = super.unbindObject(task, "type", "description", "priority", "estimatedDuration", "published");
-
+		dataset.put("types", types);
 		super.getResponse().addData(dataset);
 	}
 }

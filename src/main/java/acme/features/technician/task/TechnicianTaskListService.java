@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.Task;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
-import acme.realms.Technician;
+import acme.entities.task.Task;
+import acme.realms.technician.Technician;
 
 @GuiService
 public class TechnicianTaskListService extends AbstractGuiService<Technician, Task> {
@@ -57,7 +57,12 @@ public class TechnicianTaskListService extends AbstractGuiService<Technician, Ta
 		assert task != null;
 
 		Dataset dataset;
-		dataset = super.unbindObject(task, "id", "type", "priority", "estimatedDuration");
+		int maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
+		MaintenanceRecord maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+		boolean showCreate = !maintenanceRecord.getPublished();
+		dataset = super.unbindObject(task, "id", "type", "priority", "estimatedDuration", "published");
+		super.getResponse().addGlobal("showCreate", showCreate);
+		super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecordId);
 
 		super.getResponse().addData(dataset);
 	}

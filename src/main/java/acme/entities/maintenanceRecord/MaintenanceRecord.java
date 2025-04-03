@@ -1,10 +1,11 @@
 
 package acme.entities.maintenanceRecord;
 
-import java.beans.Transient;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,9 +19,8 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
-import acme.client.helpers.SpringHelper;
 import acme.entities.aircraft.Aircraft;
-import acme.realms.Technician;
+import acme.realms.technician.Technician;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,54 +30,48 @@ import lombok.Setter;
 public class MaintenanceRecord extends AbstractEntity {
 	// Serialisation version -------------------------------------------------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
 
 	// Attributes ------------------------------------------------------------------------------------------------
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				moment;
+	private Date					moment;
 
 	@Mandatory
 	@Automapped
-	@ValidString(pattern = "^(PENDING|IN PROGRESS|COMPLETED)$")
-	private String				currentStatus;
+	@Valid
+	@Enumerated(EnumType.STRING)
+	private MaintenanceRecordStatus	currentStatus;
 
 	@Mandatory
 	@ValidMoment
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				inspectionDueDate;
+	private Date					inspectionDueDate;
 
 	@Mandatory
 	@Automapped
 	@ValidMoney(min = 0., max = 999999999)
-	private Money				estimatedCost;
+	private Money					estimatedCost;
 
 	@Optional
 	@Automapped
 	@ValidString(min = 0, max = 255)
-	private String				notes;
+	private String					notes;
 
 	@Mandatory
 	@Automapped
-	private Boolean				published;
+	private Boolean					published;
 
 	@Optional
 	@Automapped
 	@Valid
 	@ManyToOne(optional = false)
-	private Aircraft			aircraft;
+	private Aircraft				aircraft;
 
-	// Derivated Attributes -------------------
-
-
-	@Transient
-	public Technician getTechnician() {
-		Technician technician;
-		MaintenanceRecordRepository repository;
-		repository = SpringHelper.getBean(MaintenanceRecordRepository.class);
-
-		technician = repository.findTechnicianByMaintenanceRecordId(this.getId());
-		return technician;
-	}
+	@Optional
+	@Automapped
+	@Valid
+	@ManyToOne(optional = false)
+	private Technician				technician;
 }

@@ -16,5 +16,16 @@ technician.task.list.label.description = Description
 technician.task.list.label.type = Type
 technician.task.list.label.estimatedDuration = Estimated Duration
 technician.task.list.label.priority = Priority
+technician.task.list.label.published = Published
 technician.task.form.label.published = Published
 
+technician.task.create = Create Task
+
+technician.task.placeholder.estimatedDuration = Add a integer between 0 and 2000
+technician.task.placeholder.priority= Add a integer between 0 and 10
+technician.task.delete.submit = Delete Task
+technician.task.publish = Publish Task
+technician.task.update.submit = Update Task
+
+
+technician.task.update.no-changes = A task without changes couldn't be updated

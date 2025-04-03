@@ -1,5 +1,7 @@
 
-package acme.realms;
+package acme.realms.technician;
+
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +12,9 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.client.helpers.SpringHelper;
 import acme.constraints.ValidCodeInitials;
+import acme.entities.maintenanceRecord.MaintenanceRecord;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -53,5 +57,16 @@ public class Technician extends AbstractRole {
 	@ValidString(min = 0, max = 255)
 	@Automapped
 	private String				certifications;
+
+
+	public Collection<MaintenanceRecord> getMaintenanceRecords() {
+		TechnicianRepository repository;
+		Collection<MaintenanceRecord> res;
+
+		repository = SpringHelper.getBean(TechnicianRepository.class);
+		res = repository.findAllMaintenanceRecordById(this.getId());
+
+		return res;
+	}
 
 }

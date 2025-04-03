@@ -1,0 +1,14 @@
+
+
+
+
+
+
+flight-crew-member.flight-assignment.list.title = Lista De Asignaciones de Vuelos Completados
+flight-crew-member.flight-assignment.list.label.role = Responsabilidad
+flight-crew-member.flight-assignment.list.label.lastUpdate = Ultima Actualización
+flight-crew-member.flight-assignment.list.label.status = Estado
+flight-crew-member.flight-assignment.list.label.leg = Tramo De Vuelo  
+flight-crew-member.flight-assignment.list.label.remarks = Indicaciones
+flight-crew-member.flight-assignment.list.label.flightCrewMembers = Miembros
+flight-crew-member.flight-assignment.form.title = Asignación de Vuelo

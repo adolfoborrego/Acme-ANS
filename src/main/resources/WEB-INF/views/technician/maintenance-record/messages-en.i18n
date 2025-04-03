@@ -16,11 +16,22 @@ technician.maintenance-record.list.label.currentStatus=Status
 technician.maintenance-record.list.label.estimatedCost=Estimated Cost
 technician.maintenance-record.list.label.inspectionDueDate=Next Inspection
 technician.maintenance-record.list.label.notes=Notes
-
-
 technician.maintenance-record.list.label.published = Published
 technician.maintenance-record.list.label.moment = Moment
 
 technician.maintenance-record.list-tasks = List of tasks
+technician.maintenanceRecord.create = Create Maintenance Record
+technician.maintenanceRecord.publish = Publish Maintenance Record
+technician.maintenanceRecord.update.submit = Update Maintenance Record
+technician.maintenanceRecord.create.submit = Create
+
+technician.maintenanceRecord.moment-before-inspection.moment = The moment must be before the next inspection
+technician.maintenanceRecord.moment-before-inspection.inspectionDueDate = The next inspection must be after the moment
 
 
+technician.maintenanceRecord.publish.task-unpublished = You can't publish a maintenance record with unpublished tasks
+technician.maintenanceRecord.publish.no-tasks = You can't publish a maintenance record if there's no task associated
+
+technician.maintenanceRecord.noChanges = A maintenance record without changes couldn't be updated
+
+technician.maintenance-record.create-first-task = Create First Task
