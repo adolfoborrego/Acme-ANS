@@ -1,12 +1,14 @@
 
 package acme.features.assistanceAgent.claim;
 
+import java.util.Date;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
@@ -22,56 +24,40 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 
 	@Override
 	public void authorise() {
-		boolean authorise;
-		int claimId;
-		int userAccountId;
-		int assistanceAgentId;
-		int ownerId;
-		Claim claim;
-		boolean isAssistanceAgent;
-		boolean isClaimOwner;
-		boolean isPublished;
-
-		claimId = super.getRequest().getData("id", int.class);
-
-		isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
-
-		userAccountId = super.getRequest().getPrincipal().getAccountId();
-		assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
-		ownerId = this.repository.findAssistanceAgentIdByClaimId(claimId);
-		isClaimOwner = assistanceAgentId == ownerId;
-
-		claim = this.repository.findClaimById(claimId);
-		isPublished = claim.getPublished();
-
-		authorise = claim != null && isAssistanceAgent && isClaimOwner && !isPublished;
-		super.getResponse().setAuthorised(authorise);
+		int claimId = super.getRequest().getData("id", int.class);
+		boolean isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+		int userAccountId = super.getRequest().getPrincipal().getAccountId();
+		int assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
+		int ownerId = this.repository.findAssistanceAgentIdByClaimId(claimId);
+		boolean isClaimOwner = assistanceAgentId == ownerId;
+		Claim claim = this.repository.findClaimById(claimId);
+		boolean status = claim != null && isAssistanceAgent && isClaimOwner;
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		int claimId;
-		Claim claim;
-		claimId = super.getRequest().getData("id", int.class);
-		claim = this.repository.findClaimById(claimId);
+		int claimId = super.getRequest().getData("id", int.class);
+		Claim claim = this.repository.findClaimById(claimId);
 		super.getBuffer().addData(claim);
 	}
 
 	@Override
 	public void bind(final Claim claim) {
 		assert claim != null;
-		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "leg");
+		super.bindObject(claim, "passengerEmail", "description", "type", "leg");
 	}
 
 	@Override
 	public void validate(final Claim claim) {
 		assert claim != null;
-		if (super.getRequest().getCommand().equalsIgnoreCase("update")) {
-			Claim originalClaim = this.repository.findClaimById(claim.getId());
-			boolean isModified = !Objects.equals(claim.getRegistrationMoment(), originalClaim.getRegistrationMoment()) || !Objects.equals(claim.getPassengerEmail(), originalClaim.getPassengerEmail())
-				|| !Objects.equals(claim.getDescription(), originalClaim.getDescription()) || !Objects.equals(claim.getType(), originalClaim.getType()) || !Objects.equals(claim.getLeg().getId(), originalClaim.getLeg().getId());
-			super.state(isModified, "*", "assistance-agent.claim.error.no-changes");
-		}
+		Claim originalClaim = this.repository.findClaimById(claim.getId());
+		super.state(Objects.equals(claim.getRegistrationMoment(), originalClaim.getRegistrationMoment()), "registrationMoment", "assistance-agent.claim.error.not-possible-to-modify-registrationMoment");
+		super.state(Objects.equals(claim.getPublished(), originalClaim.getPublished()), "published", "assistance-agent.claim.error.not-possible-to-modify-published");
+		super.state(claim.getLeg() != null, "leg", "assistance-agent.claim.error.no-leg");
+		boolean isModified = !Objects.equals(claim.getPassengerEmail(), originalClaim.getPassengerEmail()) || !Objects.equals(claim.getDescription(), originalClaim.getDescription()) || !Objects.equals(claim.getType(), originalClaim.getType())
+			|| !Objects.equals(claim.getLeg(), originalClaim.getLeg());
+		super.state(isModified, "*", "assistance-agent.claim.error.no-changes");
 	}
 
 	@Override
@@ -88,7 +74,8 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 		dataset.put("indicator", claim.getIndicator());
 		SelectChoices claimTypes = SelectChoices.from(ClaimType.class, claim.getType());
 		dataset.put("claimTypes", claimTypes);
-		SelectChoices legs = SelectChoices.from(this.repository.findAllLegs(), "id", claim.getLeg());
+		Date now = MomentHelper.getCurrentMoment();
+		SelectChoices legs = SelectChoices.from(this.repository.findFinishedLegs(now), "id", claim.getLeg());
 		dataset.put("legs", legs);
 		super.getResponse().addData(dataset);
 	}

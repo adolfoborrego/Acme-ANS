@@ -16,3 +16,4 @@ assistance-agent.claim.create=Create claim
 assistance-agent.claim.create.submit=Create claim
 
 assistance-agent.claim.error.no-changes=You must make at least one change to update the claim
+assistance-agent.claim.error.no-leg=May not be null.

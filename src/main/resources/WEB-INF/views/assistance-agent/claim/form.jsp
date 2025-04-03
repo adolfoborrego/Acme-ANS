@@ -4,7 +4,9 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-moment code="assistance-agent.claim.list.label.registration-moment" path="registrationMoment" readonly="${published}"/>
+	<jstl:if test="${_command != 'create'}">
+		<acme:input-moment code="assistance-agent.claim.list.label.registration-moment" path="registrationMoment" readonly="${true}"/>
+	</jstl:if>
 	<acme:input-textbox code="assistance-agent.claim.list.label.passenger-email" path="passengerEmail" readonly="${published}"/>
 	<acme:input-textarea code="assistance-agent.claim.list.label.description" path="description" readonly="${published}"/>
 	<acme:input-select code="assistance-agent.claim.list.label.type" path="type" choices="${claimTypes}" readonly="${published}"/>

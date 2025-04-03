@@ -1,10 +1,13 @@
 
 package acme.features.assistanceAgent.claim;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
@@ -29,38 +32,42 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 	public void load() {
 		Claim object = new Claim();
 		object.setPublished(false);
+		object.setRegistrationMoment(MomentHelper.getCurrentMoment());
 		super.getBuffer().addData(object);
 	}
 
 	@Override
-	public void bind(final Claim object) {
-		assert object != null;
-		super.bindObject(object, "registrationMoment", "passengerEmail", "description", "type", "leg");
+	public void bind(final Claim claim) {
+		assert claim != null;
+		super.bindObject(claim, "passengerEmail", "description", "type", "leg");
 	}
 
 	@Override
-	public void validate(final Claim object) {
-		assert object != null;
+	public void validate(final Claim claim) {
+		assert claim != null;
+		if (claim.getLeg() == null)
+			super.state(false, "leg", "assistance-agent.claim.error.no-leg");
 	}
 
 	@Override
-	public void perform(final Claim object) {
-		assert object != null;
+	public void perform(final Claim claim) {
+		assert claim != null;
 		int userAccountId = super.getRequest().getPrincipal().getAccountId();
 		int asssitanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
 		AssistanceAgent assistanceAgent = new AssistanceAgent();
 		assistanceAgent.setId(asssitanceAgentId);
-		object.setAssistanceAgent(assistanceAgent);
-		this.repository.save(object);
+		claim.setAssistanceAgent(assistanceAgent);
+		this.repository.save(claim);
 	}
 
 	@Override
-	public void unbind(final Claim object) {
+	public void unbind(final Claim claim) {
 		Dataset dataset;
-		dataset = super.unbindObject(object, "registrationMoment", "passengerEmail", "description", "type", "leg");
-		SelectChoices claimTypes = SelectChoices.from(ClaimType.class, object.getType());
+		dataset = super.unbindObject(claim, "passengerEmail", "description", "type", "leg");
+		SelectChoices claimTypes = SelectChoices.from(ClaimType.class, claim.getType());
 		dataset.put("claimTypes", claimTypes);
-		SelectChoices legs = SelectChoices.from(this.repository.findAllLegs(), "id", object.getLeg());
+		Date now = MomentHelper.getCurrentMoment();
+		SelectChoices legs = SelectChoices.from(this.repository.findFinishedLegs(now), "id", claim.getLeg());
 		dataset.put("legs", legs);
 		super.getResponse().addData(dataset);
 	}
