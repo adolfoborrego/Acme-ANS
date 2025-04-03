@@ -31,6 +31,7 @@ customer.booking.update.submit = Update Booking
 
 customer.booking.publish = Publish Booking
 
+
 customer.booking.publish.error.no-lastNibble = There is no Credit Card last Nibble
-
-
+customer.booking.error.flight-notPublished = The flight is not published
+customer.booking.error.dontExist-flight = The flight does not exist

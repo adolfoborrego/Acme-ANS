@@ -1,5 +1,5 @@
 
-package acme.features.customer.passenger;
+package acme.features.customer.passengerBooking;
 
 import javax.annotation.PostConstruct;
 
@@ -7,27 +7,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.controllers.AbstractGuiController;
 import acme.client.controllers.GuiController;
-import acme.entities.Passenger;
+import acme.entities.PassengerBooking;
 import acme.realms.Customer;
 
 @GuiController
-public class CustomerPassengerController extends AbstractGuiController<Customer, Passenger> {
+public class PassengerBookingController extends AbstractGuiController<Customer, PassengerBooking> {
 
 	@Autowired
-	private CustomerPassengerListService	listService;
+	private PassengerBookingListService		listService;
 
 	@Autowired
-	private CustomerPassengerShowService	showService;
+	private PassengerBookingCreateService	createService;
 
 	@Autowired
-	private CustomerPassengerCreateService	createService;
+	private PassengerBookingShowService		showService;
 
 
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
-		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("show", this.showService);
 
 	}
 

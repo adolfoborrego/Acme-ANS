@@ -9,6 +9,7 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.Passenger;
+import acme.entities.booking.Booking;
 import acme.features.customer.passengerBooking.PassengerBookingRepository;
 import acme.realms.Customer;
 
@@ -16,7 +17,10 @@ import acme.realms.Customer;
 public class CustomerPassengerListService extends AbstractGuiService<Customer, Passenger> {
 
 	@Autowired
-	private PassengerBookingRepository passengerBookingRepository;
+	private PassengerBookingRepository	passengerBookingRepository;
+
+	@Autowired
+	private CustomerPassengerRepository	repository;
 
 	// AbstractGuiService interface -------------------------------------------
 
@@ -24,16 +28,33 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 	@Override
 	public void authorise() {
 		boolean status;
-		status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+		int bookingId = super.getRequest().getData("id", int.class);
+		int userId;
+		int customerId;
+		Booking booking = this.repository.findBookingById(bookingId);
+
+		userId = super.getRequest().getPrincipal().getAccountId();
+		customerId = this.repository.findCustomerIdByUserId(userId);
+
+		if (bookingId == 0)
+			status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+		else
+			status = booking != null && customerId == booking.getCustomer().getId();
+
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Collection<Passenger> data;
-		int bookingId = super.getRequest().getData("bookingId", int.class);
+		int userAccountId = super.getRequest().getPrincipal().getAccountId();
+		int customerId = this.repository.findCustomerIdByUserId(userAccountId);
 
-		data = this.passengerBookingRepository.findPassengersByBookingId(bookingId);
+		Collection<Passenger> data;
+		int id = super.getRequest().getData("id", int.class);
+		if (id == 0)
+			data = this.repository.findAllByCustomer(customerId);
+		else
+			data = this.passengerBookingRepository.findPassengersByBookingId(id);
 
 		super.getBuffer().addData(data);
 	}
@@ -42,11 +63,15 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 	public void unbind(final Passenger passenger) {
 
 		assert passenger != null;
+		boolean showCreate;
 
 		Dataset dataset;
 		dataset = super.unbindObject(passenger, "fullName", "passportNumber", "specialNeeds", "email");
+		showCreate = super.getRequest().getPrincipal().hasRealm(passenger.getCustomer());
+
+		super.getResponse().addGlobal("showCreate", showCreate);
 
 		super.getResponse().addData(dataset);
-		;
+
 	}
 }

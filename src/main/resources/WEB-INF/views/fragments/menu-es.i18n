@@ -77,5 +77,6 @@ master.menu.administrator.list-aircrafts = Listar aeronaves
 
 master.menu.customer = Cliente
 master.menu.customer.list-bookings = Reservas
+master.menu.customer.list-passengers = Pasajeros
 
 

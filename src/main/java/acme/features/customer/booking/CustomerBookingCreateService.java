@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
@@ -40,13 +41,15 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 	@Override
 	public void bind(final Booking object) {
 		assert object != null;
-		super.bindObject(object, "travelClass", "price", "locatorCode", "flight", "purchaseMoment", "lastNibble");
+		super.bindObject(object, "travelClass", "price", "locatorCode", "flight", "lastNibble", "purchaseMoment");
 	}
 
 	@Override
 	public void validate(final Booking object) {
 		assert object != null;
-		// Puedes dejarlo vacío por ahora
+
+		boolean flightExistAndIsPublished = object.getFlight() != null ? object.getFlight().getPublished() == true : false;
+		super.state(flightExistAndIsPublished, "flight", object.getFlight() != null ? "customer.booking.error.flight-notPublished" : "customer.booking.error.dontExist-flight");
 	}
 
 	@Override
@@ -66,10 +69,15 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 	@Override
 	public void unbind(final Booking object) {
 
-		SelectChoices flights = SelectChoices.from(this.repository.findAllFlights(), "id", object.getFlight());
+		SelectChoices flights;
+		if (this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList().contains(object.getFlight()))
+			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "id", object.getFlight());
+		else
+			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "id", null);
+
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, object.getTravelClass());
 
-		Date purchaseMoment = new Date();
+		Date purchaseMoment = MomentHelper.getCurrentMoment();
 
 		Dataset dataset = super.unbindObject(object, "travelClass", "price", "locatorCode", "lastNibble");
 		dataset.put("flights", flights);
