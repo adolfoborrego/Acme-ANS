@@ -31,7 +31,11 @@ public class TechnicianMaintRecordUpdateService extends AbstractGuiService<Techn
 		boolean status;
 		int id = super.getRequest().getData("id", int.class);
 		MaintenanceRecord mr = this.repository.findById(id);
-		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && mr != null;
+
+		int userId = super.getRequest().getPrincipal().getAccountId();
+		Technician technicianRequest = this.repository.findTechnicianByUserId(userId);
+
+		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && mr != null && technicianRequest.getId() == mr.getTechnician().getId();
 
 		super.getResponse().setAuthorised(status);
 	}

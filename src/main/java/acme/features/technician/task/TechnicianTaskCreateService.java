@@ -30,7 +30,10 @@ public class TechnicianTaskCreateService extends AbstractGuiService<Technician, 
 		int maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
 		MaintenanceRecord maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && !maintenanceRecord.getPublished();
+		int userId = super.getRequest().getPrincipal().getAccountId();
+		Integer technicianRequestId = this.repository.findTechnicianIdByUserId(userId);
+
+		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && !maintenanceRecord.getPublished() && technicianRequestId == maintenanceRecord.getTechnician().getId();
 
 		super.getResponse().setAuthorised(status);
 	}

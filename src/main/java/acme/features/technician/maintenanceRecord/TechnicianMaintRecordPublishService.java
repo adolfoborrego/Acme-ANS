@@ -30,8 +30,10 @@ public class TechnicianMaintRecordPublishService extends AbstractGuiService<Tech
 		MaintenanceRecord mr = this.repository.findById(id);
 		Collection<Task> tasks = this.repository.findAllTaskByMaintenanceRecordId(id);
 		boolean allPublished = this.allTasksPublished(tasks);
+		int userId = super.getRequest().getPrincipal().getAccountId();
+		Technician technicianRequest = this.repository.findTechnicianByUserId(userId);
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && mr != null && !mr.getPublished() && !tasks.isEmpty() && allPublished;
+		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && mr != null && technicianRequest.getId() == mr.getTechnician().getId() && !mr.getPublished() && !tasks.isEmpty() && allPublished;
 
 		super.getResponse().setAuthorised(status);
 	}
