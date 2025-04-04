@@ -1,0 +1,3 @@
+key,lastUpdateMoment,step,resolutionPercentage,indicator,resolution,published,key:claim
+tracking-log-25,2019/04/16 00:00,test step 1,50.00,PENDING,test resolution 1,true,claim-24
+tracking-log-26,2019/04/16 10:00,test step 2,100.00,ACCEPTED,test resolution 2,false,claim-24

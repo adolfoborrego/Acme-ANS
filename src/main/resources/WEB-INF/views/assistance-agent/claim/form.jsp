@@ -5,14 +5,13 @@
 
 <acme:form>
 	<jstl:if test="${_command != 'create'}">
-		<acme:input-moment code="assistance-agent.claim.list.label.registration-moment" path="registrationMoment" readonly="${true}"/>
+		<acme:input-moment code="assistance-agent.claim.list.label.registration-moment" path="registrationMoment" readonly="true"/>
 	</jstl:if>
 	<acme:input-textbox code="assistance-agent.claim.list.label.passenger-email" path="passengerEmail" readonly="${published}"/>
 	<acme:input-textarea code="assistance-agent.claim.list.label.description" path="description" readonly="${published}"/>
 	<acme:input-select code="assistance-agent.claim.list.label.type" path="type" choices="${claimTypes}" readonly="${published}"/>
 	<acme:input-select code="assistance-agent.claim.list.label.leg" path="leg" choices="${legs}" readonly="${published}"/>
-	<!-- No se muestran los atributos derivados en el create -->
-	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')}">
+	<jstl:if test="${_command != 'create'}">
 		<acme:input-textbox code="assistance-agent.claim.list.label.indicator" path="indicator" readonly="true"/>
 		<acme:input-checkbox code="assistance-agent.claim.list.label.published" path="published" readonly="true"/>
 	</jstl:if>
@@ -29,6 +28,14 @@
 			<acme:submit code="assistance-agent.claim.create.submit" action="/assistance-agent/claim/create"/>
 		</jstl:when>
 	</jstl:choose>
+	<!-- TrackingLogs -->
+	<jstl:if test="${_command != 'create'}">
+		<jstl:choose>
+			<jstl:when test="${published}">
+				<acme:button code="assistance-agent.tracking-log.list" action="/assistance-agent/tracking-log/list?claimId=${id}"/>
+			</jstl:when>
+		</jstl:choose>
+	</jstl:if>
 	
 </acme:form>
 	

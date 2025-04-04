@@ -30,10 +30,10 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 
 	@Override
 	public void load() {
-		Claim object = new Claim();
-		object.setPublished(false);
-		object.setRegistrationMoment(MomentHelper.getCurrentMoment());
-		super.getBuffer().addData(object);
+		Claim claim = new Claim();
+		claim.setPublished(false);
+		claim.setRegistrationMoment(MomentHelper.getCurrentMoment());
+		super.getBuffer().addData(claim);
 	}
 
 	@Override

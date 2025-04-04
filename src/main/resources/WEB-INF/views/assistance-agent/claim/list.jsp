@@ -13,6 +13,4 @@
 	<acme:list-column code="assistance-agent.claim.list.label.indicator" path="indicator" width="10%"/>
 	<acme:list-payload path="payload"/>	
 </acme:list>
-<jstl:if test="${showCreate}">
-	<acme:button code="assistance-agent.claim.create" action="/assistance-agent/claim/create"/>
-</jstl:if>
+<acme:button code="assistance-agent.claim.create" action="/assistance-agent/claim/create"/>
