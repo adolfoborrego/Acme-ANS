@@ -11,7 +11,9 @@
 	    		<acme:input-textbox code="technician.task.list.label.estimatedDuration" path="estimatedDuration" placeholder="technician.task.placeholder.estimatedDuration"/>
 	    		<acme:input-select code="technician.task.list.label.type" path="type" choices = "${types}"/>  
 	    		<acme:input-textarea code="technician.task.list.label.description" path="description" />
-	    		<acme:input-checkbox code="technician.task.form.label.published" path="published" readonly="true"/>
+	    		<jstl:if test="${_command != 'create'}">
+	    			<acme:input-checkbox code="technician.task.form.label.published" path="published" readonly="true"/>
+	    		</jstl:if>
 			</jstl:when>
 			<jstl:when test="${_command != 'create' && published}">	
 				<acme:input-textbox code="technician.task.list.label.priority" path="priority" readonly="true"/>

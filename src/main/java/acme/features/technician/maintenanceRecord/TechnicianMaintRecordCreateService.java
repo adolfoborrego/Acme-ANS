@@ -36,13 +36,14 @@ public class TechnicianMaintRecordCreateService extends AbstractGuiService<Techn
 	public void load() {
 		MaintenanceRecord mr = new MaintenanceRecord();
 		mr.setPublished(false);
+		mr.setCurrentStatus(MaintenanceRecordStatus.PENDING);
 		super.getBuffer().addData(mr);
 	}
 
 	@Override
 	public void bind(final MaintenanceRecord maintenanceRecord) {
 		assert maintenanceRecord != null;
-		super.bindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "published", "aircraft");
+		super.bindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "aircraft");
 	}
 
 	@Override

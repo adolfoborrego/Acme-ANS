@@ -8,7 +8,6 @@
 	<acme:list-column code="technician.maintenance-record.list.label.currentStatus" path="currentStatus" />
 	<acme:list-column code="technician.maintenance-record.list.label.estimatedCost" path="estimatedCost" />
 	<acme:list-column code="technician.maintenance-record.list.label.inspectionDueDate" path="inspectionDueDate" />
-	<acme:list-column code="technician.maintenance-record.list.label.notes" path="notes" />
 	<acme:list-column code="technician.maintenance-record.list.label.published" path="published" />
     <acme:list-payload path="payload"/>
  
