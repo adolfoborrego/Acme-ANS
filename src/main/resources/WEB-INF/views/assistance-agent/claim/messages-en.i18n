@@ -1,19 +1,28 @@
+# Titles
 assistance-agent.claim.list.title = List claims
-assistance-agent.claim.form.title=Show claim
+assistance-agent.claim.form.title = Show claim
 
-assistance-agent.claim.list.label.registration-moment=Registration moment
-assistance-agent.claim.list.label.passenger-email=Passenger email
-assistance-agent.claim.list.label.description=Description
-assistance-agent.claim.list.label.type=Type
-assistance-agent.claim.list.label.leg=Leg
-assistance-agent.claim.list.label.indicator=Indicator
-assistance-agent.claim.list.label.published=Published
+# Attributes
+assistance-agent.claim.list.label.registration-moment = Registration Moment
+assistance-agent.claim.list.label.passenger-email = Passenger Email
+assistance-agent.claim.list.label.description = Description
+assistance-agent.claim.list.label.type = Type
+assistance-agent.claim.list.label.leg = Leg
+assistance-agent.claim.list.label.published = Published
+assistance-agent.claim.list.label.indicator = Indicator
 
-assistance-agent.claim.update.submit=Update claim
-assistance-agent.claim.delete.submit=Delete claim
-assistance-agent.claim.publish.submit=Publish claim
-assistance-agent.claim.create=Create claim
-assistance-agent.claim.create.submit=Create claim
+# Buttons
+assistance-agent.claim.create = Create claim
+assistance-agent.claim.create.submit = Submit claim
+assistance-agent.claim.update.submit = Update claim
+assistance-agent.claim.delete.submit = Delete claim
+assistance-agent.claim.publish.submit = Publish claim
 
+# Tracking log button
+assistance-agent.tracking-log.list = List tracking logs
+
+# Errors
 assistance-agent.claim.error.no-changes=You must make at least one change to update the claim
 assistance-agent.claim.error.no-leg=May not be null.
+assistance-agent.claim.error.not-possible-to-modify-registrationMoment = Registration moment may not be modified.
+assistance-agent.claim.error.not-possible-to-modify-published = Published may not be modified.

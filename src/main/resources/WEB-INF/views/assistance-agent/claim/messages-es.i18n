@@ -1,18 +1,28 @@
+# Títulos
 assistance-agent.claim.list.title = Listar reclamaciones
 assistance-agent.claim.form.title = Mostrar reclamación
 
+# Atributos
 assistance-agent.claim.list.label.registration-moment = Momento de registro
 assistance-agent.claim.list.label.passenger-email = Correo del pasajero
 assistance-agent.claim.list.label.description = Descripción
 assistance-agent.claim.list.label.type = Tipo
 assistance-agent.claim.list.label.leg = Trayecto
-assistance-agent.claim.list.label.indicator = Indicador
 assistance-agent.claim.list.label.published = Publicado
+assistance-agent.claim.list.label.indicator = Indicador
 
+# Botones
+assistance-agent.claim.create = Crear reclamación
+assistance-agent.claim.create.submit = Enviar reclamación
 assistance-agent.claim.update.submit = Actualizar reclamación
 assistance-agent.claim.delete.submit = Eliminar reclamación
 assistance-agent.claim.publish.submit = Publicar reclamación
-assistance-agent.claim.create = Crear reclamación
-assistance-agent.claim.create.submit = Crear reclamación
 
+# Botón de registros de seguimiento
+assistance-agent.tracking-log.list = Listar registros de seguimiento
+
+# Errores
 assistance-agent.claim.error.no-changes = Debe realizar al menos un cambio para actualizar la reclamación
+assistance-agent.claim.error.no-leg = No puede ser nulo.
+assistance-agent.claim.error.not-possible-to-modify-registrationMoment = El momento de registro no puede ser modificado.
+assistance-agent.claim.error.not-possible-to-modify-published = El estado de publicación no puede ser modificado.

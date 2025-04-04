@@ -1,0 +1,28 @@
+# Títulos
+assistance-agent.tracking-log.list.title = Listado de registros de seguimiento
+assistance-agent.tracking-log.form.title = Detalles de registro de seguimiento
+
+# Atributos
+assistance-agent.tracking-log.list.label.last-update-moment = Momento de última actualización
+assistance-agent.tracking-log.list.label.step = Paso
+assistance-agent.tracking-log.list.label.resolution-percentage = Porcentaje de resolución
+assistance-agent.tracking-log.list.label.indicator = Indicador
+assistance-agent.tracking-log.list.label.resolution = Resolución
+assistance-agent.tracking-log.list.label.published = Publicado
+
+# Botones
+assistance-agent.tracking-log.create = Crear registro de seguimiento
+assistance-agent.tracking-log.create.submit = Enviar registro de seguimiento
+assistance-agent.tracking-log.update.submit = Actualizar registro de seguimiento
+assistance-agent.tracking-log.delete.submit = Eliminar registro de seguimiento
+assistance-agent.tracking-log.publish.submit = Publicar registro de seguimiento
+
+# Errores
+assistance-agent.tracking-log.error.indicator-must-be-pending = El indicador debe ser PENDING si el porcentaje de resolución es menor al 100%.
+assistance-agent.tracking-log.error.indicator-must-be-accepted-or-rejected-or-in-review = El indicador debe ser ACCEPTED, REJECTED o IN REVIEW si el porcentaje de resolución es 100%.
+assistance-agent.tracking-log.error.resolution-required-if-complete = Debes proporcionar una resolución cuando el porcentaje de resolución sea 100%.
+assistance-agent.tracking-log.error.no-changes = Debes realizar al menos un cambio para actualizar el registro de seguimiento.
+assistance-agent.tracking-log.error.first-log-not-in-review = El primer registro de seguimiento no puede marcarse como IN REVIEW.
+assistance-agent.tracking-log.resolution-percentage-must-increase = El porcentaje de resolución debe ser mayor o igual al del último registro de seguimiento publicado.
+assistance-agent.tracking-log.last-log-in-review = Como el último registro está marcado como IN REVIEW, el actual también debe estar en IN REVIEW.
+assistance-agent.tracking-log.in-review-needs-previous-acception-or-rejection = El indicador IN REVIEW solo se permite si el registro anterior fue ACCEPTED o REJECTED.

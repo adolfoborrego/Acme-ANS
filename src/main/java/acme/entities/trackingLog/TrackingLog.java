@@ -25,7 +25,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-//@ValidTrackingLog
 public class TrackingLog extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
