@@ -50,7 +50,7 @@ public class TechnicianMaintRecordUpdateService extends AbstractGuiService<Techn
 	@Override
 	public void bind(final MaintenanceRecord maintenanceRecord) {
 		assert maintenanceRecord != null;
-		super.bindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "published", "aircraft");
+		super.bindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "aircraft");
 	}
 
 	@Override
@@ -78,10 +78,12 @@ public class TechnicianMaintRecordUpdateService extends AbstractGuiService<Techn
 	public void unbind(final MaintenanceRecord maintenanceRecord) {
 		SelectChoices aircrafts = SelectChoices.from(this.repository.findAllAircraft(), "registrationNumber", maintenanceRecord.getAircraft());
 		SelectChoices statuses = SelectChoices.from(MaintenanceRecordStatus.class, maintenanceRecord.getCurrentStatus());
+		int numberOfTasks = this.repository.cuentaNumeroTasks(maintenanceRecord.getId());
 
 		Dataset dataset = super.unbindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "published", "aircraft");
 		dataset.put("aircrafts", aircrafts);
 		dataset.put("statusChoices", statuses);
+		super.getResponse().addGlobal("numberOfTasks", numberOfTasks);
 		super.getResponse().addData(dataset);
 	}
 

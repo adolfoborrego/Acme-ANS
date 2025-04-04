@@ -52,7 +52,7 @@ public class TechnicianTaskUpdateService extends AbstractGuiService<Technician, 
 	@Override
 	public void bind(final Task task) {
 		assert task != null;
-		super.bindObject(task, "type", "description", "priority", "estimatedDuration", "published");
+		super.bindObject(task, "type", "description", "priority", "estimatedDuration");
 	}
 
 	@Override
