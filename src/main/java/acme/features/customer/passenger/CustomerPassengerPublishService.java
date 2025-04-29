@@ -10,53 +10,47 @@ import acme.entities.Passenger;
 import acme.realms.Customer;
 
 @GuiService
-public class CustomerPassengerCreateService extends AbstractGuiService<Customer, Passenger> {
+public class CustomerPassengerPublishService extends AbstractGuiService<Customer, Passenger> {
 
 	@Autowired
-	protected CustomerPassengerRepository repository;
+	private CustomerPassengerRepository repository;
 
 
 	@Override
 	public void authorise() {
-		boolean status;
-		status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
-		super.getResponse().setAuthorised(status);
+		int id = super.getRequest().getData("id", int.class);
+		Passenger passenger = this.repository.findById(id);
+
+		boolean authorised = passenger != null && !passenger.getPublished() && super.getRequest().getPrincipal().hasRealm(passenger.getCustomer());
+
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
 	public void load() {
-
-		Passenger passenger = new Passenger();
-		passenger.setPublished(false);
+		int id = super.getRequest().getData("id", int.class);
+		Passenger passenger = this.repository.findById(id);
 		super.getBuffer().addData(passenger);
 	}
 
 	@Override
 	public void validate(final Passenger passenger) {
-		assert passenger != null;
 
 	}
 
 	@Override
 	public void bind(final Passenger passenger) {
-		assert passenger != null;
-		super.bindObject(passenger, "fullName", "passportNumber", "specialNeeds", "email", "dateOfBirth");
+		// No binding necesario para publicación
 	}
 
 	@Override
 	public void perform(final Passenger passenger) {
-		int userAccountId = super.getRequest().getPrincipal().getAccountId();
-		int customerId = this.repository.findCustomerIdByUserId(userAccountId);
-
-		Customer customer = this.repository.findCustomerById(customerId);
-		passenger.setCustomer(customer);
-
+		passenger.setPublished(true);
 		this.repository.save(passenger);
 	}
 
 	@Override
 	public void unbind(final Passenger passenger) {
-		assert passenger != null;
 
 		Dataset dataset = super.unbindObject(passenger, "fullName", "passportNumber", "specialNeeds", "email", "dateOfBirth");
 

@@ -1,6 +1,8 @@
 
 package acme.features.customer.booking;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -10,6 +12,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
 import acme.entities.booking.TravelClass;
+import acme.entities.flight.Flight;
 import acme.realms.Customer;
 
 @GuiService
@@ -22,11 +25,14 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 	@Override
 	public void authorise() {
 		int id = super.getRequest().getData("id", int.class);
+		int flightId = super.getRequest().getData("flight", int.class);
+		Flight flight = this.repository.findFlightById(flightId);
 		Booking booking = this.repository.findById(id);
 
+		boolean flightPublished = flight != null && flight.getPublished();
 		boolean authorised = booking != null && super.getRequest().getPrincipal().hasRealm(booking.getCustomer()) && !booking.getPublished();
 
-		super.getResponse().setAuthorised(authorised);
+		super.getResponse().setAuthorised(authorised && flightPublished);
 	}
 
 	@Override
@@ -39,12 +45,19 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 	@Override
 	public void bind(final Booking booking) {
 		assert booking != null;
-		super.bindObject(booking, "travelClass", "price", "locatorCode", "flight", "purchaseMoment", "lastNibble");
+		super.bindObject(booking, "travelClass", "price", "locatorCode", "flight", "lastNibble");
 	}
 
 	@Override
 	public void validate(final Booking booking) {
 		assert booking != null;
+
+		List<String> locatorsYaExistentes = this.repository.findBookingsWhithoutBookingId(booking.getId()).stream().map(x -> x.getLocatorCode()).toList();
+		boolean locatorCodeIsUnique = !locatorsYaExistentes.contains(booking.getLocatorCode());
+		super.state(locatorCodeIsUnique, "flight", "customer.booking.error.locator-NorUnique");
+
+		boolean flightExistAndIsPublished = booking.getFlight() != null;
+		super.state(flightExistAndIsPublished, "flight", "customer.booking.error.dontExist-flight");
 
 	}
 
@@ -56,7 +69,11 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void unbind(final Booking booking) {
-		SelectChoices flights = SelectChoices.from(this.repository.findAllFlights(), "id", booking.getFlight());
+		SelectChoices flights;
+		if (this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList().contains(booking.getFlight()))
+			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "tag", booking.getFlight());
+		else
+			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "tag", null);
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		Dataset dataset = super.unbindObject(booking, "travelClass", "price", "locatorCode", "purchaseMoment", "lastNibble");

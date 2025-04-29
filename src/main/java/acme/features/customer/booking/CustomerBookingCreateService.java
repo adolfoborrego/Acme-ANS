@@ -13,6 +13,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
 import acme.entities.booking.TravelClass;
+import acme.entities.flight.Flight;
 import acme.realms.Customer;
 
 @GuiService
@@ -25,15 +26,25 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 	@Override
 	public void authorise() {
 		boolean status;
+		int flightId = 0;
+		if (super.getRequest().hasData("flight"))
+			flightId = super.getRequest().getData("flight", int.class);
 
+		Flight flight = this.repository.findFlightById(flightId);
+
+		boolean flightPublished = true;
+		if (flight != null)
+			flightPublished = flight.getPublished();
 		status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(status && flightPublished);
 	}
 
 	@Override
 	public void load() {
 		Booking object = new Booking();
+		Date purchaseMoment = MomentHelper.getCurrentMoment();
+		object.setPurchaseMoment(purchaseMoment);
 		object.setPublished(false);
 		super.getBuffer().addData(object);
 	}
@@ -41,15 +52,19 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 	@Override
 	public void bind(final Booking object) {
 		assert object != null;
-		super.bindObject(object, "travelClass", "price", "locatorCode", "flight", "lastNibble", "purchaseMoment");
+		super.bindObject(object, "travelClass", "price", "locatorCode", "flight", "lastNibble");
 	}
 
 	@Override
 	public void validate(final Booking object) {
 		assert object != null;
 
-		boolean flightExistAndIsPublished = object.getFlight() != null ? object.getFlight().getPublished() == true : false;
-		super.state(flightExistAndIsPublished, "flight", object.getFlight() != null ? "customer.booking.error.flight-notPublished" : "customer.booking.error.dontExist-flight");
+		boolean flightExistAndIsPublished = object.getFlight() != null;
+		super.state(flightExistAndIsPublished, "flight", "customer.booking.error.dontExist-flight");
+
+		boolean locatorCodeIsUnique = !this.repository.findBookingsWhithoutBookingId(object.getId()).stream().map(x -> x.getLocatorCode()).anyMatch(x -> x.equals(object.getLocatorCode()));
+		super.state(locatorCodeIsUnique, "flight", "customer.booking.error.locator-NorUnique");
+
 	}
 
 	@Override
@@ -71,9 +86,9 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 		SelectChoices flights;
 		if (this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList().contains(object.getFlight()))
-			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "id", object.getFlight());
+			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "tag", object.getFlight());
 		else
-			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "id", null);
+			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "tag", null);
 
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, object.getTravelClass());
 

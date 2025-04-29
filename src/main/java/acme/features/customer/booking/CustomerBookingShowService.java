@@ -53,7 +53,11 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 	public void unbind(final Booking booking) {
 
 		assert booking != null;
-		SelectChoices flights = SelectChoices.from(this.repository.findAllFlights(), "id", booking.getFlight());
+		SelectChoices flights;
+		if (this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList().contains(booking.getFlight()))
+			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "tag", booking.getFlight());
+		else
+			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "tag", null);
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		Dataset dataset;

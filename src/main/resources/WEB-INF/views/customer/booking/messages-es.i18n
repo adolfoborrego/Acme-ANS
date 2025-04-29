@@ -13,6 +13,7 @@ customer.booking.list.title = Lista de Reservas
 
 customer.booking.list.label.travelClass=Clase de Viaje
 customer.booking.list.label.locatorCode=Localizador
+customer.booking.error.locator-NorUnique = El localizador ya existe
 customer.booking.list.label.price=Precio
 customer.booking.list.label.flight=Vuelo
 customer.booking.list.label.published = Publicado
@@ -31,7 +32,7 @@ customer.booking.update.submit = Actualizar Reserva
 
 customer.booking.publish = Publicar Reserva
 
-
+customer.booking.error.locator-NorUnique = El localizador ya existe
 customer.booking.publish.error.no-lastNibble = No hay Últimos Digitos de la Tarjeta de Crédito
-customer.booking.error.flight-notPublished = El vuelo no está publicado
+customer.booking.publish.error.no-Passengers = Esta reserva no tiene Pasajeros
 customer.booking.error.dontExist-flight = EL vuelo no existe
