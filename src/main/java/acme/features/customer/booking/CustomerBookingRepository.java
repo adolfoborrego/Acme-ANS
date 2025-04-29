@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.Passenger;
 import acme.entities.booking.Booking;
 import acme.entities.flight.Flight;
 
@@ -30,5 +31,11 @@ public interface CustomerBookingRepository extends AbstractRepository {
 
 	@Query("SELECT DISTINCT f FROM Flight f")
 	Collection<Flight> findAllFlights();
+
+	@Query("SELECT DISTINCT pb.passenger FROM PassengerBooking pb WHERE pb.booking.id = :bookingId")
+	Collection<Passenger> findPassengersByBookingId(int bookingId);
+
+	@Query("SELECT DISTINCT b FROM Booking b WHERE b.id != :bookingId")
+	Collection<Booking> findBookingsWhithoutBookingId(int bookingId);
 
 }

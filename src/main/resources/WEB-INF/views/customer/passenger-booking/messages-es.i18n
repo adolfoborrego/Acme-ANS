@@ -10,14 +10,11 @@
 
 customer.passenger-booking.form.title = Asociar Pasajero
 
-
-customer.passenger-booking.list.label.booking = Reserva
-customer.passenger-booking.list.label.passenger = Pasajero
-
 customer.passenger-booking.create = Asociar Pasajero
 customer.passenger-booking.create.submit = Asociar Pasajero
 
-customer.passenger-booking.error.different-customer = El cliente del pasajero no es valido
+customer.passenger-booking.list.label.passenger= Pasajero
+
 customer.passenger-booking.error.dontExist-passenger = Pasajero no existe
 
 

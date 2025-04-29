@@ -39,9 +39,19 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 	public void validate(final Booking booking) {
 		String lastNibble = booking.getLastNibble();
 
+		boolean hasPassengers = !this.repository.findPassengersByBookingId(booking.getId()).isEmpty();
+
 		boolean lastNibbleNotNull = !lastNibble.isBlank();
 
 		super.state(lastNibbleNotNull, "published", "customer.booking.publish.error.no-lastNibble");
+		super.state(hasPassengers, "*", "customer.booking.publish.error.no-Passengers");
+
+		boolean locatorCodeIsUnique = !this.repository.findBookingsWhithoutBookingId(booking.getId()).stream().map(x -> x.getLocatorCode()).anyMatch(x -> x.equals(booking.getLocatorCode()));
+		super.state(locatorCodeIsUnique, "flight", "customer.booking.error.locator-NorUnique");
+
+		boolean flightExistAndIsPublished = booking.getFlight() != null;
+		super.state(flightExistAndIsPublished, "flight", "customer.booking.error.dontExist-flight");
+
 	}
 
 	@Override
@@ -57,10 +67,14 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void unbind(final Booking booking) {
-		SelectChoices flights = SelectChoices.from(this.repository.findAllFlights(), "id", booking.getFlight());
+		SelectChoices flights;
+		if (this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList().contains(booking.getFlight()))
+			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "tag", booking.getFlight());
+		else
+			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "tag", null);
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
-		Dataset dataset = super.unbindObject(booking, "travelClass", "price", "locatorCode", "flight", "published", "purchaseMoment");
+		Dataset dataset = super.unbindObject(booking, "travelClass", "lastNibble", "price", "locatorCode", "flight", "published", "purchaseMoment");
 		dataset.put("flights", flights);
 		dataset.put("travelClasses", travelClasses);
 		super.getResponse().addData(dataset);

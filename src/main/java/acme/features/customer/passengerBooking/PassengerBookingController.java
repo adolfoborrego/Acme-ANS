@@ -14,20 +14,12 @@ import acme.realms.Customer;
 public class PassengerBookingController extends AbstractGuiController<Customer, PassengerBooking> {
 
 	@Autowired
-	private PassengerBookingListService		listService;
-
-	@Autowired
-	private PassengerBookingCreateService	createService;
-
-	@Autowired
-	private PassengerBookingShowService		showService;
+	private PassengerBookingCreateService createService;
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("create", this.createService);
-		super.addBasicCommand("show", this.showService);
 
 	}
 

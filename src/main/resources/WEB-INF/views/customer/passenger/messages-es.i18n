@@ -23,3 +23,5 @@ customer.passenger.list.title = Lista de Pasajeros
 
 customer.passenger.create = Crear Pasajero
 customer.passenger.create.submit = Crear Pasajero
+customer.passenger.publish = Publicar Pasajero
+customer.passenger.update = Actualizar Pasajero

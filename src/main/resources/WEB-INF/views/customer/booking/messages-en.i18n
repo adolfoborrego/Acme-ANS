@@ -13,6 +13,7 @@ customer.booking.list.title = Listing of Bookings
 
 customer.booking.list.label.travelClass=Travel Class
 customer.booking.list.label.locatorCode=Locator Code
+customer.booking.error.locator-NorUnique = The locator code already exists
 customer.booking.list.label.price=Price
 customer.booking.list.label.flight=Flight
 customer.booking.list.label.published = Published
@@ -33,5 +34,5 @@ customer.booking.publish = Publish Booking
 
 
 customer.booking.publish.error.no-lastNibble = There is no Credit Card last Nibble
-customer.booking.error.flight-notPublished = The flight is not published
+customer.booking.publish.error.no-Passengers = This booking doesn't have Passengers
 customer.booking.error.dontExist-flight = The flight does not exist

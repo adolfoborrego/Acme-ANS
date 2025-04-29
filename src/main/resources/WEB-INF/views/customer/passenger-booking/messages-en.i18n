@@ -10,14 +10,11 @@
 
 customer.passenger-booking.form.title = Associate Passengers
 
-customer.passenger-booking.list.label.booking = Booking
-customer.passenger-booking.list.label.passenger = Passenger
-
 customer.passenger-booking.create = Associate Passenger
 customer.passenger-booking.create.submit = Associate Passenger
 
+customer.passenger-booking.list.label.passenger = Passenger
 
-customer.passenger-booking.error.different-customer = Passenger Customer is not valid
 customer.passenger-booking.error.dontExist-passenger = Passenger doesn't exist
 
 
