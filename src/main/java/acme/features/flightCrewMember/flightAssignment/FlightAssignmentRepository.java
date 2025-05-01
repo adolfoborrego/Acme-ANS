@@ -2,8 +2,10 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
@@ -26,8 +28,9 @@ public interface FlightAssignmentRepository extends AbstractRepository {
 	@Query("select j.leg.id from FlightAssignment j where j.id = :flighAssignmentId ")
 	int findLegOfFlightAssignment(int flighAssignmentId);
 
-	@Query("select j from FlightAssignment j where  j.currentStatus != 'CANCELLED' and j.flightCrewMember.id = :memberId and (j.leg.status = 'DELAYED' or j.leg.status = 'ON_TIME')")
-	Collection<FlightAssignment> findAllMyPlannedFlightAssignments(Integer memberId);
+	@Query("SELECT j FROM FlightAssignment j " + "WHERE j.currentStatus != 'CANCELLED' " + "AND j.flightCrewMember.id = :memberId " + "AND (j.leg.status = 'DELAYED' OR j.leg.status = 'ON_TIME') " + "AND j.leg.scheduledDeparture > :currentDate "
+		+ "AND j.leg.scheduledArrival > :currentDate")
+	Collection<FlightAssignment> findAllMyPlannedFlightAssignments(@Param("memberId") Integer memberId, @Param("currentDate") Date currentDate);
 
 	@Query("select j from FlightCrewMember j where j.id = :memberId")
 	FlightCrewMember findFlightCrewMemberById(Integer memberId);
@@ -35,10 +38,22 @@ public interface FlightAssignmentRepository extends AbstractRepository {
 	@Query("select j from Leg j where j.id = :legId")
 	Leg findLegById(Integer legId);
 
-	@Query("select l from Leg l " + "where (l.status = 'DELAYED' or l.status = 'ON_TIME') and l.published = false " + "and (select count(fa) from FlightAssignment fa where fa.leg = l) < 1")
-	Collection<Leg> findAllFutureUnAssignLegs();
+	@Query("SELECT l FROM Leg l " + " WHERE l.status IN ('DELAYED','ON_TIME') " + "   AND l.published = true " + "   AND l.scheduledDeparture > :currentDate " + "   AND l.scheduledArrival   > :currentDate " + "   AND ( "
+		+ "        (SELECT COUNT(fa)  FROM FlightAssignment fa  WHERE fa.leg = l) = 0 " + "     OR (SELECT COUNT(fa2) FROM FlightAssignment fa2 WHERE fa2.leg = l AND fa2.currentStatus <> 'CANCELLED') = 0 " + "       )")
+	Collection<Leg> findAllFutureUnAssignedOrAllCancelledLegs(@Param("currentDate") Date currentDate);
 
-	@Query("select fcm from FlightCrewMember fcm " + "where fcm.availabilityStatus = 'AVAILABLE' and not exists (select fa from FlightAssignment fa where fa.flightCrewMember = fcm)")
-	Collection<FlightCrewMember> findCrewsMembersCandidateForLeg();
+	@Query("""
+		    select fcm
+		    from FlightCrewMember fcm
+		    where fcm.availabilityStatus = 'AVAILABLE'
+		      and fcm.airline.id = :airlineId
+		      and not exists (
+		          select fa
+		          from FlightAssignment fa
+		          where fa.flightCrewMember = fcm
+		            and fa.currentStatus in ('CONFIRMED', 'PENDING')
+		      )
+		""")
+	Collection<FlightCrewMember> findCrewsMembersCandidateForLeg(@Param("airlineId") int airlineId);
 
 }

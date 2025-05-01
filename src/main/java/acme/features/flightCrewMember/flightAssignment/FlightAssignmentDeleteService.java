@@ -1,8 +1,6 @@
 
 package acme.features.flightCrewMember.flightAssignment;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.helpers.MomentHelper;
@@ -10,80 +8,105 @@ import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flightAssignment.FlightAssignment;
+import acme.entities.flightAssignment.FlightAssignmentDuty;
 import acme.realms.flightCrewMember.FlightCrewMember;
 
 @GuiService
 public class FlightAssignmentDeleteService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	private FlightAssignmentRepository repository;
-
-	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
 	public void authorise() {
+		var request = super.getRequest();
+		var principal = request.getPrincipal();
+
+		System.out.println(super.getRequest().getUrl());
+		System.out.println(super.getRequest());
+
+		// Must have id and be a flight crew member
+		if (!request.hasData("id", int.class) || !principal.hasRealmOfType(FlightCrewMember.class)) {
+			super.getResponse().setAuthorised(false);
+			return;
+		}
+
+		int id = request.getData("id", int.class);
+		FlightAssignment assignment = this.repository.findById(id);
+
+		// Must exist and not be confirmed
+		if (assignment == null || "CONFIRMED".equals(assignment.getCurrentStatus())) {
+			super.getResponse().setAuthorised(false);
+			return;
+		}
+
+		int userId = principal.getActiveRealm().getId();
+		int leadId = this.findLeadAttendantId(assignment);
+
+		// Only the assigned member or lead attendant can delete
+		if (assignment.getFlightCrewMember().getId() != userId && leadId != userId) {
+			super.getResponse().setAuthorised(false);
+			return;
+		}
+
 		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
 		int id = super.getRequest().getData("id", int.class);
-		FlightAssignment object = this.repository.findById(id);
-		object.setMomentOfLastUpdate(MomentHelper.getCurrentMoment());
-		object.setCurrentStatus("CANCELLED");
-		super.getBuffer().addData(object);
+		FlightAssignment assignment = this.repository.findById(id);
+		if (assignment != null) {
+			this.markAsCancelled(assignment);
+			super.getBuffer().addData(assignment);
+		}
 	}
 
 	@Override
-	public void bind(final FlightAssignment object) {
-		assert object != null;
-		super.bindObject(object, "leg");
+	public void bind(final FlightAssignment assignment) {
+		// Nothing to bind beyond id
 	}
 
 	@Override
-	public void validate(final FlightAssignment object) {
-		assert object != null;
-		// Aquí se podrían agregar validaciones adicionales si fuese necesario.
+	public void validate(final FlightAssignment assignment) {
+		// No additional validation
 	}
 
 	@Override
-	public void perform(FlightAssignment object) {
-		assert object != null;
-
-		// Actualización de datos básicos
+	public void perform(final FlightAssignment ignored) {
 		int id = super.getRequest().getData("id", int.class);
+		FlightAssignment assignment = this.repository.findById(id);
+		if (assignment == null)
+			return;
 
-		object = this.repository.findById(id);
-		object.setMomentOfLastUpdate(MomentHelper.getCurrentMoment());
-		object.setCurrentStatus("CANCELLED");
+		this.markAsCancelled(assignment);
+		this.repository.save(assignment);
 
-		// Actualizar leg y remarks a partir de los datos recibidos
-		Integer legId = super.getRequest().getData("leg", int.class);
-		Collection<FlightAssignment> assignments = this.repository.findFlightAssignmentsOfLeg(legId);
-		boolean deleteAll = false;
-		for (FlightAssignment a : assignments)
-			if (a.getId() == id) {
-				if (a.getDuty().equals("LEAD ATTENDANT"))
-					deleteAll = true;
-				this.repository.save(a);
-			}
-
-		this.repository.save(object);
-
-		if (deleteAll)
-			for (FlightAssignment a : assignments) {
-				a.setCurrentStatus("CANCELLED");
-				this.repository.save(a);
-			}
+		// If deleting lead attendant, cancel all assignments of the same leg
+		if (FlightAssignmentDuty.LEAD_ATTENDANT.toString().equals(assignment.getDuty()))
+			this.repository.findFlightAssignmentsOfLeg(assignment.getLeg().getId()).forEach(fa -> {
+				this.markAsCancelled(fa);
+				this.repository.save(fa);
+			});
 	}
 
 	@Override
 	public void onSuccess() {
-		if (super.getRequest().getMethod().equalsIgnoreCase("POST"))
+		if ("POST".equalsIgnoreCase(super.getRequest().getMethod()))
 			PrincipalHelper.handleUpdate();
+	}
+
+	// --- Helpers ---
+
+	private void markAsCancelled(final FlightAssignment assignment) {
+		assignment.setMomentOfLastUpdate(MomentHelper.getCurrentMoment());
+		assignment.setCurrentStatus("CANCELLED");
+	}
+
+	private int findLeadAttendantId(final FlightAssignment assignment) {
+		return this.repository.findFlightAssignmentsOfLeg(assignment.getLeg().getId()).stream().filter(fa -> "LEAD ATTENDANT".equals(fa.getDuty())).filter(fa -> !"CANCELLED".equals(fa.getCurrentStatus())).findFirst()
+			.map(fa -> fa.getFlightCrewMember().getId()).orElse(-1);
 	}
 
 }
