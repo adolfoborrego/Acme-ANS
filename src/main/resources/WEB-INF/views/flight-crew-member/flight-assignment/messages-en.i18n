@@ -13,9 +13,9 @@ flight-crew-member.flight-assignment.list.label.remarks = Remarks
 flight-crew-member.flight-assignment.list.label.flightCrewMembers = Flight Crew Members
 
 
+ flight-crew-member.flight-assignment.list.label.crews = Flight Crew Member to Select
 
-
-
+flight-crew-member.flight-assignment.listCrews = My Crews
 flight-crew-member.flight-assignment.form.title = Flight Assignment
 
 
@@ -24,4 +24,5 @@ flight-crew-member.flight-assignment.update = Update
 flight-crew-member.flight-assignment.delete = Delete
 flight-crew-member.flight-assignment.publish = Publish
 flight-crew-member.flight-assignment.create = Create
+
 

@@ -2,6 +2,7 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,39 +15,47 @@ import acme.realms.flightCrewMember.FlightCrewMember;
 @GuiService
 public class FlightAssignmentListCrewsService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	private FlightAssignmentRepository repository;
-
-	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		var request = super.getRequest();
+		var principal = request.getPrincipal();
+
+		// Must be FlightCrewMember and have Fid parameter
+		if (!principal.hasRealmOfType(FlightCrewMember.class) || !request.hasData("Fid", int.class)) {
+			super.getResponse().setAuthorised(false);
+			return;
+		}
+
+		int fid = request.getData("Fid", int.class);
+		FlightAssignment myAssignment = this.repository.findById(fid);
+
+		// Assignment must exist, be CONFIRMED, belong to current user, and not be Lead Attendant
+		int currentMember = principal.getActiveRealm().getId();
+		boolean authorised = myAssignment != null && "CONFIRMED".equals(myAssignment.getCurrentStatus()) && myAssignment.getFlightCrewMember().getId() == currentMember && !"LEAD ATTENDANT".equals(myAssignment.getDuty());
+
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
 	public void load() {
-		Collection<FlightAssignment> flightAssignments;
+		int fid = super.getRequest().getData("Fid", int.class);
+		int legId = this.repository.findLegOfFlightAssignment(fid);
+		int currentMember = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		Integer flightAssignmentId = super.getRequest().getData("Fid", Integer.class);
-		Integer legId = this.repository.findLegOfFlightAssignment(flightAssignmentId);
-		flightAssignments = this.repository.findFlightAssignmentsOfLeg(legId);
+		Collection<FlightAssignment> crew = this.repository.findFlightAssignmentsOfLeg(legId).stream().filter(fa -> !"CANCELLED".equals(fa.getCurrentStatus())).filter(fa -> fa.getFlightCrewMember().getId() != currentMember)
+			.filter(fa -> "CONFIRMED".equals(fa.getCurrentStatus())).collect(Collectors.toList());
 
-		Integer flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-
-		flightAssignments = flightAssignments.stream().filter(x -> x.getFlightCrewMember().getId() != flightCrewMemberId).toList();
-
-		super.getBuffer().addData(flightAssignments);
+		super.getBuffer().addData(crew);
 	}
 
 	@Override
-	public void unbind(final FlightAssignment flightAssignment) {
-		Dataset dataset;
-		dataset = super.unbindObject(flightAssignment, "duty", "momentOfLastUpdate", "currentStatus");
-		super.getResponse().addData(dataset);
+	public void unbind(final FlightAssignment assignment) {
+		Dataset data = super.unbindObject(assignment, "duty", "momentOfLastUpdate", "currentStatus");
+		super.getResponse().addData(data);
 	}
 
 }

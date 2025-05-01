@@ -16,31 +16,34 @@ public class FlightAssignmentController extends AbstractGuiController<FlightCrew
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private FlightAssignmentListCompletedService	listCompletedService;
+	private FlightAssignmentListCompletedService			listCompletedService;
 
 	@Autowired
-	private FlightAssignmentShowService				showService;
+	private FlightAssignmentShowService						showService;
 
 	@Autowired
-	private FlightAssignmentListPlannedService		listPlannedService;
+	private FlightAssignmentListPlannedService				listPlannedService;
 
 	@Autowired
-	private FlightAssignmentCreateService			createService;
+	private FlightAssignmentCreateService					createService;
 
 	@Autowired
-	private FlightAssignmentDeleteService			deleteService;
+	private FlightAssignmentDeleteService					deleteService;
 
 	@Autowired
-	private FlightAssignmentUpdateService			updateService;
+	private FlightAssignmentUpdateService					updateService;
 
 	@Autowired
-	private FlightAssignmentPublishService			publishService;
+	private FlightAssignmentPublishService					publishService;
 
 	@Autowired
-	private FlightAssignmentListCrewsService		listCrewsService;
+	private FlightAssignmentListCrewsService				listCrewsService;
 
 	@Autowired
-	private FlightAssignmentAddService				addService;
+	private FlightAssignmentAddService						addService;
+
+	@Autowired
+	private FlightAssignmentListLeadAttendantCrewsService	listLACrewsService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -50,6 +53,8 @@ public class FlightAssignmentController extends AbstractGuiController<FlightCrew
 		super.addCustomCommand("list-completed", "list", this.listCompletedService);
 		super.addCustomCommand("list-planned", "list", this.listPlannedService);
 		super.addCustomCommand("list-crews", "list", this.listCrewsService);
+		super.addCustomCommand("list-LeadAttendantCrews", "list", this.listLACrewsService);
+
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
 		super.addCustomCommand("addFlightAssignment", "create", this.addService);

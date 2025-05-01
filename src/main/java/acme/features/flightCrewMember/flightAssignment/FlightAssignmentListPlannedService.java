@@ -2,10 +2,12 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flightAssignment.FlightAssignment;
@@ -24,7 +26,10 @@ public class FlightAssignmentListPlannedService extends AbstractGuiService<Fligh
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Boolean auth = true;
+		if (!super.getRequest().getPrincipal().hasRealmOfType(FlightCrewMember.class))
+			auth = false;
+		super.getResponse().setAuthorised(auth);
 	}
 
 	@Override
@@ -32,7 +37,8 @@ public class FlightAssignmentListPlannedService extends AbstractGuiService<Fligh
 		Collection<FlightAssignment> flightAssignments;
 
 		Integer memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		flightAssignments = this.repository.findAllMyPlannedFlightAssignments(memberId);
+		Date currentDate = MomentHelper.getCurrentMoment();
+		flightAssignments = this.repository.findAllMyPlannedFlightAssignments(memberId, currentDate);
 
 		super.getBuffer().addData(flightAssignments);
 	}

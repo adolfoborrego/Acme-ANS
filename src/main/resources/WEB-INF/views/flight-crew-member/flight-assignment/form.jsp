@@ -1,18 +1,20 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-
-
 <jstl:choose>
-    <%-- Bloque para el comando "show" --%>
+
+    <%-- ====================================================
+         BLOQUE: Comando "show"
+         ==================================================== --%>
     <jstl:when test="${_command == 'show'}">
         <acme:form readonly="false">
-            <%-- Campo Role (en show, se muestra como de solo lectura) --%>
-            <acme:input-select readonly="true"
-                code="flight-crew-member.flight-assignment.list.label.role"
-                path="duty" choices="${duty}" />
 
-            <%-- Campos solo en show --%>
+            <%-- Campo Role: Se muestra de solo lectura --%>
+            <acme:input-textbox readonly="true"
+                code="flight-crew-member.flight-assignment.list.label.role"
+                path="duty" />
+
+            <%-- Campos de solo lectura para lastUpdate y status --%>
             <acme:input-textbox readonly="true"
                 code="flight-crew-member.flight-assignment.list.label.lastUpdate"
                 path="momentOfLastUpdate" />
@@ -20,151 +22,206 @@
                 code="flight-crew-member.flight-assignment.list.label.status"
                 path="currentStatus" />
 
-
-            <%-- Campo Remarks, diferenciando segï¿½n Fid e id --%>
+            <%-- Campo Remarks y Leg, según la comparación de Fid e id --%>
             <jstl:if test="${Fid != id}">
                 <acme:input-textbox readonly="true"
                     code="flight-crew-member.flight-assignment.list.label.remarks"
                     path="remarks" />
-                    <%-- Campo Leg --%>
-	            <acme:input-select readonly="true"
-	                code="flight-crew-member.flight-assignment.list.label.leg"
-	                path="leg" choices="${possibleLegs}" />
-            </jstl:if>
-            <jstl:if test="${Fid == id}">
-                <acme:input-textbox readonly="false"
-                    code="flight-crew-member.flight-assignment.list.label.remarks"
-                    path="remarks" />
-                <%-- Campo Leg --%>
-	            <acme:input-select readonly="true"
-	                code="flight-crew-member.flight-assignment.list.label.leg"
-	                path="leg" choices="${possibleLegs}" />
+
+                <%-- Campo Leg: Se muestra como de solo lectura si Fid no es igual a id --%>
+                <acme:input-select readonly="${Fid != id}"
+                    code="flight-crew-member.flight-assignment.list.label.leg"
+                    path="leg" choices="${possibleLegs}" />
             </jstl:if>
 
-            <%-- Campo Lead Attendant si duty no es 'LEAD ATTENDANT' --%>
+            <jstl:if test="${Fid == id}">
+                <acme:input-textbox readonly="${!currentStatus == 'PENDING'}"
+                    code="flight-crew-member.flight-assignment.list.label.remarks"
+                    path="remarks" />
+                <%-- Campo Leg con condición sobre isLegChangeable e isSupLA --%>
+                <acme:input-select readonly="${!isLegChangeable and !isSupLA}"
+                    code="flight-crew-member.flight-assignment.list.label.leg"
+                    path="leg" choices="${possibleLegs}" />
+            </jstl:if>
+
+            <%-- Campo Lead Attendant solo se muestra si duty no es 'LEAD ATTENDANT' y isSupla es false --%>
             <jstl:if test="${duty != 'LEAD ATTENDANT' and isSupla == false}">
                 <acme:input-textbox readonly="true"
                     code="flight-crew-member.flight-assignment.list.label.leadAttendant"
                     path="lead_attendant" />
             </jstl:if>
 
-            <%-- Botones de acciï¿½n (solo si el vuelo aï¿½n no estï¿½ publicado/aterrizado y Fid coincide) --%>
+            <%-- Botones de acción: Solo se muestran si currentStatus es PENDING --%>
             <jstl:if test="${currentStatus eq 'PENDING'}">
-            	<jstl:if test="${!leg.published and leg.status != 'LANDED'}">
-            		<jstl:if test="${Fid == id}">
-	            		<acme:submit code="flight-crew-member.flight-assignment.update"
-	                    			action="/flight-crew-member/flight-assignment/update"/>
-	            		<acme:submit code="flight-crew-member.flight-assignment.delete"
-	                    			action="/flight-crew-member/flight-assignment/delete"/>
-	                	<acme:submit code="flight-crew-member.flight-assignment.publish"
-	                   				 action="/flight-crew-member/flight-assignment/publish"/>
-                   	</jstl:if>
-                   	<jstl:if test="${Fid != id and isSupLA}">
-	            		<acme:submit code="flight-crew-member.flight-assignment.delete"
-	                    			action="/flight-crew-member/flight-assignment/delete"/>
-                   	</jstl:if>
-            	</jstl:if>
+                <jstl:if test="${leg.published and leg.status != 'LANDED'}">
+                    <jstl:if test="${Fid == id}">
+                        <acme:submit code="flight-crew-member.flight-assignment.update"
+                            action="/flight-crew-member/flight-assignment/update" />
+                        <acme:submit code="flight-crew-member.flight-assignment.delete"
+                            action="/flight-crew-member/flight-assignment/delete" />
+                        <acme:submit code="flight-crew-member.flight-assignment.publish"
+                            action="/flight-crew-member/flight-assignment/publish" />
+                    </jstl:if>
+                    <jstl:if test="${Fid != id and isSupLA}">
+                        <acme:submit code="flight-crew-member.flight-assignment.delete"
+                            action="/flight-crew-member/flight-assignment/delete" />                  
+                    </jstl:if>
+                </jstl:if>
             </jstl:if>
-            <jstl:if test="${Fid == id}">
-            <acme:button code="flight-crew-member.flight-assignment.listCrews"
-                   			 action="/flight-crew-member/flight-assignment/list-crews?Fid=${Fid}"/>
-        	</jstl:if>
+
+            <%-- Botón para listar crews dependiendo de currentStatus y condiciones adicionales --%>
+            <jstl:if test="${Fid == id and currentStatus eq 'CONFIRMED'}">
+                <jstl:if test="${!isSupLA}">
+                    <acme:button code="flight-crew-member.flight-assignment.listCrews"
+                        action="/flight-crew-member/flight-assignment/list-crews?Fid=${Fid}" />
+                </jstl:if>
+                <jstl:if test="${isSupLA}">
+                    <acme:button code="flight-crew-member.flight-assignment.listCrews"
+                        action="/flight-crew-member/flight-assignment/list-LeadAttendantCrews?Fid=${Fid}" />
+                </jstl:if>
+            </jstl:if>
+
         </acme:form>
     </jstl:when>
 
-    <%-- Bloque para el comando "addFlightAssignment" --%>
+
+    <%-- ====================================================
+         BLOQUE: Comando "addFlightAssignment"
+         ==================================================== --%>
     <jstl:when test="${_command == 'addFlightAssignment'}">
         <acme:form readonly="false">
-            <%-- Campo Role (editable en este comando) --%>
+
+            <%-- Campo Role editable: Selector con opciones de duty --%>
             <acme:input-select readonly="false"
                 code="flight-crew-member.flight-assignment.list.label.role"
                 path="duty" choices="${duty}" />
 
-            <%-- Campo de selecciï¿½n de Crews, especï¿½fico de addFlightAssignment --%>
+            <%-- Campo de selección de Crews específico para addFlightAssignment --%>
             <acme:input-select readonly="false"
                 code="flight-crew-member.flight-assignment.list.label.crews"
                 path="memberId" choices="${possibleCrews}" />
 
-            <%-- Campo Leg --%>
+            <%-- Campo Leg: Se muestra en modo solo lectura --%>
             <acme:input-select readonly="true"
                 code="flight-crew-member.flight-assignment.list.label.leg"
-                path="leg" choices="${possibleLegs}" />
+                path="leg" choices="${possibleLegs}"/>
 
-            <%-- Botï¿½n para crear asignaciï¿½n de vuelo en addFlightAssignment --%>
+            <%-- Botón para crear asignación de vuelo en addFlightAssignment --%>
             <acme:submit code="flight-crew-member.flight-assignment.create"
-                action="/flight-crew-member/flight-assignment/addFlightAssignment?Fid=${param.Fid}"/>
+                action="/flight-crew-member/flight-assignment/addFlightAssignment?Fid=${param.Fid}" />
+
         </acme:form>
     </jstl:when>
 
-    <%-- Bloque para el comando "create" --%>
+
+    <%-- ====================================================
+         BLOQUE: Comando "create"
+         ==================================================== --%>
     <jstl:when test="${_command == 'create'}">
         <acme:form readonly="false">
-            <%-- Campo Role (en create, se muestra como de solo lectura) --%>
+
+            <%-- Campo Role: Selector de duty en modo de solo lectura --%>
             <acme:input-select readonly="true"
                 code="flight-crew-member.flight-assignment.list.label.role"
                 path="duty" choices="${duty}" />
 
-            <%-- Campo Leg --%>
+            <%-- Campo Leg: Selector de leg --%>
             <acme:input-select
                 code="flight-crew-member.flight-assignment.list.label.leg"
                 path="leg" choices="${possibleLegs}" />
 
-            <%-- Campo Remarks, diferenciando segï¿½n Fid e id --%>
+            <%-- Campo Remarks: Editable --%>
             <acme:input-textbox readonly="false"
                 code="flight-crew-member.flight-assignment.list.label.remarks"
                 path="remarks" />
-                 
 
-            <%-- Botï¿½n para crear asignaciï¿½n --%>
+            <%-- Botón para crear asignación --%>
             <acme:submit code="flight-crew-member.flight-assignment.create"
                 action="/flight-crew-member/flight-assignment/create" />
+
         </acme:form>
     </jstl:when>
 
-    <%-- Bloque para los demï¿½s comandos (por ejemplo, update) --%>
+
+    <%-- ====================================================
+         BLOQUE: Otros Comandos (p.ej., update)
+         ==================================================== --%>
     <jstl:otherwise>
         <acme:form readonly="false">
-            <%-- Campo Role (en comandos distintos a addFlightAssignment, se muestra como de solo lectura) --%>
-            <acme:input-select readonly="true"
+
+            <%-- Campo Role: Se muestra de solo lectura --%>
+            <acme:input-textbox readonly="true"
                 code="flight-crew-member.flight-assignment.list.label.role"
-                path="duty" choices="${duty}" />
+                path="duty" />
 
-            <%-- Campo Leg --%>
-            <acme:input-select readonly = "false"
-                code="flight-crew-member.flight-assignment.list.label.leg"
-                path="leg" choices="${possibleLegs}" />
+            <%-- Campos de solo lectura para lastUpdate y status --%>
+            <acme:input-textbox readonly="true"
+                code="flight-crew-member.flight-assignment.list.label.lastUpdate"
+                path="momentOfLastUpdate" />
+            <acme:input-textbox readonly="true"
+                code="flight-crew-member.flight-assignment.list.label.status"
+                path="currentStatus" />
 
-            <%-- Campo Remarks, diferenciando segï¿½n Fid e id --%>
+            <%-- Campo Remarks y Leg, según la comparación de Fid e id --%>
             <jstl:if test="${Fid != id}">
                 <acme:input-textbox readonly="true"
                     code="flight-crew-member.flight-assignment.list.label.remarks"
                     path="remarks" />
-            </jstl:if>
-            <jstl:if test="${Fid == id}">
-                <acme:input-textbox readonly="false"
-                    code="flight-crew-member.flight-assignment.list.label.remarks"
-                    path="remarks" />
+
+                <%-- Campo Leg: Se muestra como de solo lectura si Fid no es igual a id --%>
+                <acme:input-select readonly="${Fid != id}"
+                    code="flight-crew-member.flight-assignment.list.label.leg"
+                    path="leg" choices="${possibleLegs}" />
             </jstl:if>
 
-            <%-- Campo Lead Attendant si duty no es 'LEAD ATTENDANT' --%>
-            <jstl:if test="${duty != 'LEAD ATTENDANT'}">
+            <jstl:if test="${Fid == id}">
+                <acme:input-textbox readonly="${!currentStatus == 'PENDING'}"
+                    code="flight-crew-member.flight-assignment.list.label.remarks"
+                    path="remarks" />
+                <%-- Campo Leg con condición sobre isLegChangeable e isSupLA --%>
+                <acme:input-select readonly="${!isLegChangeable and !isSupLA}"
+                    code="flight-crew-member.flight-assignment.list.label.leg"
+                    path="leg" choices="${possibleLegs}" />
+            </jstl:if>
+
+            <%-- Campo Lead Attendant solo se muestra si duty no es 'LEAD ATTENDANT' y isSupla es false --%>
+            <jstl:if test="${duty != 'LEAD ATTENDANT' and isSupla == false}">
                 <acme:input-textbox readonly="true"
                     code="flight-crew-member.flight-assignment.list.label.leadAttendant"
                     path="lead_attendant" />
             </jstl:if>
 
-            <%-- Botones de acciï¿½n si se cumple la condiciï¿½n de vuelo no publicado/aterrizado y Fid coincide --%>
-            <jstl:if test="${!leg.published and leg.status != 'LANDED' and Fid == id}">
-                <acme:submit code="flight-crew-member.flight-assignment.update"
-                    action="/flight-crew-member/flight-assignment/update"/>
-                <acme:button code="flight-crew-member.flight-assignment.listCrews"
-                    action="/flight-crew-member/flight-assignment/list-crews?Fid=${Fid}"/>
-                <acme:submit code="flight-crew-member.flight-assignment.delete"
-                    action="/flight-crew-member/flight-assignment/delete"/>
-                <acme:submit code="flight-crew-member.flight-assignment.publish"
-                    action="/flight-crew-member/flight-assignment/publish"/>
+            <%-- Botones de acción: Solo se muestran si currentStatus es PENDING --%>
+            <jstl:if test="${currentStatus eq 'PENDING'}">
+                <jstl:if test="${leg.published and leg.status != 'LANDED'}">
+                    <jstl:if test="${Fid == id}">
+                        <acme:submit code="flight-crew-member.flight-assignment.update"
+                            action="/flight-crew-member/flight-assignment/update" />
+                        <acme:submit code="flight-crew-member.flight-assignment.delete"
+                            action="/flight-crew-member/flight-assignment/delete" />
+                        <acme:submit code="flight-crew-member.flight-assignment.publish"
+                            action="/flight-crew-member/flight-assignment/publish" />
+                    </jstl:if>
+                    <jstl:if test="${Fid != id and isSupLA}">
+                        <acme:submit code="flight-crew-member.flight-assignment.delete"
+                            action="/flight-crew-member/flight-assignment/delete" />                  
+                    </jstl:if>
+                </jstl:if>
             </jstl:if>
+
+            <%-- Botón para listar crews dependiendo de currentStatus y condiciones adicionales --%>
+            <jstl:if test="${Fid == id and currentStatus eq 'CONFIRMED'}">
+                <jstl:if test="${!isSupLA}">
+                    <acme:button code="flight-crew-member.flight-assignment.listCrews"
+                        action="/flight-crew-member/flight-assignment/list-crews?Fid=${Fid}" />
+                </jstl:if>
+                <jstl:if test="${isSupLA}">
+                    <acme:button code="flight-crew-member.flight-assignment.listCrews"
+                        action="/flight-crew-member/flight-assignment/list-LeadAttendantCrews?Fid=${Fid}" />
+                </jstl:if>
+            </jstl:if>
+
         </acme:form>
     </jstl:otherwise>
-</jstl:choose>
 
+</jstl:choose>

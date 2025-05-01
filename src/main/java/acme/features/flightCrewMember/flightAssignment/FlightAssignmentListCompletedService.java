@@ -24,7 +24,13 @@ public class FlightAssignmentListCompletedService extends AbstractGuiService<Fli
 
 	@Override
 	public void authorise() {
+		if (!super.getRequest().getPrincipal().hasRealmOfType(FlightCrewMember.class)) {
+			super.getResponse().setAuthorised(false);
+			return;
+		}
+
 		super.getResponse().setAuthorised(true);
+
 	}
 
 	@Override

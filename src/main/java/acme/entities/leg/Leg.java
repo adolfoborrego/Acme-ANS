@@ -1,6 +1,7 @@
 
 package acme.entities.leg;
 
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 
@@ -75,6 +76,33 @@ public class Leg extends AbstractEntity {
 		String iataCode = this.aircraft.getAirline().getIataCode();
 		String suffix = String.format("%04d", this.getId() % 10000);
 		return iataCode + suffix;
+	}
+
+
+	@Transient
+	private String identificator;
+
+
+	/**
+	 * Getter que construye dinámicamente la cadena deseada.
+	 */
+	@Transient
+	public String getIdentificator() {
+		// tu implementación actual:
+		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		String depCode = this.departureAirport != null ? this.departureAirport.getIataCode() : "N/A";
+		String arrCode = this.arrivalAirport != null ? this.arrivalAirport.getIataCode() : "N/A";
+		String flightNum = this.getFlightNumber() != null ? this.getFlightNumber() : "N/A";
+		String dateStr = this.scheduledDeparture != null ? fmt.format(this.scheduledDeparture) : "N/A";
+		return String.format("From: %s- To: %s, On FlightNumber: %s, At: %s", depCode, arrCode, flightNum, dateStr);
+	}
+
+	/**
+	 * Setter vacío para que ReflectionHelper detecte la propiedad 'identificator'.
+	 */
+	public void setIdentificator(final String identificator) {
+		// no hace nada, o podrías cachear el valor si lo deseas
+		this.identificator = identificator;
 	}
 
 	// Relationships ----------------------------------------------------------

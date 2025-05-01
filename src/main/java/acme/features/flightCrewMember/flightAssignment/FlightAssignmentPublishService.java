@@ -13,54 +13,54 @@ import acme.realms.flightCrewMember.FlightCrewMember;
 @GuiService
 public class FlightAssignmentPublishService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	private FlightAssignmentRepository repository;
-
-	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
-	}
-
-	@Override
-	public void bind(final FlightAssignment object) {
-		assert object != null;
-		super.bindObject(object);
+		// Must have request data and be a FlightCrewMember
+		var principal = super.getRequest().getPrincipal();
+		boolean hasId = super.getRequest().hasData("id", int.class);
+		super.getResponse().setAuthorised(hasId && principal.hasRealmOfType(FlightCrewMember.class));
+		System.out.println(super.getRequest().getUrl());
 	}
 
 	@Override
 	public void load() {
 		int id = super.getRequest().getData("id", int.class);
-		FlightAssignment object = this.repository.findById(id);
-		object.setMomentOfLastUpdate(MomentHelper.getCurrentMoment());
-		object.setCurrentStatus("CONFIRMED");
-		super.getBuffer().addData(object);
+		FlightAssignment assignment = this.repository.findById(id);
+		if (assignment != null) {
+			this.updateToConfirmed(assignment);
+			super.getBuffer().addData(assignment);
+		}
 	}
 
 	@Override
-	public void validate(final FlightAssignment object) {
-		assert object != null;
-		// Aquí se podrían agregar validaciones adicionales si fuese necesario.
+	public void bind(final FlightAssignment assignment) {
+		super.bindObject(assignment);
 	}
 
 	@Override
-	public void perform(final FlightAssignment object) {
+	public void validate(final FlightAssignment assignment) {
+		// No extra validation required
+	}
 
-		// Actualización de datos básicos
-		object.setMomentOfLastUpdate(MomentHelper.getCurrentMoment());
-		object.setCurrentStatus("CONFIRMED");
-
-		this.repository.save(object);
+	@Override
+	public void perform(final FlightAssignment assignment) {
+		this.updateToConfirmed(assignment);
+		this.repository.save(assignment);
 	}
 
 	@Override
 	public void onSuccess() {
-		if (super.getRequest().getMethod().equalsIgnoreCase("POST"))
+		if ("POST".equalsIgnoreCase(super.getRequest().getMethod()))
 			PrincipalHelper.handleUpdate();
 	}
 
+	// --- Helper ---
+	private void updateToConfirmed(final FlightAssignment assignment) {
+		assignment.setMomentOfLastUpdate(MomentHelper.getCurrentMoment());
+		assignment.setCurrentStatus("CONFIRMED");
+	}
 }
