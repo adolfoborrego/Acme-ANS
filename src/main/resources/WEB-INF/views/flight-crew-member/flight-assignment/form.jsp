@@ -80,6 +80,11 @@
                         action="/flight-crew-member/flight-assignment/list-LeadAttendantCrews?Fid=${Fid}" />
                 </jstl:if>
             </jstl:if>
+            
+            <jstl:if test="${ leg.status == 'LANDED'}">
+            	<acme:button code="flight-crew-member.flight-assignment.activityLog"
+                        action="/flight-crew-member/activity-log/list?id=${Fid}" />
+            </jstl:if>
 
         </acme:form>
     </jstl:when>
