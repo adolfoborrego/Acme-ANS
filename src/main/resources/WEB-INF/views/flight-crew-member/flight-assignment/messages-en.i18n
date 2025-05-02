@@ -14,7 +14,7 @@ flight-crew-member.flight-assignment.list.label.flightCrewMembers = Flight Crew 
 
 
  flight-crew-member.flight-assignment.list.label.crews = Flight Crew Member to Select
-
+flight-crew-member.flight-assignment.activityLog = Activity Logs
 flight-crew-member.flight-assignment.listCrews = My Crews
 flight-crew-member.flight-assignment.form.title = Flight Assignment
 

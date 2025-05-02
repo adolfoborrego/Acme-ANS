@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -47,15 +48,33 @@ public class FlightAssignment extends AbstractEntity {
 	@Automapped
 	String						remarks;
 
+	// Transient identificator for bean property reflection
+	@Transient
+	private String				identificator;
+
+
+	@Transient
+	public String getIdentificator() {
+		String dutyCode = this.duty != null ? this.duty : "N/A";
+		String legInfo = this.leg != null && this.leg.getIdentificator() != null ? this.leg.getIdentificator() : "N/A";
+
+		return String.format("[Duty: %s]  [Leg: %s]", dutyCode, legInfo);
+	}
+
+	public void setIdentificator(final String identificator) {
+		this.identificator = identificator;
+	}
+
+
 	@Mandatory
 	@Valid
 	@Automapped
 	@ManyToOne(optional = false)
-	FlightCrewMember			flightCrewMember;
+	FlightCrewMember	flightCrewMember;
 
 	@Mandatory
 	@Valid
 	@Automapped
 	@ManyToOne /* ( optional = false ) */
-	Leg							leg;
+	Leg					leg;
 }
