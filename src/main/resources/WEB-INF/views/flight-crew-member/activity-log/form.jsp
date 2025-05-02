@@ -11,8 +11,11 @@
         <acme:form readonly="false">
             <!-- FlightAssignment info -->
             <acme:input-textbox readonly="true"
-                code="activity-log.flight-assignment.info"
-                path="flightAssignmentIdentificator" />
+                code="activity-log.flight-assignment.duty"
+                path="duty" />
+            <acme:input-textbox readonly="true"
+                code="activity-log.flight-assignment.leg"
+                path="leg" />
             <!-- Registration Moment: readonly, set in backend -->
             <acme:input-textbox readonly="true"
                 code="activity-log.list.label.registrationMoment"
@@ -46,8 +49,11 @@
         <acme:form readonly="false">
             <!-- FlightAssignment info -->
             <acme:input-textbox readonly="true"
-                code="activity-log.flight-assignment.info"
-                path="flightAssignmentIdentificator" />
+                code="activity-log.flight-assignment.duty"
+                path="duty" />
+            <acme:input-textbox readonly="true"
+                code="activity-log.flight-assignment.leg"
+                path="leg" />
 
             <acme:input-textbox readonly="true"
                 code="activity-log.list.label.registrationMoment"
@@ -95,9 +101,12 @@
     <jstl:when test="${_command == 'update'}">
         <acme:form readonly="false">
             <!-- FlightAssignment info -->
+           <acme:input-textbox readonly="true"
+                code="activity-log.flight-assignment.duty"
+                path="duty" />
             <acme:input-textbox readonly="true"
-                code="activity-log.flight-assignment.info"
-                path="flightAssignment.identificator" />
+                code="activity-log.flight-assignment.leg"
+                path="leg" />
             <acme:input-textbox readonly="true"
                 code="activity-log.list.label.registrationMoment"
                 path="registrationMoment" />
@@ -129,8 +138,11 @@
         <acme:form readonly="false">
             <!-- FlightAssignment info -->
             <acme:input-textbox readonly="true"
-                code="activity-log.flight-assignment.info"
-                path="flightAssignment.identificator" />
+                code="activity-log.flight-assignment.duty"
+                path="duty" />
+            <acme:input-textbox readonly="true"
+                code="activity-log.flight-assignment.leg"
+                path="leg" />
             <acme:input-textbox readonly="true"
                 code="activity-log.list.label.registrationMoment"
                 path="registrationMoment" />

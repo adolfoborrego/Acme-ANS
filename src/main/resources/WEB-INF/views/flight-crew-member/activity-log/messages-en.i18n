@@ -9,3 +9,18 @@ activity-log.list.label.severityLevel = Severity Level
  activity-log.list.label.description = Description
 
 activity-log.create = Create New Activity Log
+
+
+flight-crew-member.activity-log.form.title = Activity Log Details
+
+ activity-log.flight-assignment.info = Flight Assignment Information
+ 
+ activity-log.update = Update
+ 
+ activity-log.delete = Delete
+ 
+ activity-log.publish = Publish
+ 
+  activity-log.flight-assignment.duty  = Duty
+  
+   activity-log.flight-assignment.leg  = Leg
