@@ -4,7 +4,7 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
  
-<acme:form>
+<acme:form readonly="${status == 'DISABLED'}">
 
 	    	<acme:input-textbox code="administrator.aircraft.list.label.model" path="model" placeholder = "administrator.aircraft.placeholder.model"/>
     		<acme:input-textbox code="administrator.aircraft.list.label.registrationNumber" path="registrationNumber" placeholder = "administrator.aircraft.placeholder.registrationNumber"/>
@@ -20,7 +20,7 @@
 	   			<acme:input-checkbox code="administrator.aircraft.form.label.confirmation" path="confirmation"/>
 				<acme:submit code="administrator.aircraft.create.submit" action="/administrator/aircraft/create"/>
 			</jstl:when>
-			<jstl:when test="${_command != 'create'}">
+			<jstl:when test="${_command != 'create' && status != 'DISABLED'}">
 	   			<acme:input-checkbox code="administrator.aircraft.form.label.confirmation.update" path="confirmation"/>
 	   			<acme:submit code="administrator.aircraft.update.submit" action="/administrator/aircraft/update"/>
 			</jstl:when>

@@ -1,0 +1,20 @@
+# Títulos y textos generales
+flight-crew-member.activity-log.list.title = Registros de Actividad
+flight-crew-member.activity-log.form.title = Detalles del Registro de Actividad
+
+# Etiquetas de campos
+activity-log.list.label.registrationMoment = Momento de Registro
+activity-log.list.label.typeOfIncident = Tipo de Incidente
+activity-log.list.label.severityLevel = Nivel de Severidad
+activity-log.list.label.description = Descripción
+activity-log.flight-assignment.info = Información de la Asignación de Vuelo
+
+# Botones y acciones
+activity-log.create = Crear Nuevo Registro de Actividad
+activity-log.update = Actualizar
+activity-log.delete = Eliminar
+activity-log.publish = Publicar
+
+# Campos heredados de FlightAssignment (si se usan)
+activity-log.flight-assignment.duty = Función
+activity-log.flight-assignment.leg = Trayecto
