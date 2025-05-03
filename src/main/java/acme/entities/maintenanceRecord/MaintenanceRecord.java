@@ -2,6 +2,7 @@
 package acme.entities.maintenanceRecord;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -74,4 +75,10 @@ public class MaintenanceRecord extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private Technician				technician;
+
+
+	public static boolean isPrefixValid(final MaintenanceRecord mr) {
+		List<String> validMoneyPrefixes = List.of("USD", "EUR", "GBP", "JPY", "CAD", "AUD", "CHF", "CNY", "MXN", "BRL", "INR", "KRW", "SEK", "NOK", "DKK", "RUB", "ARS", "CLP", "COP", "ZAR", "US");
+		return validMoneyPrefixes.contains(mr.getEstimatedCost().getCurrency());
+	}
 }

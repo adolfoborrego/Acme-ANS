@@ -52,6 +52,13 @@ public class TechnicianMaintRecordCreateService extends AbstractGuiService<Techn
 	public void validate(final MaintenanceRecord maintenanceRecord) {
 		assert maintenanceRecord != null;
 		boolean dateNoNull = maintenanceRecord.getMoment() == null || maintenanceRecord.getInspectionDueDate() == null;
+		super.state(maintenanceRecord.getAircraft() != null, "aircraft", "technician.maintenanceRecord.aircraft-non-null");
+
+		if (maintenanceRecord.getEstimatedCost() != null) {
+			boolean moneyValida = MaintenanceRecord.isPrefixValid(maintenanceRecord);
+			super.state(moneyValida, "estimatedCost", "technician.maintenanceRecord.estimatedCost-prefix-valid");
+		}
+
 		if (!dateNoNull) {
 			boolean primeroMoment = maintenanceRecord.getMoment().before(maintenanceRecord.getInspectionDueDate());
 			super.state(primeroMoment, "moment", "technician.maintenanceRecord.moment-before-inspection.moment");
