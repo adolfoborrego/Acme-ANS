@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
@@ -37,22 +38,25 @@ public class TechnicianMaintRecordCreateService extends AbstractGuiService<Techn
 		MaintenanceRecord mr = new MaintenanceRecord();
 		mr.setPublished(false);
 		mr.setCurrentStatus(MaintenanceRecordStatus.PENDING);
+		mr.setMoment(MomentHelper.getCurrentMoment());
 		super.getBuffer().addData(mr);
 	}
 
 	@Override
 	public void bind(final MaintenanceRecord maintenanceRecord) {
 		assert maintenanceRecord != null;
-		super.bindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "aircraft");
+		super.bindObject(maintenanceRecord, "inspectionDueDate", "estimatedCost", "notes", "aircraft");
 	}
 
 	@Override
 	public void validate(final MaintenanceRecord maintenanceRecord) {
 		assert maintenanceRecord != null;
-
-		boolean primeroMoment = maintenanceRecord.getMoment().before(maintenanceRecord.getInspectionDueDate());
-		super.state(primeroMoment, "moment", "technician.maintenanceRecord.moment-before-inspection.moment");
-		super.state(primeroMoment, "inspectionDueDate", "technician.maintenanceRecord.moment-before-inspection.inspectionDueDate");
+		boolean dateNoNull = maintenanceRecord.getMoment() == null || maintenanceRecord.getInspectionDueDate() == null;
+		if (!dateNoNull) {
+			boolean primeroMoment = maintenanceRecord.getMoment().before(maintenanceRecord.getInspectionDueDate());
+			super.state(primeroMoment, "moment", "technician.maintenanceRecord.moment-before-inspection.moment");
+			super.state(primeroMoment, "inspectionDueDate", "technician.maintenanceRecord.moment-before-inspection.inspectionDueDate");
+		}
 	}
 
 	@Override
@@ -60,7 +64,8 @@ public class TechnicianMaintRecordCreateService extends AbstractGuiService<Techn
 		assert maintenanceRecord != null;
 		int userAccountId = super.getRequest().getPrincipal().getAccountId();
 		Technician technician = this.repository.findTechnicianByUserId(userAccountId);
-
+		maintenanceRecord.setCurrentStatus(MaintenanceRecordStatus.PENDING);
+		maintenanceRecord.setMoment(MomentHelper.getCurrentMoment());
 		maintenanceRecord.setTechnician(technician);
 		this.repository.save(maintenanceRecord);
 	}

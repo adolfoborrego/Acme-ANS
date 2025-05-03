@@ -12,9 +12,9 @@
 				<acme:input-select code="technician.maintenance-record.list.label.aircraft" path="aircraft" choices ="${aircrafts}"/>
 	    		<acme:input-money code="technician.maintenance-record.list.label.estimatedCost" path="estimatedCost" />
 	    		<acme:input-textarea code="technician.maintenance-record.list.label.notes" path="notes" /> 
-	    		<acme:input-moment code="technician.maintenance-record.list.label.moment" path="moment"/>
+	    		<acme:input-moment code="technician.maintenance-record.list.label.moment" path="moment" readonly="true"/>
 	    		<acme:input-moment code="technician.maintenance-record.list.label.inspectionDueDate" path="inspectionDueDate"/>
-	    		<acme:input-select code="technician.maintenance-record.list.label.currentStatus" path="currentStatus" choices = "${statusChoices}"/>
+	    		<acme:input-select code="technician.maintenance-record.list.label.currentStatus" path="currentStatus" choices = "${statusChoices}" readonly="true"/>
 	    		<jstl:if test="${_command != 'create'}">
 	    			<acme:input-checkbox code="technician.maintenance-record.list.label.published" path="published" readonly="true"/>
 	    		</jstl:if>
