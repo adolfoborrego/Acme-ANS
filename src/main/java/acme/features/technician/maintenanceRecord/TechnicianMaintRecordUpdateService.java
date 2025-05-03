@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
@@ -46,6 +47,7 @@ public class TechnicianMaintRecordUpdateService extends AbstractGuiService<Techn
 	public void load() {
 		int id = super.getRequest().getData("id", int.class);
 		MaintenanceRecord mr = this.repository.findById(id);
+		mr.setMoment(MomentHelper.getCurrentMoment());
 		super.getBuffer().addData(mr);
 	}
 
@@ -80,6 +82,7 @@ public class TechnicianMaintRecordUpdateService extends AbstractGuiService<Techn
 	@Override
 	public void perform(final MaintenanceRecord maintenanceRecord) {
 		assert maintenanceRecord != null;
+		maintenanceRecord.setMoment(MomentHelper.getCurrentMoment());
 		this.repository.save(maintenanceRecord);
 	}
 
@@ -114,9 +117,8 @@ public class TechnicianMaintRecordUpdateService extends AbstractGuiService<Techn
 		boolean mismoCosto = Objects.equals(BigDecimal.valueOf(original.getEstimatedCost().getAmount()).stripTrailingZeros(), nueva.getEstimatedCost() != null ? BigDecimal.valueOf(nueva.getEstimatedCost().getAmount()).stripTrailingZeros() : null);
 		boolean mismaFechaInspeccion = Objects.equals(original.getInspectionDueDate().getTime() / 1000, nueva.getInspectionDueDate() != null ? nueva.getInspectionDueDate().getTime() / 1000 : null);
 		boolean mismoPrefix = Objects.equals(original.getEstimatedCost().getCurrency(), nueva.getEstimatedCost().getCurrency());
-		boolean mismoMomento = Objects.equals(original.getMoment().getTime() / 1000, nueva.getMoment() != null ? nueva.getMoment().getTime() / 1000 : null);
 
-		return !mismoRegNumber || !mismasNotas || !mismoEstado || !mismoCosto || !mismaFechaInspeccion || !mismoMomento || !mismoPrefix;
+		return !mismoRegNumber || !mismasNotas || !mismoEstado || !mismoCosto || !mismaFechaInspeccion || !mismoPrefix;
 	}
 
 	private boolean allTasksPublished(final Collection<Task> tasks) {

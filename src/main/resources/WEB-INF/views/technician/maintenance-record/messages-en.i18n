@@ -17,7 +17,7 @@ technician.maintenance-record.list.label.estimatedCost=Estimated Cost
 technician.maintenance-record.list.label.inspectionDueDate=Next Inspection
 technician.maintenance-record.list.label.notes=Notes
 technician.maintenance-record.list.label.published = Published
-technician.maintenance-record.list.label.moment = Moment
+technician.maintenance-record.list.label.moment = Last update moment
 
 technician.maintenance-record.list-tasks = List of tasks
 technician.maintenanceRecord.create = Create Maintenance Record

@@ -17,7 +17,7 @@ technician.maintenance-record.list.label.estimatedCost=Coste Aproximado
 technician.maintenance-record.list.label.inspectionDueDate=Siguiente Revisión
 technician.maintenance-record.list.label.notes=Notas
 technician.maintenance-record.list.label.published = Publicado
-technician.maintenance-record.list.label.moment = Momento
+technician.maintenance-record.list.label.moment = Momento de la última actualización
 
 technician.maintenance-record.list-tasks = Listado de tareas
 technician.maintenanceRecord.publish = Publicar Registro de Mantenimiento
