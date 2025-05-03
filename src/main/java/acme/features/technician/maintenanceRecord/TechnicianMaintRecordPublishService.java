@@ -62,6 +62,7 @@ public class TechnicianMaintRecordPublishService extends AbstractGuiService<Tech
 
 	@Override
 	public void unbind(final MaintenanceRecord maintenanceRecord) {
+		super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecord.getId());
 		super.getResponse().addData(super.unbindObject(maintenanceRecord, "published"));
 	}
 

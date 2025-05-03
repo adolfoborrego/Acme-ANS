@@ -17,7 +17,7 @@ technician.maintenance-record.list.label.estimatedCost=Coste Aproximado
 technician.maintenance-record.list.label.inspectionDueDate=Siguiente Revisión
 technician.maintenance-record.list.label.notes=Notas
 technician.maintenance-record.list.label.published = Publicado
-technician.maintenance-record.list.label.moment = Momento
+technician.maintenance-record.list.label.moment = Momento de la última actualización
 
 technician.maintenance-record.list-tasks = Listado de tareas
 technician.maintenanceRecord.publish = Publicar Registro de Mantenimiento
@@ -27,6 +27,8 @@ technician.maintenanceRecord.create.submit = Crear
 
 technician.maintenanceRecord.moment-before-inspection.moment = El momento debe ser antes que la siguiente revisión
 technician.maintenanceRecord.moment-before-inspection.inspectionDueDate = La siguiente revisión debe ser después que el momento
+technician.maintenanceRecord.estimatedCost-prefix-valid = Utilice un prefijo válido como US o EUR
+technician.maintenanceRecord.aircraft-non-null = Elija alguna de las aeronaves
 
 technician.maintenanceRecord.publish.task-unpublished = No se puede publicar un registro de mantenimiento si no están todas sus tareas publicadas
 technician.maintenanceRecord.publish.no-tasks = No se puede publicar un registro de mantenimiento sin tareas asociadas
