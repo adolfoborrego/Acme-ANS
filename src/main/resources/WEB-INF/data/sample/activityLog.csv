@@ -1,31 +1,60 @@
 key,registrationMoment,typeOfIncident,description,severityLevel,isPublished,key:flightAssignment
 # Caso base: Registro mínimo – valores base
-activityLog-01,2022/07/29 23:59,A,X,1,false,flight-assignment-01
+activityLog-01,2022/07/29 23:59,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false,flight-assignment-01
 # 1. registrationMoment inmediato: 1 minuto antes ("2022/07/29 23:58")
-activityLog-02,2022/07/29 23:58,A,X,1,false,flight-assignment-01
+activityLog-02,2022/07/29 23:58,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false,flight-assignment-01
 # 2. registrationMoment extremo: fecha antigua ("2022/07/01 10:00")
-activityLog-03,2022/07/01 10:00,A,X,1,false,flight-assignment-01
-# 3. typeOfIncident inmediato: de "A" a "B"
-activityLog-04,2022/07/29 23:59,B,X,1,false,flight-assignment-01
-# 4. typeOfIncident extremo máximo: 50 caracteres (por ejemplo, 50 “T”)
-activityLog-05,2022/07/29 23:59,TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT, X,1,false,flight-assignment-01
+activityLog-03,2022/07/01 10:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false,flight-assignment-01
+# 3. typeOfIncident minimo
+activityLog-04,2022/07/29 23:59,"L","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false,flight-assignment-01
+# 3. typeOfIncident minimo + 1
+activityLog-16,2022/07/29 23:59,"Lo","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false,flight-assignment-01
+# 4. typeOfIncident extremo máximo: 50 caracteres
+activityLog-05,2022/07/29 23:59,"Lorem ipsum dolor sit amet, consectetur adipiscing","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false,flight-assignment-01
 # 5. typeOfIncident penúltimo: 49 caracteres (49 “T”)
-activityLog-06,2022/07/29 23:59,TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT,X,1,false,flight-assignment-01
+activityLog-06,2022/07/29 23:59,"Lorem ipsum dolor sit amet, consectetur adipiscin","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false,flight-assignment-01
 # 6. description inmediato: de "X" a "XY"
-activityLog-07,2022/07/29 23:59,A,XY,1,false,flight-assignment-01
+activityLog-07,2022/07/29 23:59,"Lorem ipsum dolor sit ame","Lo",5,false,flight-assignment-01
 # 7. description intermedio: descripción estándar
-activityLog-08,2022/07/29 23:59,A,Standard incident description.,1,false,flight-assignment-01
+activityLog-08,2022/07/29 23:59,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua!*",5,false,flight-assignment-01
 # 8. description extremo máximo: 255 caracteres (por ejemplo, 255 “D”)
-activityLog-09,2022/07/29 23:59,A,DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD,1,false,flight-assignment-01
+activityLog-09,2022/07/29 23:59,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d",5,false,flight-assignment-01
 # 9. description penúltimo: 254 caracteres (254 “E”)
-activityLog-10,2022/07/29 23:59,A,EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE,1,false,flight-assignment-01
-# 10. severityLevel inmediato: de 1 a 2
-activityLog-11,2022/07/29 23:59,A,X,2,false,flight-assignment-01
+activityLog-10,2022/07/29 23:59,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure*",5,false,flight-assignment-01
+# 10. severityLevel minimo
+activityLog-11,2022/07/29 23:59,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua!*",0,false,flight-assignment-01
+# 10. severityLevel minimo + 1
+activityLog-17,2022/07/29 23:59,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua!*",1,false,flight-assignment-01
 # 11. severityLevel extremo máximo: 10
-activityLog-12,2022/07/29 23:59,A,X,10,false,flight-assignment-01
+activityLog-12,2022/07/29 23:59,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua!*",10,false,flight-assignment-01
 # 12. severityLevel penúltimo: 9
-activityLog-13,2022/07/29 23:59,A,X,9,false,flight-assignment-01
+activityLog-13,2022/07/29 23:59,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua!*",9,false,flight-assignment-01
 # 13. isPublished: cambiar a true
-activityLog-14,2022/07/29 23:59,A,X,1,true,flight-assignment-01
+activityLog-14,2022/07/29 23:59,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua!*",1,true,flight-assignment-01
 # 14. flightAssignment modificado: cambiar de flight-assignment-01 a flight-assignment-02
-activityLog-15,2022/07/29 23:59,A,X,1,false,flight-assignment-02
+activityLog-15,2022/07/29 23:59,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua!*",1,false,flight-assignment-02
+# 15. typeOfIncident: NON-LATIN (tailandés)
+activityLog-18,2022/07/29 23:59,"โลเร็ม อิปซัม","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false,flight-assignment-01
+# 16. typeOfIncident: NON-LATIN (árabe)
+activityLog-19,2022/07/29 23:59,"لوريم إيبسوم","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false,flight-assignment-01
+# 17. typeOfIncident: NON-LATIN (chino simplificado)
+activityLog-20,2022/07/29 23:59,"洛伦·伊普森","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false,flight-assignment-01
+# 18. typeOfIncident: INJECTION (marquee)
+activityLog-21,2022/07/29 23:59,"<marquee>Hacked</marquee>","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false,flight-assignment-01
+# 19. typeOfIncident: INJECTION (script)
+activityLog-22,2022/07/29 23:59,"<script>alert(‘Hacked!’);</script>","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false,flight-assignment-01
+# 20. typeOfIncident: INJECTION (SQL injection)
+activityLog-23,2022/07/29 23:59,"' or 'A' = 'A ","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false,flight-assignment-01
+
+# 21. description: NON-LATIN (tailandés)
+activityLog-24,2022/07/29 23:59,"Lorem ipsum dolor sit ame","โลเร็ม อิปซัม",5,false,flight-assignment-01
+# 22. description: NON-LATIN (árabe)
+activityLog-25,2022/07/29 23:59,"Lorem ipsum dolor sit ame","لوريم إيبسوم",5,false,flight-assignment-01
+# 23. description: NON-LATIN (chino simplificado)
+activityLog-26,2022/07/29 23:59,"Lorem ipsum dolor sit ame","洛伦·伊普森",5,false,flight-assignment-01
+# 24. description: INJECTION (marquee)
+activityLog-27,2022/07/29 23:59,"Lorem ipsum dolor sit ame","<marquee>Hacked</marquee>",5,false,flight-assignment-01
+# 25. description: INJECTION (script)
+activityLog-28,2022/07/29 23:59,"Lorem ipsum dolor sit ame","<script>alert(‘Hacked!’);</script>",5,false,flight-assignment-01
+# 26. description: INJECTION (SQL injection)
+activityLog-29,2022/07/29 23:59,"Lorem ipsum dolor sit ame","' or 'A' = 'A ",5,false,flight-assignment-01
