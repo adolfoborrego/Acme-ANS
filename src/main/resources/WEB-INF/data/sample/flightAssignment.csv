@@ -1,27 +1,42 @@
 key,key:flightCrewMember,key:leg,duty,momentOfLastUpdate,currentStatus,remarks
-# Caso base: Registro mínimo – duty PILOT, fecha "2022/07/29 23:59", status CONFIRMED, remarks estándar.
-flight-assignment-01,flightCrewMember-01,leg-05,PILOT,2022/07/29 23:59,CONFIRMED,Assigned to long-haul flight
+# Caso base: Registro mínimo – duty PILOT, fecha "2012/07/02 00:00", status CONFIRMED, remarks estándar.
+flight-assignment-01,flightCrewMember-01,leg-05,PILOT,2012/07/02 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 # 1. Duty inmediato: cambiar a COPILOT
-flight-assignment-02,flightCrewMember-02,leg-05,COPILOT,2022/07/29 23:59,CONFIRMED,Assigned to long-haul flight
+flight-assignment-02,flightCrewMember-02,leg-05,COPILOT,2012/07/02 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 # 2. Duty intermedio: cambiar a LEAD ATTENDANT
-flight-assignment-03,flightCrewMember-03,leg-05,LEAD ATTENDANT,2022/07/29 23:59,CONFIRMED,Assigned to long-haul flight
+flight-assignment-03,flightCrewMember-03,leg-05,LEAD ATTENDANT,2012/07/02 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 # 3. Duty extremo: cambiar a CABIN ATTENDANT
-flight-assignment-04,flightCrewMember-04,leg-05,CABIN ATTENDANT,2022/07/29 23:59,CONFIRMED,Assigned to long-haul flight
-# 4. momentOfLastUpdate inmediato: 1 minuto antes ("2022/07/29 23:58")
-flight-assignment-05,flightCrewMember-01,leg-02,PILOT,2022/07/29 23:58,CONFIRMED,Assigned to long-haul flight
-# 5. momentOfLastUpdate extremo: fecha antigua ("2022/07/10 08:30")
-flight-assignment-06,flightCrewMember-06,leg-02,COPILOT,2022/07/10 08:30,CONFIRMED,Assigned to long-haul flight
-# 6. currentStatus inmediato: cambiar a PENDING
-flight-assignment-07,flightCrewMember-07,leg-02,LEAD ATTENDANT,2022/07/29 23:59,PENDING,Assigned to long-haul flight
-# 7. currentStatus extremo: cambiar a CANCELLED
-flight-assignment-08,flightCrewMember-08,leg-02,PILOT,2022/07/29 23:59,CANCELLED,Assigned to long-haul flight
-# 8. Remarks mínimo: cambiar a "A" (1 carácter)
-flight-assignment-09,flightCrewMember-09,leg-02,CABIN ATTENDANT,2022/07/29 23:59,CONFIRMED,A
-# 9. Remarks inmediato: "AB" (2 caracteres)
-flight-assignment-10,flightCrewMember-10,leg-11,PILOT,2022/07/29 23:59,CONFIRMED,AB
-# 10. Remarks intermedio: descripción intermedia
-flight-assignment-11,flightCrewMember-11,leg-11,COPILOT,2022/07/29 23:59,CONFIRMED,Standard assignment for testing
-# 11. Remarks extremo máximo: 255 caracteres (se usa "E" repetido 255 veces)
-flight-assignment-12,flightCrewMember-12,leg-08,LEAD ATTENDANT,2022/07/29 23:59,CONFIRMED,EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-# 12. Remarks penúltimo: 254 caracteres (se usa "E" repetido 254 veces)
-flight-assignment-13,flightCrewMember-13,leg-09,CABIN ATTENDANT,2022/07/29 23:59,CONFIRMED,EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+flight-assignment-04,flightCrewMember-04,leg-05,CABIN ATTENDANT,2012/07/02 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+# 4. momentOfLastUpdate inmediato: 1 minuto antes del máximo no inclusivo (2022/07/29 23:59)
+flight-assignment-05,flightCrewMember-01,leg-02,PILOT,2022/07/29 23:59,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+# 5. momentOfLastUpdate extremo máximo no inclusivo: igual a currentMoment (2022/07/30 00:00)
+flight-assignment-06,flightCrewMember-06,leg-02,CABIN ATTENDANT,2022/07/30 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+# 6. momentOfLastUpdate extremo mínimo: fecha mínima válida (2000/01/01 00:00)
+flight-assignment-07,flightCrewMember-07,leg-02,LEAD ATTENDANT,2000/01/01 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+# 7. momentOfLastUpdate 1 minuto después del mínimo: (2000/01/01 00:01)
+flight-assignment-08,flightCrewMember-08,leg-02,PILOT,2000/01/01 00:01,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+# 8. currentStatus inmediato: cambiar a PENDING
+flight-assignment-09,flightCrewMember-09,leg-02,CABIN ATTENDANT,2012/07/02 00:00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+# 9. currentStatus extremo: cambiar a CANCELLED
+flight-assignment-10,flightCrewMember-10,leg-11,PILOT,2012/07/02 00:00,CANCELLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+# 10. Remarks mínimo: cambiar a (1 carácter)
+flight-assignment-11,flightCrewMember-11,leg-11,COPILOT,2012/07/02 00:00,CONFIRMED,"L"
+# 11. Remarks inmediato: (2 caracteres)
+flight-assignment-12,flightCrewMember-12,leg-08,LEAD ATTENDANT,2012/07/02 00:00,CONFIRMED,"Lo"
+# 12. Remarks extremo máximo: 255 caracteres
+flight-assignment-13,flightCrewMember-13,leg-09,CABIN ATTENDANT,2012/07/02 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor"
+# 13. Remarks penúltimo: 254 caracteres
+flight-assignment-14,flightCrewMember-01,leg-05,PILOT,2012/07/02 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolo"
+
+# 14. Remarks NON-LATIN (tailandés)
+flight-assignment-15,flightCrewMember-01,leg-06,PILOT,2012/07/02 00:00,CONFIRMED,"โลเร็ม อิปซัม"
+# 15. Remarks NON-LATIN (árabe)
+flight-assignment-16,flightCrewMember-02,leg-07,PILOT,2012/07/02 00:00,CONFIRMED,"لوريم إيبسوم"
+# 16. Remarks NON-LATIN (chino simplificado)
+flight-assignment-17,flightCrewMember-03,leg-08,PILOT,2012/07/02 00:00,CONFIRMED,"洛伦·伊普森"
+# 17. Remarks INJECTION (marquee)
+flight-assignment-18,flightCrewMember-04,leg-09,PILOT,2012/07/02 00:00,CONFIRMED,"<marquee>Hacked</marquee>"
+# 18. Remarks INJECTION (script)
+flight-assignment-19,flightCrewMember-05,leg-10,PILOT,2012/07/02 00:00,CONFIRMED,"<script>alert(‘Hacked!’);</script>"
+# 19. Remarks INJECTION (SQL injection)
+flight-assignment-20,flightCrewMember-06,leg-11,PILOT,2012/07/02 00:00,CONFIRMED,"' or 'A' = 'A "
