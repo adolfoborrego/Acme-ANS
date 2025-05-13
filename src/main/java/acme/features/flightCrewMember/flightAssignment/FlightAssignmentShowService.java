@@ -2,6 +2,7 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -61,7 +62,7 @@ public class FlightAssignmentShowService extends AbstractGuiService<FlightCrewMe
 		data.put("Fid", this.findActiveAssignmentId(allAssignments));
 		data.put("statuses", assignment.getCurrentStatus());
 		data.put("possibleLegs", this.buildLegChoices(assignment));
-		data.put("isLegChangeable", allAssignments.size() == 1);
+		data.put("isLegChangeable", allAssignments.stream().filter(x -> !"CANCELLED".equals(x.getCurrentStatus())).collect(Collectors.toList()).size() == 1);
 
 		super.getResponse().addData(data);
 	}
