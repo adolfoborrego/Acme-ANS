@@ -32,3 +32,6 @@ leg-14,2000/02/01 22:01,2000/02/01 23:00,ON_TIME,true,flight-12,airport-00,airpo
 
 # aircraft variations
 leg-15,2000/02/01 10:00,2000/02/01 11:00,ON_TIME,true,flight-29,airport-00,airport-01,aircraft-11
+
+#future legs 
+leg-17,2025/02/03 10:00,2025/02/03 12:00, ON_TIME,true,flight-10,airport-00,airport-01,aircraft-11
