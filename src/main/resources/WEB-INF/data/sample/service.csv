@@ -1,43 +1,47 @@
 key,name,linkToPicture,averageDwellTime,promoted,promotionCode,discount
 # base
-service-00,example service,https://cdn-icons-png.flaticon.com/128/8068/8068013.png,2.2,true,PROM-25,USD 22
-# name variations
-service-01,e,https://cdn-icons-png.flaticon.com/128/8068/8068017.png,2.2,true,AAAA-25,USD 22
-service-02,ex,https://cdn-icons-png.flaticon.com/128/3840/3840653.png,2.2,true,AAAB-25,USD 22
-service-03,Este texto tiene 50 caracteres. Este texto tiene 5,https://www.picture.com,2.2,false,AAAC-25,USD 22
-service-04,Este texto tiene 49 caracteres. Este texto tiene ,https://cdn-icons-png.flaticon.com/128/11286/11286155.png,2.2,true,AAAD-25,USD 22
-service-05,लोरम इप्सम,https://cdn-icons-png.flaticon.com/128/4002/4002506.png,2.2,true,AAAE-25,USD 22
-service-06,ローレム・イプサム,https://cdn-icons-png.flaticon.com/128/8068/8068070.png,2.2,true,AAAF-25,USD 22
-service-07,<b>Bold Text</b>,https://cdn-icons-png.flaticon.com/128/4020/4020010.png,2.2,true,AAAG-25,USD 22
-service-08,"<img src='x' onerror='alert(""XSS"")'>",https://www.picture.com,2.2,false,AAAH-25,USD 22
-service-09,' OR 1=1 --,https://cdn-icons-png.flaticon.com/128/709/709388.png,2.2,true,AAAI-25,USD 22
-# linkToPicture variations
-service-10,example service,https://cdn-icons-png.flaticon.com/128/3570/3570107.png,2.2,true,AAAJ-25,USD 22
-service-11,example service,https://cdn-icons-png.flaticon.com/128/11471/11471127.png,2.2,true,AAAK-25,USD 22
-service-12,example service,https://cdn-icons-png.flaticon.com/128/3570/3570118.png,2.2,true,AAAL-25,USD 22
-service-13,example service,file:///home/user/data.json,2.2,false,AAAM-25,USD 22
-service-14,example service,https://cdn-icons-png.flaticon.com/128/9842/9842422.png,2.2,true,AAAN-25,USD 22
-service-15,example service,https://cdn-icons-png.flaticon.com/128/709/709337.png,2.2,true,AAAO-25,USD 22
-service-16,example service,https://cdn-icons-png.flaticon.com/128/4020/4020017.png,2.2,true,AAAP-25,USD 22
-service-17,example service,https://cdn-icons-png.flaticon.com/128/11517/11517121.png,2.2,true,AAAQ-25,USD 22
-service-18,example service,https://cdn-icons-png.flaticon.com/128/13710/13710141.png,2.2,true,AAAR-25,USD 22
-service-19,example service,https://cdn-icons-png.flaticon.com/128/8067/8067978.png,2.2,true,AAAS-25,USD 22
-service-20,example service,https://example.com:443,2.2,false,AAAT-25,USD 22
-service-21,example service,https://cdn-icons-png.flaticon.com/128/4060/4060875.png,2.2,true,AAAU-25,USD 22
-service-22,example service,https://cdn-icons-png.flaticon.com/128/3564/3564205.png,2.2,true,AAAV-25,USD 22
-service-23,example service,https://cdn-icons-png.flaticon.com/128/4312/4312194.png,2.2,true,AAAW-25,USD 22
-# averageDwellTime variations
-service-24,example service,https://cdn-icons-png.flaticon.com/128/16004/16004379.png,0.0,true,AAAX-25,USD 22
-service-25,example service,https://cdn-icons-png.flaticon.com/128/6422/6422834.png,0.01,true,AABY-25,USD 22
-service-26,example service,https://cdn-icons-png.flaticon.com/128/9955/9955718.png,4.99,true,AABZ-25,USD 22
-service-27,example service,https://cdn-icons-png.flaticon.com/128/6422/6422818.png,5.0,true,AABA-25,USD 22
-# promotionCode variations
-service-28,example service,https://cdn-icons-png.flaticon.com/128/11471/11471136.png,2.2,true,XXXX-25,USD 22
-service-29,example service,https://cdn-icons-png.flaticon.com/128/16493/16493773.png,2.2,true,YYYY-25,USD 22
-service-30,example service,https://www.picture.com,2.2,false,ZZZZ-25,USD 22
-# discount variations
-service-31,example service,https://cdn-icons-png.flaticon.com/128/709/709337.png,2.2,true,AABB-25,USD 0
-service-32,example service,https://cdn-icons-png.flaticon.com/128/4020/4020010.png,2.2,true,AABC-25,USD 1
-service-33,example service,https://cdn-icons-png.flaticon.com/128/11471/11471114.png,2.2,true,AABD-25,USD 999
-service-34,example service,https://cdn-icons-png.flaticon.com/128/7728/7728673.png,2.2,true,AABE-25,USD 1000
+service-00,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/8068/8068013.png,2.5,true,PROM-25,USD 500
+
+# name variations (min, min+1, max‑1, max, non‑Latin 1, non‑Latin 2)
+service-01,L,https://cdn-icons-png.flaticon.com/128/8068/8068017.png,2.5,true,AAAA-25,USD 500
+service-02,Lo,https://cdn-icons-png.flaticon.com/128/3840/3840653.png,2.5,true,AAAB-25,USD 500
+service-03,"Lorem ipsum dolor sit amet, consectetur adipiscin",https://www.picture.com,2.5,false,AAAC-25,USD 500
+service-04,"Lorem ipsum dolor sit amet, consectetur adipiscing",https://cdn-icons-png.flaticon.com/128/11286/11286155.png,2.5,true,AAAD-25,USD 500
+service-05,लोरम इप्सम,https://cdn-icons-png.flaticon.com/128/4002/4002506.png,2.5,true,AAAE-25,USD 500
+service-06,ローレム・イプサム,https://cdn-icons-png.flaticon.com/128/8068/8068070.png,2.5,true,AAAF-25,USD 500
+
+# averageDwellTime variations (min, min+0.1, max‑0.1, max)
+service-07,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/4020/4020010.png,0.0,true,AAAG-25,USD 500
+service-08,Lorem ipsum dolor sit ame,https://www.picture.com,0.1,false,AAAH-25,USD 500
+service-09,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/709/709388.png,4.9,true,AAAI-25,USD 500
+service-10,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/3570/3570107.png,5.0,true,AAAJ-25,USD 500
+
+# promoted variations (true, false)
+service-11,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/11471/11471127.png,2.5,true,XXXX-25,USD 500
+service-12,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/3570/3570118.png,2.5,false,YYYY-25,USD 500
+
+# discount variations (min, min+1, max‑1, max)
+service-13,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/16004/16004379.png,2.5,true,AAAK-25,USD 0
+service-14,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/6422/6422834.png,2.5,true,AABL-25,USD 1
+service-15,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/9955/9955718.png,2.5,true,AABM-25,USD 999
+service-16,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/6422/6422818.png,2.5,true,AABN-25,USD 1000
+
+# remaining original services (use base for name, averageDwellTime, promoted & discount)
+service-17,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/11517/11517121.png,2.5,true,AAAO-25,USD 500
+service-18,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/13710/13710141.png,2.5,true,AAAP-25,USD 500
+service-19,Lorem ipsum dolor sit ame,https://example.com:443,2.5,false,AAAT-25,USD 500
+service-21,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/4060/4060875.png,2.5,true,AAAQ-25,USD 500
+service-22,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/3564/3564205.png,2.5,true,AAAR-25,USD 500
+service-23,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/4312/4312194.png,2.5,true,AAAS-25,USD 500
+service-24,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/16004/16004379.png,2.5,true,AAAT-25,USD 500
+service-25,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/6422/6422834.png,2.5,true,AAAU-25,USD 500
+service-26,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/9955/9955718.png,2.5,true,AAAV-25,USD 500
+service-27,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/6422/6422818.png,2.5,true,AAAW-25,USD 500
+service-28,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/11471/11471136.png,2.5,true,AAAX-25,USD 500
+service-29,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/16493/16493773.png,2.5,true,AAAY-25,USD 500
+service-30,Lorem ipsum dolor sit ame,https://www.picture.com,2.5,false,AAAZ-25,USD 500
+service-31,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/709/709337.png,2.5,true,AABA-25,USD 500
+service-32,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/4020/4020010.png,2.5,true,AABB-25,USD 500
+service-33,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/11471/11471114.png,2.5,true,AABC-25,USD 500
+service-34,Lorem ipsum dolor sit ame,https://cdn-icons-png.flaticon.com/128/7728/7728673.png,2.5,true,AABD-25,USD 500
 
