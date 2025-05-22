@@ -56,16 +56,25 @@ public class ManagerLegCreateService extends AbstractGuiService<AirlineManager, 
 	public void validate(final Leg leg) {
 		assert leg != null;
 
-		boolean diferentesAeropuertos = !leg.getDepartureAirport().equals(leg.getArrivalAirport());
-		super.state(diferentesAeropuertos, "arrivalAirport", "manager.leg.error.same-airports");
+		// Validar que los aeropuertos sean diferentes
+		if (leg.getDepartureAirport() != null && leg.getArrivalAirport() != null) {
+			boolean diferentesAeropuertos = !leg.getDepartureAirport().equals(leg.getArrivalAirport());
+			super.state(diferentesAeropuertos, "arrivalAirport", "manager.leg.error.same-airports");
+		}
 
-		boolean llegadaDespuesSalida = leg.getScheduledArrival().after(leg.getScheduledDeparture());
-		super.state(llegadaDespuesSalida, "scheduledArrival", "manager.leg.error.arrival-before-departure");
+		// Validar que la llegada sea después de la salida
+		if (leg.getScheduledArrival() != null && leg.getScheduledDeparture() != null) {
+			boolean llegadaDespuesSalida = leg.getScheduledArrival().after(leg.getScheduledDeparture());
+			super.state(llegadaDespuesSalida, "scheduledArrival", "manager.leg.error.arrival-before-departure");
+		}
 
-		List<Leg> existingLegs = this.repository.findLegsByFlightId(leg.getFlight().getId());
-		boolean noSolapamiento = existingLegs.stream()
-			.allMatch(existingLeg -> existingLeg.getId() == leg.getId() || leg.getScheduledArrival().before(existingLeg.getScheduledDeparture()) || leg.getScheduledDeparture().after(existingLeg.getScheduledArrival()));
-		super.state(noSolapamiento, "scheduledDeparture", "manager.leg.error.overlapping-legs");
+		// Validar que no haya solapamientos solo si se tienen ambas fechas
+		if (leg.getScheduledArrival() != null && leg.getScheduledDeparture() != null && leg.getFlight() != null) {
+			List<Leg> existingLegs = this.repository.findLegsByFlightId(leg.getFlight().getId());
+			boolean noSolapamiento = existingLegs.stream()
+				.allMatch(existingLeg -> existingLeg.getId() == leg.getId() || leg.getScheduledArrival().before(existingLeg.getScheduledDeparture()) || leg.getScheduledDeparture().after(existingLeg.getScheduledArrival()));
+			super.state(noSolapamiento, "scheduledDeparture", "manager.leg.error.overlapping-legs");
+		}
 	}
 
 	@Override

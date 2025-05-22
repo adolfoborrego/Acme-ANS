@@ -21,7 +21,13 @@ public class ManagerLegPublishService extends AbstractGuiService<AirlineManager,
 		int id = super.getRequest().getData("id", int.class);
 		Leg leg = this.repository.findLegById(id);
 
-		boolean authorised = leg != null && !leg.getPublished() && super.getRequest().getPrincipal().hasRealm(leg.getFlight().getAirlineManager());
+		int userAccountId;
+		int managerId;
+
+		userAccountId = super.getRequest().getPrincipal().getAccountId();
+		managerId = this.repository.findManagerByUsserAccountId(userAccountId);
+
+		boolean authorised = leg != null && !leg.getPublished() && super.getRequest().getPrincipal().hasRealm(leg.getFlight().getAirlineManager()) && leg.getFlight().getAirlineManager().getId() == managerId;
 
 		super.getResponse().setAuthorised(authorised);
 	}
