@@ -9,17 +9,13 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
 import acme.entities.leg.LegStatus;
-import acme.features.flightCrewMember.flightAssignment.FlightAssignmentRepository;
 import acme.realms.flightCrewMember.FlightCrewMember;
 
 @GuiService
 public class ActivityLogPublishService extends AbstractGuiService<FlightCrewMember, ActivityLog> {
 
 	@Autowired
-	private ActivityLogRepository		repository;
-
-	@Autowired
-	private FlightAssignmentRepository	assignmentRepository;
+	private ActivityLogRepository repository;
 
 
 	@Override
