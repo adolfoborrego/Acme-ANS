@@ -37,10 +37,10 @@
 	<!-- Botones de acción -->
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && !published}">
-			<acme:submit code="manager.flight.update.submit" action="/airline-manager/flight/update"/>
-			<acme:submit code="manager.flight.delete.submit" action="/airline-manager/flight/delete"/>
+			<acme:submit code="manager.flight.update.submit" action="/airline-manager/flight/update?id=${id}"/>
+			<acme:submit code="manager.flight.delete.submit" action="/airline-manager/flight/delete?id=${id}"/>
 			<jstl:if test="${canPublish}">
-				<acme:submit code="manager.flight.publish" action="/airline-manager/flight/publish" />
+				<acme:submit code="manager.flight.publish" action="/airline-manager/flight/publish?id=${id}" />
 			</jstl:if>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
