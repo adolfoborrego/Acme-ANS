@@ -50,3 +50,5 @@ manager.flight.publish.error.unpublished-legs = Todas las escalas deben estar pu
 manager.leg.create.submit = Crear escala
 
 manager.flight.error.no-changes = Debe realizar al menos un cambio para poder actualizar el vuelo
+
+manager.flight.error.flight-has-legs=No se puede eliminar un vuelo que tiene escalas asociadas

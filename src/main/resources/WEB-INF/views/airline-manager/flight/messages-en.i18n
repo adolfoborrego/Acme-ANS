@@ -55,5 +55,5 @@ manager.leg.create.submit = Create leg
 manager.flight.error.no-changes = You must make at least one change to update the flight
 
 
-
+manager.flight.error.flight-has-legs=You cannot delete a flight that has associated legs
 
