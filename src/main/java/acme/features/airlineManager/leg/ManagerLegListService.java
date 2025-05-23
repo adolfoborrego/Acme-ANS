@@ -25,26 +25,23 @@ public class ManagerLegListService extends AbstractGuiService<AirlineManager, Le
 
 	@Override
 	public void authorise() {
-		int flightId = super.getRequest().getData("flightId", int.class);
+		int flightId = super.getRequest().getData("id", int.class);
 		Flight flight = this.repository.findFlightById(flightId);
 
-		boolean isOwner = false;
-		boolean isPublished = false;
+		int userAccountId;
+		int managerId;
 
-		if (flight != null) {
-			int userAccountId = super.getRequest().getPrincipal().getAccountId();
-			int managerId = this.repository.findManagerByUsserAccountId(userAccountId);
+		userAccountId = super.getRequest().getPrincipal().getAccountId();
+		managerId = this.repository.findManagerByUsserAccountId(userAccountId);
 
-			isOwner = flight.getAirlineManager().getId() == managerId;
-			isPublished = flight.getPublished();
-		}
+		boolean authorised = flight != null && super.getRequest().getPrincipal().hasRealm(flight.getAirlineManager()) && flight.getAirlineManager().getId() == managerId;
 
-		super.getResponse().setAuthorised(isOwner || isPublished);
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
 	public void load() {
-		int flightId = super.getRequest().getData("flightId", int.class);
+		int flightId = super.getRequest().getData("id", int.class);
 		Collection<Leg> legs = this.repository.findLegsByFlightIdOrderedByMoment(flightId);
 		super.getBuffer().addData(legs);
 	}
@@ -55,7 +52,7 @@ public class ManagerLegListService extends AbstractGuiService<AirlineManager, Le
 
 		Dataset dataset = super.unbindObject(leg, "scheduledDeparture", "scheduledArrival", "status");
 
-		int flightId = super.getRequest().getData("flightId", int.class);
+		int flightId = super.getRequest().getData("id", int.class);
 		Flight flight = this.repository.findFlightById(flightId);
 
 		dataset.put("flightId", flightId);
@@ -68,7 +65,7 @@ public class ManagerLegListService extends AbstractGuiService<AirlineManager, Le
 
 		super.getResponse().addGlobal("showCreate", showCreate);
 
-		super.getResponse().addGlobal("flightId", flightId);
+		super.getResponse().addGlobal("id", flightId);
 		super.getResponse().addData(dataset);
 	}
 

@@ -26,10 +26,10 @@
 	<jstl:if test="${acme:anyOf(_command, 'show|publish|update')}">
 		<jstl:choose>
 			<jstl:when test="${published || numberOfLayovers > 0}">
-				<acme:button code="airline-manager.leg.list" action="/airline-manager/leg/list?flightId=${id}" />
+				<acme:button code="airline-manager.leg.list" action="/airline-manager/leg/list?id=${id}" />
 			</jstl:when>
 			<jstl:when test="${!published && numberOfLayovers == 0}">
-				<acme:button code="manager.leg.create.submit" action="/airline-manager/leg/create?flightId=${id}" />
+				<acme:button code="manager.leg.create.submit" action="/airline-manager/leg/create?id=${id}" />
 			</jstl:when>
 		</jstl:choose>
 	</jstl:if>

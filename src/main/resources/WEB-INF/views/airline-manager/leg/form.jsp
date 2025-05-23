@@ -28,7 +28,7 @@
 			<acme:submit code="manager.leg.publish" action="/airline-manager/leg/publish?id=${id}" />
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="manager.leg.create.submit" action="/airline-manager/leg/create?flightId=${flightId}"/>
+			<acme:submit code="manager.leg.create.submit" action="/airline-manager/leg/create?id=${id}"/>
 		</jstl:when>		
 	</jstl:choose>	
     
