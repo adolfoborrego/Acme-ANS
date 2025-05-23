@@ -28,5 +28,5 @@ manager.leg.error.same-airports = Arrival airport must be different from departu
 manager.leg.error.arrival-before-departure = Arrival time must be after departure time
 manager.leg.error.overlapping-legs = Legs cannot overlap with others of the same flight
 
-manager.leg.error.no-changes = No changes have been made.
+manager.leg.error.no-changes = No changes have been made
 
