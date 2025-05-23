@@ -13,7 +13,7 @@
 	    <acme:input-checkbox code="airline-manager.flight.list.label.indicator" path="indicator" />
 
     <!-- Atributos derivados (solo aparecen en el show) -->
-        <jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish|create')}">
+        <jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')}">
 	        <acme:input-checkbox code="airline-manager.flight.list.label.published" path="published" readonly="true"/>
 		    <acme:input-moment code="airline-manager.flight.list.label.sheduledDeparture" path="sheduledDeparture" readonly="true"/>
 		    <acme:input-moment code="airline-manager.flight.list.label.sheduledArrival" path="sheduledArrival" readonly="true"/>
@@ -23,7 +23,7 @@
        	</jstl:if>
     
     <!-- Botón para ver o crear escalas del vuelo -->
-	<jstl:if test="${acme:anyOf(_command, 'show|publish|update')}">
+	<jstl:if test="${acme:anyOf(_command, 'show|publish|update|delete')}">
 		<jstl:choose>
 			<jstl:when test="${published || numberOfLayovers > 0}">
 				<acme:button code="airline-manager.leg.list" action="/airline-manager/leg/list?id=${id}" />
