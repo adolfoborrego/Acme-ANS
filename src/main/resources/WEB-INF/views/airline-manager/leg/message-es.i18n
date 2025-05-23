@@ -21,11 +21,11 @@ leg.published = Publicado
 
 manager.flight.publish = Publicar vuelo
 manager.leg.publish = Publicar escala
-manager.flight.publish.error.no-legs = El vuelo no tiene escalas.
-manager.flight.publish.error.unpublished-legs = Todas las escalas deben estar publicadas para poder publicar el vuelo.
+manager.flight.publish.error.no-legs = El vuelo no tiene escalas
+manager.flight.publish.error.unpublished-legs = Todas las escalas deben estar publicadas para poder publicar el vuelo
 
-manager.leg.error.same-airports = El aeropuerto de llegada debe ser diferente al de salida.
-manager.leg.error.arrival-before-departure = La hora de llegada debe ser posterior a la de salida.
-manager.leg.error.overlapping-legs = Las escalas no pueden solaparse con otras del mismo vuelo.
+manager.leg.error.same-airports = El aeropuerto de llegada debe ser diferente al de salida
+manager.leg.error.arrival-before-departure = La hora de llegada debe ser posterior a la de salida
+manager.leg.error.overlapping-legs = Las escalas no pueden solaparse con otras del mismo vuelo
 
-manager.leg.error.no-changes = No se ha realizado ningún cambio.
+manager.leg.error.no-changes = No se ha realizado ningún cambio

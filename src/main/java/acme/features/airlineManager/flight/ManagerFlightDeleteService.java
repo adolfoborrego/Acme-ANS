@@ -21,7 +21,13 @@ public class ManagerFlightDeleteService extends AbstractGuiService<AirlineManage
 		int id = super.getRequest().getData("id", int.class);
 		Flight flight = this.repository.findFlightById(id);
 
-		boolean authorised = flight != null && super.getRequest().getPrincipal().hasRealm(flight.getAirlineManager()) && !flight.getPublished();
+		int userAccountId;
+		int managerId;
+
+		userAccountId = super.getRequest().getPrincipal().getAccountId();
+		managerId = this.repository.findManagerByUsserAccountId(userAccountId);
+
+		boolean authorised = flight != null && super.getRequest().getPrincipal().hasRealm(flight.getAirlineManager()) && !flight.getPublished() && flight.getAirlineManager().getId() == managerId;
 
 		super.getResponse().setAuthorised(authorised);
 	}

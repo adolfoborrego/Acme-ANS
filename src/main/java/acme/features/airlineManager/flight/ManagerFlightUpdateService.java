@@ -2,7 +2,6 @@
 package acme.features.airlineManager.flight;
 
 import java.util.Collection;
-import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,8 +23,13 @@ public class ManagerFlightUpdateService extends AbstractGuiService<AirlineManage
 	public void authorise() {
 		int id = super.getRequest().getData("id", int.class);
 		Flight flight = this.repository.findFlightById(id);
+		int managerId;
+		int userAccountId;
 
-		boolean authorised = flight != null && super.getRequest().getPrincipal().hasRealm(flight.getAirlineManager()) && !flight.getPublished();
+		userAccountId = super.getRequest().getPrincipal().getAccountId();
+		managerId = this.repository.findManagerByUsserAccountId(userAccountId);
+
+		boolean authorised = flight != null && super.getRequest().getPrincipal().hasRealm(flight.getAirlineManager()) && !flight.getPublished() && flight.getAirlineManager().getId() == managerId;
 
 		super.getResponse().setAuthorised(authorised);
 	}
@@ -45,15 +49,15 @@ public class ManagerFlightUpdateService extends AbstractGuiService<AirlineManage
 
 	@Override
 	public void validate(final Flight flight) {
-		assert flight != null;
-		if (super.getRequest().getCommand().equalsIgnoreCase("update")) {
-			Flight original = this.repository.findFlightById(flight.getId());
+		// assert flight != null;
+		// if (super.getRequest().getCommand().equalsIgnoreCase("update")) {
+		// super.state(flight.getCost() != null, "cost", "manager.flight.error.null-exception");
+		// Flight original = this.repository.findFlightById(flight.getId());
 
-			boolean isModified = !Objects.equals(flight.getTag(), original.getTag()) || !Objects.equals(flight.getDescription(), original.getDescription()) || !Objects.equals(flight.getIndicator(), original.getIndicator())
-				|| !Objects.equals(flight.getCost().getAmount(), original.getCost().getAmount()) || !Objects.equals(flight.getCost().getCurrency(), original.getCost().getCurrency());
+		// boolean isModified = !Objects.equals(flight.getTag(), original.getTag()) || !Objects.equals(flight.getDescription(), original.getDescription()) || !Objects.equals(flight.getIndicator(), original.getIndicator())
+		// 	|| !Objects.equals(flight.getCost().getAmount(), original.getCost().getAmount()) || !Objects.equals(flight.getCost().getCurrency(), original.getCost().getCurrency());
 
-			super.state(isModified, "*", "manager.flight.error.no-changes");
-		}
+		// super.state(isModified, "*", "manager.flight.error.no-changes");
 	}
 
 	@Override
