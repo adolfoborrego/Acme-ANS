@@ -2,8 +2,6 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
-import java.util.Date;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +16,7 @@ import acme.entities.leg.Leg;
 import acme.realms.flightCrewMember.FlightCrewMember;
 
 @GuiService
-public class FlightAssignmentShowService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
+public class FlightAssignmentShowCrewDetailService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
 	@Autowired
 	private FlightAssignmentRepository repository;
@@ -40,9 +38,10 @@ public class FlightAssignmentShowService extends AbstractGuiService<FlightCrewMe
 		}
 
 		int memberId = principal.getActiveRealm().getId();
-		boolean belongs = assignment.getFlightCrewMember().getId() == memberId;
+		int legId = assignment.getLeg().getId();
+		boolean belongs = this.repository.findFlightAssignmentsOfLeg(legId).stream().anyMatch(fa -> fa.getFlightCrewMember().getId() == memberId);
 
-		super.getResponse().setAuthorised(belongs);
+		super.getResponse().setAuthorised(belongs && memberId != assignment.getFlightCrewMember().getId());
 	}
 
 	@Override
@@ -57,6 +56,7 @@ public class FlightAssignmentShowService extends AbstractGuiService<FlightCrewMe
 		Dataset data = super.unbindObject(assignment, "momentOfLastUpdate", "currentStatus", "leg", "remarks");
 
 		var allAssignments = this.findAssignmentsForLeg(assignment);
+		data.put("fullName", assignment.getFlightCrewMember().getIdentity().getFullName());
 		data.put("duty", assignment.getDuty().replace(" ", "_"));
 		data.put("lead_attendant", this.findByDuty(allAssignments, "LEAD ATTENDANT"));
 		data.put("isSupLA", this.isSupLA(assignment));
@@ -96,21 +96,8 @@ public class FlightAssignmentShowService extends AbstractGuiService<FlightCrewMe
 	}
 
 	private SelectChoices buildLegChoices(final FlightAssignment assignment) {
-		List<Leg> legs = this.getPossibleLegs(assignment);
+		Collection<Leg> legs = this.repository.findAllFutureUnAssignedOrAllCancelledLegs(MomentHelper.getCurrentMoment());
 		legs.add(assignment.getLeg());
 		return SelectChoices.from(legs, "identificator", assignment.getLeg());
 	}
-
-	private List<Leg> getPossibleLegs(final FlightAssignment assignment) {
-		int memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		FlightCrewMember member = this.repository.findFlightCrewMemberById(memberId);
-		Date now = MomentHelper.getCurrentMoment();
-		return this.repository.findAllFutureUnAssignedOrAllCancelledLegs(now).stream().filter(leg -> !this.hasOverlap(leg, memberId) && leg.getAircraft().getAirline().equals(member.getAirline())).collect(Collectors.toList());
-	}
-	private boolean hasOverlap(final Leg leg, final int memberId) {
-		Date now = MomentHelper.getCurrentMoment();
-		return this.repository.findAllMyPlannedFlightAssignments(memberId, now).stream().map(FlightAssignment::getLeg)
-			.anyMatch(myLeg -> leg.getScheduledDeparture().before(myLeg.getScheduledArrival()) && leg.getScheduledArrival().after(myLeg.getScheduledDeparture()));
-	}
-
 }

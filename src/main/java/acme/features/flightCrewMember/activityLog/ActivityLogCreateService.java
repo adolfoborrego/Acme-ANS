@@ -28,6 +28,7 @@ public class ActivityLogCreateService extends AbstractGuiService<FlightCrewMembe
 
 	@Override
 	public void authorise() {
+
 		var request = super.getRequest();
 		var principal = request.getPrincipal();
 

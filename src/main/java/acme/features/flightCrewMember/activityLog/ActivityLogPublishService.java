@@ -1,6 +1,8 @@
 
 package acme.features.flightCrewMember.activityLog;
 
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -26,6 +28,10 @@ public class ActivityLogPublishService extends AbstractGuiService<FlightCrewMemb
 	public void authorise() {
 		var request = super.getRequest();
 		var principal = request.getPrincipal();
+
+		if (super.getRequest().getMethod().equals("GET"))
+			super.state(false, "*", "flight-crew-member.flight-assignment.error");
+
 		// Must be FlightCrewMember and have log id
 		if (!principal.hasRealmOfType(FlightCrewMember.class) || !request.hasData("id", int.class)) {
 			super.getResponse().setAuthorised(false);
@@ -52,12 +58,24 @@ public class ActivityLogPublishService extends AbstractGuiService<FlightCrewMemb
 
 	@Override
 	public void bind(final ActivityLog log) {
-		// No editable fields
+		super.bindObject(log, "typeOfIncident", "description", "severityLevel");
 	}
 
 	@Override
 	public void validate(final ActivityLog log) {
-		// No extra validation
+		if (super.getRequest().getCommand().equals("publish")) {
+			ActivityLog original = this.repository.findById(log.getId());
+
+			boolean typeUnModified = Objects.equals(log.getTypeOfIncident(), original.getTypeOfIncident());
+			boolean descriptionUnModified = Objects.equals(log.getDescription(), original.getDescription());
+			boolean severityUnModified = Objects.equals(log.getSeverityLevel(), original.getSeverityLevel());
+
+			System.out.println(super.getRequest());
+
+			super.state(typeUnModified, "typeOfIncident", "flight-crew-member.flight-assignment.error-publishing");
+			super.state(descriptionUnModified, "description", "flight-crew-member.flight-assignment.error-publishing");
+			super.state(severityUnModified, "severityLevel", "flight-crew-member.flight-assignment.error-publishing");
+		}
 	}
 
 	@Override

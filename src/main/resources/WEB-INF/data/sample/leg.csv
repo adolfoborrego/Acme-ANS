@@ -39,6 +39,8 @@ leg-17,2025/02/03 10:00,2025/02/03 12:00,ON_TIME,TRUE,flight-10,airport-00,airpo
 # COMPLETED LEGS
 leg-18,2021/07/29 00:00,2021/07/29 00:01,LANDED,TRUE,flight-11,airport-00,airport-01,aircraft-02
 leg-19,2021/07/29 00:05,2021/07/29 00:06,LANDED,TRUE,flight-12,airport-01,airport-00,aircraft-02
+leg-31,2021/07/29 00:05,2021/07/29 00:06,LANDED,TRUE,flight-38,airport-01,airport-00,aircraft-00
+leg-32,2021/07/29 00:00,2021/07/29 00:01,LANDED,TRUE,flight-39,airport-01,airport-00,aircraft-00
 
 # futuros
 leg-20,2022/08/30 00:00,2022/08/30 00:01,ON_TIME,TRUE,flight-13,airport-02,airport-03,aircraft-02
@@ -52,3 +54,10 @@ leg-27,2022/09/06 00:00,2022/09/06 00:01,ON_TIME,TRUE,flight-20,airport-02,airpo
 leg-28,2022/09/07 00:00,2022/09/07 00:01,ON_TIME,TRUE,flight-21,airport-02,airport-03,aircraft-02
 leg-29,2022/09/08 00:00,2022/09/08 00:01,ON_TIME,TRUE,flight-22,airport-02,airport-03,aircraft-02
 leg-30,2022/09/09 00:00,2022/09/09 00:01,CANCELLED,TRUE,flight-23,airport-02,airport-03,aircraft-02
+
+leg-33,2022/09/09 00:00,2022/09/09 00:01,ON_TIME,TRUE,flight-33,airport-02,airport-03,aircraft-00
+leg-34,2022/09/09 00:00,2022/09/09 00:01,ON_TIME,TRUE,flight-34,airport-02,airport-03,aircraft-00
+
+leg-35,2022/09/10 00:00,2022/09/10 00:01,ON_TIME,TRUE,flight-35,airport-02,airport-03,aircraft-02
+leg-36,2022/09/11 00:00,2022/09/11 00:01,ON_TIME,TRUE,flight-36,airport-02,airport-03,aircraft-02
+leg-37,2022/09/12 00:00,2022/09/12 00:01,ON_TIME,TRUE,flight-37,airport-02,airport-03,aircraft-02

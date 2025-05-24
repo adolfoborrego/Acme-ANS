@@ -36,3 +36,16 @@ flight-28,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,' or 'A' = 'A,TRUE,manag
 flight-29,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",FALSE,manager-01
 # airline manager variation
 flight-30,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-02
+
+
+
+
+#ESTOS LOS USA EL STUDENT3
+flight-38,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-03
+flight-39,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-03
+flight-33,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-03
+flight-34,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-03
+
+flight-35,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
+flight-36,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
+flight-37,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
