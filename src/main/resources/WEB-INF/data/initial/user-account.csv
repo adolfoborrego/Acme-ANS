@@ -2,4 +2,3 @@ key,enabled,identity,password,username
 user-account-anonymous-01,false,"UserIdentity{name: 'John', surname: 'Doe', email: 'john.doe@acme.com'}",HIDDEN-PASSWORD,anonymous
 user-account-administrator-01,true,"UserIdentity{name: 'Administrator', surname: 'Acme', email: 'administrator@acme.com'}",administrator,administrator
 user-account-airline-manager-01,true,"UserIdentity{name: ""Manager"", surname: ""One"", email: ""manager1@email.com""}",manager12,manager12
-user-account-assistance-agent-01,true,"UserIdentity{name: ""Agent"", surname: ""One"", email: ""agent1@email.com""}",agent12,agent12

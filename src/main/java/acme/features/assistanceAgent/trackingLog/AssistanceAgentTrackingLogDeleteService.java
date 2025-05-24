@@ -23,7 +23,7 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 		int userAccountId = super.getRequest().getPrincipal().getAccountId();
 		int assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
 		boolean isTrackingLogOwner = trackingLog.getClaim().getAssistanceAgent().getId() == assistanceAgentId;
-		boolean status = !trackingLog.getPublished() && isAssistanceAgent && isTrackingLogOwner;
+		boolean status = isAssistanceAgent && isTrackingLogOwner;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -42,6 +42,8 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 	@Override
 	public void validate(final TrackingLog trackingLog) {
 		assert trackingLog != null;
+		if (trackingLog.getPublished())
+			throw new IllegalArgumentException("Attempted to delete a published TrackingLog: possible tampering detected.");
 	}
 
 	@Override

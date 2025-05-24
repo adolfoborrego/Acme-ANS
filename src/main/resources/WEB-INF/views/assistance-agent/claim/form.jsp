@@ -18,10 +18,10 @@
 	<!-- Acciones -->
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && !published}">
-			<acme:submit code="assistance-agent.claim.update.submit" action="/assistance-agent/claim/update"/>
-			<acme:submit code="assistance-agent.claim.delete.submit" action="/assistance-agent/claim/delete"/>
+			<acme:submit code="assistance-agent.claim.update.submit" action="/assistance-agent/claim/update?id=${id}"/>
+			<acme:submit code="assistance-agent.claim.delete.submit" action="/assistance-agent/claim/delete?id=${id}"/>
 			<jstl:if test="${!published}">
-				<acme:submit code="assistance-agent.claim.publish.submit" action="/assistance-agent/claim/publish"/>
+				<acme:submit code="assistance-agent.claim.publish.submit" action="/assistance-agent/claim/publish?id=${id}"/>
 			</jstl:if>
 		</jstl:when>		
 		<jstl:when test="${_command == 'create'}">
