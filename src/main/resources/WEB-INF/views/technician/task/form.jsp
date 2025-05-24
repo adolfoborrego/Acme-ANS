@@ -25,7 +25,7 @@
 		</jstl:choose>
 	   <jstl:choose>
 	   		<jstl:when test="${acme:anyOf(_command, 'show|update|publish|delete') && !published}">
-				<acme:submit code="technician.task.update.submit" action="/technician/task/update"/>
+		   		<acme:submit code="technician.task.update.submit" action="/technician/task/update"/>
 				<acme:submit code = "technician.task.delete.submit" action ="/technician/task/delete"/>
 				<acme:submit code="technician.task.publish" action="/technician/task/publish" />
 		</jstl:when>
