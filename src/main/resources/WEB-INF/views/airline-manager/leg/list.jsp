@@ -11,5 +11,5 @@
     <acme:list-column path="status" code="leg.status" />
 </acme:list>
 <jstl:if test="${showCreate}">
-	<acme:button code="manager.leg.create.submit" action="/airline-manager/leg/create?flightId=${flightId}" />
+	<acme:button code="manager.leg.create.submit" action="/airline-manager/leg/create?id=${id}" />
 </jstl:if>

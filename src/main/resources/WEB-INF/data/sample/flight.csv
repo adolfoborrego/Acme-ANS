@@ -1,6 +1,7 @@
 key,tag,indicator,cost,description,published,key:airlineManager
 # base entity
 flight-01,the cheapest,true,USD 500.00,Long haul flight,TRUE,manager-01
+
 #tag variations
 flight-02,L,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
 flight-03,Lo,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
@@ -12,14 +13,17 @@ flight-08,洛伦·伊普森,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, con
 flight-09,<marquee>Hacked</marquee>,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
 flight-10,<script>alert(‘Hacked!’);</script>,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
 flight-11,' or 'A' = 'A,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
+
 # indicator variations
 flight-12,Lorem ipsum dolor sit ame,TRUE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
+
 # cost variations
 flight-13,Lorem ipsum dolor sit ame,FALSE,EUR 0.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
 flight-14,Lorem ipsum dolor sit ame,FALSE,EUR 0.01,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
 flight-15,Lorem ipsum dolor sit ame,FALSE,EUR 999999.99,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
 flight-16,Lorem ipsum dolor sit ame,FALSE,EUR 1000000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
 flight-17,Lorem ipsum dolor sit ame,FALSE,USD 9.99,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
+
 # description variations
 flight-18,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,,TRUE,manager-01
 flight-19,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,L,TRUE,manager-01
@@ -32,8 +36,10 @@ flight-25,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,洛伦·伊普森,TRUE,m
 flight-26,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,<marquee>Hacked</marquee>,TRUE,manager-01
 flight-27,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,<script>alert(‘Hacked!’);</script>,TRUE,manager-01
 flight-28,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,' or 'A' = 'A,TRUE,manager-01
+
 # published variations
 flight-29,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",FALSE,manager-01
+
 # airline manager variation
 flight-30,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-02
 
