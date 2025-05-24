@@ -1,6 +1,7 @@
 
 package acme.features.assistanceAgent.claim;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
 import acme.entities.claim.ClaimType;
+import acme.entities.leg.Leg;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
@@ -47,6 +49,11 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		assert claim != null;
 		if (claim.getLeg() == null)
 			super.state(false, "leg", "assistance-agent.claim.error.no-leg");
+		Date now = MomentHelper.getCurrentMoment();
+		Collection<Leg> validLegs = this.repository.findFinishedLegs(now);
+		boolean legIsValid = validLegs.stream().anyMatch(validLeg -> validLeg.getId() == claim.getLeg().getId());
+		if (!legIsValid)
+			throw new IllegalArgumentException("Attempted to use an invalid leg ID: possible tampering detected.");
 	}
 
 	@Override
