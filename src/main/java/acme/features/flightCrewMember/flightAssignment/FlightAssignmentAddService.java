@@ -26,6 +26,7 @@ public class FlightAssignmentAddService extends AbstractGuiService<FlightCrewMem
 
 	@Override
 	public void authorise() {
+
 		var request = super.getRequest();
 		System.out.println(request);
 		var principal = request.getPrincipal();
@@ -45,8 +46,12 @@ public class FlightAssignmentAddService extends AbstractGuiService<FlightCrewMem
 					Integer myId = super.getRequest().getPrincipal().getActiveRealm().getId();
 					FlightCrewMember member = this.repository.findFlightCrewMemberById(myId);
 					Integer airlineId = member.getAirline().getId();
-					List<Integer> possibleCrews = this.repository.findCrewsMembersCandidateForLeg(airlineId).stream().map(FlightCrewMember::getId).toList();
+					Leg leg = assignment.getLeg();
+					Collection<FlightCrewMember> crews = this.repository.findCrewsMembersCandidateForLegAvoidingOverlaps(airlineId, leg.getScheduledDeparture(), leg.getScheduledArrival());
+					List<Integer> possibleCrews = crews.stream().map(FlightCrewMember::getId).toList();
 					authorised = possibleCrews.contains(selectedMemberId);
+					if (super.getRequest().hasData("duty", String.class))
+						authorised = authorised && !super.getRequest().getData("duty", String.class).equals("LEAD ATTENDANT");
 				}
 			}
 		}
@@ -81,15 +86,19 @@ public class FlightAssignmentAddService extends AbstractGuiService<FlightCrewMem
 
 		assignments = assignments.stream().filter(a -> !"CANCELLED".equals(a.getCurrentStatus())).toList();
 
-		if ("PILOT".equals(object.getDuty()) && assignments.stream().anyMatch(a -> "PILOT".equals(a.getDuty())))
+		if ("PILOT".equals(object.getDuty()) && assignments.stream().anyMatch(a -> "PILOT".equals(a.getDuty()))) {
 			super.state(false, "duty", "flight-assignment.member.error.pilot");
+			return;
+		}
 
-		if ("COPILOT".equals(object.getDuty()) && assignments.stream().anyMatch(a -> "COPILOT".equals(a.getDuty())))
+		if ("COPILOT".equals(object.getDuty()) && assignments.stream().anyMatch(a -> "COPILOT".equals(a.getDuty()))) {
 			super.state(false, "duty", "flight-assignment.member.error.copilot");
+			return;
+		}
 
 		long cabinAttendants = assignments.stream().filter(a -> "CABIN ATTENDANT".equals(a.getDuty())).count();
 
-		if (cabinAttendants >= 4)
+		if (cabinAttendants >= 4 && "CABIN ATTENDANT".equals(object.getDuty()))
 			super.state(false, "duty", "flight-assignment.member.error.cabinAttendant");
 	}
 
@@ -137,7 +146,10 @@ public class FlightAssignmentAddService extends AbstractGuiService<FlightCrewMem
 		Integer myId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		FlightCrewMember member = this.repository.findFlightCrewMemberById(myId);
 		Integer airlineId = member.getAirline().getId();
-		Collection<FlightCrewMember> crews = this.repository.findCrewsMembersCandidateForLeg(airlineId);
+		int fid = super.getRequest().getData("Fid", int.class);
+		FlightAssignment assignment = this.repository.findById(fid);
+		Leg leg = assignment.getLeg();
+		Collection<FlightCrewMember> crews = this.repository.findCrewsMembersCandidateForLegAvoidingOverlaps(airlineId, leg.getScheduledDeparture(), leg.getScheduledArrival());
 		return SelectChoices.from(crews, "identificator", null);
 	}
 

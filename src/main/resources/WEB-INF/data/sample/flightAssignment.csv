@@ -1,80 +1,77 @@
 key,key:flightCrewMember,key:leg,duty,momentOfLastUpdate,currentStatus,remarks
-
 ## ASIGNACION COMPLETA DE VUELO ACABO 1
-# Caso base: Registro mínimo – duty PILOT; fecha "2012/07/02 00:00"; status CONFIRMED; remarks estándar.
+"# Caso base: Registro mínimo – duty PILOT; fecha ""2012/07/02 00:00""; status CONFIRMED; remarks estándar."
 flight-assignment-01,flightCrewMember-01,leg-18,PILOT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-
 # 1. Duty inmediato: cambiar a COPILOT
 flight-assignment-02,flightCrewMember-02,leg-18,COPILOT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-
 # 2. Duty intermedio: cambiar a LEAD ATTENDANT
 flight-assignment-03,flightCrewMember-03,leg-18,LEAD ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-
 # 3. Duty extremo: cambiar a CABIN ATTENDANT
 flight-assignment-04,flightCrewMember-04,leg-18,CABIN ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-
 ## ASIGNACION COMPLETA DE VUELO FUTURO 1    CONFIRMED
 # 4. momentOfLastUpdate inmediato: 1 minuto antes del máximo no inclusivo (2022/07/29 23:59)
 flight-assignment-05,flightCrewMember-01,leg-20,PILOT,2022/07/29 23:59,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-
 # 5. momentOfLastUpdate extremo máximo no inclusivo: igual a currentMoment (2022/07/30 00:00)
 flight-assignment-06,flightCrewMember-06,leg-20,CABIN ATTENDANT,2022/07/30 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-
 # 6. momentOfLastUpdate extremo mínimo: fecha mínima válida (2000/01/01 00:00)
 flight-assignment-07,flightCrewMember-07,leg-20,LEAD ATTENDANT,2000/01/01 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-
 # 7. momentOfLastUpdate 1 minuto después del mínimo: (2000/01/01 00:01)
-flight-assignment-08,flightCrewMember-08,leg-20,PILOT,2000/01/01 00:01,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-
+flight-assignment-08,flightCrewMember-08,leg-20,COPILOT,2000/01/01 00:01,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 ## ASIGNACION COMPLETA COMPLETA DE VUELO ACABADO 2
 # 8.
 flight-assignment-09,flightCrewMember-09,leg-19,CABIN ATTENDANT,2021/07/29 00:05,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-
 # 9.
 flight-assignment-10,flightCrewMember-10,leg-19,PILOT,2021/07/29 00:05,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-
 # 10. Remarks mínimo: cambiar a (1 carácter)
 flight-assignment-11,flightCrewMember-11,leg-19,COPILOT,2021/07/29 00:05,CONFIRMED,L
-
 # 11. Remarks inmediato: (2 caracteres)
 flight-assignment-12,flightCrewMember-12,leg-19,LEAD ATTENDANT,2021/07/29 00:05,CONFIRMED,Lo
-
 # 12. Remarks extremo máximo: 255 caracteres
 flight-assignment-13,flightCrewMember-13,leg-19,CABIN ATTENDANT,2021/07/29 00:05,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor"
-
 ## ASIGNACION DE VUELO FUTURO CONFIRMED 2
 # 13. Remarks penúltimo: 254 caracteres
 flight-assignment-14,flightCrewMember-01,leg-21,LEAD ATTENDANT,2022/07/30 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor"
-
 # 14. Remarks NON-LATIN (tailandés)
 flight-assignment-15,flightCrewMember-05,leg-21,COPILOT,2022/07/30 00:00,CONFIRMED,โลเร็ม อิปซัม
-
 # 15. Remarks NON-LATIN (árabe)
 flight-assignment-16,flightCrewMember-02,leg-21,PILOT,2022/07/30 00:00,CONFIRMED,لوريم إيبسوم
-
 # 16. Remarks NON-LATIN (chino simplificado)
 flight-assignment-17,flightCrewMember-03,leg-21,CABIN ATTENDANT,2022/07/30 00:00,CONFIRMED,洛伦·伊普森
-
 ## ASIGNACION CON LEAD ATTENDANT CONFIRMED SIN NADIE
 # 17. Remarks INJECTION (marquee)
 flight-assignment-18,flightCrewMember-04,leg-22,LEAD ATTENDANT,2022/07/30 00:00,CONFIRMED,<marquee>Hacked</marquee>
-
 ## ASIGNACION CON LEAD ATTENDANT CONFIRMED SIN NADIE
 # 18. Remarks INJECTION (script)
-flight-assignment-19,flightCrewMember-05,leg-23,LEAD ATTENDANT,2022/07/30 00:00,CONFIRMED,"<script>alert(‘Hacked!’);</script>"
-
+flight-assignment-19,flightCrewMember-05,leg-23,LEAD ATTENDANT,2022/07/30 00:00,CONFIRMED,<script>alert(‘Hacked!’);</script>
 ## ASIGNACION CON LEAD ATTENDANT EN PENDING
 # 19. Remarks INJECTION (SQL injection)
 flight-assignment-20,flightCrewMember-06,leg-24,LEAD ATTENDANT,2022/07/30 00:00,PENDING,' or 'A' = 'A
-
 ## LEAD ATTENDANT EN PENDING
 flight-assignment-21,flightCrewMember-07,leg-25,LEAD ATTENDANT,2022/07/30 00:00,PENDING,""
-
 ## ASINACION CON LEAD ATTENDANT CONFIRMED Y UN CREW EN PENDING
 flight-assignment-22,flightCrewMember-01,leg-26,LEAD ATTENDANT,2022/07/30 00:00,CONFIRMED,""
 flight-assignment-23,flightCrewMember-02,leg-26,CABIN ATTENDANT,2022/07/30 00:00,PENDING,""
-
 ## ASIGNACION CON LEAD ATTENDANT EN PENDING Y UN CREW CONFIRMED
 flight-assignment-24,flightCrewMember-03,leg-27,LEAD ATTENDANT,2022/07/30 00:00,CONFIRMED,""
 flight-assignment-25,flightCrewMember-04,leg-27,CABIN ATTENDANT,2022/07/30 00:00,CONFIRMED,""
 
+
+
+##ASIGNACION COMPLETADA DE MEMBERS DE AEROLINEA 00
+flight-assignment-26,flightCrewMember-16,leg-31,PILOT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-27,flightCrewMember-17,leg-31,COPILOT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-28,flightCrewMember-18,leg-31,LEAD ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-29,flightCrewMember-19,leg-31,CABIN ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-30,flightCrewMember-20,leg-31,CABIN ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+
+flight-assignment-31,flightCrewMember-16,leg-32,PILOT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-32,flightCrewMember-17,leg-32,COPILOT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-33,flightCrewMember-18,leg-32,LEAD ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-34,flightCrewMember-19,leg-32,CABIN ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-35,flightCrewMember-20,leg-32,CABIN ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+
+flight-assignment-36,flightCrewMember-16,leg-40,PILOT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-37,flightCrewMember-17,leg-40,COPILOT,2021/07/28 00:00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-38,flightCrewMember-18,leg-40,LEAD ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-39,flightCrewMember-19,leg-40,CABIN ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-40,flightCrewMember-20,leg-40,CABIN ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"

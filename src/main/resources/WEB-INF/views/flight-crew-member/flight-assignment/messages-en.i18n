@@ -12,7 +12,7 @@ flight-crew-member.flight-assignment.list.label.leg = Leg
 flight-crew-member.flight-assignment.list.label.remarks = Remarks
 flight-crew-member.flight-assignment.list.label.flightCrewMembers = Flight Crew Members
 
-
+flight-crew-member.flight-assignment.list.label.fullName = Full Name
  flight-crew-member.flight-assignment.list.label.crews = Flight Crew Member to Select
 flight-crew-member.flight-assignment.activityLog = Activity Logs
 flight-crew-member.flight-assignment.listCrews = My Crews
@@ -26,3 +26,11 @@ flight-crew-member.flight-assignment.publish = Publish
 flight-crew-member.flight-assignment.create = Create
 
 
+
+flight-crew-member.flight-assignment.error-publishing = Can not publish, update first or put the previous value
+flight-crew-member.flight-assignment.error = No changes have been made
+ flight-crew-member.flight-assignment.errorUpdatingLeg = Can not update the leg of a flight assignment to an undefined leg
+ flight-assignment.member.error.unselected = No Member Selected
+  flight-assignment.member.error.pilot = Can not select a pilot
+   flight-assignment.member.error.copilot = Can not select a copilot 
+    flight-assignment.member.error.cabinAttendant = Can not select a cabin attendant 

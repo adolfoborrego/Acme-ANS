@@ -19,6 +19,10 @@ public class ActivityLogDeleteService extends AbstractGuiService<FlightCrewMembe
 
 	@Override
 	public void authorise() {
+
+		if (super.getRequest().getMethod().equals("GET"))
+			super.state(false, "*", "flight-crew-member.flight-assignment.error");
+
 		var request = super.getRequest();
 		var principal = request.getPrincipal();
 		if (!principal.hasRealmOfType(FlightCrewMember.class) || !request.hasData("id", int.class)) {

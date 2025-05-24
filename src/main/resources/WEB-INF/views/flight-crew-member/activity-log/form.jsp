@@ -143,20 +143,87 @@
             <acme:input-textbox readonly="true"
                 code="activity-log.flight-assignment.leg"
                 path="leg" />
+
             <acme:input-textbox readonly="true"
                 code="activity-log.list.label.registrationMoment"
                 path="registrationMoment" />
+            <jstl:if test="${!isPublished}">
+			    <acme:input-textbox readonly="false"
+			        code="activity-log.list.label.typeOfIncident"
+			        path="typeOfIncident" />
+			    <acme:input-textarea readonly="false"
+			        code="activity-log.list.label.description"
+			        path="description" />
+			    <acme:input-textbox readonly="false"
+			        code="activity-log.list.label.severityLevel"
+			        path="severityLevel" />
+			</jstl:if>
+			
+			<jstl:if test="${isPublished}">
+			    <acme:input-textbox readonly="true"
+			        code="activity-log.list.label.typeOfIncident"
+			        path="typeOfIncident" />
+			    <acme:input-textarea readonly="true"
+			        code="activity-log.list.label.description"
+			        path="description" />
+			    <acme:input-textbox readonly="true"
+			        code="activity-log.list.label.severityLevel"
+			        path="severityLevel" />
+			</jstl:if>
+
+
+            <%-- Botones de acción: Update y Publish si no está publicado --%>
+            <jstl:if test="${!isPublished}">
+                <acme:submit code="activity-log.update"
+                    action="/flight-crew-member/activity-log/update" />
+                <acme:submit code="activity-log.publish"
+                    action="/flight-crew-member/activity-log/publish" />
+                <acme:submit code="activity-log.delete"
+                action="/flight-crew-member/activity-log/delete" />
+            </jstl:if>
+        </acme:form>
+    </jstl:when>
+    
+    <jstl:when test="${_command == 'delete'}">
+        <acme:form readonly="false">
+            <!-- FlightAssignment info -->
             <acme:input-textbox readonly="true"
-                code="activity-log.list.label.typeOfIncident"
-                path="typeOfIncident" />
-            <acme:input-textarea readonly="true"
-                code="activity-log.list.label.description"
-                path="description" />
+                code="activity-log.flight-assignment.duty"
+                path="duty" />
             <acme:input-textbox readonly="true"
-                code="activity-log.list.label.severityLevel"
-                path="severityLevel" />
-            <!-- Publish button -->
-             <jstl:if test="${!isPublished}">
+                code="activity-log.flight-assignment.leg"
+                path="leg" />
+
+            <acme:input-textbox readonly="true"
+                code="activity-log.list.label.registrationMoment"
+                path="registrationMoment" />
+            <jstl:if test="${!isPublished}">
+			    <acme:input-textbox readonly="false"
+			        code="activity-log.list.label.typeOfIncident"
+			        path="typeOfIncident" />
+			    <acme:input-textarea readonly="false"
+			        code="activity-log.list.label.description"
+			        path="description" />
+			    <acme:input-textbox readonly="false"
+			        code="activity-log.list.label.severityLevel"
+			        path="severityLevel" />
+			</jstl:if>
+			
+			<jstl:if test="${isPublished}">
+			    <acme:input-textbox readonly="true"
+			        code="activity-log.list.label.typeOfIncident"
+			        path="typeOfIncident" />
+			    <acme:input-textarea readonly="true"
+			        code="activity-log.list.label.description"
+			        path="description" />
+			    <acme:input-textbox readonly="true"
+			        code="activity-log.list.label.severityLevel"
+			        path="severityLevel" />
+			</jstl:if>
+
+
+            <%-- Botones de acción: Update y Publish si no está publicado --%>
+            <jstl:if test="${!isPublished}">
                 <acme:submit code="activity-log.update"
                     action="/flight-crew-member/activity-log/update" />
                 <acme:submit code="activity-log.publish"

@@ -1,6 +1,8 @@
 
 package acme.features.flightCrewMember.activityLog;
 
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -21,6 +23,9 @@ public class ActivityLogUpdateService extends AbstractGuiService<FlightCrewMembe
 	public void authorise() {
 		var request = super.getRequest();
 		var principal = request.getPrincipal();
+
+		if (super.getRequest().getMethod().equals("GET"))
+			super.state(false, "*", "flight-crew-member.flight-assignment.error");
 
 		// Must be FlightCrewMember and have log id
 		if (!principal.hasRealmOfType(FlightCrewMember.class) || !request.hasData("id", int.class)) {
@@ -50,6 +55,13 @@ public class ActivityLogUpdateService extends AbstractGuiService<FlightCrewMembe
 	@Override
 	public void validate(final ActivityLog log) {
 		// No additional validation beyond annotations
+		if (super.getRequest().getCommand().equals("update")) {
+			ActivityLog original = this.repository.findById(log.getId());
+
+			boolean isModified = !Objects.equals(log.getTypeOfIncident(), original.getTypeOfIncident()) || !Objects.equals(log.getDescription(), original.getDescription()) || !Objects.equals(log.getSeverityLevel(), original.getSeverityLevel());
+
+			super.state(isModified, "*", "flight-crew-member.flight-assignment.error");
+		}
 	}
 
 	@Override
@@ -69,7 +81,7 @@ public class ActivityLogUpdateService extends AbstractGuiService<FlightCrewMembe
 
 	@Override
 	public void onSuccess() {
-		if ("POST".equalsIgnoreCase(super.getRequest().getMethod()))
+		if (super.getRequest().getMethod().equalsIgnoreCase("POST"))
 			PrincipalHelper.handleUpdate();
 	}
 }

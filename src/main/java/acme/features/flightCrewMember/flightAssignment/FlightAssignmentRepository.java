@@ -52,8 +52,12 @@ public interface FlightAssignmentRepository extends AbstractRepository {
 		          from FlightAssignment fa
 		          where fa.flightCrewMember = fcm
 		            and fa.currentStatus in ('CONFIRMED', 'PENDING')
+		            and (
+		                fa.leg.scheduledDeparture < :legEnd
+		                and fa.leg.scheduledArrival > :legStart
+		            )
 		      )
 		""")
-	Collection<FlightCrewMember> findCrewsMembersCandidateForLeg(@Param("airlineId") int airlineId);
+	Collection<FlightCrewMember> findCrewsMembersCandidateForLegAvoidingOverlaps(@Param("airlineId") int airlineId, @Param("legStart") Date legStart, @Param("legEnd") Date legEnd);
 
 }

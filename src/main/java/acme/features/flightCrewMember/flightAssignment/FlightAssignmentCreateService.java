@@ -27,6 +27,7 @@ public class FlightAssignmentCreateService extends AbstractGuiService<FlightCrew
 
 	@Override
 	public void authorise() {
+
 		var principal = super.getRequest().getPrincipal();
 		if (!principal.hasRealmOfType(FlightCrewMember.class)) {
 			super.getResponse().setAuthorised(false);
@@ -109,8 +110,9 @@ public class FlightAssignmentCreateService extends AbstractGuiService<FlightCrew
 
 	private Collection<Leg> getPossibleLegs(final FlightAssignment assignment) {
 		int memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		FlightCrewMember member = this.repository.findFlightCrewMemberById(memberId);
 		Date now = MomentHelper.getCurrentMoment();
-		return this.repository.findAllFutureUnAssignedOrAllCancelledLegs(now).stream().filter(leg -> !this.hasOverlap(leg, memberId)).toList();
+		return this.repository.findAllFutureUnAssignedOrAllCancelledLegs(now).stream().filter(leg -> !this.hasOverlap(leg, memberId) && leg.getAircraft().getAirline().equals(member.getAirline())).toList();
 	}
 
 	private boolean hasOverlap(final Leg leg, final int memberId) {
