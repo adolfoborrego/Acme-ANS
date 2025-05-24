@@ -70,8 +70,8 @@ flight-assignment-33,flightCrewMember-18,leg-32,LEAD ATTENDANT,2021/07/28 00:00,
 flight-assignment-34,flightCrewMember-19,leg-32,CABIN ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 flight-assignment-35,flightCrewMember-20,leg-32,CABIN ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
 
-flight-assignment-36,flightCrewMember-16,leg-33,PILOT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-flight-assignment-37,flightCrewMember-17,leg-33,COPILOT,2021/07/28 00:00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-flight-assignment-38,flightCrewMember-18,leg-33,LEAD ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-flight-assignment-39,flightCrewMember-19,leg-33,CABIN ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
-flight-assignment-40,flightCrewMember-20,leg-33,CABIN ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-36,flightCrewMember-16,leg-40,PILOT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-37,flightCrewMember-17,leg-40,COPILOT,2021/07/28 00:00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-38,flightCrewMember-18,leg-40,LEAD ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-39,flightCrewMember-19,leg-40,CABIN ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flight-assignment-40,flightCrewMember-20,leg-40,CABIN ATTENDANT,2021/07/28 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
