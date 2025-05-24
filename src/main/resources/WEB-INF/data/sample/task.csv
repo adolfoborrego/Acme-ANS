@@ -2,18 +2,18 @@ key,key:maintenanceRecord,published,estimatedDuration,priority,description,type
 task-01,maintenanceRecord-01,true,18,5,Una larga descripción para la primera entidad de task-01,INSPECTION
 #### TODAS LAS TASKS DE UNA MAINTENANCE RECORD TIENEN QUE ESTAR ASOCIADOS AL MISMO TECHNICIAN
 #Probando distintas descripciones
-task-02,maintenanceRecord-01,true,7,2,A,REPAIR
-task-03,maintenanceRecord-01,true,7,2,AB,REPAIR
-task-04,maintenanceRecord-01,true,7,2,Short description test.,REPAIR
-task-05,maintenanceRecord-01,true,7,2,This is a twenty-five char text.,REPAIR
-task-06,maintenanceRecord-11,true,7,2,"This is a much longer text designed to test 254 characters. It contains words, spaces, punctuation, and should not match previous descriptions. This ensures that our dataset is robust and does not have repeated phrases across tests and to ensure is 254L.",REPAIR
-task-07,maintenanceRecord-02,true,7,2,"This is exactly 255 characters long testing system’s ability to one maximum length without truncation or error. If this description fails, then there might be an issue with the character limit constraints imposed on the description field during insertion.",REPAIR
-task-08,maintenanceRecord-02,true,7,2,你好，这是一个测试描述,REPAIR
-task-09,maintenanceRecord-02,true,7,2,مرحبا، هذا نص تجريبي,REPAIR
-task-10,maintenanceRecord-02,true,7,2,ทดสอบคำอธิบายที่นี่,REPAIR
-task-11,maintenanceRecord-03,true,7,2,<marquee>Unauthorized content</marquee>,REPAIR
-task-12,maintenanceRecord-03,true,7,2,<script>alert('Security Breach!');</script>,REPAIR
-task-13,maintenanceRecord-03,true,7,2,' OR '1'='1' --,REPAIR
+task-02,maintenanceRecord-01,true,7,2,L,REPAIR
+task-03,maintenanceRecord-01,true,7,2,Lo,REPAIR
+task-04,maintenanceRecord-01,true,7,2,Lorem ipsum,REPAIR
+task-05,maintenanceRecord-01,true,7,2,Lorem ipsum dolor sit ame,REPAIR
+task-06,maintenanceRecord-11,true,7,2,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",REPAIR
+task-07,maintenanceRecord-02,true,7,2,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.",REPAIR
+task-08,maintenanceRecord-02,true,7,2,โลเร็ม อิปซัม,REPAIR
+task-09,maintenanceRecord-02,true,7,2,لوريم إيبسوم,REPAIR
+task-10,maintenanceRecord-02,true,7,2,洛伦·伊普森,REPAIR
+task-11,maintenanceRecord-03,true,7,2,<marquee>Hacked</marquee>,REPAIR
+task-12,maintenanceRecord-03,true,7,2,<script>alert(‘Hacked!’);</script>,REPAIR
+task-13,maintenanceRecord-03,true,7,2,'' or 'A' = 'A,REPAIR
 # Probando los distintos types
 task-14,maintenanceRecord-05,false,10,6,Short description test.,MAINTENANCE
 task-15,maintenanceRecord-05,false,10,6,Short description test.,REPAIR
