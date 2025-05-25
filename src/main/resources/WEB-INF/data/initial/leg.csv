@@ -1,2 +1,0 @@
-key,scheduled-departure,scheduled-arrival,status,published,key:flight,key:departureAirport,key:arrivalAirport,key:aircraft
-leg-16,2000/02/01 09:00,2000/02/01 10:00,ON_TIME,true,flight-31,airport-62,airport-63,aircraft-42
