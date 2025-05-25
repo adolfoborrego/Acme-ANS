@@ -33,17 +33,17 @@ public class TechnicianMaintRecordUpdateService extends AbstractGuiService<Techn
 	@Override
 	public void authorise() {
 		boolean status;
-		int id = super.getRequest().getData("id", int.class);
+		int id = super.getRequest().getData("id", int.class, null);
 		MaintenanceRecord mr = this.repository.findById(id);
 		boolean isAircraftDisabled = false;
 
-		if (mr.getAircraft() != null)
+		if (mr != null && mr.getAircraft() != null)
 			isAircraftDisabled = mr.getAircraft().getStatus().equals(AircraftStatus.DISABLED);
 
 		int userId = super.getRequest().getPrincipal().getAccountId();
 		Technician technicianRequest = this.repository.findTechnicianByUserId(userId);
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && mr != null && technicianRequest.getId() == mr.getTechnician().getId() && !isAircraftDisabled;
+		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && mr != null && technicianRequest.getId() == mr.getTechnician().getId() && !isAircraftDisabled && !mr.getPublished();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -105,6 +105,7 @@ public class TechnicianMaintRecordUpdateService extends AbstractGuiService<Techn
 		super.getResponse().addGlobal("isAircraftDisabled", isAircraftDisabled);
 		dataset.put("statusChoices", statuses);
 		super.getResponse().addGlobal("numberOfTasks", numberOfTasks);
+		super.getResponse().addGlobal("redirect", false);
 		super.getResponse().addData(dataset);
 	}
 

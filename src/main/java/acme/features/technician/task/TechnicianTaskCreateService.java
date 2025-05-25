@@ -28,15 +28,16 @@ public class TechnicianTaskCreateService extends AbstractGuiService<Technician, 
 	@Override
 	public void authorise() {
 		boolean status;
-		int maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
+		int maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class, null);
 		MaintenanceRecord maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
-
-		boolean isAircraftDisabled = maintenanceRecord.getAircraft().getStatus().equals(AircraftStatus.DISABLED);
+		boolean isAircraftDisabled = false;
+		if (maintenanceRecord != null)
+			isAircraftDisabled = maintenanceRecord.getAircraft().getStatus().equals(AircraftStatus.DISABLED);
 
 		int userId = super.getRequest().getPrincipal().getAccountId();
 		Integer technicianRequestId = this.repository.findTechnicianIdByUserId(userId);
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && !maintenanceRecord.getPublished() && technicianRequestId == maintenanceRecord.getTechnician().getId() && !isAircraftDisabled;
+		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && maintenanceRecord != null && !maintenanceRecord.getPublished() && technicianRequestId == maintenanceRecord.getTechnician().getId() && !isAircraftDisabled;
 
 		super.getResponse().setAuthorised(status);
 	}

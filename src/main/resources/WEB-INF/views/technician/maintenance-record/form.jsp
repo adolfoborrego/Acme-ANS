@@ -34,7 +34,7 @@
 	    		<acme:input-textarea code="technician.maintenance-record.list.label.notes" path="notes" /> 
 	    		<acme:input-moment code="technician.maintenance-record.list.label.moment" path="moment" readonly="true"/>
 	    		<acme:input-moment code="technician.maintenance-record.list.label.inspectionDueDate" path="inspectionDueDate"/>
-	    		<acme:input-select code="technician.maintenance-record.list.label.currentStatus" path="currentStatus" choices = "${statusChoices}" readonly="true"/>
+	    		<acme:input-select code="technician.maintenance-record.list.label.currentStatus" path="currentStatus" choices = "${statusChoices}"/>
 	    		<acme:input-checkbox code="technician.maintenance-record.list.label.published" path="published" readonly="true"/>
 			</jstl:when>
 			<jstl:when test="${_command != 'create' && published}">
@@ -64,9 +64,9 @@
 	   <jstl:choose>
 	   		<jstl:when test="${_command != 'create' && !published}">
 	   			<jstl:if test="${!isAircraftDisabled}">
-	   				<acme:submit code="technician.maintenanceRecord.update.submit" action="/technician/maintenance-record/update?maintenanceRecordId=${maintenanceRecordId}"/>
+	   				<acme:submit code="technician.maintenanceRecord.update.submit" action="/technician/maintenance-record/update?id=${maintenanceRecordId}"/>
 					<jstl:if test="${numberOfTasks != 0 && allTasksPublished}">
-						<acme:submit code="technician.maintenanceRecord.publish" action="/technician/maintenance-record/publish?maintenanceRecordId=${maintenanceRecordId}" />
+						<acme:submit code="technician.maintenanceRecord.publish" action="/technician/maintenance-record/publish?id=${maintenanceRecordId}" />
 					</jstl:if>
 				</jstl:if>
 			</jstl:when>

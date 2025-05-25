@@ -28,4 +28,7 @@ public interface TechnicianTaskRepository extends AbstractRepository {
 
 	@Query("SELECT t.maintenanceRecord.technician FROM Task t WHERE t.id = :taskId")
 	Technician findTechnicianByTaskId(int taskId);
+
+	@Query("SELECT COUNT(t) FROM Task t WHERE t.maintenanceRecord.id = :maintenanceRecordId")
+	int cuentaNumeroTasks(int maintenanceRecordId);
 }

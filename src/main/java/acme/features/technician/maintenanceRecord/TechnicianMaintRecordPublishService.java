@@ -27,7 +27,7 @@ public class TechnicianMaintRecordPublishService extends AbstractGuiService<Tech
 	@Override
 	public void authorise() {
 		boolean status;
-		int id = super.getRequest().getData("id", int.class);
+		int id = super.getRequest().getData("id", int.class, null);
 		MaintenanceRecord mr = this.repository.findById(id);
 		Collection<Task> tasks = this.repository.findAllTaskByMaintenanceRecordId(id);
 		boolean allPublished = this.allTasksPublished(tasks);
@@ -36,11 +36,10 @@ public class TechnicianMaintRecordPublishService extends AbstractGuiService<Tech
 
 		boolean isAircraftDisabled = false;
 
-		if (mr.getAircraft() != null)
+		if (mr != null && mr.getAircraft() != null)
 			isAircraftDisabled = mr.getAircraft().getStatus().equals(AircraftStatus.DISABLED);
 
 		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && mr != null && technicianRequest.getId() == mr.getTechnician().getId() && !mr.getPublished() && !tasks.isEmpty() && allPublished && !isAircraftDisabled;
-
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -71,6 +70,7 @@ public class TechnicianMaintRecordPublishService extends AbstractGuiService<Tech
 		boolean isAircraftDisabled = maintenanceRecord.getAircraft().getStatus().equals(AircraftStatus.DISABLED);
 		super.getResponse().addGlobal("isAircraftDisabled", isAircraftDisabled);
 		super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecord.getId());
+		super.getResponse().addGlobal("redirect", false);
 		super.getResponse().addData(super.unbindObject(maintenanceRecord, "published"));
 	}
 
