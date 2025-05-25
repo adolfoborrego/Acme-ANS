@@ -32,6 +32,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+//@Table(name = "claim", indexes = {
+//	// Claims registradas por un AsssitanceAgent
+//	@Index(name = "idx_claim_assistance_agent", columnList = "assistance_agent_id")
+//})
 public class Claim extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
