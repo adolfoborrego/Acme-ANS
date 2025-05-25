@@ -4,7 +4,9 @@ package acme.entities.activityLog;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -22,6 +24,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(name = "activity_log", indexes = {
+	@Index(name = "idx_al_flight_assignment", columnList = "flight_assignment_id"), @Index(name = "idx_al_regm_sev", columnList = "registrationMoment,severityLevel")
+})
 public class ActivityLog extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
