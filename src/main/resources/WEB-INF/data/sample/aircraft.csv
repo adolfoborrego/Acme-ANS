@@ -3,9 +3,9 @@ key,model,registrationNumber,capacity,cargoWeight,status,details,key:airline
 aircraft-00,Lorem ipsum dolor sit ame,ABC000,301,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-00
 # model variations
 aircraft-01,L,ABC001,301,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-00
-aircraft-02,Lo,ABC002,301,26000,DISABLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
-aircraft-03,"Lorem ipsum dolor sit amet, consectetur adipiscin",ABC003,301,26000,DISABLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-00
-aircraft-04,"Lorem ipsum dolor sit amet, consectetur adipiscing",ABC004,301,26000,DISABLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-00
+aircraft-02,Lo,ABC002,301,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
+aircraft-03,"Lorem ipsum dolor sit amet, consectetur adipiscin",ABC003,301,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-00
+aircraft-04,"Lorem ipsum dolor sit amet, consectetur adipiscing",ABC004,301,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-00
 aircraft-05,โลเร็ม อิปซัม,ABC005,301,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-00
 aircraft-06,لوريم إيبسوم,ABC006,301,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-00
 aircraft-07,洛伦·伊普森,ABC007,301,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-00
@@ -45,3 +45,6 @@ aircraft-35,Lorem ipsum dolor sit ame,ABC025,301,26000,ACTIVE,?????????,airline-
 aircraft-36,Lorem ipsum dolor sit ame,ABC026,301,26000,ACTIVE,<b>Bold Text</b>,airline-00
 aircraft-37,Lorem ipsum dolor sit ame,ABC027,301,26000,ACTIVE,"<img src='x' onerror='alert(""XSS"")'>",airline-00
 aircraft-38,Lorem ipsum dolor sit ame,ABC028,301,26000,ACTIVE,' OR 1=1 --,airline-00
+aircraft-39,"Lorem ipsum dolor sit amet, consectetur adipiscin",ABC039,301,26000,DISABLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-00
+aircraft-40,"Lorem ipsum dolor sit amet, consectetur adipiscin",ABC040,301,26000,DISABLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-00
+aircraft-41,"Lorem ipsum dolor sit amet, consectetur adipiscin",ABC041,301,26000,DISABLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-00
