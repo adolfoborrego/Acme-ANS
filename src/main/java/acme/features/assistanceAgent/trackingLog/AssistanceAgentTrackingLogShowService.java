@@ -23,10 +23,13 @@ public class AssistanceAgentTrackingLogShowService extends AbstractGuiService<As
 		boolean isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 		int trackingLogId = super.getRequest().getData("id", int.class);
 		TrackingLog trackingLog = this.repository.findTrackingLogById(trackingLogId);
-		int userAccountId = super.getRequest().getPrincipal().getAccountId();
-		int assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
-		boolean isTrackingLogOwner = trackingLog.getClaim().getAssistanceAgent().getId() == assistanceAgentId;
-		boolean status = isAssistanceAgent && isTrackingLogOwner;
+		boolean isTrackingLogOwner = false;
+		if (isAssistanceAgent && trackingLog != null) {
+			int userAccountId = super.getRequest().getPrincipal().getAccountId();
+			int assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
+			isTrackingLogOwner = trackingLog.getClaim().getAssistanceAgent().getId() == assistanceAgentId;
+		}
+		boolean status = isTrackingLogOwner;
 		super.getResponse().setAuthorised(status);
 	}
 
