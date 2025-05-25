@@ -17,8 +17,8 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidUrl;
-import acme.constraints.ValidUniqueEmployeeCode;
 import acme.constraints.ValidCodeInitials;
+import acme.constraints.ValidUniqueEmployeeCode;
 import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
@@ -41,7 +41,7 @@ public class AirlineManager extends AbstractRole {
 	private String				identifierNumber;
 
 	@Mandatory
-	@ValidNumber(min = 0)
+	@ValidNumber(min = 0, max = 120)
 	@Automapped
 	private Integer				yearsOfExperience;
 
