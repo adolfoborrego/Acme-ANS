@@ -29,3 +29,6 @@ technician.task.update.submit = Update Task
 
 
 technician.task.update.no-changes = A task without changes couldn't be updated
+
+
+technician.task.list.aircraftDisabled = You cannot create new tasks because the associated aircraft is disabled. However, you can work with the existing ones.

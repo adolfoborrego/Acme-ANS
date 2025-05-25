@@ -1,6 +1,8 @@
 
 package acme.features.technician.maintenanceRecord;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -9,6 +11,7 @@ import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.aircraft.Aircraft;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
 import acme.entities.maintenanceRecord.MaintenanceRecordStatus;
 import acme.realms.technician.Technician;
@@ -26,10 +29,15 @@ public class TechnicianMaintRecordCreateService extends AbstractGuiService<Techn
 
 	@Override
 	public void authorise() {
-		boolean status;
+		boolean isAircraftAvailable = true;
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
+		Integer aircraftId = super.getRequest().getData("aircraft", int.class, null);
+		if (aircraftId != null && aircraftId != 0) {
+			Collection<Aircraft> availableAircrafts = this.repository.findAllAircraft();
+			isAircraftAvailable = availableAircrafts.stream().anyMatch(a -> a.getId() == aircraftId);
+		}
 
+		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && isAircraftAvailable;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -61,7 +69,6 @@ public class TechnicianMaintRecordCreateService extends AbstractGuiService<Techn
 
 		if (!dateNoNull) {
 			boolean primeroMoment = maintenanceRecord.getMoment().before(maintenanceRecord.getInspectionDueDate());
-			super.state(primeroMoment, "moment", "technician.maintenanceRecord.moment-before-inspection.moment");
 			super.state(primeroMoment, "inspectionDueDate", "technician.maintenanceRecord.moment-before-inspection.inspectionDueDate");
 		}
 	}

@@ -12,5 +12,13 @@
     <acme:list-payload path="payload"/>	
 </acme:list>
 <jstl:if test="${showCreate}">
-	<acme:button code="technician.task.create" action="/technician/task/create?maintenanceRecordId=${maintenanceRecordId}" />
+	<jstl:choose>
+		<jstl:when test="${!isAircraftDisabled}">
+			<acme:button code="technician.task.create" action="/technician/task/create?maintenanceRecordId=${maintenanceRecordId}" />
+		</jstl:when>
+		<jstl:when test="${isAircraftDisabled}">
+			<acme:print code="technician.task.list.aircraftDisabled"/>
+		</jstl:when>
+	</jstl:choose>
+	
 </jstl:if>

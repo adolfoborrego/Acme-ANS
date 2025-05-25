@@ -30,3 +30,5 @@ technician.task.update.submit = Actualizar Tarea
 
 
 technician.task.update.no-changes = No se puede actualizar la tarea si no se han efectuado cambios
+
+technician.task.list.aircraftDisabled = No puedes crear nuevas tareas porque la aeronave asociada está deshabilitada. Sin embargo, puedes trabajar con las tareas existentes.
