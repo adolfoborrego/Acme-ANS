@@ -18,12 +18,12 @@ assistance-agent.tracking-log.delete.submit = Delete tracking log
 assistance-agent.tracking-log.publish.submit = Publish tracking log
 
 # Errors
-assistance-agent.tracking-log.error.indicator-must-be-pending = The indicator must be PENDING if the resolution percentage is less than 100%.
-assistance-agent.tracking-log.error.indicator-must-be-accepted-or-rejected-or-in-review = The indicator must be ACCEPTED, REJECTED, or IN REVIEW if the resolution percentage is 100%.
-assistance-agent.tracking-log.error.resolution-required-if-complete = You must provide a resolution when the resolution percentage is 100%.
-assistance-agent.tracking-log.error.no-changes = You must make at least one change to update the tracking log.
-assistance-agent.tracking-log.error.first-log-not-in-review = The first tracking log cannot be marked as IN REVIEW.
-assistance-agent.tracking-log.resolution-percentage-must-increase = The resolution percentage must be greater than or equal to the last published tracking log.
-assistance-agent.tracking-log.last-log-in-review = Since the last tracking log is IN REVIEW, the current one must also be IN REVIEW.
-assistance-agent.tracking-log.in-review-needs-previous-acception-or-rejection = IN REVIEW indicator is only allowed if the previous tracking log was ACCEPTED or REJECTED.
+assistance-agent.tracking-log.error.indicator-must-be-pending = The indicator must be PENDING if the resolution percentage is less than 100%
+assistance-agent.tracking-log.error.indicator-must-be-accepted-or-rejected-or-in-review = The indicator must be ACCEPTED, REJECTED, or IN REVIEW if the resolution percentage is 100%
+assistance-agent.tracking-log.error.resolution-required-if-complete = You must provide a resolution when the resolution percentage is 100%
+assistance-agent.tracking-log.error.no-changes = You must make at least one change to update the tracking log
+assistance-agent.tracking-log.error.first-log-not-in-review = The first tracking log cannot be marked as IN REVIEW
+assistance-agent.tracking-log.resolution-percentage-must-increase = The resolution percentage must be greater than or equal to the last published tracking log
+assistance-agent.tracking-log.last-log-in-review = Since the last tracking log is IN REVIEW, the current one must also be IN REVIEW
+assistance-agent.tracking-log.in-review-needs-previous-acception-or-rejection = IN REVIEW indicator is only allowed if the previous tracking log was ACCEPTED or REJECTED
 
