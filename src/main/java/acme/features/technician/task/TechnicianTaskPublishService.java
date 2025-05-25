@@ -3,10 +3,13 @@ package acme.features.technician.task;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.task.Task;
+import acme.entities.task.TaskType;
 import acme.realms.technician.Technician;
 
 @GuiService
@@ -25,14 +28,16 @@ public class TechnicianTaskPublishService extends AbstractGuiService<Technician,
 		boolean status;
 		int userId;
 		int technicianId;
+		boolean isOwner = false;
 
-		int taskId = super.getRequest().getData("id", int.class);
+		int taskId = super.getRequest().getData("id", int.class, null);
 		Task task = this.repository.findById(taskId);
 		userId = super.getRequest().getPrincipal().getAccountId();
 		technicianId = this.repository.findTechnicianIdByUserId(userId);
-		Technician technicianOfTask = this.repository.findTechnicianByTaskId(taskId);
+		if (task != null)
+			isOwner = task.getMaintenanceRecord().getTechnician().getId() == technicianId;
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && technicianId == technicianOfTask.getId() && !task.getPublished();
+		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && isOwner && !task.getPublished();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -43,9 +48,10 @@ public class TechnicianTaskPublishService extends AbstractGuiService<Technician,
 
 		super.getBuffer().addData(task);
 	}
-
 	@Override
 	public void bind(final Task task) {
+		assert task != null;
+		super.bindObject(task, "type", "description", "priority", "estimatedDuration");
 	}
 
 	@Override
@@ -56,14 +62,22 @@ public class TechnicianTaskPublishService extends AbstractGuiService<Technician,
 	@Override
 	public void perform(final Task task) {
 		assert task != null;
-		task.setPublished(true);
-		this.repository.save(task);
+		Task toPublish = this.repository.findById(task.getId());
+		toPublish.setPublished(true);
+		this.repository.save(toPublish);
 	}
 
 	@Override
 	public void unbind(final Task task) {
-		super.getResponse().addData(super.unbindObject(task, "published"));
+		assert task != null;
+		SelectChoices types = SelectChoices.from(TaskType.class, task.getType());
 
+		Dataset dataset = super.unbindObject(task, "type", "description", "priority", "estimatedDuration", "published");
+		dataset.put("types", types);
+		super.getResponse().addGlobal("id", task.getId());
+		super.getResponse().addGlobal("maintenanceRecordId", task.getMaintenanceRecord().getId());
+		super.getResponse().addGlobal("redirect", false);
+		super.getResponse().addData(dataset);
 	}
 
 	@Override
