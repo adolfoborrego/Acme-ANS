@@ -47,8 +47,8 @@ flight-30,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit a
 
 
 #ESTOS LOS USA EL STUDENT3
-flight-38,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-04
-flight-39,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-04
+flight-38,Lorem ipsum dolor sit ame,TRUE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-04
+flight-39,Lorem ipsum dolor sit ame,TRUE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-04
 flight-40,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-04
 flight-41,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-04
 
