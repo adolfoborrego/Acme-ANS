@@ -13,7 +13,7 @@
 	    <acme:input-checkbox code="airline-manager.flight.list.label.indicator" path="indicator" />
 
     <!-- Atributos derivados (solo aparecen en el show) -->
-        <jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish|create')}">
+        <jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')}">
 	        <acme:input-checkbox code="airline-manager.flight.list.label.published" path="published" readonly="true"/>
 		    <acme:input-moment code="airline-manager.flight.list.label.sheduledDeparture" path="sheduledDeparture" readonly="true"/>
 		    <acme:input-moment code="airline-manager.flight.list.label.sheduledArrival" path="sheduledArrival" readonly="true"/>
@@ -23,13 +23,13 @@
        	</jstl:if>
     
     <!-- Botón para ver o crear escalas del vuelo -->
-	<jstl:if test="${acme:anyOf(_command, 'show|publish|update')}">
+	<jstl:if test="${acme:anyOf(_command, 'show|publish|update|delete')}">
 		<jstl:choose>
 			<jstl:when test="${published || numberOfLayovers > 0}">
-				<acme:button code="airline-manager.leg.list" action="/airline-manager/leg/list?flightId=${id}" />
+				<acme:button code="airline-manager.leg.list" action="/airline-manager/leg/list?id=${id}" />
 			</jstl:when>
 			<jstl:when test="${!published && numberOfLayovers == 0}">
-				<acme:button code="manager.leg.create.submit" action="/airline-manager/leg/create?flightId=${id}" />
+				<acme:button code="manager.leg.create.submit" action="/airline-manager/leg/create?id=${id}" />
 			</jstl:when>
 		</jstl:choose>
 	</jstl:if>
@@ -37,10 +37,10 @@
 	<!-- Botones de acción -->
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && !published}">
-			<acme:submit code="manager.flight.update.submit" action="/airline-manager/flight/update"/>
-			<acme:submit code="manager.flight.delete.submit" action="/airline-manager/flight/delete"/>
+			<acme:submit code="manager.flight.update.submit" action="/airline-manager/flight/update?id=${id}"/>
+			<acme:submit code="manager.flight.delete.submit" action="/airline-manager/flight/delete?id=${id}"/>
 			<jstl:if test="${canPublish}">
-				<acme:submit code="manager.flight.publish" action="/airline-manager/flight/publish" />
+				<acme:submit code="manager.flight.publish" action="/airline-manager/flight/publish?id=${id}" />
 			</jstl:if>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">

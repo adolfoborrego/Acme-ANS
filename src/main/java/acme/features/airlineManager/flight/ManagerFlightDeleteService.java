@@ -1,12 +1,15 @@
 
 package acme.features.airlineManager.flight;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flight.Flight;
+import acme.entities.leg.Leg;
 import acme.realms.airlineManager.AirlineManager;
 
 @GuiService
@@ -21,7 +24,13 @@ public class ManagerFlightDeleteService extends AbstractGuiService<AirlineManage
 		int id = super.getRequest().getData("id", int.class);
 		Flight flight = this.repository.findFlightById(id);
 
-		boolean authorised = flight != null && super.getRequest().getPrincipal().hasRealm(flight.getAirlineManager()) && !flight.getPublished();
+		int userAccountId;
+		int managerId;
+
+		userAccountId = super.getRequest().getPrincipal().getAccountId();
+		managerId = this.repository.findManagerByUsserAccountId(userAccountId);
+
+		boolean authorised = flight != null && super.getRequest().getPrincipal().hasRealm(flight.getAirlineManager()) && !flight.getPublished() && flight.getAirlineManager().getId() == managerId;
 
 		super.getResponse().setAuthorised(authorised);
 	}
@@ -40,7 +49,8 @@ public class ManagerFlightDeleteService extends AbstractGuiService<AirlineManage
 
 	@Override
 	public void validate(final Flight flight) {
-		// No se necesita
+		Collection<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
+		super.state(legs.isEmpty(), "*", "manager.flight.error.flight-has-legs");
 	}
 
 	@Override
