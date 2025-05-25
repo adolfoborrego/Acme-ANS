@@ -63,3 +63,7 @@ user-account-customer-03,true,"UserIdentity{name: ""Customer"", surname: ""Three
 # ADMINISTRATORS:
 user-account-administrator-1,true,"UserIdentity{name: ""Administrator"", surname: ""One"", email: ""administrator1@email.com""}",administrator1,administrator1
 user-account-administrator-2,true,"UserIdentity{name: ""Administrator"", surname: ""Two"", email: ""administrator2@email.com""}",administrator2,administrator2
+
+
+
+user-account-anonymous-02,false,"UserIdentity{name: 'John', surname: 'Doe', email: 'john.doe@acme.com'}",HIDDEN-PASSWORD,anonymous
