@@ -23,6 +23,6 @@ assistance-agent.tracking-log.list = List tracking logs
 
 # Errors
 assistance-agent.claim.error.no-changes=You must make at least one change to update the claim
-assistance-agent.claim.error.no-leg=May not be null.
-assistance-agent.claim.error.not-possible-to-modify-registrationMoment = Registration moment may not be modified.
-assistance-agent.claim.error.not-possible-to-modify-published = Published may not be modified.
+assistance-agent.claim.error.no-leg=May not be null
+assistance-agent.claim.error.not-possible-to-modify-registrationMoment = Registration moment may not be modified
+assistance-agent.claim.error.not-possible-to-modify-published = Published may not be modified
