@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.aircraft.AircraftStatus;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
 import acme.entities.task.Task;
 import acme.realms.technician.Technician;
@@ -33,7 +34,12 @@ public class TechnicianMaintRecordPublishService extends AbstractGuiService<Tech
 		int userId = super.getRequest().getPrincipal().getAccountId();
 		Technician technicianRequest = this.repository.findTechnicianByUserId(userId);
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && mr != null && technicianRequest.getId() == mr.getTechnician().getId() && !mr.getPublished() && !tasks.isEmpty() && allPublished;
+		boolean isAircraftDisabled = false;
+
+		if (mr.getAircraft() != null)
+			isAircraftDisabled = mr.getAircraft().getStatus().equals(AircraftStatus.DISABLED);
+
+		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && mr != null && technicianRequest.getId() == mr.getTechnician().getId() && !mr.getPublished() && !tasks.isEmpty() && allPublished && !isAircraftDisabled;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -62,6 +68,8 @@ public class TechnicianMaintRecordPublishService extends AbstractGuiService<Tech
 
 	@Override
 	public void unbind(final MaintenanceRecord maintenanceRecord) {
+		boolean isAircraftDisabled = maintenanceRecord.getAircraft().getStatus().equals(AircraftStatus.DISABLED);
+		super.getResponse().addGlobal("isAircraftDisabled", isAircraftDisabled);
 		super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecord.getId());
 		super.getResponse().addData(super.unbindObject(maintenanceRecord, "published"));
 	}

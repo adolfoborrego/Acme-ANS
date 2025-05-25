@@ -33,7 +33,7 @@ public interface TechnicianMaintRecordRepository extends AbstractRepository {
 	@Query("SELECT a FROM Aircraft a WHERE a.registrationNumber = :registrationNumber")
 	Aircraft findAircraftByRegistrationNumber(String registrationNumber);
 
-	@Query("SELECT DISTINCT a FROM Aircraft a")
+	@Query("SELECT DISTINCT a FROM Aircraft a WHERE a.status != acme.entities.aircraft.AircraftStatus.DISABLED")
 	Collection<Aircraft> findAllAircraft();
 
 	@Query("SELECT t FROM Task t WHERE t.maintenanceRecord.id = :maintenanceRecordId")

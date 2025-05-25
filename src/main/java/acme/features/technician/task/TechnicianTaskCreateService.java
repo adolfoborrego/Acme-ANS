@@ -8,6 +8,7 @@ import acme.client.components.views.SelectChoices;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.aircraft.AircraftStatus;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
 import acme.entities.task.Task;
 import acme.entities.task.TaskType;
@@ -30,10 +31,12 @@ public class TechnicianTaskCreateService extends AbstractGuiService<Technician, 
 		int maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
 		MaintenanceRecord maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
 
+		boolean isAircraftDisabled = maintenanceRecord.getAircraft().getStatus().equals(AircraftStatus.DISABLED);
+
 		int userId = super.getRequest().getPrincipal().getAccountId();
 		Integer technicianRequestId = this.repository.findTechnicianIdByUserId(userId);
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && !maintenanceRecord.getPublished() && technicianRequestId == maintenanceRecord.getTechnician().getId();
+		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && !maintenanceRecord.getPublished() && technicianRequestId == maintenanceRecord.getTechnician().getId() && !isAircraftDisabled;
 
 		super.getResponse().setAuthorised(status);
 	}

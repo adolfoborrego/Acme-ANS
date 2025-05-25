@@ -35,3 +35,7 @@ technician.maintenanceRecord.publish.no-tasks = No se puede publicar un registro
 
 technician.maintenanceRecord.noChanges = No se puede actualizar el registro si no se han efectuado cambios
 technician.maintenance-record.create-first-task = Crear primera tarea
+
+#Deshabilitado
+technician.maintenance-record.isAircraftDisabled = La aeronave asociada a este registro de mantenimiento está deshabilitada. Solo puedes ver la lista de tareas.
+technician.maintenance-record.isAircraftDisabled-task0 = La aeronave asociada a este registro de mantenimiento está deshabilitada y no tiene ninguna tarea. No puedes actualizarlo, publicarlo o crear nuevas tareas para ella.

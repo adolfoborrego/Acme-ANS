@@ -37,3 +37,9 @@ technician.maintenanceRecord.publish.no-tasks = You can't publish a maintenance 
 technician.maintenanceRecord.noChanges = A maintenance record without changes couldn't be updated
 
 technician.maintenance-record.create-first-task = Create First Task
+
+
+
+#Deshabilitado
+technician.maintenance-record.isAircraftDisabled = The aircraft associated with this maintenance record is disabled. You can only view the task list.
+technician.maintenance-record.isAircraftDisabled-task0 = The aircraft associated with this maintenance record is disabled and has no tasks. You cannot update, publish it or create any new tasks for it.
