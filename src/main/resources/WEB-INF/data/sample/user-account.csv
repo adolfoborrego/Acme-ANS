@@ -44,6 +44,32 @@ user-account-manager-01,true,"UserIdentity{name: ""Manager"", surname: ""One"", 
 user-account-manager-02,true,"UserIdentity{name: ""Manager"", surname: ""Two"", email: ""manager2@email.com""}",manager2,manager2
 user-account-manager-03,true,"UserIdentity{name: ""Manager"", surname: ""Three"", email: ""manager3@email.com""}",manager3,manager3
 user-account-manager-04,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager4@email.com""}",manager4,manager4
+user-account-manager-05,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager5@email.com""}",manager5,manager5
+user-account-manager-06,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager6@email.com""}",manager6,manager6
+user-account-manager-07,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager7@email.com""}",manager7,manager7
+user-account-manager-08,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager8@email.com""}",manager8,manager8
+user-account-manager-09,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager9@email.com""}",manager9,manager9
+user-account-manager-10,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager10@email.com""}",manager10,manager10
+user-account-manager-11,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager11@email.com""}",manager11,manager11
+user-account-manager-12,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager12@email.com""}",manager12,manager12
+user-account-manager-13,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager13@email.com""}",manager13,manager13
+user-account-manager-14,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager14@email.com""}",manager14,manager14
+user-account-manager-15,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager15@email.com""}",manager15,manager15
+user-account-manager-16,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager16@email.com""}",manager16,manager16
+user-account-manager-17,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager17@email.com""}",manager17,manager17
+user-account-manager-18,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager18@email.com""}",manager18,manager18
+user-account-manager-19,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager19@email.com""}",manager19,manager19
+user-account-manager-20,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager20@email.com""}",manager20,manager20
+user-account-manager-21,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager21@email.com""}",manager21,manager21
+user-account-manager-22,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager22@email.com""}",manager22,manager22
+user-account-manager-23,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager23@email.com""}",manager23,manager23
+user-account-manager-24,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager24@email.com""}",manager24,manager24
+user-account-manager-25,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager25@email.com""}",manager25,manager25
+user-account-manager-26,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager26@email.com""}",manager26,manager26
+user-account-manager-27,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager27@email.com""}",manager27,manager27
+user-account-manager-28,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager28@email.com""}",manager28,manager28
+user-account-manager-29,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager29@email.com""}",manager29,manager29
+user-account-manager-30,true,"UserIdentity{name: ""Manager"", surname: ""Four"", email: ""manager30@email.com""}",manager30,manager30
 
 # AGENTS:
 user-account-agent-01,true,"UserIdentity{name: ""Agent"", surname: ""ZYX"", email: ""agent1@acme.com""}",agent1,agent1

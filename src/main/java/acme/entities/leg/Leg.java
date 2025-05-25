@@ -17,7 +17,6 @@ import javax.validation.Valid;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
-import acme.client.components.validation.Optional;
 import acme.client.helpers.MomentHelper;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
@@ -113,17 +112,17 @@ public class Leg extends AbstractEntity {
 	@Valid
 	private Airport		departureAirport;
 
-	@Optional
+	@Mandatory
 	@ManyToOne
 	@Valid
 	private Airport		arrivalAirport;
 
-	@Optional
+	@Mandatory
 	@ManyToOne
 	@Valid
 	private Aircraft	aircraft;
 
-	@Optional
+	@Mandatory
 	@ManyToOne
 	@Valid
 	private Flight		flight;
