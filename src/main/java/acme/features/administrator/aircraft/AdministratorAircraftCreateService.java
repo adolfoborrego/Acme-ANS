@@ -1,6 +1,7 @@
 
 package acme.features.administrator.aircraft;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.aircraft.AircraftStatus;
+import acme.entities.airline.Airline;
 
 @GuiService
 public class AdministratorAircraftCreateService extends AbstractGuiService<Administrator, Aircraft> {
@@ -28,8 +30,13 @@ public class AdministratorAircraftCreateService extends AbstractGuiService<Admin
 	@Override
 	public void authorise() {
 		boolean status;
-
-		status = super.getRequest().getPrincipal().hasRealmOfType(Administrator.class);
+		boolean existsAirline = true;
+		Integer airlineId = super.getRequest().getData("airline", int.class, null);
+		if (airlineId != null && airlineId != 0) {
+			Collection<Airline> allAirlines = this.repository.findAllAirlines();
+			existsAirline = allAirlines.stream().anyMatch(a -> a.getId() == airlineId);
+		}
+		status = super.getRequest().getPrincipal().hasRealmOfType(Administrator.class) && existsAirline;
 
 		super.getResponse().setAuthorised(status);
 	}

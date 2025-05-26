@@ -101,7 +101,7 @@ public class TechnicianTaskUpdateService extends AbstractGuiService<Technician, 
 		boolean mismaDescription = Objects.equals(nueva.getDescription(), original.getDescription());
 		boolean mismaPriority = Objects.equals(nueva.getPriority(), original.getPriority());
 		boolean mismaEstimatedDuration = Objects.equals(nueva.getEstimatedDuration(), original.getEstimatedDuration());
-		boolean mismoType = Objects.equals(nueva.getType().toString(), original.getType().toString());
+		boolean mismoType = Objects.equals(nueva.getType(), original.getType());
 
 		return !mismaDescription || !mismaPriority || !mismaEstimatedDuration || !mismoType;
 	}

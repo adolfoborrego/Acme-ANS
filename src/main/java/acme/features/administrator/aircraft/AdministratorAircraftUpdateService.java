@@ -1,6 +1,7 @@
 
 package acme.features.administrator.aircraft;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,6 +15,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.aircraft.AircraftStatus;
+import acme.entities.airline.Airline;
 
 @GuiService
 public class AdministratorAircraftUpdateService extends AbstractGuiService<Administrator, Aircraft> {
@@ -28,8 +30,13 @@ public class AdministratorAircraftUpdateService extends AbstractGuiService<Admin
 
 	@Override
 	public void authorise() {
-		var principal = super.getRequest().getPrincipal();
-		boolean authorised = principal.hasRealmOfType(Administrator.class);
+		boolean existsAirline = true;
+		Integer airlineId = super.getRequest().getData("airline", int.class, null);
+		if (airlineId != null && airlineId != 0) {
+			Collection<Airline> allAirlines = this.repository.findAllAirlines();
+			existsAirline = allAirlines.stream().anyMatch(a -> a.getId() == airlineId);
+		}
+		boolean authorised = super.getRequest().getPrincipal().hasRealmOfType(Administrator.class) && existsAirline;
 
 		// Prevent update if aircraft is DISABLED
 		if (authorised && super.getRequest().hasData("id", int.class)) {
@@ -100,7 +107,7 @@ public class AdministratorAircraftUpdateService extends AbstractGuiService<Admin
 		boolean mismoRegistrationNumber = Objects.equals(nuevo.getRegistrationNumber(), original.getRegistrationNumber());
 		boolean mismaCapacity = Objects.equals(nuevo.getCapacity(), original.getCapacity());
 		boolean mismoCargoWeight = Objects.equals(nuevo.getCargoWeight(), original.getCargoWeight());
-		boolean mismoStatus = Objects.equals(nuevo.getStatus().toString(), original.getStatus().toString());
+		boolean mismoStatus = Objects.equals(nuevo.getStatus(), original.getStatus());
 		boolean mismosDetails = Objects.equals(nuevo.getDetails(), original.getDetails());
 		boolean mismoAirline = Objects.equals(nuevo.getAirline().getIataCode(), original.getAirline().getIataCode());
 
