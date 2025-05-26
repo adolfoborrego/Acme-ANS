@@ -1,4 +1,32 @@
 key,key:userAccount,licenseNumber,phoneNumber,specialisation,annualHealthTest,yearsOfExperience,certifications
-technician1,user-account-technician-01,TO123456,+1234567890,Aeronautical Maintenance,true,10,Certified Aircraft Mechanic
-technician2,user-account-technician-02,TT987654,+9876543210,Avionics,false,5,Electronics and Instrumentation Diploma
-technician3,user-account-technician-03,TT124365,+1326541210,Aircrafts,true,7,Electronics and Certified Aircraft Mechanic
+#Specialisation pruebas
+technician1,user-account-technician-01,TO123456,+1234567890,L,true,10,"Lorem ipsum dolor sit amet, consectetur"
+technician2,user-account-technician-02,TT987654,+9876543210,Lo,true,5,"Lorem ipsum dolor sit amet, consectetur"
+technician3,user-account-technician-03,TT124365,+1326541210,"Lorem ipsum dolor sit amet, consectetur",true,7,"Lorem ipsum dolor sit amet, consectetur"
+technician4,user-account-technician-04,TN123456,+4185236587,"Lorem ipsum dolor sit amet, consectetur adipiscin",true,7,"Lorem ipsum dolor sit amet, consectetur"
+technician5,user-account-technician-05,TN523456,+5185236587,"Lorem ipsum dolor sit amet, consectetur adipiscing",true,7,"Lorem ipsum dolor sit amet, consectetur"
+technician6,user-account-technician-06,TN623456,+6185236587,โลเร็ม อิปซัม,true,7,"Lorem ipsum dolor sit amet, consectetur"
+technician7,user-account-technician-07,TN723456,+7185236587,لوريم إيبسوم,true,7,"Lorem ipsum dolor sit amet, consectetur"
+technician8,user-account-technician-08,TN823456,+8185236587,洛伦·伊普森,true,7,"Lorem ipsum dolor sit amet, consectetur"
+technician9,user-account-technician-09,TN913456,+9185236587,<marquee>Hacked</marquee>,true,7,"Lorem ipsum dolor sit amet, consectetur"
+technician10,user-account-technician-10,TN100456,+1085236587,<script>alert(‘Hacked!’);</script>,true,7,"Lorem ipsum dolor sit amet, consectetur"
+technician11,user-account-technician-11,TN113456,+1115236587,'' or 'A' = 'A,true,7,"Lorem ipsum dolor sit amet, consectetur"
+#annualHealthTests
+technician12,user-account-technician-12,TN000012,+1115231212,"Lorem ipsum dolor sit amet, consectetur",true,7,"Lorem ipsum dolor sit amet, consectetur"
+technician13,user-account-technician-13,TN000013,+1315231212,"Lorem ipsum dolor sit amet, consectetur",false,7,"Lorem ipsum dolor sit amet, consectetur"
+#yearsOfExperience
+technician14,user-account-technician-14,TN000014,+1445231212,"Lorem ipsum dolor sit amet, consectetur",true,0,"Lorem ipsum dolor sit amet, consectetur"
+technician15,user-account-technician-15,TN000015,+1555231212,"Lorem ipsum dolor sit amet, consectetur",true,1,"Lorem ipsum dolor sit amet, consectetur"
+technician16,user-account-technician-16,TN000016,+1666231212,"Lorem ipsum dolor sit amet, consectetur",true,79,"Lorem ipsum dolor sit amet, consectetur"
+technician17,user-account-technician-17,TN000017,+1777731212,"Lorem ipsum dolor sit amet, consectetur",true,80,"Lorem ipsum dolor sit amet, consectetur"
+#Pruebas certifications
+technician18,user-account-technician-18,TN000018,+1888231212,"Lorem ipsum dolor sit amet, consectetur",true,7,""
+technician19,user-account-technician-19,TN000019,+1999231212,"Lorem ipsum dolor sit amet, consectetur",true,7,L
+technician20,user-account-technician-20,TN000020,+2000231212,"Lorem ipsum dolor sit amet, consectetur",true,7,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor"
+technician21,user-account-technician-21,TN000021,+2100231212,"Lorem ipsum dolor sit amet, consectetur",true,7,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor."
+technician22,user-account-technician-22,TN000022,+2200231212,"Lorem ipsum dolor sit amet, consectetur",true,7,โลเร็ม อิปซัม
+technician23,user-account-technician-23,TN000023,+2300231212,"Lorem ipsum dolor sit amet, consectetur",true,7,لوريم إيبسوم
+technician24,user-account-technician-24,TN000024,+2400231212,"Lorem ipsum dolor sit amet, consectetur",true,7,洛伦·伊普森
+technician25,user-account-technician-25,TN000025,+2500231212,"Lorem ipsum dolor sit amet, consectetur",true,7,<marquee>Hacked</marquee>
+technician26,user-account-technician-26,TN000026,+2600231212,"Lorem ipsum dolor sit amet, consectetur",true,7,<script>alert(‘Hacked!’);</script>
+technician27,user-account-technician-27,TN000027,+2700231212,"Lorem ipsum dolor sit amet, consectetur",true,7,'' or 'A' = 'A
