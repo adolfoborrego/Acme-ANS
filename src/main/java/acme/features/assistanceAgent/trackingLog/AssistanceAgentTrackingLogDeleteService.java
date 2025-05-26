@@ -3,9 +3,12 @@ package acme.features.assistanceAgent.trackingLog;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.trackingLog.TrackingLog;
+import acme.entities.trackingLog.TrackingLogIndicator;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
@@ -47,14 +50,22 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 	@Override
 	public void validate(final TrackingLog trackingLog) {
 		assert trackingLog != null;
-		if (trackingLog.getPublished())
-			throw new IllegalArgumentException("Attempted to delete a published TrackingLog: possible tampering detected.");
 	}
 
 	@Override
 	public void perform(final TrackingLog trackingLog) {
 		assert trackingLog != null;
 		this.repository.delete(trackingLog);
+	}
+
+	@Override
+	public void unbind(final TrackingLog trackingLog) {
+		assert trackingLog != null;
+		Dataset dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "indicator", "resolution", "published");
+		SelectChoices trackingLogIndicators = SelectChoices.from(TrackingLogIndicator.class, trackingLog.getIndicator());
+		dataset.put("trackingLogIndicators", trackingLogIndicators);
+		dataset.put("claimId", trackingLog.getClaim().getId());
+		super.getResponse().addData(dataset);
 	}
 
 }

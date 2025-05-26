@@ -1,6 +1,8 @@
 
 package acme.features.assistanceAgent.trackingLog;
 
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -52,19 +54,22 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 	@Override
 	public void validate(final TrackingLog trackingLog) {
 		assert trackingLog != null;
-		final boolean isComplete = trackingLog.getResolutionPercentage() == 100;
-		final TrackingLogIndicator indicator = trackingLog.getIndicator();
-		if (!isComplete)
-			super.state(indicator == TrackingLogIndicator.PENDING, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-pending");
-		if (isComplete) {
-			boolean valid = indicator == TrackingLogIndicator.ACCEPTED || indicator == TrackingLogIndicator.REJECTED || indicator == TrackingLogIndicator.IN_REVIEW;
-			super.state(valid, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-accepted-or-rejected-or-in-review");
-			boolean hasResolution = trackingLog.getResolution() != null && !trackingLog.getResolution().trim().isEmpty();
-			super.state(hasResolution, "resolution", "assistance-agent.tracking-log.error.resolution-required-if-complete");
+		boolean hasResolutionPercentage = trackingLog.getResolutionPercentage() != null;
+		if (hasResolutionPercentage) {
+			final boolean isComplete = trackingLog.getResolutionPercentage() == 100;
+			final TrackingLogIndicator indicator = trackingLog.getIndicator();
+			if (!isComplete)
+				super.state(indicator == TrackingLogIndicator.PENDING, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-pending");
+			if (isComplete) {
+				boolean valid = indicator == TrackingLogIndicator.ACCEPTED || indicator == TrackingLogIndicator.REJECTED || indicator == TrackingLogIndicator.IN_REVIEW;
+				super.state(valid, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-accepted-or-rejected-or-in-review");
+				boolean hasResolution = trackingLog.getResolution() != null && !trackingLog.getResolution().trim().isEmpty();
+				super.state(hasResolution, "resolution", "assistance-agent.tracking-log.error.resolution-required-if-complete");
+			}
 		}
 		TrackingLog originalTrackingLog = this.repository.findTrackingLogById(trackingLog.getId());
-		boolean isModified = !trackingLog.getStep().equals(originalTrackingLog.getStep()) || trackingLog.getResolutionPercentage() != originalTrackingLog.getResolutionPercentage() || trackingLog.getIndicator() != originalTrackingLog.getIndicator()
-			|| trackingLog.getResolution() != null && !trackingLog.getResolution().equals(originalTrackingLog.getResolution()) || trackingLog.getResolution() == null && originalTrackingLog.getResolution() != null;
+		boolean isModified = !Objects.equals(trackingLog.getStep(), originalTrackingLog.getStep()) || !Objects.equals(trackingLog.getResolutionPercentage(), originalTrackingLog.getResolutionPercentage())
+			|| !Objects.equals(trackingLog.getIndicator(), originalTrackingLog.getIndicator()) || !Objects.equals(trackingLog.getResolution(), originalTrackingLog.getResolution());
 		super.state(isModified, "*", "assistance-agent.tracking-log.error.no-changes");
 	}
 
