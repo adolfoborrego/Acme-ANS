@@ -38,8 +38,9 @@ public class ManagerFlightShowService extends AbstractGuiService<AirlineManager,
 		userAccountId = super.getRequest().getPrincipal().getAccountId();
 		managerId = this.repository.findManagerByUsserAccountId(userAccountId);
 
-		status = flight != null && flight.getAirlineManager().getId() == managerId;
-
+		status = false;
+		if (flight != null)
+			status = flight.getAirlineManager().getId() == managerId;
 		super.getResponse().setAuthorised(status);
 	}
 
