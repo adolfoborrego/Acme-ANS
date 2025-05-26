@@ -3,6 +3,7 @@ package acme.features.customer.passenger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.Passenger;
@@ -40,6 +41,17 @@ public class CustomerPassengerPublishService extends AbstractGuiService<Customer
 	@Override
 	public void bind(final Passenger passenger) {
 		// No binding necesario para publicación
+	}
+
+	@Override
+	public void unbind(final Passenger passenger) {
+
+		assert passenger != null;
+
+		Dataset dataset;
+		dataset = super.unbindObject(passenger, "fullName", "passportNumber", "specialNeeds", "email", "dateOfBirth", "published");
+
+		super.getResponse().addData(dataset);
 	}
 
 	@Override
