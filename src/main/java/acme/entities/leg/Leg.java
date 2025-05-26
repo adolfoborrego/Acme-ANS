@@ -30,7 +30,7 @@ import lombok.Setter;
 // @Table(name = "leg", indexes = {
 // 	@Index(name = "idx_leg_flight", columnList = "flight_id"), @Index(name = "idx_leg_scheduled_arrival", columnList = "scheduledArrival"), @Index(name = "idx_leg_published", columnList = "published"),
 // 	@Index(name = "idx_leg_flight_departure", columnList = "flight_id, scheduledDeparture")
-// })
+//  })
 public class Leg extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
