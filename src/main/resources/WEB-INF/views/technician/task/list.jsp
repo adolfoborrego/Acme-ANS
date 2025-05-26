@@ -11,6 +11,14 @@
 	<acme:list-column code="technician.task.list.label.published" path="published" />
     <acme:list-payload path="payload"/>	
 </acme:list>
-<jstl:if test="${showCreate}">
-	<acme:button code="technician.task.create" action="/technician/task/create?maintenanceRecordId=${maintenanceRecordId}" />
-</jstl:if>
+
+	<jstl:choose>
+		<jstl:when test="${!isAircraftDisabled && (numberOfTasks == 0 || showCreate)}">
+				<acme:button code="technician.task.create" action="/technician/task/create?maintenanceRecordId=${maintenanceRecordId}" />
+		</jstl:when>
+		<jstl:when test="${isAircraftDisabled && (numberOfTasks == 0 || showCreate)}">
+				<acme:print code="technician.task.list.aircraftDisabled"/>	
+		</jstl:when>
+	</jstl:choose>
+	
+

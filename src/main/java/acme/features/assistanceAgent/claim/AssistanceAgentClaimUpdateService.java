@@ -1,6 +1,7 @@
 
 package acme.features.assistanceAgent.claim;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 
@@ -13,6 +14,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
 import acme.entities.claim.ClaimType;
+import acme.entities.leg.Leg;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
@@ -24,14 +26,25 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 
 	@Override
 	public void authorise() {
-		int claimId = super.getRequest().getData("id", int.class);
 		boolean isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
-		int userAccountId = super.getRequest().getPrincipal().getAccountId();
-		int assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
-		int ownerId = this.repository.findAssistanceAgentIdByClaimId(claimId);
-		boolean isClaimOwner = assistanceAgentId == ownerId;
+		int claimId = super.getRequest().getData("id", int.class);
 		Claim claim = this.repository.findClaimById(claimId);
-		boolean status = claim != null && isAssistanceAgent && isClaimOwner;
+		boolean isClaimOwner = false;
+		boolean isClaimPublished = true;
+		if (isAssistanceAgent && claim != null) {
+			int userAccountId = super.getRequest().getPrincipal().getAccountId();
+			int assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
+			isClaimOwner = claim.getAssistanceAgent().getId() == assistanceAgentId;
+			isClaimPublished = claim.getPublished();
+		}
+		boolean isValidLeg = true;
+		if (super.getRequest().hasData("leg", int.class)) {
+			int legId = super.getRequest().getData("leg", int.class);
+			Date now = MomentHelper.getCurrentMoment();
+			Collection<Leg> validLegs = this.repository.findFinishedLegs(now);
+			isValidLeg = validLegs.stream().anyMatch(validLeg -> validLeg.getId() == legId) || legId == 0;
+		}
+		boolean status = isClaimOwner && !isClaimPublished && isValidLeg;
 		super.getResponse().setAuthorised(status);
 	}
 

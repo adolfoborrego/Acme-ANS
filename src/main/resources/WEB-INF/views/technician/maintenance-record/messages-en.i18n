@@ -27,7 +27,7 @@ technician.maintenanceRecord.create.submit = Create
 
 technician.maintenanceRecord.moment-before-inspection.moment = The moment must be before the next inspection
 technician.maintenanceRecord.moment-before-inspection.inspectionDueDate = The next inspection must be after the moment
-technician.maintenanceRecord.estimatedCost-prefix-valid = Make sure to use a valid prefix like "US" or "EUR"
+technician.maintenanceRecord.estimatedCost-prefix-valid = Make sure to use a valid prefix like "USD" or "EUR"
 technician.maintenanceRecord.aircraft-non-null = Choose any aircraft
 
 
@@ -37,3 +37,9 @@ technician.maintenanceRecord.publish.no-tasks = You can't publish a maintenance 
 technician.maintenanceRecord.noChanges = A maintenance record without changes couldn't be updated
 
 technician.maintenance-record.create-first-task = Create First Task
+
+
+
+#Deshabilitado
+technician.maintenance-record.isAircraftDisabled = The aircraft associated with this maintenance record is disabled. You can only view the task list.
+technician.maintenance-record.isAircraftDisabled-task0 = The aircraft associated with this maintenance record is disabled and has no tasks. You cannot update, publish it or create any new tasks for it.

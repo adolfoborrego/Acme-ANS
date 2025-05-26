@@ -27,7 +27,7 @@ technician.maintenanceRecord.create.submit = Crear
 
 technician.maintenanceRecord.moment-before-inspection.moment = El momento debe ser antes que la siguiente revisión
 technician.maintenanceRecord.moment-before-inspection.inspectionDueDate = La siguiente revisión debe ser después que el momento
-technician.maintenanceRecord.estimatedCost-prefix-valid = Utilice un prefijo válido como US o EUR
+technician.maintenanceRecord.estimatedCost-prefix-valid = Utilice un prefijo válido como "USD" o "EUR"
 technician.maintenanceRecord.aircraft-non-null = Elija alguna de las aeronaves
 
 technician.maintenanceRecord.publish.task-unpublished = No se puede publicar un registro de mantenimiento si no están todas sus tareas publicadas
@@ -35,3 +35,7 @@ technician.maintenanceRecord.publish.no-tasks = No se puede publicar un registro
 
 technician.maintenanceRecord.noChanges = No se puede actualizar el registro si no se han efectuado cambios
 technician.maintenance-record.create-first-task = Crear primera tarea
+
+#Deshabilitado
+technician.maintenance-record.isAircraftDisabled = La aeronave asociada a este registro de mantenimiento está deshabilitada. Solo puedes ver la lista de tareas.
+technician.maintenance-record.isAircraftDisabled-task0 = La aeronave asociada a este registro de mantenimiento está deshabilitada y no tiene ninguna tarea. No puedes actualizarlo, publicarlo o crear nuevas tareas para ella.

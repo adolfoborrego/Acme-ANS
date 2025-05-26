@@ -9,6 +9,7 @@ import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.aircraft.AircraftStatus;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
 import acme.entities.maintenanceRecord.MaintenanceRecordStatus;
 import acme.entities.task.Task;
@@ -35,7 +36,7 @@ public class TechnicianMaintRecordShowService extends AbstractGuiService<Technic
 
 		userId = super.getRequest().getPrincipal().getAccountId();
 		technicianId = this.repository.findTechnicianIdByUserId(userId);
-		maintenanceRecordId = super.getRequest().getData("id", int.class);
+		maintenanceRecordId = super.getRequest().getData("id", int.class, null);
 		maintenanceRecord = this.repository.findById(maintenanceRecordId);
 
 		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && maintenanceRecord != null && technicianId == maintenanceRecord.getTechnician().getId();
@@ -60,18 +61,17 @@ public class TechnicianMaintRecordShowService extends AbstractGuiService<Technic
 		assert maintenanceRecord != null;
 		Collection<Task> tasks = this.repository.findAllTaskByMaintenanceRecordId(maintenanceRecord.getId());
 		boolean allTasksPublished = this.allTasksPublished(tasks);
-
-		SelectChoices aircrafts = SelectChoices.from(this.repository.findAllAircraft(), "registrationNumber", maintenanceRecord.getAircraft());
+		boolean isAircraftDisabled = maintenanceRecord.getAircraft().getStatus().equals(AircraftStatus.DISABLED);
 		SelectChoices statuses = SelectChoices.from(MaintenanceRecordStatus.class, maintenanceRecord.getCurrentStatus());
 		int numberOfTasks = this.repository.cuentaNumeroTasks(maintenanceRecord.getId());
 		Dataset dataset;
-		dataset = super.unbindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "published", "aircraft");
-		dataset.put("aircrafts", aircrafts);
+		dataset = super.unbindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "published");
 		dataset.put("statusChoices", statuses);
-
+		dataset.put("aircraft", maintenanceRecord.getAircraft().getRegistrationNumber());
 		super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecord.getId());
 		super.getResponse().addGlobal("numberOfTasks", numberOfTasks);
 		super.getResponse().addGlobal("allTasksPublished", allTasksPublished);
+		super.getResponse().addGlobal("isAircraftDisabled", isAircraftDisabled);
 		super.getResponse().addData(dataset);
 	}
 

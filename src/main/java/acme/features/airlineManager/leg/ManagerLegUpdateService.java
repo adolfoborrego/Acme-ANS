@@ -63,16 +63,22 @@ public class ManagerLegUpdateService extends AbstractGuiService<AirlineManager, 
 	public void validate(final Leg leg) {
 		assert leg != null;
 
-		boolean diferentesAeropuertos = !leg.getDepartureAirport().equals(leg.getArrivalAirport());
-		super.state(diferentesAeropuertos, "arrivalAirport", "manager.leg.error.same-airports");
+		if (leg.getDepartureAirport() != null && leg.getArrivalAirport() != null) {
+			boolean diferentesAeropuertos = !leg.getDepartureAirport().equals(leg.getArrivalAirport());
+			super.state(diferentesAeropuertos, "arrivalAirport", "manager.leg.error.same-airports");
+		}
 
-		boolean llegadaDespuesSalida = leg.getScheduledArrival().after(leg.getScheduledDeparture());
-		super.state(llegadaDespuesSalida, "scheduledArrival", "manager.leg.error.arrival-before-departure");
+		if (leg.getScheduledArrival() != null && leg.getScheduledDeparture() != null) {
+			boolean llegadaDespuesSalida = leg.getScheduledArrival().after(leg.getScheduledDeparture());
+			super.state(llegadaDespuesSalida, "scheduledArrival", "manager.leg.error.arrival-before-departure");
+		}
 
 		List<Leg> existingLegs = this.repository.findLegsByFlightId(leg.getFlight().getId());
-		boolean noSolapamiento = existingLegs.stream()
-			.allMatch(existingLeg -> existingLeg.getId() == leg.getId() || leg.getScheduledArrival().before(existingLeg.getScheduledDeparture()) || leg.getScheduledDeparture().after(existingLeg.getScheduledArrival()));
-		super.state(noSolapamiento, "scheduledDeparture", "manager.leg.error.overlapping-legs");
+		if (leg.getScheduledArrival() != null && leg.getScheduledDeparture() != null) {
+			boolean noSolapamiento = existingLegs.stream()
+				.allMatch(existingLeg -> existingLeg.getId() == leg.getId() || leg.getScheduledArrival().before(existingLeg.getScheduledDeparture()) || leg.getScheduledDeparture().after(existingLeg.getScheduledArrival()));
+			super.state(noSolapamiento, "scheduledDeparture", "manager.leg.error.overlapping-legs");
+		}
 
 		// if (super.getRequest().getCommand().equals("update")) {
 		//Leg original = this.repository.findLegById(leg.getId());

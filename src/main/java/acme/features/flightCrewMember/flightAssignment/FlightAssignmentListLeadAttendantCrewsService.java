@@ -34,6 +34,7 @@ public class FlightAssignmentListLeadAttendantCrewsService extends AbstractGuiSe
 
 		int fid = request.getData("Fid", int.class);
 		FlightAssignment assignment = this.repository.findById(fid);
+
 		if (assignment == null || !"CONFIRMED".equals(assignment.getCurrentStatus()) || !this.isCurrentUserLead(assignment)) {
 			super.getResponse().setAuthorised(false);
 			return;

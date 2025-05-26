@@ -25,6 +25,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+// @Table(name = "flight", indexes = {
+//	@Index(name = "idx_flight_airline", columnList = "airline_id"), @Index(name = "idx_flight_airline_published", columnList = "airline_id, published"), @Index(name = "idx_flight_published", columnList = "published"),
+// 	@Index(name = "idx_flight_airline_manager", columnList = "airlineManager_id")
+// })
 public class Flight extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------

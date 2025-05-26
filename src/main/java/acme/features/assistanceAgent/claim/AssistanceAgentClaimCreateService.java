@@ -1,6 +1,7 @@
 
 package acme.features.assistanceAgent.claim;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
 import acme.entities.claim.ClaimType;
+import acme.entities.leg.Leg;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
@@ -23,8 +25,15 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 
 	@Override
 	public void authorise() {
-		boolean status;
-		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+		boolean isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+		boolean isValidLeg = true;
+		if (super.getRequest().hasData("leg", int.class)) {
+			int legId = super.getRequest().getData("leg", int.class);
+			Date now = MomentHelper.getCurrentMoment();
+			Collection<Leg> validLegs = this.repository.findFinishedLegs(now);
+			isValidLeg = validLegs.stream().anyMatch(validLeg -> validLeg.getId() == legId) || legId == 0;
+		}
+		boolean status = isAssistanceAgent && isValidLeg;
 		super.getResponse().setAuthorised(status);
 	}
 

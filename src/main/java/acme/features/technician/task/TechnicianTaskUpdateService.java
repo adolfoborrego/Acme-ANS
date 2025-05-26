@@ -30,14 +30,17 @@ public class TechnicianTaskUpdateService extends AbstractGuiService<Technician, 
 		boolean status;
 		int userId;
 		int technicianId;
+		boolean isOwner = false;
 
-		int taskId = super.getRequest().getData("id", int.class);
+		int taskId = super.getRequest().getData("id", int.class, null);
 		Task task = this.repository.findById(taskId);
 		userId = super.getRequest().getPrincipal().getAccountId();
 		technicianId = this.repository.findTechnicianIdByUserId(userId);
-		Technician technicianOfTask = this.repository.findTechnicianByTaskId(taskId);
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && technicianId == technicianOfTask.getId() && !task.getPublished();
+		if (task != null)
+			isOwner = task.getMaintenanceRecord().getTechnician().getId() == technicianId;
+
+		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && isOwner && !task.getPublished();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -45,7 +48,6 @@ public class TechnicianTaskUpdateService extends AbstractGuiService<Technician, 
 	public void load() {
 		int taskId = super.getRequest().getData("id", int.class);
 		Task task = this.repository.findById(taskId);
-
 		super.getBuffer().addData(task);
 	}
 
@@ -66,7 +68,14 @@ public class TechnicianTaskUpdateService extends AbstractGuiService<Technician, 
 	@Override
 	public void perform(final Task task) {
 		assert task != null;
-		this.repository.save(task);
+		Task toUpdate = this.repository.findById(task.getId());
+
+		toUpdate.setType(task.getType());
+		toUpdate.setPriority(task.getPriority());
+		toUpdate.setEstimatedDuration(task.getEstimatedDuration());
+		toUpdate.setDescription(task.getDescription());
+
+		this.repository.save(toUpdate);
 	}
 
 	@Override
@@ -76,7 +85,9 @@ public class TechnicianTaskUpdateService extends AbstractGuiService<Technician, 
 
 		Dataset dataset = super.unbindObject(task, "type", "description", "priority", "estimatedDuration", "published");
 		dataset.put("types", types);
+		super.getResponse().addGlobal("id", task.getId());
 		super.getResponse().addGlobal("maintenanceRecordId", task.getMaintenanceRecord().getId());
+		super.getResponse().addGlobal("redirect", false);
 		super.getResponse().addData(dataset);
 	}
 
