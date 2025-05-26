@@ -5,11 +5,14 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.AircraftStatus;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
+import acme.entities.maintenanceRecord.MaintenanceRecordStatus;
 import acme.entities.task.Task;
 import acme.realms.technician.Technician;
 
@@ -67,11 +70,21 @@ public class TechnicianMaintRecordPublishService extends AbstractGuiService<Tech
 
 	@Override
 	public void unbind(final MaintenanceRecord maintenanceRecord) {
+		SelectChoices statuses = SelectChoices.from(MaintenanceRecordStatus.class, maintenanceRecord.getCurrentStatus());
+		int numberOfTasks = this.repository.cuentaNumeroTasks(maintenanceRecord.getId());
+		Collection<Task> tasks = this.repository.findAllTaskByMaintenanceRecordId(maintenanceRecord.getId());
+		boolean allTasksPublished = this.allTasksPublished(tasks);
 		boolean isAircraftDisabled = maintenanceRecord.getAircraft().getStatus().equals(AircraftStatus.DISABLED);
-		super.getResponse().addGlobal("isAircraftDisabled", isAircraftDisabled);
+
+		Dataset dataset = super.unbindObject(maintenanceRecord, "moment", "currentStatus", "inspectionDueDate", "estimatedCost", "notes", "published");
+		dataset.put("aircraft", maintenanceRecord.getAircraft().getRegistrationNumber());
 		super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecord.getId());
+		super.getResponse().addGlobal("allTasksPublished", allTasksPublished);
+		super.getResponse().addGlobal("isAircraftDisabled", isAircraftDisabled);
+		dataset.put("statusChoices", statuses);
+		super.getResponse().addGlobal("numberOfTasks", numberOfTasks);
 		super.getResponse().addGlobal("redirect", false);
-		super.getResponse().addData(super.unbindObject(maintenanceRecord, "published"));
+		super.getResponse().addData(dataset);
 	}
 
 	@Override

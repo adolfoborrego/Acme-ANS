@@ -7,7 +7,9 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -26,6 +28,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Table(indexes = {
+	@Index(name = "idx_technician", columnList = "technician_id"), @Index(name = "idx_aircraft", columnList = "aircraft_id"), @Index(name = "idx_published", columnList = "published"), @Index(name = "idx_moment", columnList = "moment"),
+	@Index(name = "idx_inspection_date", columnList = "inspectionDueDate")
+})
 @Getter
 @Setter
 public class MaintenanceRecord extends AbstractEntity {
