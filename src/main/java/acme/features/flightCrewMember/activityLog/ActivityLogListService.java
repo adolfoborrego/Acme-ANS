@@ -36,6 +36,11 @@ public class ActivityLogListService extends AbstractGuiService<FlightCrewMember,
 		}
 
 		// Must reference a FlightAssignment belonging to current user
+		if (!request.hasData("id", int.class)) {
+			super.getResponse().setAuthorised(false);
+			return;
+		}
+
 		int assignmentId = request.getData("id", int.class);
 		FlightAssignment assignment = this.assignmentRepository.findById(assignmentId);
 		if (assignment == null || !assignment.getLeg().getStatus().equals(LegStatus.LANDED) || assignment.getFlightCrewMember().getId() != principal.getActiveRealm().getId()) {

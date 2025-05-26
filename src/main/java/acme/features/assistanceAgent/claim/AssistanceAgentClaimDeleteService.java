@@ -53,8 +53,6 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 	@Override
 	public void validate(final Claim claim) {
 		assert claim != null;
-		if (claim.getPublished())
-			throw new IllegalArgumentException("Attempted to delete a pusblished Claim: possible tampering detected.");
 	}
 
 	@Override

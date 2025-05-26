@@ -1,11 +1,17 @@
 
 package acme.features.assistanceAgent.claim;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
+import acme.entities.claim.ClaimType;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
@@ -59,6 +65,15 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 	@Override
 	public void unbind(final Claim claim) {
 		assert claim != null;
+		Dataset dataset;
+		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "published");
+		dataset.put("indicator", claim.getIndicator());
+		SelectChoices claimTypes = SelectChoices.from(ClaimType.class, claim.getType());
+		dataset.put("claimTypes", claimTypes);
+		Date now = MomentHelper.getCurrentMoment();
+		SelectChoices legs = SelectChoices.from(this.repository.findFinishedLegs(now), "id", claim.getLeg());
+		dataset.put("legs", legs);
+		super.getResponse().addData(dataset);
 	}
 
 }

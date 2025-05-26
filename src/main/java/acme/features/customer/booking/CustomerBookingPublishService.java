@@ -24,7 +24,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 	public void authorise() {
 		int id = super.getRequest().getData("id", int.class);
 		Booking booking = this.repository.findById(id);
-		int flightId = super.getRequest().getData("flight", int.class);
+		int flightId = super.getRequest().hasData("flight") ? super.getRequest().getData("flight", int.class) : 0;
 		Flight flight = this.repository.findFlightById(flightId);
 
 		boolean flightPublished = flight != null && flight.getSheduledDeparture() != null ? flight.getSheduledDeparture().after(MomentHelper.getCurrentMoment()) : true;
@@ -70,8 +70,8 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 	@Override
 	public void unbind(final Booking booking) {
 		assert booking != null;
-		SelectChoices flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() && x.getSheduledDeparture() != null ? x.getSheduledDeparture().after(MomentHelper.getCurrentMoment()) : true).toList(), "tag",
-			booking.getFlight());
+		SelectChoices flights = SelectChoices.from(
+			this.repository.findAllFlights().stream().filter(x -> x.getPublished().equals(true)).filter(x -> x.getSheduledDeparture() != null ? x.getSheduledDeparture().after(MomentHelper.getCurrentMoment()) : true).toList(), "tag", booking.getFlight());
 
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 

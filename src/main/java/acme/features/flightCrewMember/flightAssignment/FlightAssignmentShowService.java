@@ -32,6 +32,11 @@ public class FlightAssignmentShowService extends AbstractGuiService<FlightCrewMe
 			return;
 		}
 
+		if (!super.getRequest().hasData("id", int.class)) {
+			super.getResponse().setAuthorised(false);
+			return;
+		}
+
 		int assignmentId = super.getRequest().getData("id", int.class);
 		FlightAssignment assignment = this.repository.findById(assignmentId);
 		if (assignment == null || "CANCELLED".equals(assignment.getCurrentStatus())) {

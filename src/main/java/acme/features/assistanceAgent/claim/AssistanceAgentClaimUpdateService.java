@@ -65,8 +65,6 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 	public void validate(final Claim claim) {
 		assert claim != null;
 		Claim originalClaim = this.repository.findClaimById(claim.getId());
-		super.state(Objects.equals(claim.getRegistrationMoment(), originalClaim.getRegistrationMoment()), "registrationMoment", "assistance-agent.claim.error.not-possible-to-modify-registrationMoment");
-		super.state(Objects.equals(claim.getPublished(), originalClaim.getPublished()), "published", "assistance-agent.claim.error.not-possible-to-modify-published");
 		super.state(claim.getLeg() != null, "leg", "assistance-agent.claim.error.no-leg");
 		boolean isModified = !Objects.equals(claim.getPassengerEmail(), originalClaim.getPassengerEmail()) || !Objects.equals(claim.getDescription(), originalClaim.getDescription()) || !Objects.equals(claim.getType(), originalClaim.getType())
 			|| !Objects.equals(claim.getLeg(), originalClaim.getLeg());

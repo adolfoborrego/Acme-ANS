@@ -15,11 +15,12 @@ administrator.airport.form.label.contactPhoneNumber = Phone Number
 
 administrator.airport.list.title = Airports list
 administrator.airport.form.title = Airport details
-
+administrator.airport.form.error.no-changes = No changes have been made
 administrator.airport.form.label.confirmation = I confirm that the data is correct
 administrator.airport.form.error.confirmation = You must confirm the data to proceed
 administrator.airport.form.button.update = Update airport
 administrator.airport.list.button.create = Create airport
 administrator.airport.form.button.create = Create airport
+administrator.airport.form.error.duplicate-iata = wrong iata code
 
 administrator.airport.form.label.iataCode.placeholder = 3 capital letters; e.g., "AWT"

@@ -29,12 +29,15 @@ public class FlightAssignmentPublishService extends AbstractGuiService<FlightCre
 	@Override
 	public void authorise() {
 		// Must have request data and be a FlightCrewMember
-		System.out.println(super.getRequest());
 
 		if (super.getRequest().getMethod().equals("GET"))
 			super.state(false, "*", "flight-crew-member.flight-assignment.error");
 		var principal = super.getRequest().getPrincipal();
 		boolean hasId = super.getRequest().hasData("id", int.class);
+		if (!hasId) {
+			super.getResponse().setAuthorised(false);
+			return;
+		}
 		int id = super.getRequest().getData("id", int.class);
 		FlightAssignment assignment = this.repository.findById(id);
 		if (assignment != null) {

@@ -22,7 +22,22 @@ public class AdministratorAirportCreateService extends AbstractGuiService<Admini
 
 	@Override
 	public void authorise() {
+
+		var request = super.getRequest();
+		var principal = request.getPrincipal();
+		if (request.hasData("id", int.class) && request.getData("id", int.class) != 0) {
+			super.getResponse().setAuthorised(false);
+		return;}
+
 		super.getResponse().setAuthorised(super.getRequest().getPrincipal().hasRealmOfType(Administrator.class));
+		try {
+			if (request.hasData("operationalScope", AirportOperationalScope.class))
+				request.getData("operationalScope", AirportOperationalScope.class);
+		} catch (Exception e) {
+			super.getResponse().setAuthorised(false);
+			return;
+		}
+
 	}
 
 	@Override
@@ -42,6 +57,21 @@ public class AdministratorAirportCreateService extends AbstractGuiService<Admini
 		assert object != null;
 		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "administrator.airport.form.error.confirmation");
+
+		String iataCode = object.getIataCode();
+		// Validar que ningún otro aeropuerto tenga el mismo IATA
+		Airport existingAirport = this.repository.findAirportByIataCode(iataCode);
+		if (existingAirport != null && existingAirport.getId() != object.getId()) {
+			super.state(false, "iataCode", "administrator.airport.form.error.duplicate-iata");
+			return;
+		}
+
+		// Validar que ninguna aerolínea tenga ese mismo IATA
+		boolean airlineExists = this.repository.existsAirlineByIataCode(iataCode);
+		if (airlineExists) {
+			super.state(false, "iataCode", "administrator.airport.form.error.duplicate-iata");
+			return;
+		}
 	}
 
 	@Override

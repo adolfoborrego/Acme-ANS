@@ -42,7 +42,9 @@ public class ManagerLegUpdateService extends AbstractGuiService<AirlineManager, 
 		userAccountId = super.getRequest().getPrincipal().getAccountId();
 		managerId = this.repository.findManagerByUsserAccountId(userAccountId);
 
-		boolean authorised = leg != null && super.getRequest().getPrincipal().hasRealm(leg.getFlight().getAirlineManager()) && !leg.getPublished() && leg.getFlight().getAirlineManager().getId() == managerId && aircraftActive; // Solo si no está publicada
+		boolean authorised = false;
+		if (leg != null)
+			authorised = leg != null && super.getRequest().getPrincipal().hasRealm(leg.getFlight().getAirlineManager()) && !leg.getPublished() && leg.getFlight().getAirlineManager().getId() == managerId && aircraftActive; // Solo si no está publicada
 
 		super.getResponse().setAuthorised(authorised);
 	}

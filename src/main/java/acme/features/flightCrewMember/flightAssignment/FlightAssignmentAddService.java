@@ -28,7 +28,6 @@ public class FlightAssignmentAddService extends AbstractGuiService<FlightCrewMem
 	public void authorise() {
 
 		var request = super.getRequest();
-		System.out.println(request);
 		var principal = request.getPrincipal();
 
 		boolean authorised = principal.hasRealmOfType(FlightCrewMember.class) && request.hasData("Fid");

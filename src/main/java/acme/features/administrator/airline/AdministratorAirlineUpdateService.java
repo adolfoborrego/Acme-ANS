@@ -101,7 +101,7 @@ public class AdministratorAirlineUpdateService extends AbstractGuiService<Admini
 		boolean mismoNombre = Objects.equals(nuevo.getName(), original.getName());
 		boolean mismoIataCode = Objects.equals(nuevo.getIataCode(), original.getIataCode());
 		boolean mismaWebsite = Objects.equals(nuevo.getWebsite(), original.getWebsite());
-		boolean mismoType = Objects.equals(nuevo.getType().toString(), original.getType().toString());
+		boolean mismoType = Objects.equals(nuevo.getType(), original.getType());
 		boolean mismoPhoneNumber = Objects.equals(nuevo.getPhoneNumber(), original.getPhoneNumber());
 		boolean mismoEmail = Objects.equals(nuevo.getEmail(), original.getEmail());
 		boolean mismoFoundationTime = Objects.equals(original.getFoundationTime().getTime() / 1000, nuevo.getFoundationTime() != null ? nuevo.getFoundationTime().getTime() / 1000 : null);

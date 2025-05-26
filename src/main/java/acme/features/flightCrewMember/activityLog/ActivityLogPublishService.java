@@ -66,8 +66,6 @@ public class ActivityLogPublishService extends AbstractGuiService<FlightCrewMemb
 			boolean descriptionUnModified = Objects.equals(log.getDescription(), original.getDescription());
 			boolean severityUnModified = Objects.equals(log.getSeverityLevel(), original.getSeverityLevel());
 
-			System.out.println(super.getRequest());
-
 			super.state(typeUnModified, "typeOfIncident", "flight-crew-member.flight-assignment.error-publishing");
 			super.state(descriptionUnModified, "description", "flight-crew-member.flight-assignment.error-publishing");
 			super.state(severityUnModified, "severityLevel", "flight-crew-member.flight-assignment.error-publishing");
