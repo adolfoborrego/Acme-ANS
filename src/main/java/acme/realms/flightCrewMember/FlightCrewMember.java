@@ -28,6 +28,7 @@ import lombok.Setter;
 @Setter
 @ValidCodeInitials
 @Table(name = "flight_crew_member", indexes = {
+
 	@Index(name = "idx_fcm_airline_avail", columnList = "airline_id,availabilityStatus"), @Index(name = "idx_fcm_experience", columnList = "yearsOfExperience")
 })
 public class FlightCrewMember extends AbstractRole {

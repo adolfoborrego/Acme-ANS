@@ -8,7 +8,9 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -27,10 +29,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-// @Table(name = "leg", indexes = {
-//	@Index(name = "idx_leg_flight", columnList = "flight_id"), @Index(name = "idx_leg_code", columnList = "code"), @Index(name = "idx_leg_scheduled_arrival", columnList = "scheduledArrival"), @Index(name = "idx_leg_published", columnList = "published"),
-//	@Index(name = "idx_leg_flight_departure", columnList = "flight_id, scheduledDeparture")
-// })
+@Table(name = "leg", indexes = {
+	@Index(name = "idx_leg_flight", columnList = "flight_id"), @Index(name = "idx_leg_scheduled_arrival", columnList = "scheduledArrival"), @Index(name = "idx_leg_published", columnList = "published"),
+	@Index(name = "idx_leg_flight_departure", columnList = "flight_id, scheduledDeparture")
+})
 public class Leg extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------

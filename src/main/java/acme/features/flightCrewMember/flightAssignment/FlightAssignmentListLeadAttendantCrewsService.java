@@ -22,8 +22,6 @@ public class FlightAssignmentListLeadAttendantCrewsService extends AbstractGuiSe
 	@Override
 	public void authorise() {
 
-		System.out.println(super.getRequest());
-
 		var request = super.getRequest();
 		var principal = request.getPrincipal();
 

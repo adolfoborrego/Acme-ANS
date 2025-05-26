@@ -28,12 +28,16 @@ import lombok.Setter;
 @Setter
 @Table(name = "flight_assignment", indexes = {
 	// 1) Búsqueda por tripulante + estado (usado en findAllMyCompleted... y findAllMyPlanned...)
+
 	@Index(name = "idx_fa_member_status", columnList = "currentStatus, flight_crew_member_id"),
 	// 2) Recuperar asignaciones de una ruta (findFlightAssignmentsOfLeg)
+
 	@Index(name = "idx_fa_leg", columnList = "leg_id"),
 	// 3) Para futuros filtros/ordenamientos por fecha de última actualización
+
 	@Index(name = "idx_fa_last_update", columnList = "momentOfLastUpdate")
 })
+
 public class FlightAssignment extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;

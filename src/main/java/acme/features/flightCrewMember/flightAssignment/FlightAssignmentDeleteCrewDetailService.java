@@ -29,8 +29,6 @@ public class FlightAssignmentDeleteCrewDetailService extends AbstractGuiService<
 		var request = super.getRequest();
 		var principal = request.getPrincipal();
 
-		System.out.println(super.getRequest().getUrl());
-		System.out.println(super.getRequest());
 		if (super.getRequest().getMethod().equals("GET"))
 			super.state(false, "*", "flight-crew-member.flight-assignment.error");
 		// Must have id and be a flight crew member

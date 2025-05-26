@@ -25,7 +25,7 @@ public class FlightAssignmentShowCrewDetailService extends AbstractGuiService<Fl
 	@Override
 	public void authorise() {
 		var principal = super.getRequest().getPrincipal();
-		if (!principal.hasRealmOfType(FlightCrewMember.class)) {
+		if (!principal.hasRealmOfType(FlightCrewMember.class) || !super.getRequest().hasData("id", int.class)) {
 			super.getResponse().setAuthorised(false);
 			return;
 		}
