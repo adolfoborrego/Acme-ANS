@@ -52,24 +52,14 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 	@Override
 	public void validate(final TrackingLog trackingLog) {
 		assert trackingLog != null;
-		final double resolutionPercentage = trackingLog.getResolutionPercentage();
-		final TrackingLogIndicator indicator = trackingLog.getIndicator();
-		final boolean isComplete = resolutionPercentage == 100.0;
-		if (!isComplete)
-			super.state(indicator == TrackingLogIndicator.PENDING, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-pending");
-		else {
-			boolean valid = indicator == TrackingLogIndicator.ACCEPTED || indicator == TrackingLogIndicator.REJECTED || indicator == TrackingLogIndicator.IN_REVIEW;
-			super.state(valid, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-accepted-or-rejected-or-in-review");
-
-			boolean hasResolution = trackingLog.getResolution() != null && !trackingLog.getResolution().trim().isEmpty();
-			super.state(hasResolution, "resolution", "assistance-agent.tracking-log.error.resolution-required-if-complete");
-		}
+		Double resolutionPercentage = trackingLog.getResolutionPercentage();
+		TrackingLogIndicator indicator = trackingLog.getIndicator();
 		List<TrackingLog> trackingLogs = this.repository.findPublishedTrackingLogsByClaimId(trackingLog.getClaim().getId());
 		if (trackingLogs.isEmpty())
 			super.state(indicator != TrackingLogIndicator.IN_REVIEW, "indicator", "assistance-agent.tracking-log.error.first-log-not-in-review");
 		else {
 			TrackingLog last = trackingLogs.get(trackingLogs.size() - 1);
-			boolean samePercentageAndAllowed = resolutionPercentage == last.getResolutionPercentage() && indicator == TrackingLogIndicator.IN_REVIEW
+			boolean samePercentageAndAllowed = Double.compare(resolutionPercentage, last.getResolutionPercentage()) == 0 && indicator == TrackingLogIndicator.IN_REVIEW
 				&& (last.getIndicator() == TrackingLogIndicator.ACCEPTED || last.getIndicator() == TrackingLogIndicator.REJECTED || last.getIndicator() == TrackingLogIndicator.IN_REVIEW);
 			boolean isIncreasing = resolutionPercentage > last.getResolutionPercentage() || samePercentageAndAllowed;
 			super.state(isIncreasing, "resolutionPercentage", "assistance-agent.tracking-log.resolution-percentage-must-increase");
