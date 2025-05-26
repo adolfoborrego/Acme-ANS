@@ -1,4 +1,39 @@
 key,key:userAccount,identifier,phoneNumber,address,city,earnedPoints
+
 customer-01,user-account-customer-01,CO345278,601252039,C/Ejemplo 1,Sevilla,2000
 customer-02,user-account-customer-02,CT973428,601034021,C/Ejemplo 2,Guadalajara,200000
 customer-03,user-account-customer-03,CT674537,954673987,C/Ejemplo 3,Granada,null
+
+#Address Variations
+customer-04,user-account-customer-04,CF335345,637673482,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,Sevilla,2000
+customer-05,user-account-customer-05,CF973455,653546347,L,Sevilla,200000
+customer-06,user-account-customer-06,CS678867,945645643,Lo,Madrid,null
+customer-07,user-account-customer-07,CS334435,605463456,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor,Barcelona,2000
+customer-08,user-account-customer-08,CE345356,676567876,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,Córdoba,200000
+customer-09,user-account-customer-09,CN643653,954524577,โลเร็ม อิปซัม,Lorem ipsum dolor sit ame,null
+customer-10,user-account-customer-10,CT342453,603563334,لوريم إيبسوم,L,2000
+customer-11,user-account-customer-11,CE973234,601034009,洛伦·伊普森,Lo,200000
+customer-12,user-account-customer-12,CT676584,954523424,<marquee>Hacked</marquee>,Lorem ipsum dolor sit amet consectetur adipiscin,null
+customer-13,user-account-customer-13,CT083456,954606144,<script>alert(‘Hacked!’);</script>,Lorem ipsum dolor sit amet consectetur adipiscing,null
+customer-14,user-account-customer-14,CF000056,950000144,' or 'A' = 'A ,Lorem ipsum dolor sit amet consectetur adipiscing,null
+
+#City Variations
+customer-15,user-account-customer-15,CF111111,954523566,C/Ejemplo 9,Lorem ipsum dolor sit ame,null
+customer-16,user-account-customer-16,CS222222,604444444,C/Ejemplo 10,L,2000
+customer-17,user-account-customer-17,CS333333,604545454,C/Ejemplo 11,Lo,200000
+customer-18,user-account-customer-18,CE444444,954545423,C/Ejemplo 12,Lorem ipsum dolor sit amet consectetur adipiscin,null
+customer-19,user-account-customer-19,CN555555,957676767,C/Ejemplo 13,Lorem ipsum dolor sit amet consectetur adipiscing,null
+customer-20,user-account-customer-20,CT666666,953434343,C/Ejemplo 14,โลเร็ม อิปซัม,null
+customer-21,user-account-customer-21,CT777777,600900900,C/Ejemplo 15,洛伦·伊普森,2000
+customer-22,user-account-customer-22,CT888888,606565656,C/Ejemplo 16,<marquee>Hacked</marquee>,200000
+customer-23,user-account-customer-23,CT999999,950202020,C/Ejemplo 17,<script>alert(‘Hacked!’);</script>,null
+customer-24,user-account-customer-24,CT101010,953434309,C/Ejemplo 18,' or 'A' = 'A ,null
+
+#EarnedPoints Variations
+customer-25,user-account-customer-25,CT010101,601234569,C/Ejemplo 19,Sevilla,250000
+customer-26,user-account-customer-26,CT020202,600987653,C/Ejemplo 20,Guadalajara,0
+customer-27,user-account-customer-27,CT030303,954324568,C/Ejemplo 21,Granada,1
+customer-28,user-account-customer-28,CT040404,953245234,C/Ejemplo 22,Granada,null
+customer-29,user-account-customer-29,CT050505,954352345,C/Ejemplo 23,Granada,499999
+customer-30,user-account-customer-30,CT060606,950404044,C/Ejemplo 24,Granada,500000
+

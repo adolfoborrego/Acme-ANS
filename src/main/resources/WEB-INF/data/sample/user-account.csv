@@ -152,6 +152,33 @@ user-account-technician-27,True,"UserIdentity{name: ""Technician"", surname: ""N
 user-account-customer-01,true,"UserIdentity{name: ""Customer"", surname: ""One"", email: ""customer1@email.com""}",customer1,customer1
 user-account-customer-02,true,"UserIdentity{name: ""Customer"", surname: ""Two"", email: ""customer2@email.com""}",customer2,customer2
 user-account-customer-03,true,"UserIdentity{name: ""Customer"", surname: ""Three"", email: ""customer3@email.com""}",customer3,customer3
+user-account-customer-04,true,"UserIdentity{name: ""Customer"", surname: ""Four"", email: ""customer4@email.com""}",customer4,customer4
+user-account-customer-05,true,"UserIdentity{name: ""Customer"", surname: ""Five"", email: ""customer5@email.com""}",customer5,customer5
+user-account-customer-06,true,"UserIdentity{name: ""Customer"", surname: ""Six"", email: ""customer6@email.com""}",customer6,customer6
+user-account-customer-07,true,"UserIdentity{name: ""Customer"", surname: ""Seven"", email: ""customer7@email.com""}",customer7,customer7
+user-account-customer-08,true,"UserIdentity{name: ""Customer"", surname: ""Eight"", email: ""customer8@email.com""}",customer8,customer8
+user-account-customer-09,true,"UserIdentity{name: ""Customer"", surname: ""Nine"", email: ""customer9@email.com""}",customer9,customer9
+user-account-customer-10,true,"UserIdentity{name: ""Customer"", surname: ""Ten"", email: ""customer10@email.com""}",customer10,customer10
+user-account-customer-11,true,"UserIdentity{name: ""Customer"", surname: ""Eleven"", email: ""customer11@email.com""}",customer11,customer11
+user-account-customer-12,true,"UserIdentity{name: ""Customer"", surname: ""Twelve"", email: ""customer12@email.com""}",customer12,customer12
+user-account-customer-13,true,"UserIdentity{name: ""Customer"", surname: ""Thirteen"", email: ""customer13@email.com""}",customer13,customer13
+user-account-customer-14,true,"UserIdentity{name: ""Customer"", surname: ""Fourteen"", email: ""customer14@email.com""}",customer14,customer14
+user-account-customer-15,true,"UserIdentity{name: ""Customer"", surname: ""Fifteen"", email: ""customer15@email.com""}",customer15,customer15
+user-account-customer-16,true,"UserIdentity{name: ""Customer"", surname: ""Sixteen"", email: ""customer16@email.com""}",customer16,customer16
+user-account-customer-17,true,"UserIdentity{name: ""Customer"", surname: ""Seventeen"", email: ""customer17@email.com""}",customer17,customer17
+user-account-customer-18,true,"UserIdentity{name: ""Customer"", surname: ""Eighteen"", email: ""customer18@email.com""}",customer18,customer18
+user-account-customer-19,true,"UserIdentity{name: ""Customer"", surname: ""Nineteen"", email: ""customer19@email.com""}",customer19,customer19
+user-account-customer-20,true,"UserIdentity{name: ""Customer"", surname: ""Twenty"", email: ""customer20@email.com""}",customer20,customer20
+user-account-customer-21,true,"UserIdentity{name: ""Customer"", surname: ""TwentyOne"", email: ""customer21@email.com""}",customer21,customer21
+user-account-customer-22,true,"UserIdentity{name: ""Customer"", surname: ""TwentyTwo"", email: ""customer22@email.com""}",customer22,customer22
+user-account-customer-23,true,"UserIdentity{name: ""Customer"", surname: ""TwentyThree"", email: ""customer23@email.com""}",customer23,customer23
+user-account-customer-24,true,"UserIdentity{name: ""Customer"", surname: ""TwentyFour"", email: ""customer24@email.com""}",customer24,customer24
+user-account-customer-25,true,"UserIdentity{name: ""Customer"", surname: ""TwentyFive"", email: ""customer25@email.com""}",customer25,customer25
+user-account-customer-26,true,"UserIdentity{name: ""Customer"", surname: ""TwentySix"", email: ""customer26@email.com""}",customer26,customer26
+user-account-customer-27,true,"UserIdentity{name: ""Customer"", surname: ""TwentySeven"", email: ""customer27@email.com""}",customer27,customer27
+user-account-customer-28,true,"UserIdentity{name: ""Customer"", surname: ""TwentyEight"", email: ""customer28@email.com""}",customer28,customer28
+user-account-customer-29,true,"UserIdentity{name: ""Customer"", surname: ""TwentyNine"", email: ""customer29@email.com""}",customer29,customer29
+user-account-customer-30,true,"UserIdentity{name: ""Customer"", surname: ""Thirty"", email: ""customer30@email.com""}",customer30,customer30
 
 # ADMINISTRATORS:
 user-account-administrator-1,true,"UserIdentity{name: ""Administrator"", surname: ""One"", email: ""administrator1@email.com""}",administrator1,administrator1
