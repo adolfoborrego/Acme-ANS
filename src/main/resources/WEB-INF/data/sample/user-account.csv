@@ -49,6 +49,30 @@ user-account-agent-03,true,"UserIdentity{name: ""Agent"", surname: ""Three"", em
 user-account-technician-01,true,"UserIdentity{name: ""Technician"", surname: ""One"", email: ""technician1@email.com""}",technician1,technician1
 user-account-technician-02,true,"UserIdentity{name: ""Technician"", surname: ""Two"", email: ""technician2@email.com""}",technician2,technician2
 user-account-technician-03,true,"UserIdentity{name: ""Technician"", surname: ""Three"", email: ""technician3@email.com""}",technician3,technician3
+user-account-technician-04,True,"UserIdentity{name: ""Technician"", surname: ""Number4"", email: ""technician4@email.com""}",technician4,technician4
+user-account-technician-05,True,"UserIdentity{name: ""Technician"", surname: ""Number5"", email: ""technician5@email.com""}",technician5,technician5
+user-account-technician-06,True,"UserIdentity{name: ""Technician"", surname: ""Number6"", email: ""technician6@email.com""}",technician6,technician6
+user-account-technician-07,True,"UserIdentity{name: ""Technician"", surname: ""Number7"", email: ""technician7@email.com""}",technician7,technician7
+user-account-technician-08,True,"UserIdentity{name: ""Technician"", surname: ""Number8"", email: ""technician8@email.com""}",technician8,technician8
+user-account-technician-09,True,"UserIdentity{name: ""Technician"", surname: ""Number9"", email: ""technician9@email.com""}",technician9,technician9
+user-account-technician-10,True,"UserIdentity{name: ""Technician"", surname: ""Number10"", email: ""technician10@email.com""}",technician10,technician10
+user-account-technician-11,True,"UserIdentity{name: ""Technician"", surname: ""Number11"", email: ""technician11@email.com""}",technician11,technician11
+user-account-technician-12,True,"UserIdentity{name: ""Technician"", surname: ""Number12"", email: ""technician12@email.com""}",technician12,technician12
+user-account-technician-13,True,"UserIdentity{name: ""Technician"", surname: ""Number13"", email: ""technician13@email.com""}",technician13,technician13
+user-account-technician-14,True,"UserIdentity{name: ""Technician"", surname: ""Number14"", email: ""technician14@email.com""}",technician14,technician14
+user-account-technician-15,True,"UserIdentity{name: ""Technician"", surname: ""Number15"", email: ""technician15@email.com""}",technician15,technician15
+user-account-technician-16,True,"UserIdentity{name: ""Technician"", surname: ""Number16"", email: ""technician16@email.com""}",technician16,technician16
+user-account-technician-17,True,"UserIdentity{name: ""Technician"", surname: ""Number17"", email: ""technician17@email.com""}",technician17,technician17
+user-account-technician-18,True,"UserIdentity{name: ""Technician"", surname: ""Number18"", email: ""technician18@email.com""}",technician18,technician18
+user-account-technician-19,True,"UserIdentity{name: ""Technician"", surname: ""Number19"", email: ""technician19@email.com""}",technician19,technician19
+user-account-technician-20,True,"UserIdentity{name: ""Technician"", surname: ""Number20"", email: ""technician20@email.com""}",technician20,technician20
+user-account-technician-21,True,"UserIdentity{name: ""Technician"", surname: ""Number21"", email: ""technician21@email.com""}",technician21,technician21
+user-account-technician-22,True,"UserIdentity{name: ""Technician"", surname: ""Number22"", email: ""technician22@email.com""}",technician22,technician22
+user-account-technician-23,True,"UserIdentity{name: ""Technician"", surname: ""Number23"", email: ""technician23@email.com""}",technician23,technician23
+user-account-technician-24,True,"UserIdentity{name: ""Technician"", surname: ""Number24"", email: ""technician24@email.com""}",technician24,technician24
+user-account-technician-25,True,"UserIdentity{name: ""Technician"", surname: ""Number25"", email: ""technician25@email.com""}",technician25,technician25
+user-account-technician-26,True,"UserIdentity{name: ""Technician"", surname: ""Number26"", email: ""technician26@email.com""}",technician26,technician26
+user-account-technician-27,True,"UserIdentity{name: ""Technician"", surname: ""Number27"", email: ""technician27@email.com""}",technician27,technician27
 
 # CUSTOMERS:
 user-account-customer-01,true,"UserIdentity{name: ""Customer"", surname: ""One"", email: ""customer1@email.com""}",customer1,customer1
