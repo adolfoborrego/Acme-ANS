@@ -87,12 +87,7 @@ public class PassengerBookingCreateService extends AbstractGuiService<Customer, 
 	public void unbind(final PassengerBooking passengerBooking) {
 		assert passengerBooking != null;
 
-		SelectChoices passengers;
-
-		if (this.repository.findPassengersByCustomerId(passengerBooking.getBooking().getCustomer().getId()).contains(passengerBooking.getPassenger()))
-			passengers = SelectChoices.from(this.repository.findPassengersByCustomerId(passengerBooking.getBooking().getCustomer().getId()).stream().filter(x -> x.getPublished() == true).toList(), "fullName", passengerBooking.getPassenger());
-		else
-			passengers = SelectChoices.from(this.repository.findPassengersByCustomerId(passengerBooking.getBooking().getCustomer().getId()).stream().filter(x -> x.getPublished() == true).toList(), "fullName", null);
+		SelectChoices passengers = SelectChoices.from(this.repository.findPassengersByCustomerId(passengerBooking.getBooking().getCustomer().getId()).stream().filter(x -> x.getPublished() == true).toList(), "fullName", passengerBooking.getPassenger());
 
 		Dataset dataset = super.unbindObject(passengerBooking);
 		dataset.put("bookingId", passengerBooking.getBooking().getId());
