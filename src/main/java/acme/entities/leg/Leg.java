@@ -17,7 +17,6 @@ import javax.validation.Valid;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
-import acme.client.components.validation.Optional;
 import acme.client.helpers.MomentHelper;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
@@ -28,6 +27,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+// @Table(name = "leg", indexes = {
+//	@Index(name = "idx_leg_flight", columnList = "flight_id"), @Index(name = "idx_leg_code", columnList = "code"), @Index(name = "idx_leg_scheduled_arrival", columnList = "scheduledArrival"), @Index(name = "idx_leg_published", columnList = "published"),
+//	@Index(name = "idx_leg_flight_departure", columnList = "flight_id, scheduledDeparture")
+// })
 public class Leg extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
@@ -113,17 +116,17 @@ public class Leg extends AbstractEntity {
 	@Valid
 	private Airport		departureAirport;
 
-	@Optional
+	@Mandatory
 	@ManyToOne
 	@Valid
 	private Airport		arrivalAirport;
 
-	@Optional
+	@Mandatory
 	@ManyToOne
 	@Valid
 	private Aircraft	aircraft;
 
-	@Optional
+	@Mandatory
 	@ManyToOne
 	@Valid
 	private Flight		flight;

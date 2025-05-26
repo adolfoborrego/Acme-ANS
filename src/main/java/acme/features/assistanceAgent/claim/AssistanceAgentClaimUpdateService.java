@@ -37,7 +37,14 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 			isClaimOwner = claim.getAssistanceAgent().getId() == assistanceAgentId;
 			isClaimPublished = claim.getPublished();
 		}
-		boolean status = isClaimOwner && !isClaimPublished;
+		boolean isValidLeg = true;
+		if (super.getRequest().hasData("leg", int.class)) {
+			int legId = super.getRequest().getData("leg", int.class);
+			Date now = MomentHelper.getCurrentMoment();
+			Collection<Leg> validLegs = this.repository.findFinishedLegs(now);
+			isValidLeg = validLegs.stream().anyMatch(validLeg -> validLeg.getId() == legId) || legId == 0;
+		}
+		boolean status = isClaimOwner && !isClaimPublished && isValidLeg;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -61,11 +68,6 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 		super.state(Objects.equals(claim.getRegistrationMoment(), originalClaim.getRegistrationMoment()), "registrationMoment", "assistance-agent.claim.error.not-possible-to-modify-registrationMoment");
 		super.state(Objects.equals(claim.getPublished(), originalClaim.getPublished()), "published", "assistance-agent.claim.error.not-possible-to-modify-published");
 		super.state(claim.getLeg() != null, "leg", "assistance-agent.claim.error.no-leg");
-		Date now = MomentHelper.getCurrentMoment();
-		Collection<Leg> validLegs = this.repository.findFinishedLegs(now);
-		boolean legIsValid = validLegs.stream().anyMatch(validLeg -> validLeg.getId() == claim.getLeg().getId());
-		if (!legIsValid)
-			throw new IllegalArgumentException("Attempted to use an invalid leg ID: possible tampering detected.");
 		boolean isModified = !Objects.equals(claim.getPassengerEmail(), originalClaim.getPassengerEmail()) || !Objects.equals(claim.getDescription(), originalClaim.getDescription()) || !Objects.equals(claim.getType(), originalClaim.getType())
 			|| !Objects.equals(claim.getLeg(), originalClaim.getLeg());
 		super.state(isModified, "*", "assistance-agent.claim.error.no-changes");

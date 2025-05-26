@@ -71,5 +71,15 @@ leg-34,2022/08/30 00:00,2022/08/30 00:01,ON_TIME,True,flight-26,airport-00,airpo
 leg-35,2022/08/30 00:00,2022/08/30 00:01,ON_TIME,True,flight-27,airport-00,airport-01,aircraft-01
 leg-36,2022/08/30 00:00,2022/08/30 00:01,ON_TIME,True,flight-28,airport-00,airport-01,aircraft-01
 leg-37,2022/08/30 00:00,2022/08/30 00:01,ON_TIME,True,flight-30,airport-00,airport-01,aircraft-01
+leg-38,2022/08/30 00:00,2022/08/30 00:01,ON_TIME,True,flight-38,airport-00,airport-01,aircraft-01
+leg-39,2022/08/30 00:00,2022/08/30 00:01,ON_TIME,True,flight-39,airport-00,airport-01,aircraft-01
+leg-47,2022/08/30 00:00,2022/08/30 00:01,ON_TIME,True,flight-40,airport-00,airport-01,aircraft-01
+leg-48,2022/08/30 00:00,2022/08/30 00:01,ON_TIME,True,flight-41,airport-00,airport-01,aircraft-01
+leg-49,2022/08/30 00:00,2022/08/30 00:01,ON_TIME,True,flight-42,airport-00,airport-01,aircraft-01
+leg-50,2022/08/30 00:00,2022/08/30 00:01,ON_TIME,True,flight-43,airport-00,airport-01,aircraft-01
+leg-51,2022/08/30 00:00,2022/08/30 00:01,ON_TIME,True,flight-44,airport-00,airport-01,aircraft-01
+leg-52,2022/08/30 00:00,2022/08/30 00:01,ON_TIME,False,flight-44,airport-00,airport-01,aircraft-01
 
-
+# Prueba para update 
+leg-53,2022/08/30 00:00,2022/08/30 00:01,ON_TIME,False,flight-47,airport-00,airport-01,aircraft-01
+leg-54,2022/08/30 00:00,2022/08/30 00:01,ON_TIME,True,flight-48,airport-00,airport-01,aircraft-01

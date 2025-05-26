@@ -55,3 +55,12 @@ flight-41,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit a
 flight-42,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
 flight-43,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
 flight-44,Lorem ipsum dolor sit ame,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,manager-01
+
+#Flight para prueba de borrado 
+flight-45,Prueba de Borrado,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",FALSE,manager-01
+
+#Flight para prueba de update
+flight-46,Prueba de UPDATE sin legs,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",FALSE,manager-01
+flight-47,Prueba de UPDATE con leg sin publicar,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",FALSE,manager-01
+flight-48,Prueba de UPDATE con leg publicado,FALSE,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing",FALSE,manager-01
+ 

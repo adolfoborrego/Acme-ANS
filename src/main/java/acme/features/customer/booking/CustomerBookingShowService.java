@@ -1,10 +1,13 @@
 
 package acme.features.customer.booking;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
@@ -53,11 +56,11 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 	public void unbind(final Booking booking) {
 
 		assert booking != null;
-		SelectChoices flights;
-		if (this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList().contains(booking.getFlight()))
-			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "tag", booking.getFlight());
-		else
-			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "tag", null);
+		Date now = MomentHelper.getCurrentMoment();
+
+		SelectChoices flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true && x.getSheduledDeparture() != null ? x.getSheduledDeparture().after(MomentHelper.getCurrentMoment()) : true).toList(), "tag",
+			booking.getFlight());
+
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		Dataset dataset;

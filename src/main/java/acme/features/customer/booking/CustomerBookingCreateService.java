@@ -33,11 +33,15 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		Flight flight = this.repository.findFlightById(flightId);
 
 		boolean flightPublished = true;
-		if (flight != null)
-			flightPublished = flight.getPublished();
-		status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+		boolean flightAfterNow = true;
 
-		super.getResponse().setAuthorised(status && flightPublished);
+		if (flight != null) {
+			flightPublished = flight.getPublished();
+			flightAfterNow = flight.getSheduledDeparture() != null ? flight.getSheduledDeparture().after(MomentHelper.getCurrentMoment()) : true;
+		}
+
+		status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+		super.getResponse().setAuthorised(status && flightPublished && flightAfterNow);
 	}
 
 	@Override
@@ -83,13 +87,9 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void unbind(final Booking object) {
-
-		SelectChoices flights;
-		if (this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList().contains(object.getFlight()))
-			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "tag", object.getFlight());
-		else
-			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "tag", null);
-
+		assert object != null;
+		SelectChoices flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true && x.getSheduledDeparture() != null ? x.getSheduledDeparture().after(MomentHelper.getCurrentMoment()) : true).toList(), "tag",
+			object.getFlight());
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, object.getTravelClass());
 
 		Date purchaseMoment = MomentHelper.getCurrentMoment();

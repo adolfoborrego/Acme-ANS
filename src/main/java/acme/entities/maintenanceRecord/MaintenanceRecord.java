@@ -78,7 +78,7 @@ public class MaintenanceRecord extends AbstractEntity {
 
 
 	public static boolean isPrefixValid(final MaintenanceRecord mr) {
-		List<String> validMoneyPrefixes = List.of("USD", "EUR", "GBP", "JPY", "CAD", "AUD", "CHF", "CNY", "MXN", "BRL", "INR", "KRW", "SEK", "NOK", "DKK", "RUB", "ARS", "CLP", "COP", "ZAR", "US");
+		List<String> validMoneyPrefixes = List.of("USD", "EUR", "GBP", "JPY", "CAD", "AUD", "CHF", "CNY", "MXN", "BRL", "INR", "KRW", "SEK", "NOK", "DKK", "RUB", "ARS", "CLP", "COP", "ZAR");
 		return validMoneyPrefixes.contains(mr.getEstimatedCost().getCurrency());
 	}
 }

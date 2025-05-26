@@ -25,8 +25,15 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 
 	@Override
 	public void authorise() {
-		boolean status;
-		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+		boolean isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+		boolean isValidLeg = true;
+		if (super.getRequest().hasData("leg", int.class)) {
+			int legId = super.getRequest().getData("leg", int.class);
+			Date now = MomentHelper.getCurrentMoment();
+			Collection<Leg> validLegs = this.repository.findFinishedLegs(now);
+			isValidLeg = validLegs.stream().anyMatch(validLeg -> validLeg.getId() == legId) || legId == 0;
+		}
+		boolean status = isAssistanceAgent && isValidLeg;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -49,11 +56,6 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		assert claim != null;
 		if (claim.getLeg() == null)
 			super.state(false, "leg", "assistance-agent.claim.error.no-leg");
-		Date now = MomentHelper.getCurrentMoment();
-		Collection<Leg> validLegs = this.repository.findFinishedLegs(now);
-		boolean legIsValid = validLegs.stream().anyMatch(validLeg -> validLeg.getId() == claim.getLeg().getId());
-		if (!legIsValid)
-			throw new IllegalArgumentException("Attempted to use an invalid leg ID: possible tampering detected.");
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
@@ -29,7 +30,7 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 		Flight flight = this.repository.findFlightById(flightId);
 		Booking booking = this.repository.findById(id);
 
-		boolean flightPublished = flight != null && flight.getPublished();
+		boolean flightPublished = flight != null && flight.getSheduledDeparture() != null ? flight.getSheduledDeparture().after(MomentHelper.getCurrentMoment()) : true;
 		boolean authorised = booking != null && super.getRequest().getPrincipal().hasRealm(booking.getCustomer()) && !booking.getPublished();
 
 		super.getResponse().setAuthorised(authorised && flightPublished);
@@ -56,9 +57,6 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 		boolean locatorCodeIsUnique = !locatorsYaExistentes.contains(booking.getLocatorCode());
 		super.state(locatorCodeIsUnique, "flight", "customer.booking.error.locator-NorUnique");
 
-		boolean flightExistAndIsPublished = booking.getFlight() != null;
-		super.state(flightExistAndIsPublished, "flight", "customer.booking.error.dontExist-flight");
-
 	}
 
 	@Override
@@ -69,11 +67,10 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void unbind(final Booking booking) {
-		SelectChoices flights;
-		if (this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList().contains(booking.getFlight()))
-			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "tag", booking.getFlight());
-		else
-			flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true).toList(), "tag", null);
+		assert booking != null;
+		SelectChoices flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() && x.getSheduledDeparture() != null ? x.getSheduledDeparture().after(MomentHelper.getCurrentMoment()) : true).toList(), "tag",
+			booking.getFlight());
+
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		Dataset dataset = super.unbindObject(booking, "travelClass", "price", "locatorCode", "purchaseMoment", "lastNibble");

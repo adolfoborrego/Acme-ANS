@@ -23,6 +23,6 @@ assistance-agent.tracking-log.list = Listar registros de seguimiento
 
 # Errores
 assistance-agent.claim.error.no-changes = Debe realizar al menos un cambio para actualizar la reclamación
-assistance-agent.claim.error.no-leg = No puede ser nulo.
-assistance-agent.claim.error.not-possible-to-modify-registrationMoment = El momento de registro no puede ser modificado.
-assistance-agent.claim.error.not-possible-to-modify-published = El estado de publicación no puede ser modificado.
+assistance-agent.claim.error.no-leg = No puede ser nulo
+assistance-agent.claim.error.not-possible-to-modify-registrationMoment = El momento de registro no puede ser modificado
+assistance-agent.claim.error.not-possible-to-modify-published = El estado de publicación no puede ser modificado

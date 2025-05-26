@@ -25,6 +25,14 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+//@Table(name = "tracking_log", indexes = {
+//	// Mejora las consultas que recuperan todos los tracking logs de un claim concreto
+//	@Index(name = "idx_trackinglog_claim", columnList = "claim_id"),
+//	// Optimiza las consultas que recuperan los tracking logs publicados de un claim
+//	@Index(name = "idx_trackinglog_claim_published", columnList = "claim_id, published"),
+//	// Acelera las subconsultas que filtran por claim, estado de publicación y estado del indicador
+//	@Index(name = "idx_trackinglog_claim_pub_ind", columnList = "claim_id, published, indicator")
+//})
 public class TrackingLog extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
