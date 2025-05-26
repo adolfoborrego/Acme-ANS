@@ -88,7 +88,7 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 	@Override
 	public void unbind(final Booking object) {
 		assert object != null;
-		SelectChoices flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() && x.getSheduledDeparture() != null ? x.getSheduledDeparture().after(MomentHelper.getCurrentMoment()) : true).toList(), "tag",
+		SelectChoices flights = SelectChoices.from(this.repository.findAllFlights().stream().filter(x -> x.getPublished() == true && x.getSheduledDeparture() != null ? x.getSheduledDeparture().after(MomentHelper.getCurrentMoment()) : true).toList(), "tag",
 			object.getFlight());
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, object.getTravelClass());
 
