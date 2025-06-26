@@ -1,15 +1,15 @@
 key,key:technician,key:aircraft,notes,published,estimatedCost,inspectionDueDate,currentStatus,moment
-maintenanceRecord-01,technician1,aircraft-00,Lorem ipsum,true,EUR 4000.00,2024/12/28 09:00,PENDING,2020/01/01 00:01
+maintenanceRecord-01,technician1,aircraft-00,Lorem ipsum,true,EUR 4000.00,2024/12/28 09:00,COMPLETED,2020/01/01 00:01
 # Variaciones en el inspectionDueDate en funcion del moment,"","","",""
 ## moment: 2000/01/01 00:00
 maintenanceRecord-02,technician2,aircraft-01,Lorem ipsum,false,EUR 4000.00,2000/01/01 01:00,PENDING,2000/01/01 00:00
-maintenanceRecord-03,technician2,aircraft-02,Lorem ipsum,true,EUR 4000.00,2000/01/01 01:01,PENDING,2000/01/01 00:00
+maintenanceRecord-03,technician2,aircraft-02,Lorem ipsum,true,EUR 4000.00,2000/01/01 01:01,COMPLETED,2000/01/01 00:00
 maintenanceRecord-04,technician1,aircraft-39,Lorem ipsum,false,EUR 4000.00,2200/12/31 23:58,PENDING,2000/01/01 00:00
 maintenanceRecord-05,technician1,aircraft-40,Lorem ipsum,false,EUR 4000.00,2200/12/31 23:59,PENDING,2000/01/01 00:00
 ## moment: 2000/01/01 00:01
 maintenanceRecord-06,technician3,aircraft-41,Lorem ipsum,false,EUR 4000.00,2000/01/01 01:01,PENDING,2000/01/01 00:01
-maintenanceRecord-07,technician3,aircraft-05,Lorem ipsum,true,EUR 4000.00,2000/01/01 01:02,PENDING,2000/01/01 00:01
-maintenanceRecord-08,technician3,aircraft-04,Lorem ipsum,true,EUR 4000.00,2200/12/31 23:58,PENDING,2000/01/01 00:01
+maintenanceRecord-07,technician3,aircraft-05,Lorem ipsum,true,EUR 4000.00,2000/01/01 01:02,COMPLETED,2000/01/01 00:01
+maintenanceRecord-08,technician3,aircraft-04,Lorem ipsum,true,EUR 4000.00,2200/12/31 23:58,COMPLETED,2000/01/01 00:01
 maintenanceRecord-09,technician1,aircraft-06,Lorem ipsum,true,EUR 4000.00,2200/12/31 23:59,PENDING,2000/01/01 00:01
 ## moment: 2022/06/03 09:00
 maintenanceRecord-10,technician1,aircraft-06,Lorem ipsum,true,EUR 4000.00,2022/06/03 10:00,PENDING,2022/06/03 09:00
