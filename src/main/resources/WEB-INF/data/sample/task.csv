@@ -11,7 +11,7 @@ task-07,maintenanceRecord-02,true,7,2,"Lorem ipsum dolor sit amet, consectetur a
 task-08,maintenanceRecord-02,true,7,2,โลเร็ม อิปซัม,REPAIR
 task-09,maintenanceRecord-02,true,7,2,لوريم إيبسوم,REPAIR
 task-10,maintenanceRecord-02,true,7,2,洛伦·伊普森,REPAIR
-task-11,maintenanceRecord-03,true,7,2,<marquee>Hacked</marquee>,REPAIRLorem ipsum
+task-11,maintenanceRecord-03,true,7,2,<marquee>Hacked</marquee>,REPAIR
 task-12,maintenanceRecord-03,true,7,2,<script>alert(‘Hacked!’);</script>,REPAIR
 task-13,maintenanceRecord-03,true,7,2,'' or 'A' = 'A,REPAIR
 # Probando los distintos types
@@ -38,5 +38,11 @@ task-29,maintenanceRecord-01,true,2000,5,Lorem ipsum,MAINTENANCE
 task-30,maintenanceRecord-10,true,18,5,Lorem ipsum,INSPECTION
 task-31,maintenanceRecord-10,true,18,5,Lorem ipsum,INSPECTION
 task-32,maintenanceRecord-10,true,18,5,Lorem ipsum,INSPECTION
+task-33,maintenanceRecord-30,true,18,5,Lorem ipsum,INSPECTION
 
-task-33,maintenanceRecord-30,true,18,Lorem ipsum,INSPECTION
+#publish mr completed con task publicadas
+task-34,maintenanceRecord-13,true,18,5,Lorem ipsum,MAINTENANCE
+#intentar publicar mr pending con task publicadas
+task-35,maintenanceRecord-16,true,18,5,Lorem ipsum,MAINTENANCE
+#tratar de publicar mr completed con tasks sin publicar
+task-36,maintenanceRecord-19,false,18,5,Lorem ipsum,MAINTENANCE

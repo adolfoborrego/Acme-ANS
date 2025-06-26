@@ -59,6 +59,8 @@ public class TechnicianMaintRecordPublishService extends AbstractGuiService<Tech
 
 	@Override
 	public void validate(final MaintenanceRecord maintenanceRecord) {
+		boolean isCompleted = maintenanceRecord.getCurrentStatus().equals(MaintenanceRecordStatus.COMPLETED);
+		super.state(isCompleted, "currentStatus", "technician.maintenanceRecord.publish.notCompleted");
 	}
 
 	@Override
