@@ -1,5 +1,5 @@
 key,key:maintenanceRecord,published,estimatedDuration,priority,description,type
-task-01,maintenanceRecord-01,true,18,5,Una larga descripción para la primera entidad de task-01,INSPECTION
+task-01,maintenanceRecord-01,true,18,5,Lorem ipsum,INSPECTION
 #### TODAS LAS TASKS DE UNA MAINTENANCE RECORD TIENEN QUE ESTAR ASOCIADOS AL MISMO TECHNICIAN
 #Probando distintas descripciones
 task-02,maintenanceRecord-01,true,7,2,L,REPAIR
@@ -15,26 +15,34 @@ task-11,maintenanceRecord-03,true,7,2,<marquee>Hacked</marquee>,REPAIR
 task-12,maintenanceRecord-03,true,7,2,<script>alert(‘Hacked!’);</script>,REPAIR
 task-13,maintenanceRecord-03,true,7,2,'' or 'A' = 'A,REPAIR
 # Probando los distintos types
-task-14,maintenanceRecord-05,false,10,6,Short description test.,MAINTENANCE
-task-15,maintenanceRecord-05,false,10,6,Short description test.,REPAIR
-task-16,maintenanceRecord-05,false,10,6,Short description test.,INSPECTION
-task-17,maintenanceRecord-05,false,10,6,Short description test.,SYSTEM_CHECK
+task-14,maintenanceRecord-05,false,10,6,Lorem ipsum,MAINTENANCE
+task-15,maintenanceRecord-05,false,10,6,Lorem ipsum,REPAIR
+task-16,maintenanceRecord-05,false,10,6,Lorem ipsum,INSPECTION
+task-17,maintenanceRecord-05,false,10,6,Lorem ipsum,SYSTEM_CHECK
 #Probando los posibles estados de published
-task-18,maintenanceRecord-06,true,20,3,Short description test.,REPAIR
-task-19,maintenanceRecord-06,false,20,3,Short description test.,REPAIR
+task-18,maintenanceRecord-06,true,20,3,Lorem ipsum,REPAIR
+task-19,maintenanceRecord-06,false,20,3,Lorem ipsum,REPAIR
 #Probando los posibles priority
-task-20,maintenanceRecord-07,true,45,0,Short description test.,MAINTENANCE
-task-21,maintenanceRecord-07,true,45,1,Short description test.,MAINTENANCE
-task-22,maintenanceRecord-07,true,45,4,Short description test.,MAINTENANCE
-task-23,maintenanceRecord-08,true,45,9,Short description test.,MAINTENANCE
-task-24,maintenanceRecord-08,true,45,10,Short description test.,MAINTENANCE
+task-20,maintenanceRecord-07,true,45,0,Lorem ipsum,MAINTENANCE
+task-21,maintenanceRecord-07,true,45,1,Lorem ipsum,MAINTENANCE
+task-22,maintenanceRecord-07,true,45,4,Lorem ipsum,MAINTENANCE
+task-23,maintenanceRecord-08,true,45,9,Lorem ipsum,MAINTENANCE
+task-24,maintenanceRecord-08,true,45,10,Lorem ipsum,MAINTENANCE
 #Probando los posibles estimatedDuration
-task-25,maintenanceRecord-09,true,0,5,Short description test.,MAINTENANCE
-task-26,maintenanceRecord-09,true,1,5,Short description test.,MAINTENANCE
-task-27,maintenanceRecord-09,true,400,5,Short description test.,MAINTENANCE
-task-28,maintenanceRecord-09,true,1999,5,Short description test.,MAINTENANCE
-task-29,maintenanceRecord-01,true,2000,5,Short description test.,MAINTENANCE
+task-25,maintenanceRecord-09,true,0,5,Lorem ipsum,MAINTENANCE
+task-26,maintenanceRecord-09,true,1,5,Lorem ipsum,MAINTENANCE
+task-27,maintenanceRecord-09,true,400,5,Lorem ipsum,MAINTENANCE
+task-28,maintenanceRecord-09,true,1999,5,Lorem ipsum,MAINTENANCE
+task-29,maintenanceRecord-01,true,2000,5,Lorem ipsum,MAINTENANCE
 #Probando distintos maintenanceRecord
-task-30,maintenanceRecord-10,true,18,5,Una larga descripción para la task-30,INSPECTION
-task-31,maintenanceRecord-10,true,18,5,Una larga descripción para la task-31,INSPECTION
-task-32,maintenanceRecord-10,true,18,5,Una larga descripción para la task-32,INSPECTION
+task-30,maintenanceRecord-10,true,18,5,Lorem ipsum,INSPECTION
+task-31,maintenanceRecord-10,true,18,5,Lorem ipsum,INSPECTION
+task-32,maintenanceRecord-10,true,18,5,Lorem ipsum,INSPECTION
+task-33,maintenanceRecord-30,true,18,5,Lorem ipsum,INSPECTION
+
+#publish mr completed con task publicadas
+task-34,maintenanceRecord-13,true,18,5,Lorem ipsum,MAINTENANCE
+#intentar publicar mr pending con task publicadas
+task-35,maintenanceRecord-16,true,18,5,Lorem ipsum,MAINTENANCE
+#tratar de publicar mr completed con tasks sin publicar
+task-36,maintenanceRecord-19,false,18,5,Lorem ipsum,MAINTENANCE

@@ -29,6 +29,7 @@ technician.maintenanceRecord.moment-before-inspection.moment = The moment must b
 technician.maintenanceRecord.moment-before-inspection.inspectionDueDate = The next inspection must be after the moment
 technician.maintenanceRecord.estimatedCost-prefix-valid = Make sure to use a valid prefix like "USD" or "EUR"
 technician.maintenanceRecord.aircraft-non-null = Choose any aircraft
+technician.maintenanceRecord.publish.notCompleted = An incomplete maintenance record cannot be published
 
 
 technician.maintenanceRecord.publish.task-unpublished = You can't publish a maintenance record with unpublished tasks
