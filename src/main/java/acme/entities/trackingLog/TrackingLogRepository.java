@@ -20,7 +20,7 @@ public interface TrackingLogRepository extends AbstractRepository {
 		            WHEN 'PENDING' THEN 0
 		            WHEN 'ACCEPTED' THEN 1
 		            WHEN 'REJECTED' THEN 2
-		            WHEN 'IM_REVIEW' THEN 3
+		            WHEN 'IN_REVIEW' THEN 3
 		        END,
 		        tl.resolutionPercentage ASC
 		""")

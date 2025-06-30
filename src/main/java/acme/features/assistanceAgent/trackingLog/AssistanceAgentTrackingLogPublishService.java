@@ -55,7 +55,7 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 		assert trackingLog != null;
 		Double resolutionPercentage = trackingLog.getResolutionPercentage();
 		TrackingLogIndicator indicator = trackingLog.getIndicator();
-		List<TrackingLog> trackingLogs = this.repository.findPublishedTrackingLogsByClaimId(trackingLog.getClaim().getId());
+		List<TrackingLog> trackingLogs = this.repository.findTrackingLogsByClaimId(trackingLog.getClaim().getId());
 		if (!trackingLogs.isEmpty()) {
 			TrackingLog last = trackingLogs.get(trackingLogs.size() - 1);
 			boolean samePercentageAndAllowed = Double.compare(resolutionPercentage, last.getResolutionPercentage()) == 0 && indicator == TrackingLogIndicator.IN_REVIEW
