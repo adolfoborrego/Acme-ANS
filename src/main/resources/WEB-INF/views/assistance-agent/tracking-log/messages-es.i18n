@@ -18,10 +18,12 @@ assistance-agent.tracking-log.delete.submit = Eliminar registro de seguimiento
 assistance-agent.tracking-log.publish.submit = Publicar registro de seguimiento
 
 # Errores
+assistance-agent.tracking-log.error.percentage-must-be-100 = El porcentaje de resolución debe ser 100% si el indicador no es PENDING
 assistance-agent.tracking-log.error.indicator-must-be-pending = El indicador debe ser PENDING si el porcentaje de resolución es menor al 100%
-assistance-agent.tracking-log.error.indicator-must-not-be-pending = El indicador debe ser distinto de PENDING si el porcentaje de resolución es 100%
+assistance-agent.tracking-log.error.percentage-must-not-be-100 = El porcentaje de resolución debe ser menor al 100% si el indicador es PENDING
+assistance-agent.tracking-log.error.indicator-must-not-be-pending = El indicador no debe ser PENDING si el porcentaje de resolución es 100%
 assistance-agent.tracking-log.error.resolution-required-if-complete = Debes proporcionar una resolución cuando el porcentaje de resolución sea 100%
 assistance-agent.tracking-log.error.no-changes = Debes realizar al menos un cambio para actualizar el registro de seguimiento
 assistance-agent.tracking-log.resolution-percentage-must-increase = El porcentaje de resolución debe ser mayor que el del último registro de seguimiento publicado
-assistance-agent.tracking-log.indicator-must-be-pending-or-accepted-or-rejected = El siguiente registro de seguimiento publicado debe tener un indicador PENDING, ACCEPTED o REJECTED
+assistance-agent.tracking-log.indicator-must-be-pending-or-accepted-or-rejected = El siguiente registro de seguimiento publicado debe ser PENDING, ACCEPTED o REJECTED
 assistance-agent.tracking-log.indicator-must-be-in-review = El siguiente registro de seguimiento publicado debe ser IN REVIEW ya que se trata de un caso excepcional

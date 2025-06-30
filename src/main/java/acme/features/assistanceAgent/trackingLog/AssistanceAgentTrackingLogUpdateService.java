@@ -76,10 +76,12 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 
 		Double percentage = trackingLog.getResolutionPercentage();
 		TrackingLogIndicator indicator = trackingLog.getIndicator();
-		if (percentage < 100)
+		if (percentage < 100) {
+			super.state(indicator == TrackingLogIndicator.PENDING, "resolutionPercentage", "assistance-agent.tracking-log.error.percentage-must-be-100");
 			super.state(indicator == TrackingLogIndicator.PENDING, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-pending");
-		else {
+		} else {
 			boolean valid = indicator == TrackingLogIndicator.ACCEPTED || indicator == TrackingLogIndicator.REJECTED || indicator == TrackingLogIndicator.IN_REVIEW;
+			super.state(valid, "resolutionPercentage", "assistance-agent.tracking-log.error.percentage-must-not-be-100");
 			super.state(valid, "indicator", "assistance-agent.tracking-log.error.indicator-must-not-be-pending");
 			boolean hasResolution = trackingLog.getResolution() != null && !trackingLog.getResolution().trim().isEmpty();
 			super.state(hasResolution, "resolution", "assistance-agent.tracking-log.error.resolution-required-if-complete");
