@@ -44,9 +44,11 @@ public class AssistanceAgentTrackingLogShowService extends AbstractGuiService<As
 	public void unbind(final TrackingLog trackingLog) {
 		assert trackingLog != null;
 		Dataset dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "indicator", "resolution", "published");
-		SelectChoices trackingLogIndicators = SelectChoices.from(TrackingLogIndicator.class, trackingLog.getIndicator());
+		SelectChoices trackingLogIndicators = AssistanceAgentTrackingLogAuxiliary.getPossibleIndicatorChoices(trackingLog.getClaim(), trackingLog.getIndicator(), false);
 		dataset.put("trackingLogIndicators", trackingLogIndicators);
 		super.getResponse().addData(dataset);
+		boolean showUpdateOrPublish = !(trackingLog.getClaim().getIndicator() == TrackingLogIndicator.IN_REVIEW);
+		super.getResponse().addGlobal("showUpdateOrPublish", showUpdateOrPublish);
 	}
 
 }

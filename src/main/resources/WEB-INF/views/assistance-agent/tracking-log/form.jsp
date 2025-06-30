@@ -17,11 +17,11 @@
 	<!-- Acciones -->
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && !published}">
-			<acme:submit code="assistance-agent.tracking-log.update.submit" action="/assistance-agent/tracking-log/update?id=${id}"/>
-			<acme:submit code="assistance-agent.tracking-log.delete.submit" action="/assistance-agent/tracking-log/delete?id=${id}"/>
-			<jstl:if test="${!published}">
+			<jstl:if test="${showUpdateOrPublish}">
+				<acme:submit code="assistance-agent.tracking-log.update.submit" action="/assistance-agent/tracking-log/update?id=${id}"/>
 				<acme:submit code="assistance-agent.tracking-log.publish.submit" action="/assistance-agent/tracking-log/publish?id=${id}"/>
 			</jstl:if>
+			<acme:submit code="assistance-agent.tracking-log.delete.submit" action="/assistance-agent/tracking-log/delete?id=${id}"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="assistance-agent.tracking-log.create.submit" action="/assistance-agent/tracking-log/create?claimId=${claimId}"/>
