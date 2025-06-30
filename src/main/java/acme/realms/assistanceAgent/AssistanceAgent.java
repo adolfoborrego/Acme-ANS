@@ -29,6 +29,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidCodeInitials
+// It is not necessary to create indexes because by not declaring any manually, 
+// the indexes of the relationships are created automatically.
 public class AssistanceAgent extends AbstractRole {
 
 	// Serialisation version --------------------------------------------------
