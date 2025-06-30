@@ -51,13 +51,13 @@
 		<jstl:if test="${_command != 'create' && numberOfTasks == 0}">
 			<jstl:if test="${isAircraftDisabled}">
 				<acme:print code="technician.maintenance-record.isAircraftDisabled-task0"/>
+				<br>
 			</jstl:if>
 			<jstl:if test="${!isAircraftDisabled}">
 				<acme:button code="technician.maintenance-record.create-first-task" action="/technician/task/create?maintenanceRecordId=${maintenanceRecordId}"/>
 			</jstl:if>
-			
 		</jstl:if>
-	   <jstl:if test="${acme:anyOf(_command, 'show|publish|update')&& numberOfTasks != 0}">
+	   <jstl:if test="${acme:anyOf(_command, 'show|publish|update|delete')&& numberOfTasks != 0}">
 			<acme:button code="technician.maintenance-record.list-tasks" action="/technician/task/list?maintenanceRecordId=${id}"/>
 		</jstl:if>
 		
@@ -69,6 +69,7 @@
 						<acme:submit code="technician.maintenanceRecord.publish" action="/technician/maintenance-record/publish?id=${maintenanceRecordId}" />
 					</jstl:if>
 				</jstl:if>
+				<acme:submit code="technician.maintenanceRecord.delete" action="/technician/maintenance-record/delete?id=${maintenanceRecordId}" />
 			</jstl:when>
 	   		<jstl:when test="${_command == 'create'}">
 				<acme:submit code="technician.maintenanceRecord.create.submit" action="/technician/maintenance-record/create"/>
