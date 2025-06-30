@@ -80,7 +80,7 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 			super.state(indicator == TrackingLogIndicator.PENDING, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-pending");
 		else {
 			boolean valid = indicator == TrackingLogIndicator.ACCEPTED || indicator == TrackingLogIndicator.REJECTED || indicator == TrackingLogIndicator.IN_REVIEW;
-			super.state(valid, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-accepted-or-rejected-or-in-review");
+			super.state(valid, "indicator", "assistance-agent.tracking-log.error.indicator-must-not-be-pending");
 			boolean hasResolution = trackingLog.getResolution() != null && !trackingLog.getResolution().trim().isEmpty();
 			super.state(hasResolution, "resolution", "assistance-agent.tracking-log.error.resolution-required-if-complete");
 		}

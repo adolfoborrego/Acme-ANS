@@ -13,7 +13,7 @@ public interface TrackingLogRepository extends AbstractRepository {
 
 	@Query("""
 		    SELECT tl FROM TrackingLog tl
-		    WHERE tl.claim.id = :claimId
+		    WHERE tl.claim.id = :claimId AND tl.published = true
 		    ORDER BY
 		        tl.published DESC,
 		        CASE tl.indicator

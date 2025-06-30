@@ -55,13 +55,20 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 		assert trackingLog != null;
 		Double resolutionPercentage = trackingLog.getResolutionPercentage();
 		TrackingLogIndicator indicator = trackingLog.getIndicator();
-		List<TrackingLog> trackingLogs = this.repository.findTrackingLogsByClaimId(trackingLog.getClaim().getId());
+		List<TrackingLog> trackingLogs = this.repository.findPublishedTrackingLogsByClaimId(trackingLog.getClaim().getId());
 		if (!trackingLogs.isEmpty()) {
 			TrackingLog last = trackingLogs.get(trackingLogs.size() - 1);
-			boolean samePercentageAndAllowed = Double.compare(resolutionPercentage, last.getResolutionPercentage()) == 0 && indicator == TrackingLogIndicator.IN_REVIEW
-				&& (last.getIndicator() == TrackingLogIndicator.ACCEPTED || last.getIndicator() == TrackingLogIndicator.REJECTED);
-			boolean isIncreasing = resolutionPercentage > last.getResolutionPercentage() || samePercentageAndAllowed;
-			super.state(isIncreasing, "resolutionPercentage", "assistance-agent.tracking-log.resolution-percentage-must-increase");
+			if (last.getIndicator() == TrackingLogIndicator.PENDING) {
+				boolean isIncreasing = resolutionPercentage > last.getResolutionPercentage();
+				super.state(isIncreasing, "resolutionPercentage", "assistance-agent.tracking-log.resolution-percentage-must-increase");
+				boolean isPendingOrAcceptedOrRejected = indicator == TrackingLogIndicator.PENDING || indicator == TrackingLogIndicator.ACCEPTED || indicator == TrackingLogIndicator.REJECTED;
+				super.state(isPendingOrAcceptedOrRejected, "indicator", "assistance-agent.tracking-log.indicator-must-be-pending-or-accepted-or-rejected");
+
+			} else if (last.getIndicator() == TrackingLogIndicator.ACCEPTED || last.getIndicator() == TrackingLogIndicator.REJECTED) {
+				boolean isInReview = indicator == TrackingLogIndicator.IN_REVIEW;
+				super.state(isInReview, "indicator", "assistance-agent.tracking-log.indicator-must-be-in-review");
+
+			}
 		}
 	}
 

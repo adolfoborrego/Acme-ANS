@@ -1,6 +1,7 @@
 
 package acme.features.assistanceAgent.trackingLog;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -32,7 +33,21 @@ public interface AssistanceAgentTrackingLogRepository extends AbstractRepository
 		        END,
 		        tl.resolutionPercentage ASC
 		""")
-	List<TrackingLog> findTrackingLogsByClaimId(int claimId);
+	Collection<TrackingLog> findTrackingLogsByClaimId(int claimId);
+
+	@Query("""
+		    SELECT tl FROM TrackingLog tl
+		    WHERE tl.claim.id = :claimId AND tl.published = true
+		    ORDER BY
+		        CASE tl.indicator
+		            WHEN 'PENDING' THEN 0
+		            WHEN 'ACCEPTED' THEN 1
+		            WHEN 'REJECTED' THEN 2
+		            WHEN 'IN_REVIEW' THEN 3
+		        END,
+		        tl.resolutionPercentage ASC
+		""")
+	List<TrackingLog> findPublishedTrackingLogsByClaimId(int claimId);
 
 	@Query("SELECT tl FROM TrackingLog tl WHERE tl.id = :trackingLogId")
 	TrackingLog findTrackingLogById(int trackingLogId);
