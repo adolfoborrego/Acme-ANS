@@ -4,6 +4,8 @@ package acme.entities.airport;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Index;
+import javax.persistence.Table;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -18,6 +20,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Table(indexes = {
+	//in this case we have used an index because we have not mapped the attribute as @Column(unique=true),
+	//since we have used a custom validator.
+	@Index(name = "idx_airport_iatacode", columnList = "iataCode")
+})
 @Getter
 @Setter
 public class Airport extends AbstractEntity {
