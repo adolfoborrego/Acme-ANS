@@ -12,4 +12,6 @@
 	<acme:list-column code="assistance-agent.tracking-log.list.label.published" path="published"/>
 	<acme:list-payload path="payload"/>	
 </acme:list>
-<acme:button code="assistance-agent.tracking-log.create" action="/assistance-agent/tracking-log/create?claimId=${claimId}"/>
+<jstl:if test="${showCreate}">
+	<acme:button code="assistance-agent.tracking-log.create" action="/assistance-agent/tracking-log/create?claimId=${claimId}"/>
+</jstl:if>

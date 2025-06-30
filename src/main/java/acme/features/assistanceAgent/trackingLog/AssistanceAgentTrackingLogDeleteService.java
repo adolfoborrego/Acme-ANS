@@ -8,7 +8,6 @@ import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.trackingLog.TrackingLog;
-import acme.entities.trackingLog.TrackingLogIndicator;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
@@ -62,7 +61,7 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 	public void unbind(final TrackingLog trackingLog) {
 		assert trackingLog != null;
 		Dataset dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "indicator", "resolution", "published");
-		SelectChoices trackingLogIndicators = SelectChoices.from(TrackingLogIndicator.class, trackingLog.getIndicator());
+		SelectChoices trackingLogIndicators = AssistanceAgentTrackingLogAuxiliary.getPossibleIndicatorChoices(trackingLog.getClaim(), trackingLog.getIndicator(), false);
 		dataset.put("trackingLogIndicators", trackingLogIndicators);
 		dataset.put("claimId", trackingLog.getClaim().getId());
 		super.getResponse().addData(dataset);

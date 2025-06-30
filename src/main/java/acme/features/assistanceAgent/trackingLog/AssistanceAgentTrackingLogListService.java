@@ -10,6 +10,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
 import acme.entities.trackingLog.TrackingLog;
+import acme.entities.trackingLog.TrackingLogIndicator;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
@@ -42,6 +43,9 @@ public class AssistanceAgentTrackingLogListService extends AbstractGuiService<As
 		Collection<TrackingLog> trackingLogs = this.repository.findTrackingLogsByClaimId(claimId);
 		super.getBuffer().addData(trackingLogs);
 		super.getResponse().addGlobal("claimId", claimId);
+		Claim claim = this.repository.findClaimById(claimId);
+		boolean showCreate = !(claim.getIndicator() == TrackingLogIndicator.IN_REVIEW);
+		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 
 	@Override

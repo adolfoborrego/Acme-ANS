@@ -33,7 +33,8 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 			isTrackingLogOwner = trackingLog.getClaim().getAssistanceAgent().getId() == assistanceAgentId;
 			isPublished = trackingLog.getPublished();
 		}
-		boolean status = isTrackingLogOwner && !isPublished;
+		boolean isClaimInReview = trackingLog.getClaim().getIndicator() == TrackingLogIndicator.IN_REVIEW;
+		boolean status = isTrackingLogOwner && !isPublished && !isClaimInReview;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -55,19 +56,18 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 		Double resolutionPercentage = trackingLog.getResolutionPercentage();
 		TrackingLogIndicator indicator = trackingLog.getIndicator();
 		List<TrackingLog> trackingLogs = this.repository.findPublishedTrackingLogsByClaimId(trackingLog.getClaim().getId());
-		if (trackingLogs.isEmpty())
-			super.state(indicator != TrackingLogIndicator.IN_REVIEW, "indicator", "assistance-agent.tracking-log.error.first-log-not-in-review");
-		else {
+		if (!trackingLogs.isEmpty()) {
 			TrackingLog last = trackingLogs.get(trackingLogs.size() - 1);
-			boolean samePercentageAndAllowed = Double.compare(resolutionPercentage, last.getResolutionPercentage()) == 0 && indicator == TrackingLogIndicator.IN_REVIEW
-				&& (last.getIndicator() == TrackingLogIndicator.ACCEPTED || last.getIndicator() == TrackingLogIndicator.REJECTED || last.getIndicator() == TrackingLogIndicator.IN_REVIEW);
-			boolean isIncreasing = resolutionPercentage > last.getResolutionPercentage() || samePercentageAndAllowed;
-			super.state(isIncreasing, "resolutionPercentage", "assistance-agent.tracking-log.resolution-percentage-must-increase");
-			if (last.getIndicator() == TrackingLogIndicator.IN_REVIEW)
-				super.state(indicator == TrackingLogIndicator.IN_REVIEW, "indicator", "assistance-agent.tracking-log.last-log-in-review");
-			if (indicator == TrackingLogIndicator.IN_REVIEW && last.getIndicator() != TrackingLogIndicator.IN_REVIEW) {
-				boolean validTransition = last.getIndicator() == TrackingLogIndicator.ACCEPTED || last.getIndicator() == TrackingLogIndicator.REJECTED;
-				super.state(validTransition, "indicator", "assistance-agent.tracking-log.in-review-needs-previous-acception-or-rejection");
+			if (last.getIndicator() == TrackingLogIndicator.PENDING) {
+				boolean isIncreasing = resolutionPercentage > last.getResolutionPercentage();
+				super.state(isIncreasing, "resolutionPercentage", "assistance-agent.tracking-log.resolution-percentage-must-increase");
+				boolean isPendingOrAcceptedOrRejected = indicator == TrackingLogIndicator.PENDING || indicator == TrackingLogIndicator.ACCEPTED || indicator == TrackingLogIndicator.REJECTED;
+				super.state(isPendingOrAcceptedOrRejected, "indicator", "assistance-agent.tracking-log.indicator-must-be-pending-or-accepted-or-rejected");
+
+			} else if (last.getIndicator() == TrackingLogIndicator.ACCEPTED || last.getIndicator() == TrackingLogIndicator.REJECTED) {
+				boolean isInReview = indicator == TrackingLogIndicator.IN_REVIEW;
+				super.state(isInReview, "indicator", "assistance-agent.tracking-log.indicator-must-be-in-review");
+
 			}
 		}
 	}
@@ -83,9 +83,11 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 	public void unbind(final TrackingLog trackingLog) {
 		assert trackingLog != null;
 		Dataset dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "indicator", "resolution", "published");
-		SelectChoices trackingLogIndicators = SelectChoices.from(TrackingLogIndicator.class, trackingLog.getIndicator());
+		SelectChoices trackingLogIndicators = AssistanceAgentTrackingLogAuxiliary.getPossibleIndicatorChoices(trackingLog.getClaim(), trackingLog.getIndicator(), false);
 		dataset.put("trackingLogIndicators", trackingLogIndicators);
 		dataset.put("claimId", trackingLog.getClaim().getId());
+		boolean showUpdateOrPublish = !(trackingLog.getClaim().getIndicator() == TrackingLogIndicator.IN_REVIEW);
+		super.getResponse().addGlobal("showUpdateOrPublish", showUpdateOrPublish);
 		super.getResponse().addData(dataset);
 	}
 

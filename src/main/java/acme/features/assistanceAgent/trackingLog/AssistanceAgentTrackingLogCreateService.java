@@ -1,6 +1,8 @@
 
 package acme.features.assistanceAgent.trackingLog;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -27,13 +29,27 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		Claim claim = this.repository.findClaimById(claimId);
 		boolean isClaimOwner = false;
 		boolean isClaimPublished = false;
+
 		if (isAssistanceAgent && claim != null) {
 			int userAccountId = super.getRequest().getPrincipal().getAccountId();
 			int assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
 			isClaimOwner = claim.getAssistanceAgent().getId() == assistanceAgentId;
 			isClaimPublished = claim.getPublished();
 		}
-		boolean status = isClaimOwner && isClaimPublished;
+
+		boolean isClaimInReview = claim.getIndicator() == TrackingLogIndicator.IN_REVIEW;
+
+		boolean isIndicatorLegal = true;
+		boolean isPost = super.getRequest().getMethod().equalsIgnoreCase("POST");
+
+		if (isPost && super.getRequest().hasData("indicator")) {
+			String raw = super.getRequest().getData("indicator", String.class);
+			TrackingLogIndicator indicator = "0".equals(raw) || raw == null ? null : TrackingLogIndicator.valueOf(raw);
+			List<TrackingLogIndicator> legalIndicators = AssistanceAgentTrackingLogAuxiliary.getLegalIndicators(claim);
+			isIndicatorLegal = legalIndicators.contains(indicator);
+		}
+
+		boolean status = isClaimOwner && isClaimPublished && !isClaimInReview && isIndicatorLegal;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -57,18 +73,17 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 	@Override
 	public void validate(final TrackingLog trackingLog) {
 		assert trackingLog != null;
-		boolean hasResolutionPercentage = trackingLog.getResolutionPercentage() != null;
-		if (hasResolutionPercentage) {
-			final boolean isComplete = trackingLog.getResolutionPercentage() == 100;
-			final TrackingLogIndicator indicator = trackingLog.getIndicator();
-			if (!isComplete)
-				super.state(indicator == TrackingLogIndicator.PENDING, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-pending");
-			if (isComplete) {
-				boolean valid = indicator == TrackingLogIndicator.ACCEPTED || indicator == TrackingLogIndicator.REJECTED || indicator == TrackingLogIndicator.IN_REVIEW;
-				super.state(valid, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-accepted-or-rejected-or-in-review");
-				boolean hasResolution = trackingLog.getResolution() != null && !trackingLog.getResolution().trim().isEmpty();
-				super.state(hasResolution, "resolution", "assistance-agent.tracking-log.error.resolution-required-if-complete");
-			}
+		Double percentage = trackingLog.getResolutionPercentage();
+		TrackingLogIndicator indicator = trackingLog.getIndicator();
+		if (percentage < 100) {
+			super.state(indicator == TrackingLogIndicator.PENDING, "resolutionPercentage", "assistance-agent.tracking-log.error.percentage-must-be-100");
+			super.state(indicator == TrackingLogIndicator.PENDING, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-pending");
+		} else {
+			boolean valid = indicator == TrackingLogIndicator.ACCEPTED || indicator == TrackingLogIndicator.REJECTED || indicator == TrackingLogIndicator.IN_REVIEW;
+			super.state(valid, "resolutionPercentage", "assistance-agent.tracking-log.error.percentage-must-not-be-100");
+			super.state(valid, "indicator", "assistance-agent.tracking-log.error.indicator-must-not-be-pending");
+			boolean hasResolution = trackingLog.getResolution() != null && !trackingLog.getResolution().trim().isEmpty();
+			super.state(hasResolution, "resolution", "assistance-agent.tracking-log.error.resolution-required-if-complete");
 		}
 	}
 
@@ -81,7 +96,7 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 	@Override
 	public void unbind(final TrackingLog trackingLog) {
 		Dataset dataset = super.unbindObject(trackingLog, "step", "resolutionPercentage", "indicator", "resolution");
-		SelectChoices trackingLogIndicators = SelectChoices.from(TrackingLogIndicator.class, trackingLog.getIndicator());
+		SelectChoices trackingLogIndicators = AssistanceAgentTrackingLogAuxiliary.getPossibleIndicatorChoices(trackingLog.getClaim(), trackingLog.getIndicator(), true);
 		dataset.put("trackingLogIndicators", trackingLogIndicators);
 		dataset.put("claimId", trackingLog.getClaim().getId());
 		super.getResponse().addData(dataset);

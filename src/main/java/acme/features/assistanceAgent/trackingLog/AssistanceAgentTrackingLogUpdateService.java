@@ -1,6 +1,7 @@
 
 package acme.features.assistanceAgent.trackingLog;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,21 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 			isTrackingLogOwner = trackingLog.getClaim().getAssistanceAgent().getId() == assistanceAgentId;
 			isPublished = trackingLog.getPublished();
 		}
-		boolean status = isTrackingLogOwner && !isPublished;
+
+		boolean isClaimInReview = trackingLog.getClaim().getIndicator() == TrackingLogIndicator.IN_REVIEW;
+
+		boolean isIndicatorLegal = true;
+		boolean isPost = super.getRequest().getMethod().equalsIgnoreCase("POST");
+
+		if (isPost && super.getRequest().hasData("indicator")) {
+			String raw = super.getRequest().getData("indicator", String.class);
+			TrackingLogIndicator indicator = "0".equals(raw) || raw == null ? null : TrackingLogIndicator.valueOf(raw);
+			List<TrackingLogIndicator> legalIndicators = AssistanceAgentTrackingLogAuxiliary.getLegalIndicators(trackingLog.getClaim());
+			legalIndicators.add(trackingLog.getIndicator());
+			isIndicatorLegal = legalIndicators.contains(indicator);
+		}
+
+		boolean status = isTrackingLogOwner && !isPublished && !isClaimInReview && isIndicatorLegal;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -54,23 +69,24 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 	@Override
 	public void validate(final TrackingLog trackingLog) {
 		assert trackingLog != null;
-		boolean hasResolutionPercentage = trackingLog.getResolutionPercentage() != null;
-		if (hasResolutionPercentage) {
-			final boolean isComplete = trackingLog.getResolutionPercentage() == 100;
-			final TrackingLogIndicator indicator = trackingLog.getIndicator();
-			if (!isComplete)
-				super.state(indicator == TrackingLogIndicator.PENDING, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-pending");
-			if (isComplete) {
-				boolean valid = indicator == TrackingLogIndicator.ACCEPTED || indicator == TrackingLogIndicator.REJECTED || indicator == TrackingLogIndicator.IN_REVIEW;
-				super.state(valid, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-accepted-or-rejected-or-in-review");
-				boolean hasResolution = trackingLog.getResolution() != null && !trackingLog.getResolution().trim().isEmpty();
-				super.state(hasResolution, "resolution", "assistance-agent.tracking-log.error.resolution-required-if-complete");
-			}
-		}
 		TrackingLog originalTrackingLog = this.repository.findTrackingLogById(trackingLog.getId());
 		boolean isModified = !Objects.equals(trackingLog.getStep(), originalTrackingLog.getStep()) || !Objects.equals(trackingLog.getResolutionPercentage(), originalTrackingLog.getResolutionPercentage())
 			|| !Objects.equals(trackingLog.getIndicator(), originalTrackingLog.getIndicator()) || !Objects.equals(trackingLog.getResolution(), originalTrackingLog.getResolution());
 		super.state(isModified, "*", "assistance-agent.tracking-log.error.no-changes");
+
+		Double percentage = trackingLog.getResolutionPercentage();
+		TrackingLogIndicator indicator = trackingLog.getIndicator();
+		if (percentage < 100) {
+			super.state(indicator == TrackingLogIndicator.PENDING, "resolutionPercentage", "assistance-agent.tracking-log.error.percentage-must-be-100");
+			super.state(indicator == TrackingLogIndicator.PENDING, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-pending");
+		} else {
+			boolean valid = indicator == TrackingLogIndicator.ACCEPTED || indicator == TrackingLogIndicator.REJECTED || indicator == TrackingLogIndicator.IN_REVIEW;
+			super.state(valid, "resolutionPercentage", "assistance-agent.tracking-log.error.percentage-must-not-be-100");
+			super.state(valid, "indicator", "assistance-agent.tracking-log.error.indicator-must-not-be-pending");
+			boolean hasResolution = trackingLog.getResolution() != null && !trackingLog.getResolution().trim().isEmpty();
+			super.state(hasResolution, "resolution", "assistance-agent.tracking-log.error.resolution-required-if-complete");
+		}
+
 	}
 
 	@Override
@@ -84,9 +100,11 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 	public void unbind(final TrackingLog trackingLog) {
 		assert trackingLog != null;
 		Dataset dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "indicator", "resolution", "published");
-		SelectChoices trackingLogIndicators = SelectChoices.from(TrackingLogIndicator.class, trackingLog.getIndicator());
+		SelectChoices trackingLogIndicators = AssistanceAgentTrackingLogAuxiliary.getPossibleIndicatorChoices(trackingLog.getClaim(), trackingLog.getIndicator(), false);
 		dataset.put("trackingLogIndicators", trackingLogIndicators);
 		dataset.put("claimId", trackingLog.getClaim().getId());
+		boolean showUpdateOrPublish = !(trackingLog.getClaim().getIndicator() == TrackingLogIndicator.IN_REVIEW);
+		super.getResponse().addGlobal("showUpdateOrPublish", showUpdateOrPublish);
 		super.getResponse().addData(dataset);
 	}
 
