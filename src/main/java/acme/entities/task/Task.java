@@ -21,7 +21,7 @@ import lombok.Setter;
 
 @Entity
 @Table(indexes = {
-	@Index(name = "idx_maint_record", columnList = "maintenance_record_id"), @Index(name = "idx_published", columnList = "published"), @Index(name = "idx_priority", columnList = "priority"), @Index(name = "idx_type", columnList = "type")
+	@Index(name = "idx_maint_record", columnList = "maintenance_record_id"),
 })
 @Getter
 @Setter

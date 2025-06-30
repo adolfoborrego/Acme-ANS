@@ -29,8 +29,7 @@ import lombok.Setter;
 
 @Entity
 @Table(indexes = {
-	@Index(name = "idx_technician", columnList = "technician_id"), @Index(name = "idx_aircraft", columnList = "aircraft_id"), @Index(name = "idx_published", columnList = "published"), @Index(name = "idx_moment", columnList = "moment"),
-	@Index(name = "idx_inspection_date", columnList = "inspectionDueDate")
+	@Index(name = "idx_technician", columnList = "technician_id"), @Index(name = "idx_aircraft", columnList = "aircraft_id"),
 })
 @Getter
 @Setter
