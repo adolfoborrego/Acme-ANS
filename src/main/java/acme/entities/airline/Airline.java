@@ -26,6 +26,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+//It is not necessary to add an index to map the iataCode attribute, 
+//because the indexes of the unique values are created automatically.
 public class Airline extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------

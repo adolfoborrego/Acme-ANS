@@ -7,9 +7,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Index;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -28,11 +26,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(indexes = {
-	@Index(name = "idx_technician", columnList = "technician_id"), @Index(name = "idx_aircraft", columnList = "aircraft_id"),
-})
 @Getter
 @Setter
+//It is not necessary to create indexes because by not declaring any manually, 
+//the indexes of the relationships are created automatically.
+//the only indexes needed are mapped in the Aircraft table
 public class MaintenanceRecord extends AbstractEntity {
 	// Serialisation version -------------------------------------------------------------------------------------
 

@@ -22,7 +22,9 @@ import lombok.Setter;
 
 @Entity
 @Table(indexes = {
-	@Index(name = "idx_registration_number", columnList = "registrationNumber"), @Index(name = "idx_status", columnList = "status")
+	//It is not necessary to add an index to map the registrationNumber attribute, 
+	//because the indexes of the unique values are created automatically.
+	@Index(name = "idx_status", columnList = "status")
 })
 @Getter
 @Setter

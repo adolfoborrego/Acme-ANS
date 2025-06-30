@@ -5,8 +5,6 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Index;
-import javax.persistence.Table;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -21,12 +19,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(indexes = {
-	@Index(name = "idx_user_account", columnList = "user_account_id")
-})
 @Getter
 @Setter
 @ValidCodeInitials
+//It is not necessary to create indexes because by not declaring any manually, 
+//the indexes of the relationships are created automatically.
 public class Technician extends AbstractRole {
 
 	// Serialisation version -------------------------------------------------------------------------------------
