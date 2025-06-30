@@ -30,6 +30,9 @@ public class TechnicianMaintenanceRecordController extends AbstractGuiController
 	@Autowired
 	private TechnicianMaintRecordPublishService	publishService;
 
+	@Autowired
+	private TechnicianMaintRecordDeleteService	deleteService;
+
 	// Constructors -----------------------------------------------------------
 
 
@@ -38,6 +41,7 @@ public class TechnicianMaintenanceRecordController extends AbstractGuiController
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("delete", this.deleteService);
 		super.addBasicCommand("show", this.showService);
 		super.addCustomCommand("publish", "update", this.publishService);
 	}
