@@ -32,15 +32,13 @@ public class TechnicianTaskListService extends AbstractGuiService<Technician, Ta
 		int technicianId;
 		MaintenanceRecord mr;
 
+		status = false;
 		maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class, null);
 		userId = super.getRequest().getPrincipal().getAccountId();
 		technicianId = this.repository.findTechnicianIdByUserId(userId);
 		mr = this.repository.findMaintenanceRecordById(maintenanceRecordId);
 		if (mr != null)
 			status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class) && technicianId == mr.getTechnician().getId();
-		else
-			status = false;
-
 		super.getResponse().setAuthorised(status);
 	}
 
