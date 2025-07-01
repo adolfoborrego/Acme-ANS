@@ -36,12 +36,14 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 			isPublished = trackingLog.getPublished();
 		}
 
-		boolean isClaimInReview = trackingLog.getClaim().getIndicator() == TrackingLogIndicator.IN_REVIEW;
+		boolean isClaimInReview = true;
+		if (trackingLog != null)
+			isClaimInReview = trackingLog.getClaim().getIndicator() == TrackingLogIndicator.IN_REVIEW;
 
 		boolean isIndicatorLegal = true;
 		boolean isPost = super.getRequest().getMethod().equalsIgnoreCase("POST");
 
-		if (isPost && super.getRequest().hasData("indicator")) {
+		if (isPost && super.getRequest().hasData("indicator") && trackingLog != null) {
 			String raw = super.getRequest().getData("indicator", String.class);
 			TrackingLogIndicator indicator = "0".equals(raw) || raw == null ? null : TrackingLogIndicator.valueOf(raw);
 			List<TrackingLogIndicator> legalIndicators = AssistanceAgentTrackingLogAuxiliary.getLegalIndicators(trackingLog.getClaim());
@@ -76,17 +78,17 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 
 		Double percentage = trackingLog.getResolutionPercentage();
 		TrackingLogIndicator indicator = trackingLog.getIndicator();
-		if (percentage < 100) {
-			super.state(indicator == TrackingLogIndicator.PENDING, "resolutionPercentage", "assistance-agent.tracking-log.error.percentage-must-be-100");
-			super.state(indicator == TrackingLogIndicator.PENDING, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-pending");
-		} else {
-			boolean valid = indicator == TrackingLogIndicator.ACCEPTED || indicator == TrackingLogIndicator.REJECTED || indicator == TrackingLogIndicator.IN_REVIEW;
-			super.state(valid, "resolutionPercentage", "assistance-agent.tracking-log.error.percentage-must-not-be-100");
-			super.state(valid, "indicator", "assistance-agent.tracking-log.error.indicator-must-not-be-pending");
-			boolean hasResolution = trackingLog.getResolution() != null && !trackingLog.getResolution().trim().isEmpty();
-			super.state(hasResolution, "resolution", "assistance-agent.tracking-log.error.resolution-required-if-complete");
-		}
-
+		if (percentage != null)
+			if (percentage < 100) {
+				super.state(indicator == TrackingLogIndicator.PENDING, "resolutionPercentage", "assistance-agent.tracking-log.error.percentage-must-be-100");
+				super.state(indicator == TrackingLogIndicator.PENDING, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-pending");
+			} else {
+				boolean valid = indicator == TrackingLogIndicator.ACCEPTED || indicator == TrackingLogIndicator.REJECTED || indicator == TrackingLogIndicator.IN_REVIEW;
+				super.state(valid, "resolutionPercentage", "assistance-agent.tracking-log.error.percentage-must-not-be-100");
+				super.state(valid, "indicator", "assistance-agent.tracking-log.error.indicator-must-not-be-pending");
+				boolean hasResolution = trackingLog.getResolution() != null && !trackingLog.getResolution().trim().isEmpty();
+				super.state(hasResolution, "resolution", "assistance-agent.tracking-log.error.resolution-required-if-complete");
+			}
 	}
 
 	@Override

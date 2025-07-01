@@ -33,7 +33,9 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 			isTrackingLogOwner = trackingLog.getClaim().getAssistanceAgent().getId() == assistanceAgentId;
 			isPublished = trackingLog.getPublished();
 		}
-		boolean isClaimInReview = trackingLog.getClaim().getIndicator() == TrackingLogIndicator.IN_REVIEW;
+		boolean isClaimInReview = true;
+		if (trackingLog != null)
+			isClaimInReview = trackingLog.getClaim().getIndicator() == TrackingLogIndicator.IN_REVIEW;
 		boolean status = isTrackingLogOwner && !isPublished && !isClaimInReview;
 		super.getResponse().setAuthorised(status);
 	}
