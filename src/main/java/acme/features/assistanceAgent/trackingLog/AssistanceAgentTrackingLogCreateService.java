@@ -37,7 +37,9 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 			isClaimPublished = claim.getPublished();
 		}
 
-		boolean isClaimInReview = claim.getIndicator() == TrackingLogIndicator.IN_REVIEW;
+		boolean isClaimInReview = true;
+		if (claim != null)
+			isClaimInReview = claim.getIndicator() == TrackingLogIndicator.IN_REVIEW;
 
 		boolean isIndicatorLegal = true;
 		boolean isPost = super.getRequest().getMethod().equalsIgnoreCase("POST");
@@ -75,16 +77,17 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		assert trackingLog != null;
 		Double percentage = trackingLog.getResolutionPercentage();
 		TrackingLogIndicator indicator = trackingLog.getIndicator();
-		if (percentage < 100) {
-			super.state(indicator == TrackingLogIndicator.PENDING, "resolutionPercentage", "assistance-agent.tracking-log.error.percentage-must-be-100");
-			super.state(indicator == TrackingLogIndicator.PENDING, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-pending");
-		} else {
-			boolean valid = indicator == TrackingLogIndicator.ACCEPTED || indicator == TrackingLogIndicator.REJECTED || indicator == TrackingLogIndicator.IN_REVIEW;
-			super.state(valid, "resolutionPercentage", "assistance-agent.tracking-log.error.percentage-must-not-be-100");
-			super.state(valid, "indicator", "assistance-agent.tracking-log.error.indicator-must-not-be-pending");
-			boolean hasResolution = trackingLog.getResolution() != null && !trackingLog.getResolution().trim().isEmpty();
-			super.state(hasResolution, "resolution", "assistance-agent.tracking-log.error.resolution-required-if-complete");
-		}
+		if (percentage != null)
+			if (percentage < 100) {
+				super.state(indicator == TrackingLogIndicator.PENDING, "resolutionPercentage", "assistance-agent.tracking-log.error.percentage-must-be-100");
+				super.state(indicator == TrackingLogIndicator.PENDING, "indicator", "assistance-agent.tracking-log.error.indicator-must-be-pending");
+			} else {
+				boolean valid = indicator == TrackingLogIndicator.ACCEPTED || indicator == TrackingLogIndicator.REJECTED || indicator == TrackingLogIndicator.IN_REVIEW;
+				super.state(valid, "resolutionPercentage", "assistance-agent.tracking-log.error.percentage-must-not-be-100");
+				super.state(valid, "indicator", "assistance-agent.tracking-log.error.indicator-must-not-be-pending");
+				boolean hasResolution = trackingLog.getResolution() != null && !trackingLog.getResolution().trim().isEmpty();
+				super.state(hasResolution, "resolution", "assistance-agent.tracking-log.error.resolution-required-if-complete");
+			}
 	}
 
 	@Override

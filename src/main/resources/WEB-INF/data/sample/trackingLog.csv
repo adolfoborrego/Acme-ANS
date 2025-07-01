@@ -21,11 +21,11 @@ tracking-log-14,2011/04/16 00:00,' or 'A' = 'A ,50.00,PENDING,"Lorem ipsum dolor
 tracking-log-15,2011/04/16 00:00,Lorem ipsum dolor sit ame,0.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
 tracking-log-16,2011/04/16 00:00,Lorem ipsum dolor sit ame,0.01,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
 tracking-log-17,2011/04/16 00:00,Lorem ipsum dolor sit ame,99.99,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
-tracking-log-18,2011/04/16 00:00,Lorem ipsum dolor sit ame,100.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
+tracking-log-18,2011/04/16 00:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
 # indicator variations
-tracking-log-19,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
-tracking-log-20,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,REJECTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
-tracking-log-21,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,IN_REVIEW,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
+tracking-log-19,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
+tracking-log-20,2011/04/16 00:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
+tracking-log-21,2011/04/16 00:00,Lorem ipsum dolor sit ame,100.00,REJECTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-00
 # resolution variations
 tracking-log-22,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,,false,claim-00
 tracking-log-23,2011/04/16 00:00,Lorem ipsum dolor sit ame,50.00,PENDING,L,false,claim-00
