@@ -21,6 +21,6 @@ administrator.airport.form.error.confirmation = You must confirm the data to pro
 administrator.airport.form.button.update = Update airport
 administrator.airport.list.button.create = Create airport
 administrator.airport.form.button.create = Create airport
-administrator.airport.form.error.duplicate-iata = wrong iata code
+administrator.airport.form.error.duplicate-iata = IATA Code already in use. Try another
 
 administrator.airport.form.label.iataCode.placeholder = 3 capital letters; e.g., "AWT"

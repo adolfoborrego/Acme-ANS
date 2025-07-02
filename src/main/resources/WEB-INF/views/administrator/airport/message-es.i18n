@@ -21,7 +21,7 @@ administrator.airport.form.error.confirmation = Debe confirmar los datos para co
 administrator.airport.form.button.update = Actualizar aeropuerto
 administrator.airport.list.button.create = Crear aeropuerto
 administrator.airport.form.button.create = Crear aeropuerto
-administrator.airport.form.error.duplicate-iata = mal iata code
+administrator.airport.form.error.duplicate-iata = Código IATA en uso. Pruebe con otro
 
 
 administrator.airport.form.label.iataCode.placeholder = 3 iniciales en mayúscula; Ej: "AWT"

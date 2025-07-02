@@ -33,10 +33,10 @@ public class AdministratorAirportShowService extends AbstractGuiService<Administ
 			return;
 		}
 		int id = request.getData("id", int.class);
-		Airport airline = this.repository.findAirportById(id);
+		Airport airport = this.repository.findAirportById(id);
 
 		// Must exist
-		boolean authorised = airline != null;
+		boolean authorised = airport != null;
 		super.getResponse().setAuthorised(authorised);
 	}
 
