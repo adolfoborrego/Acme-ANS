@@ -12,6 +12,9 @@
 		<acme:input-textbox code="customer.booking.list.label.locatorCode" path="locatorCode" placeholder="between 6-8 chars. Ej: ABC6789"/>
 	    <acme:input-money code="customer.booking.list.label.price" path="price" />
 	    <acme:input-select code="customer.booking.list.label.travelClass" path="travelClass" choices= "${travelClasses}"/>
+	    <jstl:if test="${numberOfLayovers > 0}">
+				<acme:button code="customer.passenger.list" action="/customer/passenger/list?id=${id}" />
+		</jstl:if>
 	    	    
 
     <jstl:if test="${acme:anyOf(_command, 'show|publish|update')}">

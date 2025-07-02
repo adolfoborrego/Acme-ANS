@@ -48,7 +48,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 		boolean lastNibbleNotNull = !lastNibble.isBlank();
 
-		super.state(lastNibbleNotNull, "published", "customer.booking.publish.error.no-lastNibble");
+		super.state(lastNibbleNotNull, "lastNibble", "customer.booking.publish.error.no-lastNibble");
 		super.state(hasPassengers, "*", "customer.booking.publish.error.no-Passengers");
 
 		boolean locatorCodeIsUnique = !this.repository.findBookingsWhithoutBookingId(booking.getId()).stream().map(x -> x.getLocatorCode()).anyMatch(x -> x.equals(booking.getLocatorCode()));
@@ -76,6 +76,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		Dataset dataset = super.unbindObject(booking, "travelClass", "lastNibble", "price", "locatorCode", "flight", "purchaseMoment");
+		dataset.put("numberOfLayovers", booking.getNumberOfLayovers());
 		dataset.put("flights", flights);
 		dataset.put("travelClasses", travelClasses);
 		super.getResponse().addData(dataset);
