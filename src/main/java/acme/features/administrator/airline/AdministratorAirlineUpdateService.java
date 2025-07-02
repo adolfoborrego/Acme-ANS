@@ -118,7 +118,7 @@ public class AdministratorAirlineUpdateService extends AbstractGuiService<Admini
 		else {
 			List<String> iataCodes = this.repository.findAllAirlines().stream().map(Airline::getIataCode).toList();
 			boolean existeRepetido = iataCodes.stream().anyMatch(x -> airline.getIataCode().equals(x));
-			return !existeRepetido;
+			return !existeRepetido && !this.repository.existsAirportByIataCode(airline.getIataCode());
 		}
 	}
 

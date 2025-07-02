@@ -23,7 +23,7 @@ administrator.airline.form.label.confirmation =  I confirm that the data is corr
 
 ### Errors
 administrator.airline.no-changes = An airline without changes couldn't be updated
-administrator.airline.repeated-iataCode = There cannot be two airlines with the same IATA Code
+administrator.airline.repeated-iataCode = IATA Code already in use. Try another
 administrator.airline.form.error.confirmation = You must confirm the data to proceed
 
 #PLACEHOLDERS

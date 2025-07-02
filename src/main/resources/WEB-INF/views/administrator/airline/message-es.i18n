@@ -24,7 +24,7 @@ administrator.airline.form.label.confirmation = Confirmo que los datos son corre
 
 ### Errores
 administrator.airline.no-changes = Una aerolínea sin cambios no se puede actualizar
-administrator.airline.repeated-iataCode = No puede haber dos aerolíneas con el mismo Código IATA
+administrator.airline.repeated-iataCode = Código IATA en uso. Pruebe con otro
 administrator.airline.form.error.confirmation = Debe confirmar los datos para continuar
 
 #PLACEHOLDERS
