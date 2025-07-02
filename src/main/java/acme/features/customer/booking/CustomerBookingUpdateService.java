@@ -55,7 +55,9 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 		List<String> locatorsYaExistentes = this.repository.findBookingsWhithoutBookingId(booking.getId()).stream().map(x -> x.getLocatorCode()).toList();
 		boolean locatorCodeIsUnique = !locatorsYaExistentes.contains(booking.getLocatorCode());
-		super.state(locatorCodeIsUnique, "flight", "customer.booking.error.locator-NorUnique");
+		boolean flightIsSelected = booking.getFlight() != null;
+		super.state(flightIsSelected, "flight", "customer.booking.error.flight-notNull");
+		super.state(locatorCodeIsUnique, "locatorCode", "customer.booking.error.locator-NorUnique");
 
 	}
 
