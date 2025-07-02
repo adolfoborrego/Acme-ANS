@@ -32,6 +32,7 @@ customer.booking.update.submit = Actualizar Reserva
 
 customer.booking.publish = Publicar Reserva
 
+customer.booking.error.flight-notNull = Debes seleccionar un vuelo
 customer.booking.error.locator-NorUnique = El localizador ya existe
 customer.booking.publish.error.no-lastNibble = No hay Últimos Digitos de la Tarjeta de Crédito
 customer.booking.publish.error.no-Passengers = Esta reserva no tiene Pasajeros
