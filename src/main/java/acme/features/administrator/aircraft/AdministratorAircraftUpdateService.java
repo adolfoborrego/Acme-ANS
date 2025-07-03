@@ -70,6 +70,7 @@ public class AdministratorAircraftUpdateService extends AbstractGuiService<Admin
 		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "administrator.aircraft.form.error.confirmation");
 
+		super.state(aircraft.getAirline() != null, "airline", "administrator.aircraft.airline-non-null");
 		boolean noRepetidoRegistrationNumber = this.noRepetidoRegistrationNumber(original, aircraft);
 		super.state(noRepetidoRegistrationNumber, "registrationNumber", "administrator.aircraft.repeated-registrationNumber");
 
@@ -109,7 +110,7 @@ public class AdministratorAircraftUpdateService extends AbstractGuiService<Admin
 		boolean mismoCargoWeight = Objects.equals(nuevo.getCargoWeight(), original.getCargoWeight());
 		boolean mismoStatus = Objects.equals(nuevo.getStatus(), original.getStatus());
 		boolean mismosDetails = Objects.equals(nuevo.getDetails(), original.getDetails());
-		boolean mismoAirline = Objects.equals(nuevo.getAirline().getIataCode(), original.getAirline().getIataCode());
+		boolean mismoAirline = Objects.equals(nuevo.getAirline() != null ? nuevo.getAirline().getIataCode() : null, original.getAirline() != null ? original.getAirline().getIataCode() : null);
 
 		return !mismoModel || !mismoRegistrationNumber || !mismaCapacity || !mismoCargoWeight || !mismoStatus || !mismosDetails || !mismoAirline;
 	}

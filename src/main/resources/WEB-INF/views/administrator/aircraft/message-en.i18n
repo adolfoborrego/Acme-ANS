@@ -20,7 +20,7 @@ administrator.aircraft.no-changes = An aircraft without changes couldn't be upda
 administrator.aircraft.repeated-registrationNumber = There cannot be two aircraft with the same registration number
 
 administrator.aircraft.form.label.confirmation.update = I confirm that the data is correct before updating
-
+administrator.aircraft.airline-non-null = Choose an airline
 
 #### PLACEHOLDERS
 administrator.aircraft.placeholder.model = Introduce the model of the aircraft

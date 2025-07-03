@@ -59,7 +59,7 @@ public class AdministratorAircraftCreateService extends AbstractGuiService<Admin
 		assert aircraft != null;
 		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "administrator.aircraft.form.error.confirmation");
-
+		super.state(aircraft.getAirline() != null, "airline", "administrator.aircraft.airline-non-null");
 		boolean noRepetidoRegistrationNumber = this.noRepetidoRegistrationNumber(aircraft);
 		super.state(noRepetidoRegistrationNumber, "registrationNumber", "administrator.aircraft.repeated-registrationNumber");
 	}
