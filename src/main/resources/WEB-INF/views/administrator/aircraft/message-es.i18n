@@ -19,9 +19,7 @@ administrator.aircraft.form.error.confirmation = Debe confirmar los datos para c
 administrator.aircraft.no-changes =  No se puede actualizar la aeronave si no se han efectuado cambios
 administrator.aircraft.repeated-registrationNumber = No puede haber dos aeronaves con el mismo número de registro
 
-administrator.aircraft.form.label.confirmation = Confirmo que los datos son correctos antes de actualizarlos
-
-
+administrator.aircraft.form.label.confirmation.update = Confirmo que los datos son correctos antes de actualizarlos
 
 #### PLACEHOLDERS
 administrator.aircraft.placeholder.model = Introduce el modelo de la aeronave

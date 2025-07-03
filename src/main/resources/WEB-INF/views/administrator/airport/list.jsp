@@ -1,4 +1,3 @@
-
 <%@page%>
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -11,6 +10,5 @@
     <acme:list-column code="administrator.airport.list.label.country" path="country"/>
     <acme:list-column code="administrator.airport.list.label.operationalScope" path="operationalScope"/>
 </acme:list>
-<jstl:if test="${showCreate}">
-    <acme:button code="administrator.airport.list.button.create" action="/administrator/airport/create"/>
-</jstl:if> 
+
+<acme:button code="administrator.airport.list.button.create" action="/administrator/airport/create"/>
